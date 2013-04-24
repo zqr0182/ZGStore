@@ -11,6 +11,8 @@
     <AssemblyName>ZG.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,10 +46,105 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\CouponType.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomField.cs" />
+    <Compile Include="Models\CustomFieldType.cs" />
+    <Compile Include="Models\FeaturedProduct.cs" />
+    <Compile Include="Models\GiftRegistry.cs" />
+    <Compile Include="Models\GiftRegistryProduct.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\InventoryAction.cs" />
+    <Compile Include="Models\InventoryProductOption.cs" />
+    <Compile Include="Models\Mappings\CategoryMap.cs" />
+    <Compile Include="Models\Mappings\CountryMap.cs" />
+    <Compile Include="Models\Mappings\CouponMap.cs" />
+    <Compile Include="Models\Mappings\CouponTypeMap.cs" />
+    <Compile Include="Models\Mappings\CustomerMap.cs" />
+    <Compile Include="Models\Mappings\CustomFieldMap.cs" />
+    <Compile Include="Models\Mappings\CustomFieldTypeMap.cs" />
+    <Compile Include="Models\Mappings\FeaturedProductMap.cs" />
+    <Compile Include="Models\Mappings\GiftRegistryMap.cs" />
+    <Compile Include="Models\Mappings\GiftRegistryProductMap.cs" />
+    <Compile Include="Models\Mappings\ImageMap.cs" />
+    <Compile Include="Models\Mappings\InventoryActionMap.cs" />
+    <Compile Include="Models\Mappings\InventoryMap.cs" />
+    <Compile Include="Models\Mappings\InventoryProductOptionMap.cs" />
+    <Compile Include="Models\Mappings\OrderMap.cs" />
+    <Compile Include="Models\Mappings\OrderProductCustomFieldMap.cs" />
+    <Compile Include="Models\Mappings\OrderProductMap.cs" />
+    <Compile Include="Models\Mappings\OrderProductOptionMap.cs" />
+    <Compile Include="Models\Mappings\OrderStatuMap.cs" />
+    <Compile Include="Models\Mappings\ProductCategoryMap.cs" />
+    <Compile Include="Models\Mappings\ProductDownloadKeyMap.cs" />
+    <Compile Include="Models\Mappings\ProductMap.cs" />
+    <Compile Include="Models\Mappings\ProductOptionMap.cs" />
+    <Compile Include="Models\Mappings\ProductReviewCaregoryProductReviewMap.cs" />
+    <Compile Include="Models\Mappings\ProductReviewCategoryMap.cs" />
+    <Compile Include="Models\Mappings\ProductReviewMap.cs" />
+    <Compile Include="Models\Mappings\ProductTagMap.cs" />
+    <Compile Include="Models\Mappings\ProvinceMap.cs" />
+    <Compile Include="Models\Mappings\RelatedProductMap.cs" />
+    <Compile Include="Models\Mappings\ShippingMap.cs" />
+    <Compile Include="Models\Mappings\ShippingProviderMap.cs" />
+    <Compile Include="Models\Mappings\StateMap.cs" />
+    <Compile Include="Models\Mappings\StoreConfigurationMap.cs" />
+    <Compile Include="Models\Mappings\TagMap.cs" />
+    <Compile Include="Models\Mappings\TaxMap.cs" />
+    <Compile Include="Models\Mappings\UserMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_ApplicationsMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_MembershipUsersMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_ProfilesMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_RolesMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_UsersInRolesMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_UsersMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_WebPartState_PathsMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_WebPartState_SharedMap.cs" />
+    <Compile Include="Models\Mappings\vw_aspnet_WebPartState_UserMap.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderProduct.cs" />
+    <Compile Include="Models\OrderProductCustomField.cs" />
+    <Compile Include="Models\OrderProductOption.cs" />
+    <Compile Include="Models\OrderStatu.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\ProductDownloadKey.cs" />
+    <Compile Include="Models\ProductOption.cs" />
+    <Compile Include="Models\ProductReview.cs" />
+    <Compile Include="Models\ProductReviewCaregoryProductReview.cs" />
+    <Compile Include="Models\ProductReviewCategory.cs" />
+    <Compile Include="Models\ProductTag.cs" />
+    <Compile Include="Models\Province.cs" />
+    <Compile Include="Models\RelatedProduct.cs" />
+    <Compile Include="Models\Shipping.cs" />
+    <Compile Include="Models\ShippingProvider.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\StoreConfiguration.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\vw_aspnet_Applications.cs" />
+    <Compile Include="Models\vw_aspnet_MembershipUsers.cs" />
+    <Compile Include="Models\vw_aspnet_Profiles.cs" />
+    <Compile Include="Models\vw_aspnet_Roles.cs" />
+    <Compile Include="Models\vw_aspnet_Users.cs" />
+    <Compile Include="Models\vw_aspnet_UsersInRoles.cs" />
+    <Compile Include="Models\vw_aspnet_WebPartState_Paths.cs" />
+    <Compile Include="Models\vw_aspnet_WebPartState_Shared.cs" />
+    <Compile Include="Models\vw_aspnet_WebPartState_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

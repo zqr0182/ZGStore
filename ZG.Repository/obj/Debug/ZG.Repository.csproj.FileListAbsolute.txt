@@ -2,3 +2,9 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.R
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Repository.pdb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\obj\Debug\ZG.Repository.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\obj\Debug\ZG.Repository.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\obj\Debug\ZG.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Repository.dll.config
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Domain.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Domain.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\EntityFramework.xml

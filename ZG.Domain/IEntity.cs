@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZG.Domain
 {
-    public class Class1
+    public interface IEntity
     {
+        int Id { get; }
     }
 }
