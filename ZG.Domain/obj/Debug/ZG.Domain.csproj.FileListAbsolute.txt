@@ -1,0 +1,4 @@
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Domain\bin\Debug\ZG.Domain.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Domain\bin\Debug\ZG.Domain.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Domain\obj\Debug\ZG.Domain.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Domain\obj\Debug\ZG.Domain.pdb

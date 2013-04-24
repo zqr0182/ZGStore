@@ -1,0 +1,4 @@
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Common\bin\Debug\ZG.Common.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Common\bin\Debug\ZG.Common.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Common\obj\Debug\ZG.Common.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Common\obj\Debug\ZG.Common.pdb
