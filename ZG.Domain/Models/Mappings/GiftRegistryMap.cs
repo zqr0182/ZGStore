@@ -15,15 +15,15 @@ namespace ZG.Domain.Models.Mapping
             // Table & Column Mappings
             this.ToTable("GiftRegistry");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.CustomerID).HasColumnName("CustomerID");
+            this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.IsPublic).HasColumnName("IsPublic");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Customer)
+            this.HasRequired(t => t.User)
                 .WithMany(t => t.GiftRegistries)
-                .HasForeignKey(d => d.CustomerID);
+                .HasForeignKey(d => d.UserID);
 
         }
     }

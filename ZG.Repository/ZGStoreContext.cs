@@ -18,13 +18,14 @@ namespace ZG.Repository
         {
         }
 
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<CouponType> CouponTypes { get; set; }
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomField> CustomFields { get; set; }
         public DbSet<CustomFieldType> CustomFieldTypes { get; set; }
+        public DbSet<DBVersion> DBVersions { get; set; }
         public DbSet<FeaturedProduct> FeaturedProducts { get; set; }
         public DbSet<GiftRegistry> GiftRegistries { get; set; }
         public DbSet<GiftRegistryProduct> GiftRegistryProducts { get; set; }
@@ -54,25 +55,17 @@ namespace ZG.Repository
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<VwAspnetApplications> VwAspnetApplications { get; set; }
-        public DbSet<VwAspnetMembershipusers> VwAspnetMembershipusers { get; set; }
-        public DbSet<VwAspnetProfiles> VwAspnetProfiles { get; set; }
-        public DbSet<VwAspnetRoles> VwAspnetRoles { get; set; }
-        public DbSet<VwAspnetUsers> VwAspnetUsers { get; set; }
-        public DbSet<VwAspnetUsersinroles> VwAspnetUsersinroles { get; set; }
-        public DbSet<VwAspnetWebpartstatePaths> VwAspnetWebpartstatePaths { get; set; }
-        public DbSet<VwAspnetWebpartstateShared> VwAspnetWebpartstateShared { get; set; }
-        public DbSet<VwAspnetWebpartstateUser> VwAspnetWebpartstateUser { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new AddressMap());
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CountryMap());
             modelBuilder.Configurations.Add(new CouponMap());
             modelBuilder.Configurations.Add(new CouponTypeMap());
-            modelBuilder.Configurations.Add(new CustomerMap());
             modelBuilder.Configurations.Add(new CustomFieldMap());
             modelBuilder.Configurations.Add(new CustomFieldTypeMap());
+            modelBuilder.Configurations.Add(new DBVersionMap());
             modelBuilder.Configurations.Add(new FeaturedProductMap());
             modelBuilder.Configurations.Add(new GiftRegistryMap());
             modelBuilder.Configurations.Add(new GiftRegistryProductMap());
@@ -102,15 +95,6 @@ namespace ZG.Repository
             modelBuilder.Configurations.Add(new TagMap());
             modelBuilder.Configurations.Add(new TaxMap());
             modelBuilder.Configurations.Add(new UserMap());
-            modelBuilder.Configurations.Add(new VwAspnetApplicationsMap());
-            modelBuilder.Configurations.Add(new VwAspnetMembershipusersMap());
-            modelBuilder.Configurations.Add(new VwAspnetProfilesMap());
-            modelBuilder.Configurations.Add(new VwAspnetRolesMap());
-            modelBuilder.Configurations.Add(new VwAspnetUsersMap());
-            modelBuilder.Configurations.Add(new VwAspnetUsersinrolesMap());
-            modelBuilder.Configurations.Add(new VwAspnetWebpartstatePathsMap());
-            modelBuilder.Configurations.Add(new VwAspnetWebpartstateSharedMap());
-            modelBuilder.Configurations.Add(new VwAspnetWebpartstateUserMap());
         }
     }
 }

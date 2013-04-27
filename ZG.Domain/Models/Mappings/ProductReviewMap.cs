@@ -20,18 +20,18 @@ namespace ZG.Domain.Models.Mapping
             this.ToTable("ProductReview");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ProductID).HasColumnName("ProductID");
-            this.Property(t => t.CustomerID).HasColumnName("CustomerID");
+            this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.ReviewText).HasColumnName("ReviewText");
             this.Property(t => t.ReviewDate).HasColumnName("ReviewDate");
             this.Property(t => t.Active).HasColumnName("Active");
 
             // Relationships
-            this.HasRequired(t => t.Customer)
-                .WithMany(t => t.ProductReviews)
-                .HasForeignKey(d => d.CustomerID);
             this.HasRequired(t => t.Product)
                 .WithMany(t => t.ProductReviews)
                 .HasForeignKey(d => d.ProductID);
+            this.HasRequired(t => t.User)
+                .WithMany(t => t.ProductReviews)
+                .HasForeignKey(d => d.UserID);
 
         }
     }
