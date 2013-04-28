@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ZG.Domain.Models.Mapping
 {
-    public class UserMap : EntityTypeConfiguration<User>
+    public class UsersMap : EntityTypeConfiguration<Users>
     {
-        public UserMap()
+        public UsersMap()
         {
             // Primary Key
             this.HasKey(t => t.UserId);
@@ -45,7 +45,7 @@ namespace ZG.Domain.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("User");
+            this.ToTable("Users");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.LastName).HasColumnName("LastName");

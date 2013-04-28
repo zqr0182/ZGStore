@@ -96,3 +96,7 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\Do
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\obj\Debug\ZG.Store.Presentation.csprojResolveAssemblyReference.cache
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\obj\Debug\ZG.Store.Presentation.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\obj\Debug\ZG.Store.Presentation.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Domain.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Repository.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Domain.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Repository.pdb

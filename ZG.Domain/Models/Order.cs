@@ -13,7 +13,7 @@ namespace ZG.Domain.Models
         }
 
         public int Id { get; set; }
-        public Nullable<int> CustomerID { get; set; }
+        public Nullable<int> UserId { get; set; }
         public string OrderNumber { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<int> OrderStatusID { get; set; }

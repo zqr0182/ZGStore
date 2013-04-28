@@ -19,7 +19,7 @@ namespace ZG.Domain.Models
         public System.DateTime ReviewDate { get; set; }
         public bool Active { get; set; }
         public virtual Product Product { get; set; }
-        public virtual User User { get; set; }
+        public virtual Users User { get; set; }
         public virtual ICollection<ProductReviewCaregoryProductReview> ProductReviewCaregoryProductReviews { get; set; }
     }
 }

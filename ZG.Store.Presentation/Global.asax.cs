@@ -55,7 +55,7 @@ namespace ZG.Store.Presentation
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("ZGStoreContext", "User", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("ZGStoreContext", "Users", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

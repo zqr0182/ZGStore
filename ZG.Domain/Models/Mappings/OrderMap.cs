@@ -33,7 +33,7 @@ namespace ZG.Domain.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Order");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.CustomerID).HasColumnName("CustomerID");
+            this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.OrderNumber).HasColumnName("OrderNumber");
             this.Property(t => t.OrderDate).HasColumnName("OrderDate");
             this.Property(t => t.OrderStatusID).HasColumnName("OrderStatusID");

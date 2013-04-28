@@ -290,6 +290,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZG.Domain\ZG.Domain.csproj">
+      <Project>{a13c29e9-846d-46dc-9a39-23afa6cd8f26}</Project>
+      <Name>ZG.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZG.Repository\ZG.Repository.csproj">
+      <Project>{de72272b-0710-4038-847b-5a2e144ed7c8}</Project>
+      <Name>ZG.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
