@@ -2,3 +2,14 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Deb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Store.Application.pdb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\obj\Debug\ZG.Store.Application.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\obj\Debug\ZG.Store.Application.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\obj\Debug\ZG.Store.Application.csprojResolveAssemblyReference.cache
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Core.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Windsor.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Domain.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Repository.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\EntityFramework.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Domain.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Repository.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Core.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Windsor.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\EntityFramework.xml

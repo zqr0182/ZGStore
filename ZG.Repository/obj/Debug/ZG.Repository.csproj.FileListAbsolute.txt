@@ -8,3 +8,7 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Enti
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Domain.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Domain.pdb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Core.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Windsor.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Core.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Windsor.xml

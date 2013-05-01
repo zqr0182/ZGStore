@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Castle.Core.Logging;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
@@ -15,6 +16,8 @@ namespace ZG.Store.Presentation.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public ILogger Logger { get; set; }
+
         //
         // GET: /Account/Login
 
@@ -37,6 +40,8 @@ namespace ZG.Store.Presentation.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
+
+            Logger.WarnFormat("User {0} attempted login but password validation failed", model.UserName);
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");

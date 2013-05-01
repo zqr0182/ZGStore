@@ -98,3 +98,14 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Domain.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Repository.pdb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Domain.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Moq.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Windsor.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Core.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Moq.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Moq.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Windsor.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Core.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Facilities.Logging.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\log4net.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Castle.Facilities.Logging.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\log4net.xml

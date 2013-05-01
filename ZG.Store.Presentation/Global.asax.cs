@@ -9,8 +9,13 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using WebMatrix.WebData;
+using ZG.Repository.Installers;
+using ZG.Store.Application.Installers;
 using ZG.Store.Presentation.Models;
+using ZG.Store.Presentation.Plumbing;
 
 namespace ZG.Store.Presentation
 {
@@ -22,6 +27,7 @@ namespace ZG.Store.Presentation
         private static SimpleMembershipInitializer _initializer;
         private static object _initializerLock = new object();
         private static bool _isInitialized;
+        private static IWindsorContainer _container;
 
         protected void Application_Start()
         {
@@ -35,7 +41,23 @@ namespace ZG.Store.Presentation
 
             // Ensure ASP.NET Simple Membership is initialized only once per app start
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
-        
+
+            BootstrapContainer();
+        }
+
+        protected void Application_End()
+        {
+            _container.Dispose();
+        }
+
+        private static void BootstrapContainer()
+        {
+            _container = new WindsorContainer().Install(FromAssembly.This(), 
+                                                        FromAssembly.Containing<RepositoriesInstaller>(),
+                                                        FromAssembly.Containing<ServicesInstaller>());
+
+            var controllerFactory = new WindsorControllerFactory(_container.Kernel);
+            ControllerBuilder.Current.SetControllerFactory(controllerFactory); 
         }
 
         private class SimpleMembershipInitializer
