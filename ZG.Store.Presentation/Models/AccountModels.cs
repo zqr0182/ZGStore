@@ -109,12 +109,10 @@ namespace ZG.Store.Presentation.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Phone")]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
         public string Phone { get; set; }
 
         [DataType(DataType.Text)]
-        [Display(Name = "Fax")]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
         public string Fax { get; set; }
 
