@@ -17,7 +17,7 @@ namespace ZG.Domain.Models
         public System.DateTime DateCreated { get; set; }
         public bool IsPublic { get; set; }
         public bool Active { get; set; }
-        public virtual Users User { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<GiftRegistryProduct> GiftRegistryProducts { get; set; }
     }
 }

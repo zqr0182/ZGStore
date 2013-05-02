@@ -10,7 +10,7 @@ namespace ZG.Store.Application
 {
     public interface IUserService
     {
-        Users FindByEmail(string email);
+        User FindByEmail(string email);
     }
 
     public class UserService : BaseService, IUserService
@@ -20,7 +20,7 @@ namespace ZG.Store.Application
         {
         }
 
-        public Users FindByEmail(string email)
+        public User FindByEmail(string email)
         {
             return UnitOfWork.Users.FindByEmail(email);
         }

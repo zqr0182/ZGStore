@@ -54,7 +54,7 @@ namespace ZG.Repository
         public DbSet<StoreConfiguration> StoreConfigurations { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Tax> Taxes { get; set; }
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -94,7 +94,7 @@ namespace ZG.Repository
             modelBuilder.Configurations.Add(new StoreConfigurationMap());
             modelBuilder.Configurations.Add(new TagMap());
             modelBuilder.Configurations.Add(new TaxMap());
-            modelBuilder.Configurations.Add(new UsersMap());
+            modelBuilder.Configurations.Add(new UserMap());
         }
     }
 }

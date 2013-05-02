@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ZG.Domain.Models.Mapping
 {
-    public class UsersMap : EntityTypeConfiguration<Users>
+    public class UserMap : EntityTypeConfiguration<User>
     {
-        public UsersMap()
+        public UserMap()
         {
             // Primary Key
             this.HasKey(t => t.UserId);

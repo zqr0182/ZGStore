@@ -22,6 +22,6 @@ namespace ZG.Domain.Models
         public virtual Country Country { get; set; }
         public virtual Province Province { get; set; }
         public virtual State State { get; set; }
-        public virtual Users User { get; set; }
+        public virtual User User { get; set; }
     }
 }

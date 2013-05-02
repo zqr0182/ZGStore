@@ -7,21 +7,21 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository
 {
-    public interface IUserRepository : IRepository<Users>
+    public interface IUserRepository : IRepository<User>
     {
-        Users FindByEmail(string email);
+        User FindByEmail(string email);
     }
 
-    public class UserRepository : ZGStoreRepository<Users>, IUserRepository
+    public class UserRepository : ZGStoreRepository<User>, IUserRepository
     {
         public UserRepository(ZGStoreContext context) : base(context){}
 
-        public Users FindByEmail(string email)
+        public User FindByEmail(string email)
         {
             return FindWhere(p => p.Email == email).SingleOrDefault();
         }
 
-        public override Users FindById(int id)
+        public override User FindById(int id)
         {
             return FindWhere(u => u.UserId == id).SingleOrDefault();
         }

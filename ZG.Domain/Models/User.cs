@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZG.Domain.Models
 {
-    public partial class Users : IEntity
+    public partial class User : IEntity
     {
-        public Users()
+        public User()
         {
             this.Addresses = new List<Address>();
             this.GiftRegistries = new List<GiftRegistry>();
