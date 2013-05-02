@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZG.Common
 {
-    public class Class1
+    public class Constants
     {
+        public static readonly DateTime DefaultDateTime = new DateTime(1900, 1, 1);
     }
 }

@@ -24,14 +24,8 @@ namespace ZG.Domain.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(100);
 
-            this.Property(t => t.DayPhone)
+            this.Property(t => t.Phone)
                 .IsRequired()
-                .HasMaxLength(50);
-
-            this.Property(t => t.EveningPhone)
-                .HasMaxLength(50);
-
-            this.Property(t => t.CellPhone)
                 .HasMaxLength(50);
 
             this.Property(t => t.Fax)
@@ -50,9 +44,7 @@ namespace ZG.Domain.Models.Mapping
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.LastName).HasColumnName("LastName");
             this.Property(t => t.UserName).HasColumnName("UserName");
-            this.Property(t => t.DayPhone).HasColumnName("DayPhone");
-            this.Property(t => t.EveningPhone).HasColumnName("EveningPhone");
-            this.Property(t => t.CellPhone).HasColumnName("CellPhone");
+            this.Property(t => t.Phone).HasColumnName("Phone");
             this.Property(t => t.Fax).HasColumnName("Fax");
             this.Property(t => t.Email).HasColumnName("Email");
             this.Property(t => t.Company).HasColumnName("Company");

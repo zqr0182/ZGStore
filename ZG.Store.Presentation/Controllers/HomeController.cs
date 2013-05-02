@@ -18,7 +18,6 @@ namespace ZG.Store.Presentation.Controllers
             _userService = userService;
         }
 
-        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";

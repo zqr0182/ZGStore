@@ -13,3 +13,5 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Deb
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Core.xml
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\Castle.Windsor.xml
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\EntityFramework.xml
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Common.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Application\bin\Debug\ZG.Common.pdb

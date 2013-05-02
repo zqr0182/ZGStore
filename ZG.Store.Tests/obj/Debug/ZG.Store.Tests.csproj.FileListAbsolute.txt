@@ -111,3 +111,5 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\Cas
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\log4net.xml
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Store.Application.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Store.Application.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Common.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Tests\bin\Debug\ZG.Common.pdb

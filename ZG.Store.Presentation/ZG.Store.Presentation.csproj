@@ -310,6 +310,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZG.Common\ZG.Common.csproj">
+      <Project>{825437ba-2e56-4261-baf8-4e8c03c4991a}</Project>
+      <Name>ZG.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZG.Domain\ZG.Domain.csproj">
       <Project>{a13c29e9-846d-46dc-9a39-23afa6cd8f26}</Project>
       <Name>ZG.Domain</Name>

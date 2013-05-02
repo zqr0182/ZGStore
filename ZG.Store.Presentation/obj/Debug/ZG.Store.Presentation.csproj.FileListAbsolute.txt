@@ -111,3 +111,5 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\Ca
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\log4net.xml
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Store.Application.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Store.Application.pdb
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Common.dll
+C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Store.Presentation\bin\ZG.Common.pdb

@@ -82,7 +82,7 @@ namespace ZG.Store.Presentation.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new {FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Phone = model.Phone, Fax = model.Fax, Company = model.Company} );
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

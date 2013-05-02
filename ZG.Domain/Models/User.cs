@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using ZG.Common;
 
 namespace ZG.Domain.Models
 {
@@ -10,6 +12,9 @@ namespace ZG.Domain.Models
     {
         public User()
         {
+            FirstName = LastName = UserName = Phone = Fax = Email = Company = "";
+            DateCreated = Constants.DefaultDateTime;
+
             this.Addresses = new List<Address>();
             this.GiftRegistries = new List<GiftRegistry>();
             this.ProductReviews = new List<ProductReview>();
@@ -21,9 +26,7 @@ namespace ZG.Domain.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-        public string DayPhone { get; set; }
-        public string EveningPhone { get; set; }
-        public string CellPhone { get; set; }
+        public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
         public string Company { get; set; }
