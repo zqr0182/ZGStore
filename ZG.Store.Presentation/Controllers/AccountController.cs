@@ -86,6 +86,7 @@ namespace ZG.Store.Presentation.Controllers
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new {model.FirstName, model.LastName, model.Phone} );
                     Roles.AddUserToRole(model.UserName, RoleName.Customer);
                     WebSecurity.Login(model.UserName, model.Password);
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
