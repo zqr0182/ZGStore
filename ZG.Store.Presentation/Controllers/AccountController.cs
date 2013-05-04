@@ -9,6 +9,7 @@ using Castle.Core.Logging;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
+using ZG.Common;
 using ZG.Store.Presentation.Models;
 
 namespace ZG.Store.Presentation.Controllers
@@ -82,7 +83,8 @@ namespace ZG.Store.Presentation.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new {FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone} );
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new {model.FirstName, model.LastName, model.Phone} );
+                    Roles.AddUserToRole(model.UserName, RoleName.Customer);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

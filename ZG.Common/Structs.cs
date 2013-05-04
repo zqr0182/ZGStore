@@ -15,4 +15,10 @@ namespace ZG.Common
         public const string Required = "This field is required.";
         public const string Phone = "Please enter a valid phone number.";
     }
+
+    public struct RoleName
+    {
+        public const string Admin = "Admin";
+        public const string Customer = "Customer";
+    }
 }
