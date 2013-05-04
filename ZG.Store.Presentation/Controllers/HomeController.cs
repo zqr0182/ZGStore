@@ -22,7 +22,7 @@ namespace ZG.Store.Presentation.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            var user = _userService.FindByEmail("zhangxiao1234@hotmail.com");
+            var user = _userService.FindByUserName("zhangxiao1234@hotmail.com");
 
             return View();
         }

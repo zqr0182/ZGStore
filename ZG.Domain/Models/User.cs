@@ -12,9 +12,6 @@ namespace ZG.Domain.Models
     {
         public User()
         {
-            FirstName = LastName = UserName = Phone = Fax = Email = Company = "";
-            DateCreated = Constants.DefaultDateTime;
-
             this.Addresses = new List<Address>();
             this.GiftRegistries = new List<GiftRegistry>();
             this.ProductReviews = new List<ProductReview>();
@@ -23,13 +20,10 @@ namespace ZG.Domain.Models
         [NotMapped]
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string UserName { get; set; }
         public string Phone { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
-        public string Company { get; set; }
         public System.DateTime DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public bool Active { get; set; }

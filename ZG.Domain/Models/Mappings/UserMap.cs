@@ -20,22 +20,12 @@ namespace ZG.Domain.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.UserName)
-                .IsRequired()
-                .HasMaxLength(100);
-
             this.Property(t => t.Phone)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.Fax)
-                .HasMaxLength(50);
-
-            this.Property(t => t.Email)
+            this.Property(t => t.UserName)
                 .IsRequired()
-                .HasMaxLength(50);
-
-            this.Property(t => t.Company)
                 .HasMaxLength(50);
 
             // Table & Column Mappings
@@ -43,11 +33,8 @@ namespace ZG.Domain.Models.Mapping
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.LastName).HasColumnName("LastName");
-            this.Property(t => t.UserName).HasColumnName("UserName");
             this.Property(t => t.Phone).HasColumnName("Phone");
-            this.Property(t => t.Fax).HasColumnName("Fax");
-            this.Property(t => t.Email).HasColumnName("Email");
-            this.Property(t => t.Company).HasColumnName("Company");
+            this.Property(t => t.UserName).HasColumnName("UserName");
             this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.DateUpdated).HasColumnName("DateUpdated");
             this.Property(t => t.Active).HasColumnName("Active");

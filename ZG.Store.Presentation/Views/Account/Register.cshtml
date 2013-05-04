@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Registration Form</legend>
@@ -18,38 +18,37 @@
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.UserNameRetype)
+                @Html.TextBoxFor(m => m.UserNameRetype)
+                @Html.ValidationMessageFor(m => m.UserNameRetype)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
             </li>
             <li>
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </li>
             <li>
                 @Html.LabelFor(m => m.FirstName)
                 @Html.TextBoxFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName)
             </li>
             <li>
                 @Html.LabelFor(m => m.LastName)
                 @Html.TextBoxFor(m => m.LastName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.LastName)
             </li>
             <li>
                 @Html.LabelFor(m => m.Phone)
                 @Html.TextBoxFor(m => m.Phone)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Fax)
-                @Html.TextBoxFor(m => m.Fax)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Company)
-                @Html.TextBoxFor(m => m.Company)
+                @Html.ValidationMessageFor(m => m.Phone)
             </li>
         </ol>
         <input type="submit" value="Register" />

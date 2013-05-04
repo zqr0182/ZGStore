@@ -73,52 +73,48 @@ namespace ZG.Store.Presentation.Models
 
     public class RegisterModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "E-mail address:")]
+        [EmailAddress(ErrorMessage = ValidationErrorMessage.Email)]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Confirm e-mail address:")]
+        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
+        [EmailAddress(ErrorMessage = ValidationErrorMessage.Email)]
+        [Compare("UserName", ErrorMessage = ValidationErrorMessage.ConfirmEmail)]
+        public string UserNameRetype { get; set; }
+
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(100, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password:")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm password:")]
         [Compare("Password", ErrorMessage = ValidationErrorMessage.ConfirmPassword)]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [DataType(DataType.Text)]
-        [Display(Name = "First Name")]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
+        [Display(Name = "First name:")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [DataType(DataType.Text)]
-        [Display(Name = "Last Name")]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
+        [Display(Name = "Last name:")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [DataType(DataType.Text)]
-        [Display(Name = "Email Address")]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
+        [Display(Name = "Phone: xxx-xxx-xxxx")]
+        [RegularExpression(Constants.PhonePatternTenDigits, ErrorMessage = ValidationErrorMessage.Phone)]
         public string Phone { get; set; }
-
-        [DataType(DataType.Text)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
-        public string Fax { get; set; }
-
-        [DataType(DataType.Text)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MinimumLength, MinimumLength = 2)]
-        public string Company { get; set; }
     }
 
     public class ExternalLogin

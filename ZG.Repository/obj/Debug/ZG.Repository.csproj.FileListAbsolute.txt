@@ -12,5 +12,3 @@ C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Cast
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Windsor.dll
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Core.xml
 C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\Castle.Windsor.xml
-C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Common.dll
-C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\ZG.Repository\bin\Debug\ZG.Common.pdb

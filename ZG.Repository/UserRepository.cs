@@ -9,16 +9,16 @@ namespace ZG.Repository
 {
     public interface IUserRepository : IRepository<User>
     {
-        User FindByEmail(string email);
+        User FindByUserName(string email);
     }
 
     public class UserRepository : ZGStoreRepository<User>, IUserRepository
     {
         public UserRepository(ZGStoreContext context) : base(context){}
 
-        public User FindByEmail(string email)
+        public User FindByUserName(string userName)
         {
-            return FindWhere(p => p.Email == email).SingleOrDefault();
+            return FindWhere(p => p.UserName == userName).SingleOrDefault();
         }
 
         public override User FindById(int id)
