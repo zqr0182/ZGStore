@@ -1,0 +1,16 @@
+﻿@model ZG.Store.Presentation.ViewModels.ProductListViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+@foreach (var prod in Model.Products)
+{
+    <div class="item">
+        <h3>@prod.ProductName</h3>
+        @prod.Description
+        <h4>@prod.Price.ToString("c")</h4>
+    </div>
+}
+
+@Html.Action("Paging", "ChildAction", new{action = "List", controller = "Product", currentPageNumber = Model.CurrentPageNum, totalPages = Model.TotalPages})

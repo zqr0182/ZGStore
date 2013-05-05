@@ -15,8 +15,8 @@ namespace ZG.Store.Presentation
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{page}",
+                defaults: new { controller = "Product", action = "List", page = UrlParameter.Optional }
             );
         }
     }

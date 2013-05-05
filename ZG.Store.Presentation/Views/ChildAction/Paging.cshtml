@@ -1,0 +1,46 @@
+﻿@model ZG.Store.Presentation.ViewModels.PagingViewModel
+
+@if (Model.PrevLink != null)
+{
+    <div class="span2 pagination prev-next">
+    @if (string.IsNullOrWhiteSpace(Model.PrevLink.HRef))
+    {
+        <span class="@Model.PrevLink.CSSClass">&laquo; Prev</span>
+    }
+    else
+    {
+        <a rel="prev" href="@Model.PrevLink.HRef" class="@Model.PrevLink.CSSClass">&laquo; Prev</a>
+    } 
+    </div>
+}
+
+<div class="pagination pagination-centered span8">
+  <ul>
+      @foreach (var link in Model.MiddleLinks)
+        {
+            if (string.IsNullOrWhiteSpace(link.HRef))
+            {
+                <li class="@link.CSSClass"><span>@link.Text</span></li>
+            }
+            else
+            {
+                <li class="@link.CSSClass"><a href="@link.HRef">@link.Text</a></li>
+            }
+        }
+  </ul>
+</div>
+
+@if (Model.NextLink != null)
+{
+    <div class="span2 pagination prev-next next-link">
+    @if (string.IsNullOrWhiteSpace(Model.NextLink.HRef))
+      {
+        <span class="@Model.NextLink.CSSClass">Next &raquo</span>
+      }
+      else
+      {
+        <a rel="next" href="@Model.NextLink.HRef" class="@Model.NextLink.CSSClass">Next &raquo;</a>
+      }
+</div>
+}
+

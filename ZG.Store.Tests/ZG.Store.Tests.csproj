@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProductControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -108,6 +109,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZG.Domain\ZG.Domain.csproj">
+      <Project>{a13c29e9-846d-46dc-9a39-23afa6cd8f26}</Project>
+      <Name>ZG.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZG.Store.Application\ZG.Store.Application.csproj">
+      <Project>{8997ab84-b3c9-4eb4-9249-304690e35cac}</Project>
+      <Name>ZG.Store.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZG.Store.Presentation\ZG.Store.Presentation.csproj">
       <Project>{AEEDF855-DF72-4427-BF68-83A56A5FA5DD}</Project>
       <Name>ZG.Store.Presentation</Name>
