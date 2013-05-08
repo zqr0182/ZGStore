@@ -18,16 +18,17 @@ namespace ZG.Store.Presentation.Controllers
             _productService = productService;
         }
         
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
-            var porductsPerPage = _productService.GetProducts(page, _pageSize);
+            var porductsPerPage = _productService.GetProducts(category, page, _pageSize);
 
             var productListViewModel = new ProductListViewModel
                 {
                     Products = porductsPerPage.Products,
                     CurrentPageNum = page,
                     RecordsPerPage = _pageSize,
-                    TotalPages = (int)Math.Ceiling((decimal)porductsPerPage.TotalProducts / _pageSize)
+                    TotalPages = (int)Math.Ceiling((decimal)porductsPerPage.TotalProducts / _pageSize),
+                    CurrentCategory = category
                 };
 
 

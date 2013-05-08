@@ -6,11 +6,7 @@
 
 @foreach (var prod in Model.Products)
 {
-    <div class="item">
-        <h3>@prod.ProductName</h3>
-        @prod.Description
-        <h4>@prod.Price.ToString("c")</h4>
-    </div>
+    Html.RenderPartial("ProductSummary", prod);
 }
 
-@Html.Action("Paging", "ChildAction", new{action = "List", controller = "Product", currentPageNumber = Model.CurrentPageNum, totalPages = Model.TotalPages})
+@Html.Action("Paging", "ChildAction", new{action = "List", controller = "Product", currentCagetory = Model.CurrentCategory, currentPageNumber = Model.CurrentPageNum, totalPages = Model.TotalPages})

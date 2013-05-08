@@ -13,9 +13,9 @@ namespace ZG.Store.Presentation.Controllers
         // GET: /ChildAction/
 
         [ChildActionOnly]
-        public PartialViewResult Paging(string action, string controller, int currentPageNumber, int totalPages)
+        public PartialViewResult Paging(string action, string controller, string currentCagetory, int currentPageNumber, int totalPages)
         {
-            var pagingViewModel = new PagingViewModel(action, controller, currentPageNumber, totalPages, Url);
+            var pagingViewModel = new PagingViewModel(action, controller, currentCagetory, currentPageNumber, totalPages, Url);
 
             return PartialView(pagingViewModel);
         }

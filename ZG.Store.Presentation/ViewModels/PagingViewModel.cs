@@ -17,6 +17,7 @@ namespace ZG.Store.Presentation.ViewModels
         private UrlHelper _urlHelper;
         private string _action;
         private string _controller;
+        private string _currentCategory;
 
         /// <summary>
         /// disabled
@@ -57,13 +58,14 @@ namespace ZG.Store.Presentation.ViewModels
             get { return _links.Skip(1).Take(_links.Count - 2); }
         }
 
-        public PagingViewModel(string action, string controller, int currentPageNumber, int totalPageCount, UrlHelper urlHelper)
+        public PagingViewModel(string action, string controller, string currentCategory,  int currentPageNumber, int totalPageCount, UrlHelper urlHelper)
         {
             _currentPageNumber = currentPageNumber;
             _totalPageCount = totalPageCount;
             _urlHelper = urlHelper;
             _action = action;
             _controller = controller;
+            _currentCategory = currentCategory;
 
             BuildLinks();
         }
@@ -201,7 +203,7 @@ namespace ZG.Store.Presentation.ViewModels
 
         private string GetPageUrl(int pageNumber)
         {
-            return _urlHelper.Action(_action, _controller, new { page = pageNumber });
+            return _urlHelper.Action(_action, _controller, new { category = _currentCategory, page = pageNumber });
         }
     }
 }

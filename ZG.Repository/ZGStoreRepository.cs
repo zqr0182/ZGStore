@@ -21,9 +21,11 @@ namespace ZG.Repository
     public class ZGStoreRepository<T> : IRepository<T> where T : class, IEntity
     {
         protected DbSet<T> _dbSet;
+        protected ZGStoreContext _context;
 
         public ZGStoreRepository(ZGStoreContext context)
         {
+            _context = context;
             _dbSet = context.Set<T>();
         }
 
