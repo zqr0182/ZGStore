@@ -30,7 +30,7 @@
         </header>
 
         <div id="body">
-            @RenderSection("featured", required: false)
+            @RenderSection("featured", false)
             <div class="colmask threecol">
                 <div class="colmid">
                     <div class="colleft">
@@ -38,22 +38,14 @@
 				            @RenderBody()
                         </div>
                         <div class="col2">
-				            @{ Html.RenderAction("Menu", "ChildAction");}
+				            @{ Html.RenderAction("Categories", "ChildAction");}
                         </div>
                         <div class="col3">
-                            <h1>Right Column</h1>
+                            @RenderSection("rightColumn", false)
                         </div>
                     </div>
                 </div>
             </div>
-
-            @*<div id="categories">
-                Product Categories will be moved to the left column
-                @{ Html.RenderAction("Menu", "ChildAction");}
-            </div>
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>*@
         </div>
         <footer>
             <div class="content-wrapper">

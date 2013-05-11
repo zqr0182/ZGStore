@@ -27,7 +27,7 @@ namespace ZG.Store.Presentation.Controllers
         }
 
         [ChildActionOnly]
-        public PartialViewResult Menu()
+        public PartialViewResult Categories()
         {
             IEnumerable<string> categories = _categoryService.GetActiveCategoryNames();
 

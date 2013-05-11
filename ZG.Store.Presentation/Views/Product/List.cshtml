@@ -4,6 +4,11 @@
     ViewBag.Title = "Products";
 }
 
+@section rightColumn {
+
+    <h1>Right Column Content on Products Page</h1>
+}
+
 @foreach (var prod in Model.Products)
 {
     Html.RenderPartial("ProductSummary", prod);
