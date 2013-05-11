@@ -38,7 +38,9 @@
 				            @RenderBody()
                         </div>
                         <div class="col2">
-				            @{ Html.RenderAction("Categories", "ChildAction");}
+                            <div id="categories">
+                                @{ Html.RenderAction("Categories", "ChildAction" );}
+                            </div>
                         </div>
                         <div class="col3">
                             @RenderSection("rightColumn", false)

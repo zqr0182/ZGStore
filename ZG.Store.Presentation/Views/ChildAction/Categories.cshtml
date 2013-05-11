@@ -1,9 +1,9 @@
-﻿@model IEnumerable<string>
+﻿@model ZG.Store.Presentation.ViewModels.CategoriesViewModel
 
 
-@foreach (var cat in Model)
+@foreach (var cat in Model.Categories)
 {
-    @Html.RouteLink(cat, new{controller = "Product", action = "List", category = cat, page = 1})
+    @Html.RouteLink(cat, new{controller = "Product", action = "List", category = cat, page = 1}, new{@class = (cat == Model.SelectedCategory) ? "selected" : null})
 }
 
 
