@@ -11,7 +11,7 @@ namespace ZG.Store.Application
 {
     public interface IProductService
     {
-        ProductsPerPage GetProducts(string category, int page, int pageSize);
+        ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
     }
 
     public class ProductService : BaseService, IProductService
@@ -20,9 +20,9 @@ namespace ZG.Store.Application
         {
         }
 
-        public ProductsPerPage GetProducts(string category, int page, int pageSize)
+        public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
         {
-            return UnitOfWork.Products.GetProducts(category, page, pageSize);
+            return UnitOfWork.Products.GetActiveProducts(category, page, pageSize);
         }
     }
 }

@@ -20,7 +20,7 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.RouteLink("Home", "Products")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
@@ -28,14 +28,32 @@
                 </div>
             </div>
         </header>
+
         <div id="body">
             @RenderSection("featured", required: false)
-            <div id="categories">
+            <div class="colmask threecol">
+                <div class="colmid">
+                    <div class="colleft">
+                        <div class="col1">
+				            @RenderBody()
+                        </div>
+                        <div class="col2">
+				            @{ Html.RenderAction("Menu", "ChildAction");}
+                        </div>
+                        <div class="col3">
+                            <h1>Right Column</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div id="categories">
                 Product Categories will be moved to the left column
+                @{ Html.RenderAction("Menu", "ChildAction");}
             </div>
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
-            </section>
+            </section>*@
         </div>
         <footer>
             <div class="content-wrapper">

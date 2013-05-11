@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="CategoryService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Installers\ServicesInstaller.cs" />
     <Compile Include="ProductService.cs" />

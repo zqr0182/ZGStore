@@ -10,19 +10,24 @@ namespace ZG.Repository
 {
     public interface IProductRepository : IRepository<Product>
     {
-        ProductsPerPage GetProducts(string category, int page, int pageSize);
+        ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
     }
 
     public class ProductRepository : ZGStoreRepository<Product>, IProductRepository
     {
         public ProductRepository(ZGStoreContext context) : base(context){}
 
-        public ProductsPerPage GetProducts(string category, int page, int pageSize)
+        public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
+        {
+            return GetProducts(category, page, pageSize, true);
+        }
+
+        private ProductsPerPage GetProducts(string category, int page, int pageSize, bool activeOnly)
         {
             var prodsInCategory = (from prod in _dbSet
                                    join prodCat in _context.ProductCategories on prod.Id equals prodCat.ProductID
                                    join cat in _context.Categories on prodCat.CategoryID equals cat.Id
-                                   where prod.Active && (category == null || cat.CategoryName == category)
+                                   where prod.Active == activeOnly && (category == null || cat.CategoryName == category)
                                    select prod);
 
             int totalProducts = prodsInCategory.Count();
@@ -30,10 +35,10 @@ namespace ZG.Repository
             var products = prodsInCategory.OrderBy(p => p.Id).Skip((page - 1) * pageSize).Take(pageSize);
 
             var productsPerPage = new ProductsPerPage
-                {
-                    Products = products,
-                    TotalProducts = totalProducts
-                };
+            {
+                Products = products,
+                TotalProducts = totalProducts
+            };
 
             return productsPerPage;
         }

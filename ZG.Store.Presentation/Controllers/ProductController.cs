@@ -20,7 +20,7 @@ namespace ZG.Store.Presentation.Controllers
         
         public ViewResult List(string category, int page = 1)
         {
-            var porductsPerPage = _productService.GetProducts(category, page, _pageSize);
+            var porductsPerPage = _productService.GetActiveProducts(category, page, _pageSize);
 
             var productListViewModel = new ProductListViewModel
                 {

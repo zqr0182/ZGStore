@@ -311,6 +311,7 @@
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\ChildAction\Paging.cshtml" />
     <Content Include="Views\Shared\ProductSummary.cshtml" />
+    <Content Include="Views\ChildAction\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

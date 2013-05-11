@@ -10,6 +10,8 @@ namespace ZG.Repository
     {
         IProductRepository Products { get; }
         IUserRepository Users { get; }
+        ICategoryRepository Categories { get; }
+
         void Commit();
     }
 
@@ -19,12 +21,14 @@ namespace ZG.Repository
 
         public IProductRepository Products { get; private set; }
         public IUserRepository Users { get; private set; }
+        public ICategoryRepository Categories { get; private set; }
 
-        public ZGStoreUnitOfWork(ZGStoreContext context, IProductRepository productRepository, IUserRepository userRepository)
+        public ZGStoreUnitOfWork(ZGStoreContext context, IProductRepository productRepo, IUserRepository userRepo, ICategoryRepository categoryRepo)
         {
             _context = context;
-            Products = productRepository;
-            Users = userRepository;
+            Products = productRepo;
+            Users = userRepo;
+            Categories = categoryRepo;
         }
 
         public void Commit()
