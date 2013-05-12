@@ -39,7 +39,7 @@ namespace ZG.Store.Tests.DomainModels
         }
 
         [TestMethod]
-        public void Can_Add_Quantity_For_Existing_lines()
+        public void Can_Add_Quantity_For_Existing_Lines()
         {
             //Arrange
             _cart.AddItem(_p1, 2);
@@ -56,7 +56,7 @@ namespace ZG.Store.Tests.DomainModels
         }
 
         [TestMethod]
-        public void Can_Update_Quantity_For_Existing_lines()
+        public void Can_Update_Quantity_For_Existing_Lines()
         {
             //Arrange
             _cart.AddItem(_p1, 2);

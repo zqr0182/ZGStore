@@ -12,8 +12,10 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
+using ZG.Domain.Models;
 using ZG.Repository.Installers;
 using ZG.Store.Application.Installers;
+using ZG.Store.Presentation.Binders;
 using ZG.Store.Presentation.Models;
 using ZG.Store.Presentation.Plumbing;
 
@@ -43,6 +45,8 @@ namespace ZG.Store.Presentation
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
 
             BootstrapContainer();
+
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
 
         protected void Application_End()

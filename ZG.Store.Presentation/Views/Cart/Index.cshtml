@@ -7,20 +7,32 @@
 <table width="90%" align="center">
     <thead>
         <tr>
-            <th align="center">Quantity</th>
             <th align="left">Item</th>
             <th align="right">Price</th>
-            <th align="right">Subtotal</th>
+            <th align="center">Quantity</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var line in Model.Cart.Lines)
         {
             <tr>
-                <td align="center">@line.Quantity</td>
                 <td align="left">@line.Product.ProductName</td>
                 <td align="right">@line.Product.Price.ToString("c")</td>
-                <td align="right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                <td>
+                    @using (Html.BeginForm("UpdateCart", "Cart"))
+                    {
+                        @Html.TextBox("quantity", line.Quantity)
+                        @Html.Hidden("Id", line.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="Update" />
+                    }
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("Id", line.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="Remove" />
+                    }
+                </td>
             </tr>
         }
     </tbody>

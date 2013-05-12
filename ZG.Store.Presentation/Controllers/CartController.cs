@@ -19,45 +19,43 @@ namespace ZG.Store.Presentation.Controllers
             _productService = productService;
         }
 
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel {Cart = GetCart(), ReturnUrl = returnUrl});
+            return View(new CartIndexViewModel {Cart = cart, ReturnUrl = returnUrl});
         }
 
-        public RedirectToRouteResult AddToCart(int id, string returnUrl)
+        public RedirectToRouteResult AddToCart(Cart cart, int id, string returnUrl)
         {
             Product product = _productService.GetProductById(id);
 
             if (product != null)
             {
-                GetCart().AddItem(product, 1);
+                cart.AddItem(product, 1);
             }
 
             return RedirectToAction("Index", new{returnUrl});
         }
 
-        public RedirectToRouteResult RemoveFromCart(int id, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int id, string returnUrl)
         {
             var product = _productService.GetProductById(id);
             if (product != null)
             {
-                GetCart().RemoveLine(product);
+                cart.RemoveLine(product);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private Cart GetCart()
+        public RedirectToRouteResult UpdateCart(Cart cart, int id, int quantity, string returnUrl)
         {
-            var cart = SessionState.Cart;
-            if (cart == null)
+            var product = _productService.GetProductById(id);
+            if (product != null)
             {
-                cart = new Cart();
-                SessionState.Cart = cart;
+                cart.UpdateItem(product, quantity);
             }
 
-            return cart;
+            return RedirectToAction("Index", new { returnUrl });
         }
-
     }
 }

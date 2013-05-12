@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CartControllerTest.cs" />
     <Compile Include="Controllers\ChildActionControllerTest.cs" />
     <Compile Include="Controllers\ProductControllerTest.cs" />
     <Compile Include="DomainModels\CartTest.cs" />
