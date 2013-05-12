@@ -173,6 +173,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\SessionState.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChildActionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\LoggerInstaller.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="ViewModels\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\PagingViewModel.cs" />
     <Compile Include="ViewModels\ProductListViewModel.cs" />
@@ -314,9 +317,9 @@
     <Content Include="Views\ChildAction\Paging.cshtml" />
     <Content Include="Views\Shared\ProductSummary.cshtml" />
     <Content Include="Views\ChildAction\Categories.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="HtmlHelpers\" />

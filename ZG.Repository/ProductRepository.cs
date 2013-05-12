@@ -11,6 +11,7 @@ namespace ZG.Repository
     public interface IProductRepository : IRepository<Product>
     {
         ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
+        Product GetProductById(int id);
     }
 
     public class ProductRepository : ZGStoreRepository<Product>, IProductRepository
@@ -41,6 +42,11 @@ namespace ZG.Repository
             };
 
             return productsPerPage;
+        }
+
+        public Product GetProductById(int id)
+        {
+            return FindWhere(p => p.Id == id).FirstOrDefault();
         }
     }
 }

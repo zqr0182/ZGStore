@@ -26,7 +26,7 @@ namespace ZG.Domain.Models
             UpdateItem(product, quantity, UpdateQuantityOption.Update);
         }
 
-        public void RemoveItem(Product product)
+        public void RemoveLine(Product product)
         {
             _cartLines.RemoveAll(l => l.Product.Id == product.Id);
         }
@@ -63,7 +63,7 @@ namespace ZG.Domain.Models
                     }
                     else
                     {
-                        RemoveItem(product);
+                        RemoveLine(product);
                     }
                 }
             }

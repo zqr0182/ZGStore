@@ -97,7 +97,7 @@ namespace ZG.Store.Tests.DomainModels
             _cart.AddItem(_p1, 2);
 
             //Act
-            _cart.RemoveItem(_p1);
+            _cart.RemoveLine(_p1);
             CartLine[] results = _cart.Lines.ToArray();
 
             //Assert
