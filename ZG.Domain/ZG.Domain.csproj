@@ -50,6 +50,7 @@
     <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Coupon.cs" />
