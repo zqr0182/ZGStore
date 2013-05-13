@@ -13,33 +13,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var line in Model.Cart.Lines)
-        {
-            <tr>
-                <td align="left">@line.Product.ProductName</td>
-                <td align="right">@line.Product.Price.ToString("c")</td>
-                <td>
-                    @using (Html.BeginForm("UpdateCart", "Cart"))
-                    {
-                        @Html.TextBox("quantity", line.Quantity)
-                        @Html.Hidden("Id", line.Product.Id)
-                        @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="Update" />
-                    }
-                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
-                    {
-                        @Html.Hidden("Id", line.Product.Id)
-                        @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="Remove" />
-                    }
-                </td>
-            </tr>
-        }
+        @Html.Action("GetCartContent", Model)
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3" align="right">Total:</td>
-            <td align="right">
+            <td id="total" align="right">
                 @Model.Cart.ComputeTotalValue().ToString("c")
             </td>
         </tr>
@@ -49,3 +28,8 @@
 <p align="center" class="actionButtons">
     <a href="@Model.ReturnUrl">Continue Shopping</a>
 </p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/store")
+}

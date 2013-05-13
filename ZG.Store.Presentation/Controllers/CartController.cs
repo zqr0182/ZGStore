@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Store.Application;
 using ZG.Store.Presentation.App_Code;
@@ -21,9 +22,15 @@ namespace ZG.Store.Presentation.Controllers
 
         public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel {Cart = cart, ReturnUrl = returnUrl});
+            return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
+        public PartialViewResult GetCartContent(CartIndexViewModel cartIndexViewModel)
+        {
+            return PartialView(cartIndexViewModel);
+        }
+
+        [HttpPost]
         public RedirectToRouteResult AddToCart(Cart cart, int id, string returnUrl)
         {
             Product product = _productService.GetProductById(id);
@@ -36,7 +43,8 @@ namespace ZG.Store.Presentation.Controllers
             return RedirectToAction("Index", new{returnUrl});
         }
 
-        public RedirectToRouteResult RemoveFromCart(Cart cart, int id, string returnUrl)
+        [HttpPost]
+        public JsonResult RemoveFromCart(Cart cart, int id, string returnUrl)
         {
             var product = _productService.GetProductById(id);
             if (product != null)
@@ -44,10 +52,11 @@ namespace ZG.Store.Presentation.Controllers
                 cart.RemoveLine(product);
             }
 
-            return RedirectToAction("Index", new { returnUrl });
+            return Json(new ProductIdQuantity { ProductId = id, Quantity = 0, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
         }
 
-        public RedirectToRouteResult UpdateCart(Cart cart, int id, int quantity, string returnUrl)
+        [HttpPost]
+        public JsonResult UpdateCart(Cart cart, int id, int quantity, string returnUrl)
         {
             var product = _productService.GetProductById(id);
             if (product != null)
@@ -55,7 +64,7 @@ namespace ZG.Store.Presentation.Controllers
                 cart.UpdateItem(product, quantity);
             }
 
-            return RedirectToAction("Index", new { returnUrl });
+            return Json(new ProductIdQuantity { ProductId = id, Quantity = quantity, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
         }
     }
 }
