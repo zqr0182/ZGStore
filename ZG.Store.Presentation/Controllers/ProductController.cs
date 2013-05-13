@@ -35,5 +35,6 @@ namespace ZG.Store.Presentation.Controllers
             return View(productListViewModel);
         }
 
+        //TODO: product details action and view
     }
 }
