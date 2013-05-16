@@ -1,14 +1,7 @@
 ﻿@model ZG.Domain.Models.Product
 
 <div class="item">
-    <div>@Model.ProductName </div>
+    <div>@Html.ActionLink(Model.ProductName, "Details", "Product", new{id = Model.Id}, null) </div>
     <div>@Model.Description </div>
-    <div>@Model.Price.ToString("c") </div>
-    
-    @using (Html.BeginForm("AddToCart", "Cart"))
-    {
-        @Html.HiddenFor(p => p.Id)
-        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-        <input type="submit" value="+ Add to cart"/>
-    }
+    <div>@Html.ActionLink(Model.Price.ToString("c"), "Details", "Product", new{id = Model.Id}, null) </div>
 </div>

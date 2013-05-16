@@ -35,6 +35,10 @@ namespace ZG.Store.Presentation.Controllers
             return View(productListViewModel);
         }
 
-        //TODO: product details action and view
+        public ViewResult Details(int id)
+        {
+            var prod = _productService.GetProductById(id);
+            return View(prod);
+        }
     }
 }

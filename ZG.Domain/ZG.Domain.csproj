@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\PagingLinkProperties.cs" />
-    <Compile Include="DTO\ProductIdQuantity.cs" />
+    <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
     <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Models\Address.cs" />

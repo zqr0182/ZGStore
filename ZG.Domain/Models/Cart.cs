@@ -17,6 +17,11 @@ namespace ZG.Domain.Models
             get { return _cartLines; }
         }
 
+        public int NumerbOfItems
+        {
+            get { return _cartLines.Sum(l => l.Quantity); }
+        }
+
         public void AddItem(Product product, int quantity)
         {
             UpdateItem(product, quantity, UpdateQuantityOption.Add);

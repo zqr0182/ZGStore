@@ -52,7 +52,7 @@ namespace ZG.Store.Presentation.Controllers
                 cart.RemoveLine(product);
             }
 
-            return Json(new ProductIdQuantity { ProductId = id, Quantity = 0, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
+            return Json(new ProductIdQuantityAndCartSummary { ProductId = id, Quantity = 0, NumberOfItems = cart.NumerbOfItems, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
         }
 
         [HttpPost]
@@ -64,12 +64,12 @@ namespace ZG.Store.Presentation.Controllers
                 cart.UpdateItem(product, quantity);
             }
 
-            return Json(new ProductIdQuantity { ProductId = id, Quantity = quantity, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
+            return Json(new ProductIdQuantityAndCartSummary { ProductId = id, Quantity = quantity, NumberOfItems = cart.NumerbOfItems, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
         }
         
         public PartialViewResult Summary(Cart cart)
         {
-            var viewModel = new SummaryViewModel { NumberOfItems = cart.Lines.Sum(l => l.Quantity), TotalValue = cart.ComputeTotalValue().ToString("c") };
+            var viewModel = new SummaryViewModel { NumberOfItems = cart.NumerbOfItems, TotalValue = cart.ComputeTotalValue().ToString("c") };
             return PartialView(viewModel);
         }
     }

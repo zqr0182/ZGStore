@@ -1,17 +1,22 @@
 ﻿@model ZG.Store.Presentation.ViewModels.SummaryViewModel
 
 <div>
-    <div id="summary" class="caption">
+    <div class="caption">
         <b>Your cart:</b>
+        <span id="summary">
+            @if (@Model.NumberOfItems > 0)
+            {
+                @Model.NumberOfItems @:item(s), @Model.TotalValue
+            }
+            else
+            {
+                @:0 item(s)
+            }
+        </span>
         @if (@Model.NumberOfItems > 0)
         {
-            @Model.NumberOfItems @:item(s), @Model.TotalValue
+            @Html.ActionLink("Checkout", "Index", "Cart", new {returnUrl = Request.Url.PathAndQuery}, new {id = "checkout"})
         }
-        else
-        {
-           @:0 item(s)
-        }
-        @Html.ActionLink("Checkout", "Index", "Cart", new{returnUrl = Request.Url.PathAndQuery}, null)
     </div>
 </div>
 

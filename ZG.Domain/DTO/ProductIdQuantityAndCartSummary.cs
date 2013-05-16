@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZG.Domain.DTO
 {
-    public class ProductIdQuantity
+    public class ProductIdQuantityAndCartSummary
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
+        public int NumberOfItems { get; set; }
         public string CartTotalValue { get; set; }
     }
 }
