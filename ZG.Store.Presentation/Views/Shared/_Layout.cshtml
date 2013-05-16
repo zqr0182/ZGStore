@@ -15,6 +15,7 @@
                     <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
+                    @Html.Action("Summary", "Cart")
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>

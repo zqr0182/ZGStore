@@ -66,5 +66,11 @@ namespace ZG.Store.Presentation.Controllers
 
             return Json(new ProductIdQuantity { ProductId = id, Quantity = quantity, CartTotalValue = cart.ComputeTotalValue().ToString("c") });
         }
+        
+        public PartialViewResult Summary(Cart cart)
+        {
+            var viewModel = new SummaryViewModel { NumberOfItems = cart.Lines.Sum(l => l.Quantity), TotalValue = cart.ComputeTotalValue().ToString("c") };
+            return PartialView(viewModel);
+        }
     }
 }
