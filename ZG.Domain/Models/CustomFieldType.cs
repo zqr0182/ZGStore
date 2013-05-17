@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZG.Domain.Models
 {
@@ -12,7 +13,9 @@ namespace ZG.Domain.Models
             this.CustomFields = new List<CustomField>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [MaxLength(50)]
         public string CustomFieldTypeName { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<CustomField> CustomFields { get; set; }

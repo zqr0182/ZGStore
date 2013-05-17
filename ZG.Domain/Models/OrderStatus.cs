@@ -2,17 +2,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZG.Domain.Models
 {
-    public partial class OrderStatu : IEntity  
+    public partial class OrderStatus : IEntity  
     {
-        public OrderStatu()
+        public OrderStatus()
         {
             this.Orders = new List<Order>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [MaxLength(50)]
         public string OrderStatusName { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

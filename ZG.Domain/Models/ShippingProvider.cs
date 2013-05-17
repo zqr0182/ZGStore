@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZG.Domain.Models
 {
@@ -13,7 +14,10 @@ namespace ZG.Domain.Models
             this.Shippings = new List<Shipping>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string ShippingProviderName { get; set; }
         public decimal ShippingCost { get; set; }
         public bool Active { get; set; }

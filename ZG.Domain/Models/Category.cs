@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZG.Domain.Models
 {
@@ -13,8 +14,11 @@ namespace ZG.Domain.Models
             this.ProductCategories = new List<ProductCategory>();
         }
 
+        [Key]
         public int Id { get; set; }
         public Nullable<int> ParentCategoryID { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string CategoryName { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<FeaturedProduct> FeaturedProducts { get; set; }
