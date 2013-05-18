@@ -41,7 +41,7 @@ namespace ZG.Store.Application
 
         public Product GetProductById(int id)
         {
-            return UnitOfWork.Products.FindById(id);
+            return UnitOfWork.Products.MatcheById(id);
         }
     }
 }
