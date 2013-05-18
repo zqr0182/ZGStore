@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Criterias\CriteriaBase.cs" />
+    <Compile Include="Criterias\AbstractCriteria.cs" />
     <Compile Include="Criterias\ICriteria.cs" />
     <Compile Include="Criterias\ProductsByCategory.cs" />
     <Compile Include="Criterias\ProductsByPage.cs" />

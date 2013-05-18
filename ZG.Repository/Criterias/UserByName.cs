@@ -7,7 +7,7 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class UserByName : CriteriaBase<User>
+    public class UserByName : AbstractCriteria<User>
     {
         private readonly string _name;
 
@@ -18,7 +18,7 @@ namespace ZG.Repository.Criterias
 
         public override IQueryable<User> BuildQueryOver(IQueryable<User> queryBase)
         {
-            return queryBase.Where(u => u.UserName == _name);
+            return base.BuildQueryOver(queryBase).Where(u => u.UserName == _name);
         }
     }
 }

@@ -7,7 +7,7 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class ProductsByCategory : CriteriaBase<Product>
+    public class ProductsByCategory : AbstractCriteria<Product>
     {
         private readonly string _category;
         private readonly bool _activeOnly;
@@ -20,25 +20,21 @@ namespace ZG.Repository.Criterias
 
         public override IQueryable<Product> BuildQueryOver(IQueryable<Product> queryBase)
         {
-            IQueryable<Product> products;
+            IQueryable<Product> products = base.BuildQueryOver(queryBase);
             if (Context != null)
             {
                 //the generated query executes faster than the other one.
-                products = (from prod in queryBase
-                            join prodCat in Context.ProductCategories on prod.Id equals prodCat.ProductID
-                            join cat in Context.Categories on prodCat.CategoryID equals cat.Id
-                            where prod.Active == _activeOnly && (_category == null || cat.CategoryName == _category)
-                            select prod);
+                return (from prod in products
+                        join prodCat in Context.ProductCategories on prod.Id equals prodCat.ProductID
+                        join cat in Context.Categories on prodCat.CategoryID equals cat.Id
+                        where prod.Active == _activeOnly && (_category == null || cat.CategoryName == _category)
+                        select prod);
             }
-            else
-            {
-                products = queryBase.Where(p => p.Active == _activeOnly)
-                                    .SelectMany(p => p.ProductCategories
-                                                      .Where(c => _category == null || c.Category.CategoryName == _category)
-                                                      .Select(c => c.Product));
-            }
-
-            return products;
+            
+            return products.Where(p => p.Active == _activeOnly)
+                           .SelectMany(p => p.ProductCategories
+                                             .Where(c => _category == null || c.Category.CategoryName == _category)
+                                             .Select(c => c.Product));
         }
     }
 }

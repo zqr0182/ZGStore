@@ -24,11 +24,13 @@ namespace ZG.Store.Application
 
         public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
         {
-            IQueryable<Product> products = UnitOfWork.Products.Matches(new ProductsByCategory(category, true));
+            var productsByCategory = new ProductsByCategory(category, true);
+            IQueryable<Product> products = UnitOfWork.Products.Matches(productsByCategory);
 
             int totalProducts = products.Count();
 
-            products = products.Matches(new ProductsByPage(page, pageSize));
+            //products = products.Matches(new ProductsByPage(page, pageSize)); //This also works
+            products = UnitOfWork.Products.Matches(new ProductsByPage(page, pageSize, productsByCategory));
 
             var productsPerPage = new ProductsPerPage
             {

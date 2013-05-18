@@ -7,22 +7,21 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class ProductsByPage : ICriteria<Product>
+    public class ProductsByPage : AbstractCriteria<Product>
     {
         private readonly int _page;
         private readonly int _pageSize;
 
-        public ZGStoreContext Context { get; set; }
-
-        public ProductsByPage(int page, int pageSize)
+        public ProductsByPage(int page, int pageSize, ICriteria<Product> initialCriteria = null)
+            : base(initialCriteria)
         {
             _page = page;
             _pageSize = pageSize;
         }
 
-        public IQueryable<Product> BuildQueryOver(IQueryable<Product> queryBase)
+        public override IQueryable<Product> BuildQueryOver(IQueryable<Product> queryBase)
         {
-            return queryBase.OrderBy(p => p.Id).Skip((_page - 1) * _pageSize).Take(_pageSize);
+            return base.BuildQueryOver(queryBase).OrderBy(p => p.Id).Skip((_page - 1) * _pageSize).Take(_pageSize);
         }
     }
 }

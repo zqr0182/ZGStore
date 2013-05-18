@@ -7,7 +7,7 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class TopCategories : CriteriaBase<Category>
+    public class TopCategories : AbstractCriteria<Category>
     {
         private readonly bool _activeOnly;
 
@@ -18,7 +18,7 @@ namespace ZG.Repository.Criterias
 
         public override IQueryable<Category> BuildQueryOver(IQueryable<Category> queryBase)
         {
-            return queryBase.Where(c => c.Active == _activeOnly && !c.ParentCategoryID.HasValue).OrderBy(c => c.CategoryName);
+            return base.BuildQueryOver(queryBase).Where(c => c.Active == _activeOnly && !c.ParentCategoryID.HasValue).OrderBy(c => c.CategoryName);
         }
     }
 }
