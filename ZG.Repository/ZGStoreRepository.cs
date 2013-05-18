@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ZG.Domain;
+using ZG.Repository.Criterias;
 
 namespace ZG.Repository
 {
@@ -16,6 +17,7 @@ namespace ZG.Repository
         T FindById(int id);
         void Add(T newEntity);
         void Remove(T entity);
+        IQueryable<T> Matches(ICriteria<T> criteria);
     }
 
     public class ZGStoreRepository<T> : IRepository<T> where T : class, IEntity
@@ -49,9 +51,10 @@ namespace ZG.Repository
             _dbSet.Remove(entity);
         }
 
-        protected IQueryable<T> FindWhere(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Matches(ICriteria<T> criteria)
         {
-            return _dbSet.Where(predicate);
+            criteria.Context = _context;
+            return criteria.BuildQueryOver(_dbSet);
         }
     }
 }

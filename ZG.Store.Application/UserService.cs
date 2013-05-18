@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZG.Domain.Models;
 using ZG.Repository;
+using ZG.Repository.Criterias;
 
 namespace ZG.Store.Application
 {
@@ -22,7 +23,7 @@ namespace ZG.Store.Application
 
         public User FindByUserName(string userName)
         {
-            return UnitOfWork.Users.FindByUserName(userName);
+            return UnitOfWork.Users.Matches(new UserByName(userName)).FirstOrDefault();
         }
     }
 }

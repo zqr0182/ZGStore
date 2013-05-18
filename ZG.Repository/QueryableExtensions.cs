@@ -6,6 +6,7 @@ using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZG.Repository.Criterias;
 
 namespace ZG.Repository
 {
@@ -21,6 +22,11 @@ namespace ZG.Repository
             }
 
             return sequence;
+        }
+
+        public static IQueryable<T> Matches<T>(this IQueryable<T> queryBase, ICriteria<T> criteria)
+        {
+            return criteria.BuildQueryOver(queryBase);
         }
     }
 }

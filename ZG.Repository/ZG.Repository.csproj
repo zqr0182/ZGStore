@@ -52,12 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryRepository.cs" />
+    <Compile Include="Criterias\CriteriaBase.cs" />
+    <Compile Include="Criterias\ICriteria.cs" />
+    <Compile Include="Criterias\ProductsByCategory.cs" />
+    <Compile Include="Criterias\ProductsByPage.cs" />
+    <Compile Include="Criterias\TopCategories.cs" />
+    <Compile Include="Criterias\UserByName.cs" />
     <Compile Include="Installers\RepositoriesInstaller.cs" />
-    <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryableExtensions.cs" />
-    <Compile Include="UserRepository.cs" />
     <Compile Include="ZGStoreContext.cs" />
     <Compile Include="ZGStoreRepository.cs" />
     <Compile Include="ZGStoreUnitOfWork.cs" />

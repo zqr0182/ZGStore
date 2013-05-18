@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Repository;
+using ZG.Repository.Criterias;
 
 namespace ZG.Store.Application
 {
@@ -23,12 +24,24 @@ namespace ZG.Store.Application
 
         public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
         {
-            return UnitOfWork.Products.GetActiveProducts(category, page, pageSize);
+            IQueryable<Product> products = UnitOfWork.Products.Matches(new ProductsByCategory(category, true));
+
+            int totalProducts = products.Count();
+
+            products = products.Matches(new ProductsByPage(page, pageSize));
+
+            var productsPerPage = new ProductsPerPage
+            {
+                Products = products,
+                TotalProducts = totalProducts
+            };
+
+            return productsPerPage;
         }
 
         public Product GetProductById(int id)
         {
-            return UnitOfWork.Products.GetProductById(id);
+            return UnitOfWork.Products.FindById(id);
         }
     }
 }

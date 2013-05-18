@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZG.Domain.Models;
 
 namespace ZG.Repository
 {
     public interface IUnitOfWork
     {
-        IProductRepository Products { get; }
-        IUserRepository Users { get; }
-        ICategoryRepository Categories { get; }
+        IRepository<Product> Products { get; }
+        IRepository<User> Users { get; }
+        IRepository<Category> Categories { get; }
 
         void Commit();
     }
@@ -19,11 +20,11 @@ namespace ZG.Repository
     {
         private readonly ZGStoreContext _context;
 
-        public IProductRepository Products { get; private set; }
-        public IUserRepository Users { get; private set; }
-        public ICategoryRepository Categories { get; private set; }
+        public IRepository<Product> Products { get; private set; }
+        public IRepository<User> Users { get; private set; }
+        public IRepository<Category> Categories { get; private set; }
 
-        public ZGStoreUnitOfWork(ZGStoreContext context, IProductRepository productRepo, IUserRepository userRepo, ICategoryRepository categoryRepo)
+        public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo)
         {
             _context = context;
             Products = productRepo;
