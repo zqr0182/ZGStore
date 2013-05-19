@@ -59,7 +59,7 @@
     <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="DTO\ShippingDetails.cs" />
-    <Compile Include="Installers\ConcretesInstaller.cs" />
+    <Compile Include="Installers\DomainConcretesInstaller.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />

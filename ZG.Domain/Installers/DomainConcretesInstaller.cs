@@ -11,7 +11,7 @@ using ZG.Domain.Concrete;
 
 namespace ZG.Domain.Installers
 {
-    public class ConcretesInstaller : IWindsorInstaller
+    public class DomainConcretesInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

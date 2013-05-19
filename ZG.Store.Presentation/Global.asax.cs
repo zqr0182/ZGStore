@@ -58,7 +58,7 @@ namespace ZG.Store.Presentation
         private static void BootstrapContainer()
         {
             _container = new WindsorContainer().Install(FromAssembly.This(),
-                                                        FromAssembly.Containing<ConcretesInstaller>(),
+                                                        FromAssembly.Containing<DomainConcretesInstaller>(),
                                                         FromAssembly.Containing<RepositoriesInstaller>(),
                                                         FromAssembly.Containing<ServicesInstaller>());
 

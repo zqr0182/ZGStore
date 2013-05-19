@@ -11,11 +11,12 @@ using ZG.Common.Concrete;
 
 namespace ZG.Common.Installers
 {
-    public class ConcretesInstaller : IWindsorInstaller
+    public class CommonConcretesInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For(typeof(IEmailProcessor)).ImplementedBy<EmailProcessor>().LifestylePerWebRequest());
+            container.Register(Component.For(typeof(IEmailProcessor)).ImplementedBy<EmailProcessor>().LifestyleTransient(),
+                               Component.For(typeof(IEmailSettingsFactory)).ImplementedBy<EmailSettingsFactory>().LifestyleTransient());
         }
     }
 }
