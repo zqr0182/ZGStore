@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZG.Common;
+using ZG.Domain.Models;
 
-namespace ZG.Domain.Models
+namespace ZG.Domain.Concrete
 {
     public class Cart
     {

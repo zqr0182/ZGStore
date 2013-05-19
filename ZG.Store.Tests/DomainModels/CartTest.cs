@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ZG.Domain.Concrete;
 using ZG.Domain.Models;
 
 namespace ZG.Store.Tests.DomainModels

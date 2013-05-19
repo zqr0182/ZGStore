@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ZG.Domain;
+using ZG.Domain.Abstract;
 using ZG.Repository.Criterias;
 
 namespace ZG.Repository

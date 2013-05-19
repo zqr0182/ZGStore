@@ -49,9 +49,9 @@
     <Compile Include="DTO\PagingLinkProperties.cs" />
     <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
     <Compile Include="DTO\ProductsPerPage.cs" />
-    <Compile Include="IEntity.cs" />
+    <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Coupon.cs" />
@@ -99,6 +99,7 @@
       <Name>ZG.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

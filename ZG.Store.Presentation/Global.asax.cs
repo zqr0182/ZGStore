@@ -12,7 +12,7 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
-using ZG.Domain.Models;
+using ZG.Domain.Concrete;
 using ZG.Repository.Installers;
 using ZG.Store.Application.Installers;
 using ZG.Store.Presentation.Binders;

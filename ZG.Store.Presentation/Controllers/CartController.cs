@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ZG.Domain.Concrete;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Store.Application;
-using ZG.Store.Presentation.App_Code;
 using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers
@@ -78,9 +78,25 @@ namespace ZG.Store.Presentation.Controllers
             return View(new ShippingDetails());
         }
 
-        //[HttpPost]
-        //public ViewResult Checkout()
-        //{
-        //}
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (!cart.Lines.Any())
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                //TODO: process order
+                cart.Clear();
+
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+        }
     }
 }

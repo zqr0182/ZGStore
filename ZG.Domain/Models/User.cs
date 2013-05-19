@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ZG.Common;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {

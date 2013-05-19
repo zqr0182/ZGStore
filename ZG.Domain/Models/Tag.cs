@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {

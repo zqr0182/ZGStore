@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ZG.Domain.Models;
+using ZG.Domain.Concrete;
 
 namespace ZG.Store.Presentation.ViewModels
 {
