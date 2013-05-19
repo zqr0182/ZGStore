@@ -58,12 +58,11 @@
         <h3>Options</h3>
         <p>
             @Html.EditorFor(model => model.GiftWrap)
-            @Html.ValidationMessageFor(model => model.GiftWrap) @*TODO: find out why client side validation failed on checkbox without this unnecessary line*@
             Gift wrap these items
         </p>
 
         <p align="center">
-            <input type="submit" value="Complete order" />
+            <input class="actionButtons" type="submit" value="Complete order" />
         </p>
     </fieldset>
 }
