@@ -52,21 +52,21 @@ namespace ZG.Common.Concrete
             switch (emailType)
             {
                 case EmailType.NewOrderNotificationToAdmin:
-                    emailSettings.MailAddresses.MailFromAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationFromAddress];
-                    if (emailSettings.MailAddresses.MailFromAddress == null)
+                    emailSettings.Addresses.MailFromAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationFromAddress];
+                    if (emailSettings.Addresses.MailFromAddress == null)
                     {
                         throw new AppSettingKeyNotFoundException(ExceptionMessage, EmailSettingKey.OrderNotificationFromAddress);
                     }
-                    emailSettings.MailAddresses.MailFromName = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationFromName];
+                    emailSettings.Addresses.MailFromName = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationFromName];
 
-                    emailSettings.MailAddresses.MailToAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationToAddress];
-                    if (emailSettings.MailAddresses.MailToAddress == null)
+                    emailSettings.Addresses.MailToAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationToAddress];
+                    if (emailSettings.Addresses.MailToAddress == null)
                     {
                         throw new AppSettingKeyNotFoundException(ExceptionMessage, EmailSettingKey.OrderNotificationToAddress);
                     }
-                    emailSettings.MailAddresses.MailToName = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationToName];
+                    emailSettings.Addresses.MailToName = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationToName];
 
-                    emailSettings.MailAddresses.MailCcAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationCcAddress];
+                    emailSettings.Addresses.MailCcAddress = ConfigurationManager.AppSettings[EmailSettingKey.OrderNotificationCcAddress];
                     break;
             }
 

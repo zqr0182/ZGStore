@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace ZG.Domain.Concrete
 
         public void ProcessOrder(Cart cart, ShippingDetails shippingDetails)
         {
-            
+            _emailProcessor.ProcessEmail(EmailType.NewOrderNotificationToAdmin, null, "New Order", "Body", true);
         }
     }
 }

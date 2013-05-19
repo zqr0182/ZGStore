@@ -10,20 +10,24 @@ namespace ZG.Common.Concrete
 {
     public class EmailProcessor : IEmailProcessor
     {
+        private IEmailSettingsFactory _emailSettingsFactory;
         private EmailSettings _emailSettings;
+        public MailAddresses MailAddresses { get; set; }
 
-        public EmailProcessor(IEmailSettingsFactory emailSettingsFactory, EmailType emailType, MailAddresses addresses = null)
+
+        public EmailProcessor(IEmailSettingsFactory emailSettingsFactory)
         {
-            _emailSettings = emailSettingsFactory.GetEmailSettings(emailType);
-
-            if (addresses != null)
-            {
-                _emailSettings.MailAddresses = addresses;
-            }
+            _emailSettingsFactory = emailSettingsFactory;
         }
 
-        public void ProcessEmail(string subject, string body, bool isBodyHtml)
+        public void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml)
         {
+            _emailSettings = _emailSettingsFactory.GetEmailSettings(emailType);
+            if (mailAddresses != null)
+            {
+                _emailSettings.Addresses = mailAddresses;
+            }
+
             Debug.WriteLine("Email processed");
         }
     }

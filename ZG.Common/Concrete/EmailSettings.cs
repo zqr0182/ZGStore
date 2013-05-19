@@ -9,7 +9,7 @@ namespace ZG.Common.Concrete
 {
     public class EmailSettings
     {
-        public MailAddresses MailAddresses { get; set; }
+        public MailAddresses Addresses { get; set; }
         public bool UseSsl { get; set; }
         public string SmtpUserName { get; set; }
         public string SmtpPassword { get; set; }
@@ -17,5 +17,10 @@ namespace ZG.Common.Concrete
         public string SmtpServerPort { get; set; }
         public bool WriteAsFile { get; set; }
         public string FileLocation { get; set; }
+
+        public EmailSettings()
+        {
+            Addresses = new MailAddresses();
+        }
     }
 }

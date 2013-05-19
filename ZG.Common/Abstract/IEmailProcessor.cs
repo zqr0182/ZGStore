@@ -9,6 +9,6 @@ namespace ZG.Common.Abstract
 {
     public interface IEmailProcessor
     {
-        void ProcessEmail(string subject, string body, bool isBodyHtml);
+        void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml);
     }
 }
