@@ -12,6 +12,7 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
+using ZG.Common.Installers;
 using ZG.Domain.Concrete;
 using ZG.Domain.Installers;
 using ZG.Repository.Installers;
@@ -58,6 +59,7 @@ namespace ZG.Store.Presentation
         private static void BootstrapContainer()
         {
             _container = new WindsorContainer().Install(FromAssembly.This(),
+                                                        FromAssembly.Containing<CommonConcretesInstaller>(),
                                                         FromAssembly.Containing<DomainConcretesInstaller>(),
                                                         FromAssembly.Containing<RepositoriesInstaller>(),
                                                         FromAssembly.Containing<ServicesInstaller>());
