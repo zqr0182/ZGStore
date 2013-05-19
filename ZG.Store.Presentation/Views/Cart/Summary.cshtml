@@ -15,7 +15,7 @@
         </span>
         @if (@Model.NumberOfItems > 0)
         {
-            @Html.ActionLink("Checkout", "Index", "Cart", new {returnUrl = Request.Url.PathAndQuery}, new {id = "checkout"})
+            @Html.ActionLink("Checkout", "Checkout", null, new {id = "checkout"})
         }
     </div>
 </div>

@@ -72,5 +72,15 @@ namespace ZG.Store.Presentation.Controllers
             var viewModel = new SummaryViewModel { NumberOfItems = cart.NumerbOfItems, TotalValue = cart.ComputeTotalValue().ToString("c") };
             return PartialView(viewModel);
         }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
+        //[HttpPost]
+        //public ViewResult Checkout()
+        //{
+        //}
     }
 }

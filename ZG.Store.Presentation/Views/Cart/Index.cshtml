@@ -27,6 +27,7 @@
 
 <p align="center" class="actionButtons">
     <a href="@Model.ReturnUrl">Continue Shopping</a>
+    @Html.ActionLink("Checkout now", "Checkout", null, new {id = "checkout"})
 </p>
 
 @section Scripts {
