@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using ZG.Common;
 
-namespace ZG.Store.Presentation.ViewModels
+namespace ZG.Domain.DTO
 {
     public class ShippingDetails
     {
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string LastName { get; set; }
+        [StringLength(100, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
+        public string FullName { get; set; }
 
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
@@ -39,6 +36,10 @@ namespace ZG.Store.Presentation.ViewModels
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
         public string Country { get; set; }
+
+        [Required(ErrorMessage = ValidationErrorMessage.RequiredAddressPhone)]
+        [RegularExpression(Constants.PhonePatternTenDigits, ErrorMessage = ValidationErrorMessage.Phone)]
+        public string Phone { get; set; }
 
         public bool GiftWrap { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿@model ZG.Store.Presentation.ViewModels.ShippingDetails
+﻿@model ZG.Domain.DTO.ShippingDetails
 
 @{
     ViewBag.Title = "ZGStore: Checkout";
@@ -14,14 +14,9 @@
         <legend>ShippingDetails</legend>
         
         <h3>Ship to</h3>
-        <p>First Name: 
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </p>
-
-        <p>Last Name:
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
+        <p>Full Name: 
+            @Html.EditorFor(model => model.FullName)
+            @Html.ValidationMessageFor(model => model.FullName)
         </p>
         
         <h3>Address</h3>
@@ -45,7 +40,7 @@
             @Html.ValidationMessageFor(model => model.State)
         </p>
 
-        <p>Zip code:
+        <p>ZIP:
             @Html.EditorFor(model => model.Zip)
             @Html.ValidationMessageFor(model => model.Zip)
         </p>
@@ -53,6 +48,11 @@
         <p>Country:
             @Html.EditorFor(model => model.Country)
             @Html.ValidationMessageFor(model => model.Country)
+        </p>
+        
+        <p>Phone Number:
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
         </p>
         
         <h3>Options</h3>

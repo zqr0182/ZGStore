@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -46,10 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IOrderProcessor.cs" />
+    <Compile Include="Concrete\OrderProcessor.cs" />
     <Compile Include="DTO\PagingLinkProperties.cs" />
     <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
     <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="DTO\ShippingDetails.cs" />
+    <Compile Include="Installers\ConcretesInstaller.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />

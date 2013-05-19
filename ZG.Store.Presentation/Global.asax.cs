@@ -13,6 +13,7 @@ using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
 using ZG.Domain.Concrete;
+using ZG.Domain.Installers;
 using ZG.Repository.Installers;
 using ZG.Store.Application.Installers;
 using ZG.Store.Presentation.Binders;
@@ -56,7 +57,8 @@ namespace ZG.Store.Presentation
 
         private static void BootstrapContainer()
         {
-            _container = new WindsorContainer().Install(FromAssembly.This(), 
+            _container = new WindsorContainer().Install(FromAssembly.This(),
+                                                        FromAssembly.Containing<ConcretesInstaller>(),
                                                         FromAssembly.Containing<RepositoriesInstaller>(),
                                                         FromAssembly.Containing<ServicesInstaller>());
 

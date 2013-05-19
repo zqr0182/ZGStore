@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using ZG.Domain.Abstract;
 using ZG.Domain.Concrete;
 using ZG.Domain.Models;
 using ZG.Store.Application;
@@ -18,12 +19,14 @@ namespace ZG.Store.Tests.Controllers
     public class CartControllerTest
     {
         private CartController _cartController;
-        private Mock<IProductService> _mock;
+        private Mock<IProductService> _mockProdServcice;
+        private Mock<IOrderProcessor> _mockOrderProcessor;
 
         public CartControllerTest()
         {
-            _mock = new Mock<IProductService>();
-            _cartController = new CartController(_mock.Object);
+            _mockProdServcice = new Mock<IProductService>();
+            _mockOrderProcessor = new Mock<IOrderProcessor>();
+            _cartController = new CartController(_mockProdServcice.Object, _mockOrderProcessor.Object);
         }
 
         [TestMethod]
@@ -47,7 +50,7 @@ namespace ZG.Store.Tests.Controllers
             const int productId = 2;
             var cart = new Cart();
 
-            _mock.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
+            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
 
             //Act
             _cartController.AddToCart(cart, productId, null);
@@ -64,7 +67,7 @@ namespace ZG.Store.Tests.Controllers
             const int productId = 2;
             var cart = new Cart();
 
-            _mock.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
+            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
 
             //Act
             RedirectToRouteResult results = _cartController.AddToCart(cart, productId, "myUrl");

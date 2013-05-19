@@ -13,9 +13,12 @@ namespace ZG.Domain.Models
         [Key]
         public int Id { get; set; }
         public int UserID { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string FullName { get; set; }
         public int CountryID { get; set; }
-        public Nullable<int> StateID { get; set; }
-        public Nullable<int> ProvinceID { get; set; }
+        public int? StateID { get; set; }
+        public int? ProvinceID { get; set; }
         [Required]
         [MaxLength(50)]
         public string City { get; set; }
@@ -27,7 +30,10 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string Zipcode { get; set; }
-        public System.DateTime CreationDate { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Phone { get; set; }
+        public DateTime CreationDate { get; set; }
         public bool IsBilling { get; set; }
         public bool IsShipping { get; set; }
         [Required]

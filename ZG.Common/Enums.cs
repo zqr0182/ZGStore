@@ -11,4 +11,9 @@ namespace ZG.Common
         Add,
         Update
     }
+
+    public enum EmailType
+    {
+        NewOrderNotificationToAdmin
+    }
 }

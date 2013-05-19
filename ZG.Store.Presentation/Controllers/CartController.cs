@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ZG.Domain.Abstract;
 using ZG.Domain.Concrete;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
@@ -14,10 +15,12 @@ namespace ZG.Store.Presentation.Controllers
     public class CartController : Controller
     {
         private IProductService _productService;
+        private IOrderProcessor _orderProcessor;
 
-        public CartController(IProductService productService)
+        public CartController(IProductService productService, IOrderProcessor orderProcessor)
         {
             _productService = productService;
+            _orderProcessor = orderProcessor;
         }
 
         public ViewResult Index(Cart cart, string returnUrl)
@@ -88,7 +91,7 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                //TODO: process order
+                _orderProcessor.ProcessOrder(cart, shippingDetails);
                 cart.Clear();
 
                 return View("Completed");

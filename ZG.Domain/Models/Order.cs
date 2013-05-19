@@ -17,7 +17,10 @@ namespace ZG.Domain.Models
 
         [Key]
         public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public int? UserId { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string FullName { get; set; }
         [Required]
         [MaxLength(50)]
         public string OrderNumber { get; set; }
@@ -30,11 +33,13 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string Address { get; set; }
+        [MaxLength(50)]
+        public string Address2 { get; set; }
         [Required]
         [MaxLength(50)]
         public string City { get; set; }
         public int StateID { get; set; }
-        public Nullable<int> ProvinceID { get; set; }
+        public int? ProvinceID { get; set; }
         public int CountryID { get; set; }
         [Required]
         [MaxLength(50)]
@@ -42,7 +47,7 @@ namespace ZG.Domain.Models
         [MaxLength(400)]
         public string Comments { get; set; }
         public System.DateTime DatePlaced { get; set; }
-        public Nullable<System.DateTime> DateShipped { get; set; }
+        public DateTime? DateShipped { get; set; }
         public decimal Total { get; set; }
         public decimal Shipping { get; set; }
         public decimal Tax { get; set; }
