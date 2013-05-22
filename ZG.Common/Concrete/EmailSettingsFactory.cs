@@ -12,6 +12,7 @@ namespace ZG.Common.Concrete
     public class EmailSettingsFactory : IEmailSettingsFactory
     {
         private const string ExceptionMessage = "Appsetting key {0} was not found.";
+
         public EmailSettings GetEmailSettings(EmailType emailType)
         {
             var emailSettings = new EmailSettings();

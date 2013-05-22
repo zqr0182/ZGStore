@@ -17,7 +17,7 @@ namespace ZG.Domain.Models
 
         [Key]
         public int Id { get; set; }
-        public Nullable<int> ParentCategoryID { get; set; }
+        public int? ParentCategoryID { get; set; }
         [Required]
         [MaxLength(50)]
         public string CategoryName { get; set; }

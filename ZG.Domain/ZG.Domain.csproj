@@ -52,17 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IOrderProcessor.cs" />
-    <Compile Include="Concrete\OrderProcessor.cs" />
-    <Compile Include="DTO\PagingLinkProperties.cs" />
-    <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
-    <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="Abstract\IEntity.cs" />
-    <Compile Include="DTO\ShippingDetails.cs" />
-    <Compile Include="Installers\DomainConcretesInstaller.cs" />
+    <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Models\CouponType.cs" />

@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.Controllers;
 using ZG.Store.Presentation.ViewModels;
 

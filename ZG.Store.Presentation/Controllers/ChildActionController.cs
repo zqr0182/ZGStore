@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZG.Domain.Models;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers

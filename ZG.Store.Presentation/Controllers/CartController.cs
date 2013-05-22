@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ZG.Domain.Abstract;
+using ZG.Common.DTO;
 using ZG.Domain.Concrete;
-using ZG.Domain.DTO;
 using ZG.Domain.Models;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers
@@ -15,9 +14,9 @@ namespace ZG.Store.Presentation.Controllers
     public class CartController : Controller
     {
         private IProductService _productService;
-        private IOrderProcessor _orderProcessor;
+        private IOrderService _orderProcessor;
 
-        public CartController(IProductService productService, IOrderProcessor orderProcessor)
+        public CartController(IProductService productService, IOrderService orderProcessor)
         {
             _productService = productService;
             _orderProcessor = orderProcessor;

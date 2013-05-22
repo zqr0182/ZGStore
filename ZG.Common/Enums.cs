@@ -17,4 +17,11 @@ namespace ZG.Common
         General,
         NewOrderNotificationToAdmin
     }
+
+    public enum EmailSendingStatus
+    {
+        Sending,
+        Success,
+        Failed
+    }
 }

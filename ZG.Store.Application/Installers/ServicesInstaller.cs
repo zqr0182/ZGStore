@@ -7,7 +7,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace ZG.Store.Application.Installers
+namespace ZG.Application.Installers
 {
     public class ServicesInstaller : IWindsorInstaller
     {

@@ -15,8 +15,7 @@ namespace ZG.Common.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            //TODO: make sure EmailProcessor is registered proberly.
-            container.Register(Component.For(typeof(IEmailProcessor)).ImplementedBy<EmailProcessor>().LifestyleTransient(),
+            container.Register(Component.For(typeof(IEmailSender)).ImplementedBy<EmailSender>().LifestyleTransient(),
                                Component.For(typeof(IEmailSettingsFactory)).ImplementedBy<EmailSettingsFactory>().LifestyleTransient());
         }
     }

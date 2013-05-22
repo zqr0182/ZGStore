@@ -39,6 +39,7 @@
       <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,14 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IEmailProcessor.cs" />
+    <Compile Include="Abstract\IEmailSender.cs" />
     <Compile Include="Abstract\IEmailSettingsFactory.cs" />
-    <Compile Include="Concrete\EmailProcessor.cs" />
+    <Compile Include="Concrete\EmailSender.cs" />
     <Compile Include="Concrete\MailAddresses.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Concrete\EmailSettings.cs" />
     <Compile Include="CustomExceptions\AppSettingKeyNotFoundException.cs" />
     <Compile Include="Concrete\EmailSettingsFactory.cs" />
+    <Compile Include="DTO\EmailSendingResult.cs" />
+    <Compile Include="DTO\PagingLinkProperties.cs" />
+    <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
+    <Compile Include="DTO\ShippingDetails.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Installers\CommonConcretesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

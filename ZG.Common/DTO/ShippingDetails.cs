@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZG.Common;
 
-namespace ZG.Domain.DTO
+namespace ZG.Common.DTO
 {
     public class ShippingDetails
     {

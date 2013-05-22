@@ -14,9 +14,8 @@ using Castle.Windsor.Installer;
 using WebMatrix.WebData;
 using ZG.Common.Installers;
 using ZG.Domain.Concrete;
-using ZG.Domain.Installers;
 using ZG.Repository.Installers;
-using ZG.Store.Application.Installers;
+using ZG.Application.Installers;
 using ZG.Store.Presentation.Binders;
 using ZG.Store.Presentation.Models;
 using ZG.Store.Presentation.Plumbing;
@@ -60,7 +59,6 @@ namespace ZG.Store.Presentation
         {
             _container = new WindsorContainer().Install(FromAssembly.This(),
                                                         FromAssembly.Containing<CommonConcretesInstaller>(),
-                                                        FromAssembly.Containing<DomainConcretesInstaller>(),
                                                         FromAssembly.Containing<RepositoriesInstaller>(),
                                                         FromAssembly.Containing<ServicesInstaller>());
 

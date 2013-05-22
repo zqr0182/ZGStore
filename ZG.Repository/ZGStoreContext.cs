@@ -53,6 +53,7 @@ namespace ZG.Repository
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Email> Emails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

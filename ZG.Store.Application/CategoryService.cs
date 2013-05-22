@@ -7,7 +7,7 @@ using ZG.Domain.Models;
 using ZG.Repository;
 using ZG.Repository.Criterias;
 
-namespace ZG.Store.Application
+namespace ZG.Application
 {
     public interface ICategoryService
     {

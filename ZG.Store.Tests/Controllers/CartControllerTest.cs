@@ -9,7 +9,7 @@ using Moq;
 using ZG.Domain.Abstract;
 using ZG.Domain.Concrete;
 using ZG.Domain.Models;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.Controllers;
 using ZG.Store.Presentation.ViewModels;
 
@@ -20,12 +20,12 @@ namespace ZG.Store.Tests.Controllers
     {
         private CartController _cartController;
         private Mock<IProductService> _mockProdServcice;
-        private Mock<IOrderProcessor> _mockOrderProcessor;
+        private Mock<IOrderService> _mockOrderProcessor;
 
         public CartControllerTest()
         {
             _mockProdServcice = new Mock<IProductService>();
-            _mockOrderProcessor = new Mock<IOrderProcessor>();
+            _mockOrderProcessor = new Mock<IOrderService>();
             _cartController = new CartController(_mockProdServcice.Object, _mockOrderProcessor.Object);
         }
 

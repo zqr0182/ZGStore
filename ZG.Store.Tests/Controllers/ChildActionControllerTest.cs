@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.Controllers;
 using ZG.Store.Presentation.ViewModels;
 

@@ -224,7 +224,9 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\Store\Cart.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -294,9 +296,9 @@
       <Project>{de72272b-0710-4038-847b-5a2e144ed7c8}</Project>
       <Name>ZG.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZG.Store.Application\ZG.Store.Application.csproj">
+    <ProjectReference Include="..\ZG.Store.Application\ZG.Application.csproj">
       <Project>{8997ab84-b3c9-4eb4-9249-304690e35cac}</Project>
-      <Name>ZG.Store.Application</Name>
+      <Name>ZG.Application</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

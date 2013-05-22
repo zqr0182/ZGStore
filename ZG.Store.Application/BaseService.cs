@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZG.Repository;
 
-namespace ZG.Store.Application
+namespace ZG.Application
 {
     public abstract class BaseService
     {
