@@ -18,17 +18,18 @@ namespace ZG.Application
 
     public class OrderService : BaseService, IOrderService
     {
-        private IEmailSender _emailSender;
+        private IEmailService _emailService;
 
-        public OrderService(IUnitOfWork uow, IEmailSender emailSender)
+        public OrderService(IUnitOfWork uow, IEmailService emailService)
             : base(uow)
         {
-            _emailSender = emailSender;
+            _emailService = emailService;
         }
 
         public void ProcessOrder(Cart cart, ShippingDetails shippingDetails)
         {
-            _emailSender.Send(EmailType.NewOrderNotificationToAdmin, null, "New Order", "Body", true);
+            //TODO: more order process steps
+            _emailService.ProcessEmail(EmailType.NewOrderNotificationToAdmin, null, "New Order", "Body", true);
         }
     }
 }
