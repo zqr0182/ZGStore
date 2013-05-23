@@ -38,13 +38,11 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(20)]
         public string Status { get; set; }
-        [Required]
         [MaxLength(300)]
         public string ExceptionMessage { get; set; }
         [Required]
         public DateTime CreationDate { get; set; }
         
-        [Required]
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
     }

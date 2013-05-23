@@ -14,7 +14,7 @@ namespace ZG.Common.Concrete
         public string SmtpUserName { get; set; }
         public string SmtpPassword { get; set; }
         public string SmtpServerName { get; set; }
-        public string SmtpServerPort { get; set; }
+        public int SmtpServerPort { get; set; }
         public bool WriteAsFile { get; set; }
         public string FileLocation { get; set; }
 

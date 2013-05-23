@@ -29,7 +29,9 @@ namespace ZG.Application
         public void ProcessOrder(Cart cart, ShippingDetails shippingDetails)
         {
             //TODO: more order process steps
-            _emailService.ProcessEmail(EmailType.NewOrderNotificationToAdmin, null, "New Order", "Body", true);
+
+
+            _emailService.ProcessEmail(EmailType.NewOrderNotificationToAdmin, null, "New Order", "Body", true, null);
         }
     }
 }

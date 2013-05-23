@@ -10,6 +10,6 @@ namespace ZG.Common.Abstract
 {
     public interface IEmailSender
     {
-        EmailSendingResult Send(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml);
+        EmailSendingResult Send(EmailSettings emailSettings, string subject, string body, bool isBodyHtml);
     }
 }

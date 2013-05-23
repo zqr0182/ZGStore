@@ -7,6 +7,7 @@ using ZG.Common;
 using ZG.Common.Abstract;
 using ZG.Common.Concrete;
 using ZG.Common.DTO;
+using ZG.Domain.Models;
 using ZG.Repository;
 
 namespace ZG.Application
@@ -21,24 +22,53 @@ namespace ZG.Application
         /// <param name="subject"></param>
         /// <param name="body"></param>
         /// <param name="isBodyHtml"></param>
-        void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml);
+        void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml, int? orderId);
     }
 
     public class EmailService : BaseService, IEmailService
     {
         private IEmailSender _emailSender;
+        private IEmailSettingsFactory _emailSettingsFactory;
+        private EmailSettings _emailSettings;
 
-        public EmailService(IUnitOfWork uow, IEmailSender emailSender)
+        public EmailService(IUnitOfWork uow, IEmailSettingsFactory emailSettingsFactory, IEmailSender emailSender)
             : base(uow)
         {
+            _emailSettingsFactory = emailSettingsFactory;
             _emailSender = emailSender;
         }
 
-        public void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml)
+        public void ProcessEmail(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml, int? orderId)
         {
-            //TODO: write to db
-            EmailSendingResult result = _emailSender.Send(emailType, mailAddresses, subject, body, isBodyHtml);
-            //TODO: update status in db
+            _emailSettings = _emailSettingsFactory.GetEmailSettings(emailType);
+            if (mailAddresses != null)
+            {
+                _emailSettings.Addresses = mailAddresses;
+            }
+
+            var email = new Email
+                {
+                    OrderId = orderId,
+                    FromAddress = _emailSettings.Addresses.MailFromAddress,
+                    ToAddress = _emailSettings.Addresses.MailToAddress,
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = isBodyHtml,
+                    Type = emailType.ToString(),
+                    Status = EmailSendingStatus.Sending.ToString(),
+                    CreationDate = DateTime.Now
+                };
+
+            UnitOfWork.Emails.Add(email);
+            UnitOfWork.Commit();
+
+            //TODO: consider async processing the db operation and email sending
+            EmailSendingResult result = _emailSender.Send(_emailSettings, subject, body, isBodyHtml);
+
+            email.Status = result.Status.ToString();
+            email.ExceptionMessage = result.ExceptionMessage;
+
+            UnitOfWork.Commit();
         }
     }
 }

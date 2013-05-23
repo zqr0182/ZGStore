@@ -32,11 +32,13 @@ namespace ZG.Common.Concrete
             {
                 throw new AppSettingKeyNotFoundException(ExceptionMessage, EmailSettingKey.SmtpServerName);
             }
-            emailSettings.SmtpServerPort = ConfigurationManager.AppSettings[EmailSettingKey.SmtpServerPort];
-            if (emailSettings.SmtpServerPort == null)
+
+            string smtpServerPort = ConfigurationManager.AppSettings[EmailSettingKey.SmtpServerPort];
+            if (smtpServerPort == null)
             {
                 throw new AppSettingKeyNotFoundException(ExceptionMessage, EmailSettingKey.SmtpServerPort);
             }
+            emailSettings.SmtpServerPort = int.Parse(smtpServerPort);
 
             string writeAsFile = ConfigurationManager.AppSettings[EmailSettingKey.WriteAsFile];
             emailSettings.WriteAsFile = !string.IsNullOrWhiteSpace(writeAsFile) && bool.Parse(writeAsFile);

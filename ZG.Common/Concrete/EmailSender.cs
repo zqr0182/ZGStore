@@ -2,43 +2,58 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using ZG.Common.Abstract;
 using ZG.Common.DTO;
+using Castle.Core.Logging;
 
 namespace ZG.Common.Concrete
 {
     public class EmailSender : IEmailSender
     {
-        private IEmailSettingsFactory _emailSettingsFactory;
-        private EmailSettings _emailSettings;
         public MailAddresses MailAddresses { get; set; }
 
+        public ILogger Logger { get; set; }
 
-        public EmailSender(IEmailSettingsFactory emailSettingsFactory)
-        {
-            _emailSettingsFactory = emailSettingsFactory;
-        }
-
-        public EmailSendingResult Send(EmailType emailType, MailAddresses mailAddresses, string subject, string body, bool isBodyHtml)
+        public EmailSendingResult Send(EmailSettings emailSettings, string subject, string body, bool isBodyHtml)
         {
             var result = new EmailSendingResult();
             try
             {
-                _emailSettings = _emailSettingsFactory.GetEmailSettings(emailType);
-                if (mailAddresses != null)
+                using (var smtpClient = new SmtpClient())
                 {
-                    _emailSettings.Addresses = mailAddresses;
-                }
+                    smtpClient.EnableSsl = emailSettings.UseSsl;
+                    smtpClient.Host = emailSettings.SmtpServerName;
+                    smtpClient.Port = emailSettings.SmtpServerPort;
+                    smtpClient.UseDefaultCredentials = false;
+                    smtpClient.Credentials = new NetworkCredential(emailSettings.SmtpUserName, emailSettings.SmtpPassword);
+                    
+                    if (emailSettings.WriteAsFile)
+                    {
+                        smtpClient.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+                        smtpClient.PickupDirectoryLocation = emailSettings.FileLocation;
+                        smtpClient.EnableSsl = false;
+                    }
 
-                //TODO: send email
+                    var mailMessage = new MailMessage(emailSettings.Addresses.MailFromAddress, emailSettings.Addresses.MailToAddress, subject, body);
+                    mailMessage.IsBodyHtml = isBodyHtml;
+
+                    if (emailSettings.WriteAsFile)
+                    {
+                        mailMessage.BodyEncoding = Encoding.ASCII;
+                    }
+
+                    smtpClient.Send(mailMessage);
+                }
 
                 result.Status = EmailSendingStatus.Success;
             }
             catch (Exception ex)
             {
-                //TODO: Log exception
+                Logger.ErrorFormat(ex, "", null);
 
                 result.Status = EmailSendingStatus.Failed;
                 result.ExceptionMessage = ex.Message;
