@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {
@@ -15,9 +17,16 @@ namespace ZG.Domain.Models
             this.Taxes = new List<Tax>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string ProvinceName { get; set; }
+        [Required]
+        [MaxLength(2)]
         public string ProvinceCode { get; set; }
+        [Required]
+        [StringLength(10, MinimumLength = 10)]
         public string Active { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

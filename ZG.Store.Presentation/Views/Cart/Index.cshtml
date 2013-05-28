@@ -1,0 +1,36 @@
+﻿@model ZG.Store.Presentation.ViewModels.CartIndexViewModel
+@{
+    ViewBag.Title = "ZGStore: Your Cart";
+}
+
+<h2>Your Cart</h2>
+<table width="90%" align="center">
+    <thead>
+        <tr>
+            <th align="left">Item</th>
+            <th align="right">Price</th>
+            <th align="center">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.Action("GetCartContent", Model)
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="right">Total:</td>
+            <td id="total" align="right">
+                @Model.Cart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<p align="center" class="actionButtons">
+    <a href="@Model.ReturnUrl">Continue Shopping</a>
+    @Html.ActionLink("Checkout now", "Checkout", null, new {id = "checkout"})
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/store")
+}

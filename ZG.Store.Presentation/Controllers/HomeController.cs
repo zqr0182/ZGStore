@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZG.Domain.Models;
 using ZG.Repository;
-using ZG.Store.Application;
+using ZG.Application;
 
 namespace ZG.Store.Presentation.Controllers
 {

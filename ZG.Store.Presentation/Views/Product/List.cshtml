@@ -1,7 +1,12 @@
 ﻿@model ZG.Store.Presentation.ViewModels.ProductListViewModel
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "ZGStore: Products";
+}
+
+@section rightColumn {
+
+    <h1>Right Column Content on Products Page</h1>
 }
 
 @foreach (var prod in Model.Products)

@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {
@@ -26,8 +28,11 @@ namespace ZG.Domain.Models
             this.Shippings = new List<Shipping>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [MaxLength(50)]
         public string ProductName { get; set; }
+        [MaxLength(50)]
         public string CatalogNumber { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -40,10 +45,12 @@ namespace ZG.Domain.Models
         public Nullable<decimal> ShippingLength { get; set; }
         public Nullable<decimal> Width { get; set; }
         public Nullable<decimal> ShippingWidth { get; set; }
+        [MaxLength(400)]
         public string ProductLink { get; set; }
         public bool IsDownloadable { get; set; }
         public Nullable<bool> IsDownloadKeyRequired { get; set; }
         public Nullable<bool> IsDownloadKeyUnique { get; set; }
+        [MaxLength(400)]
         public string DownloadURL { get; set; }
         public bool IsReviewEnabled { get; set; }
         public int TotalReviewCount { get; set; }

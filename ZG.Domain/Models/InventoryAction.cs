@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {
@@ -12,7 +14,10 @@ namespace ZG.Domain.Models
             this.Inventories = new List<Inventory>();
         }
 
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string InventoryActionName { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
     }

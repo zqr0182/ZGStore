@@ -6,16 +6,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ZG.Domain;
+using ZG.Domain.Abstract;
+using ZG.Repository.Criterias;
 
 namespace ZG.Repository
 {
     public interface IRepository<T> where T : class, IEntity
     {
-        IQueryable<T> FindAll();
-        T FindById(int id);
+        IQueryable<T> MatcheAll();
+        T MatcheById(int id);
         void Add(T newEntity);
         void Remove(T entity);
+        IQueryable<T> Matches(ICriteria<T> criteria);
     }
 
     public class ZGStoreRepository<T> : IRepository<T> where T : class, IEntity
@@ -29,12 +31,12 @@ namespace ZG.Repository
             _dbSet = context.Set<T>();
         }
 
-        public IQueryable<T> FindAll()
+        public IQueryable<T> MatcheAll()
         {
             return _dbSet;
         }
 
-        public virtual T FindById(int id)
+        public virtual T MatcheById(int id)
         {
             return _dbSet.SingleOrDefault(o => o.Id == id);
         }
@@ -49,9 +51,10 @@ namespace ZG.Repository
             _dbSet.Remove(entity);
         }
 
-        protected IQueryable<T> FindWhere(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Matches(ICriteria<T> criteria)
         {
-            return _dbSet.Where(predicate);
+            criteria.Context = _context;
+            return criteria.BuildQueryOver(_dbSet);
         }
     }
 }

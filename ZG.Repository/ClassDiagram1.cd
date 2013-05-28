@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZG.Repository.Criterias.AbstractCriteria&lt;T&gt;">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\AbstractCriteria.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZG.Repository.Criterias.ProductsByCategory">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAEAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\ProductsByCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.Criterias.ProductsByPage">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAQAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\ProductsByPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.Criterias.TopCategories">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\TopCategories.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.Criterias.UserByName">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\UserByName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.Installers.RepositoriesInstaller" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Installers\RepositoriesInstaller.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZG.Repository.QueryableExtensions">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryableExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.ZGStoreContext" Collapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BENEACBBAAAEAAAAABAgAVIAFUAAEHAAMAQhBgACAAQ=</HashCode>
+      <FileName>ZGStoreContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZG.Repository.ZGStoreRepository&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="9" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAAAAABAAAAAAAJAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ZGStoreRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZG.Repository.ZGStoreUnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAGAAAAAABAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ZGStoreUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ZG.Repository.Criterias.ICriteria&lt;T&gt;">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Criterias\ICriteria.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ZG.Repository.IRepository&lt;T&gt;">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAAAAABAAAAAAABAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ZGStoreRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ZG.Repository.IUnitOfWork">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAGAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ZGStoreUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

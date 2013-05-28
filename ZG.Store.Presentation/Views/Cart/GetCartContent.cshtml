@@ -1,0 +1,26 @@
+﻿@model ZG.Store.Presentation.ViewModels.CartIndexViewModel
+
+@foreach (var line in Model.Cart.Lines)
+{
+    var trId = "tr" + line.Product.Id;
+    <tr id="@trId">
+        <td align="left">@line.Product.ProductName</td>
+        <td align="right">@line.Product.Price.ToString("c")</td>
+        <td>
+            @using (Ajax.BeginForm(new AjaxOptions{Url = Url.Action("UpdateCart"), OnSuccess = "processCartData"}))
+            {
+                @Html.TextBox("quantity", line.Quantity)
+                @Html.Hidden("Id", line.Product.Id)
+                @Html.HiddenFor(x => x.ReturnUrl)
+                <button type="submit" class="actionButtons">Update</button>
+            }
+            @using (Ajax.BeginForm(new AjaxOptions{Url = Url.Action("RemoveFromCart"), OnSuccess = "processCartData"}))
+            {
+                @Html.Hidden("Id", line.Product.Id)
+                @Html.HiddenFor(x => x.ReturnUrl)
+                <button type="submit" class="actionButtons">Remove</button>
+            }
+        </td>
+    </tr> 
+}
+

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ZG.Store.Application;
+using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers
@@ -20,7 +20,7 @@ namespace ZG.Store.Presentation.Controllers
         
         public ViewResult List(string category, int page = 1)
         {
-            var porductsPerPage = _productService.GetProducts(category, page, _pageSize);
+            var porductsPerPage = _productService.GetActiveProducts(category, page, _pageSize);
 
             var productListViewModel = new ProductListViewModel
                 {
@@ -35,5 +35,10 @@ namespace ZG.Store.Presentation.Controllers
             return View(productListViewModel);
         }
 
+        public ViewResult Details(int id)
+        {
+            var prod = _productService.GetProductById(id);
+            return View(prod);
+        }
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -15,12 +15,13 @@
                     <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
+                    @Html.Action("Summary", "Cart")
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.RouteLink("Home", "Products")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
@@ -28,14 +29,26 @@
                 </div>
             </div>
         </header>
+
         <div id="body">
-            @RenderSection("featured", required: false)
-            <div id="categories">
-                Product Categories will be moved to the left column
+            @RenderSection("featured", false)
+            <div class="colmask threecol">
+                <div class="colmid">
+                    <div class="colleft">
+                        <div class="col1">
+				            @RenderBody()
+                        </div>
+                        <div class="col2">
+                            <div id="categories">
+                                @{ Html.RenderAction("Categories", "ChildAction" );}
+                            </div>
+                        </div>
+                        <div class="col3">
+                            @RenderSection("rightColumn", false)
+                        </div>
+                    </div>
+                </div>
             </div>
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
         </div>
         <footer>
             <div class="content-wrapper">
