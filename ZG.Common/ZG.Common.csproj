@@ -57,6 +57,8 @@
     <Compile Include="Concrete\EmailSettings.cs" />
     <Compile Include="CustomExceptions\AppSettingKeyNotFoundException.cs" />
     <Compile Include="Concrete\EmailSettingsFactory.cs" />
+    <Compile Include="DTO\Address.cs" />
+    <Compile Include="DTO\BillingDetails.cs" />
     <Compile Include="DTO\EmailSendingResult.cs" />
     <Compile Include="DTO\PagingLinkProperties.cs" />
     <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />

@@ -1,10 +1,9 @@
 ﻿@model ZG.Common.DTO.ShippingDetails
 
 @{
-    ViewBag.Title = "ZGStore: Checkout";
+    ViewBag.Title = "ZGStore: Shipping Details";
 }
 
-<h2>Checkout now</h2>
 <p>Please enter your shipping details, and we'll ship your goods right away!</p>
 
 @using (Html.BeginForm()) {
@@ -21,8 +20,8 @@
         
         <h3>Address</h3>
         <p>Address 1:
-            @Html.EditorFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
+            @Html.EditorFor(model => model.Address1)
+            @Html.ValidationMessageFor(model => model.Address1)
         </p>
 
         <p>Address 2:
@@ -62,7 +61,7 @@
         </p>
 
         <p align="center">
-            <input class="actionButtons" type="submit" value="Complete order" />
+            <input class="actionButtons" type="submit" value="Continue" />
         </p>
     </fieldset>
 }

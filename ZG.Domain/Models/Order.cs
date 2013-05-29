@@ -32,18 +32,32 @@ namespace ZG.Domain.Models
         public string ShippingNumber { get; set; }
         [Required]
         [MaxLength(50)]
-        public string Address { get; set; }
+        public string BillingAddress { get; set; }
         [MaxLength(50)]
-        public string Address2 { get; set; }
+        public string BillingAddress2 { get; set; }
         [Required]
         [MaxLength(50)]
-        public string City { get; set; }
-        public int StateID { get; set; }
-        public int? ProvinceID { get; set; }
-        public int CountryID { get; set; }
+        public string BillingCity { get; set; }
+        public int BillingStateID { get; set; }
+        public int? BillingProvinceID { get; set; }
+        public int BillingCountryID { get; set; }
         [Required]
         [MaxLength(50)]
-        public string Zipcode { get; set; }
+        public string BillingZipcode { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string ShippingAddress { get; set; }
+        [MaxLength(50)]
+        public string ShippingAddress2 { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string ShippingCity { get; set; }
+        public int ShippingStateID { get; set; }
+        public int? ShippingProvinceID { get; set; }
+        public int ShippingCountryID { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string ShippingZipcode { get; set; }
         [MaxLength(400)]
         public string Comments { get; set; }
         public System.DateTime DatePlaced { get; set; }
@@ -53,19 +67,19 @@ namespace ZG.Domain.Models
         public decimal Tax { get; set; }
         public bool Active { get; set; }
         [Required]
-        [ForeignKey("CountryID")]
-        public virtual Country Country { get; set; }
+        [ForeignKey("BillingCountryID")]
+        public virtual Country BillingCountry { get; set; }
         [Required]
         [ForeignKey("OrderStatusID")]
         public virtual OrderStatus OrderStatu { get; set; }
-        [ForeignKey("ProvinceID")]
-        public virtual Province Province { get; set; }
+        [ForeignKey("BillingProvinceID")]
+        public virtual Province BillingProvince { get; set; }
         [Required]
         [ForeignKey("ShippingProviderID")]
         public virtual ShippingProvider ShippingProvider { get; set; }
         [Required]
-        [ForeignKey("StateID")]
-        public virtual State State { get; set; }
+        [ForeignKey("BillingStateID")]
+        public virtual State BillingState { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZG.Common.DTO;
 using ZG.Domain.Concrete;
+using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
@@ -75,13 +76,13 @@ namespace ZG.Store.Presentation.Controllers
             return PartialView(viewModel);
         }
 
-        public ViewResult Checkout()
+        public ViewResult Shipping(ShippingDetails shippingDetails)
         {
-            return View(new ShippingDetails());
+            return View(shippingDetails);
         }
 
         [HttpPost]
-        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        public ViewResult Shipping(Cart cart, ShippingDetails shippingDetails)
         {
             if (!cart.Lines.Any())
             {
@@ -90,14 +91,32 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                _orderProcessor.ProcessOrder(cart, shippingDetails);
+                return View("Billing");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+        }
+
+        public ViewResult Billing(BillingDetails billingDetails)
+        {
+            return View(billingDetails);
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shipping, BillingDetails billing)
+        {
+            if (ModelState.IsValid)
+            {
+                _orderProcessor.ProcessOrder(cart, shipping, billing);
                 cart.Clear();
 
                 return View("Completed");
             }
             else
             {
-                return View(shippingDetails);
+                return View("Billing", billing);
             }
         }
     }

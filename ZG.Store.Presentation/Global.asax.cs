@@ -12,8 +12,10 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
+using ZG.Common.DTO;
 using ZG.Common.Installers;
 using ZG.Domain.Concrete;
+using ZG.Domain.DTO;
 using ZG.Repository.Installers;
 using ZG.Application.Installers;
 using ZG.Store.Presentation.Binders;
@@ -47,7 +49,7 @@ namespace ZG.Store.Presentation
 
             BootstrapContainer();
 
-            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
+            AddModelBinders();
         }
 
         protected void Application_End()
@@ -64,6 +66,13 @@ namespace ZG.Store.Presentation
 
             var controllerFactory = new WindsorControllerFactory(_container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory); 
+        }
+
+        private static void AddModelBinders()
+        {
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
+            ModelBinders.Binders.Add(typeof(ShippingDetails), new ShippingDetailsModelBinder());
+            ModelBinders.Binders.Add(typeof(BillingDetails), new BillingDetailsModelBinder());
         }
 
         private class SimpleMembershipInitializer
