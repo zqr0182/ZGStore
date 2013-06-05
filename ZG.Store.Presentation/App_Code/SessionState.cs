@@ -16,6 +16,12 @@ namespace ZG.Store.Presentation.App_Code
             set { HttpContext.Current.Session["Cart"] = value; }
         }
 
+        public static CheckoutDetails CheckoutDetails
+        {
+            get { return (CheckoutDetails)HttpContext.Current.Session["CheckoutDetails"]; }
+            set { HttpContext.Current.Session["CheckoutDetails"] = value; }
+        }
+
         public static ShippingDetails ShippingDetails
         {
             get { return (ShippingDetails)HttpContext.Current.Session["ShippingDetails"]; }

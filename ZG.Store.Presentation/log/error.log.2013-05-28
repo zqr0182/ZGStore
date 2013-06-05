@@ -1,0 +1,22 @@
+ERROR 12 ZG.Common.Concrete.EmailSender - 
+System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\OrderEmail\11025412-e113-4397-80d3-7a3e4e5df9c4.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at ZG.Common.Concrete.EmailSender.Send(EmailSettings emailSettings, String subject, String body, Boolean isBodyHtml) in c:\Zhang Xiao Work\Z&G Projects\ZGStore\ZG.Common\Concrete\EmailSender.cs:line 49
+ERROR 14 ZG.Common.Concrete.EmailSender - 
+System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Charles Zhang\Desktop\Z&G Projects\ZGStore\OrderEmail\13eca6c1-0d70-468c-ad64-3038bb6e40d5.eml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Net.Mail.SmtpClient.GetFileMailWriter(String pickupDirectory)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at ZG.Common.Concrete.EmailSender.Send(EmailSettings emailSettings, String subject, String body, Boolean isBodyHtml) in c:\Zhang Xiao Work\Z&G Projects\ZGStore\ZG.Common\Concrete\EmailSender.cs:line 49

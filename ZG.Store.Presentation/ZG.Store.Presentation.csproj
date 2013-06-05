@@ -179,9 +179,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Binders\BillingDetailsModelBinder.cs" />
     <Compile Include="Binders\CartModelBinder.cs" />
-    <Compile Include="Binders\ShippingDetailsModelBinder.cs" />
+    <Compile Include="Binders\CheckoutDetailsModelBinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -200,6 +199,7 @@
     <Compile Include="ViewModels\ProductListViewModel.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ReviewOrderViewModel.cs" />
     <Compile Include="ViewModels\SummaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +277,7 @@
     <Content Include="Views\Cart\Shipping.cshtml" />
     <Content Include="Views\Cart\Completed.cshtml" />
     <Content Include="Views\Cart\Billing.cshtml" />
+    <Content Include="Views\Cart\ReviewOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

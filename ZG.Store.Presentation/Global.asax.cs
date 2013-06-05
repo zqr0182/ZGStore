@@ -71,8 +71,7 @@ namespace ZG.Store.Presentation
         private static void AddModelBinders()
         {
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
-            ModelBinders.Binders.Add(typeof(ShippingDetails), new ShippingDetailsModelBinder());
-            ModelBinders.Binders.Add(typeof(BillingDetails), new BillingDetailsModelBinder());
+            ModelBinders.Binders.Add(typeof(CheckoutDetails), new CheckoutDetailsModelBinder());
         }
 
         private class SimpleMembershipInitializer

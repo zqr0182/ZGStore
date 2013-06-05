@@ -76,13 +76,13 @@ namespace ZG.Store.Presentation.Controllers
             return PartialView(viewModel);
         }
 
-        public ViewResult Shipping(ShippingDetails shippingDetails)
+        public ViewResult Shipping(CheckoutDetails checkoutDetails)
         {
-            return View(shippingDetails);
+            return View(checkoutDetails.ShippingDetails);
         }
 
         [HttpPost]
-        public ViewResult Shipping(Cart cart, ShippingDetails shippingDetails)
+        public ViewResult Shipping(Cart cart, CheckoutDetails checkoutDetails)
         {
             if (!cart.Lines.Any())
             {
@@ -91,32 +91,37 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                return View("Billing");
+                return View("Billing", checkoutDetails);
             }
             else
             {
-                return View(shippingDetails);
+                return View(checkoutDetails.ShippingDetails);
             }
-        }
-
-        public ViewResult Billing(BillingDetails billingDetails)
-        {
-            return View(billingDetails);
         }
 
         [HttpPost]
-        public ViewResult Checkout(Cart cart, ShippingDetails shipping, BillingDetails billing)
+        public ViewResult ReviewOrder(Cart cart, CheckoutDetails checkoutDetails)
         {
+            if (!cart.Lines.Any())
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+
+            if (string.IsNullOrWhiteSpace(checkoutDetails.ShippingDetails.FullName))
+            {
+                ModelState.AddModelError("", "Sorry, your shipping details is empty!");
+            }
+
             if (ModelState.IsValid)
             {
-                _orderProcessor.ProcessOrder(cart, shipping, billing);
-                cart.Clear();
+                //_orderProcessor.ProcessOrder(cart, shipping, billing);
+                //cart.Clear();
 
-                return View("Completed");
+                return View();
             }
             else
             {
-                return View("Billing", billing);
+                return View("Billing", checkoutDetails);
             }
         }
     }
