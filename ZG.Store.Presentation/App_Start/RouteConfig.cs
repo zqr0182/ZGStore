@@ -18,6 +18,7 @@ namespace ZG.Store.Presentation
             routes.MapRoute("ProductsByCategory", "{category}", new { controller = "Product", action = "List", page = 1 });
             routes.MapRoute("ProductsByCategoryAndPage", "{category}/Page{page}", new { controller = "Product", action = "List" }, new { page = @"\d+" });
             routes.MapRoute("ProductDetails", "product/{id}", new { controller = "Product", action = "Details" }, new { id = @"\d+" });
+  
             routes.MapRoute("EverythingElse", "{controller}/{action}");
         }
     }
