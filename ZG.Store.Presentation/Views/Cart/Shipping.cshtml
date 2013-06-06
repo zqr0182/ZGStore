@@ -14,44 +14,44 @@
         
         <h3>Ship to</h3>
         <p>Full Name: 
-            @Html.EditorFor(model => model.FullName)
-            @Html.ValidationMessageFor(model => model.FullName)
+            @Html.EditorFor(model => model.ShippingAddress.FullName)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.FullName)
         </p>
         
         <h3>Address</h3>
         <p>Address 1:
-            @Html.EditorFor(model => model.Address1)
-            @Html.ValidationMessageFor(model => model.Address1)
+            @Html.EditorFor(model => model.ShippingAddress.Address1)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.Address1)
         </p>
 
         <p>Address 2:
-            @Html.EditorFor(model => model.Address2)
-            @Html.ValidationMessageFor(model => model.Address2)
+            @Html.EditorFor(model => model.ShippingAddress.Address2)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.Address2)
         </p>
 
         <p>City:
-            @Html.EditorFor(model => model.City)
-            @Html.ValidationMessageFor(model => model.City)
+            @Html.EditorFor(model => model.ShippingAddress.City)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.City)
         </p>
 
         <p>State:
-            @Html.EditorFor(model => model.State)
-            @Html.ValidationMessageFor(model => model.State)
+            @Html.EditorFor(model => model.ShippingAddress.State)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.State)
         </p>
 
         <p>ZIP:
-            @Html.EditorFor(model => model.Zip)
-            @Html.ValidationMessageFor(model => model.Zip)
+            @Html.EditorFor(model => model.ShippingAddress.Zip)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.Zip)
         </p>
 
         <p>Country:
-            @Html.EditorFor(model => model.Country)
-            @Html.ValidationMessageFor(model => model.Country)
+            @Html.EditorFor(model => model.ShippingAddress.Country)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.Country)
         </p>
         
         <p>Phone Number:
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
+            @Html.EditorFor(model => model.ShippingAddress.Phone)
+            @Html.ValidationMessageFor(model => model.ShippingAddress.Phone)
         </p>
         
         <h3>Options</h3>

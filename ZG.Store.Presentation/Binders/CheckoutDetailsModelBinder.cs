@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using ZG.Common.DTO;
-using ZG.Domain.DTO;
+using ZG.Domain.Concrete;
 using ZG.Store.Presentation.App_Code;
 
 namespace ZG.Store.Presentation.Binders
@@ -27,34 +26,34 @@ namespace ZG.Store.Presentation.Binders
                 string.Compare(routeData.Values["action"].ToString(), "ReviewOrder", StringComparison.InvariantCultureIgnoreCase) == 0 &&
                 string.Compare(controllerContext.HttpContext.Request.HttpMethod, "POST", StringComparison.InvariantCultureIgnoreCase) == 0)
             {
-                var billingDetails = checkoutDetails.BillingDetails;
+                var billingDetails = checkoutDetails.PaymentInformation;
 
                 bool sameAddress;
                 if (bool.TryParse(controllerContext.HttpContext.Request.QueryString["SameAddress"], out sameAddress) && sameAddress)
                 {
                     var shippingDetails = checkoutDetails.ShippingDetails;
 
-                    billingDetails.FullName = shippingDetails.FullName;
-                    billingDetails.Address1 = shippingDetails.Address1;
-                    billingDetails.Address2 = shippingDetails.Address2;
-                    billingDetails.City = shippingDetails.City;
-                    billingDetails.State = shippingDetails.State;
-                    billingDetails.Zip = shippingDetails.Zip;
-                    billingDetails.Country = shippingDetails.Country;
-                    billingDetails.Phone = shippingDetails.Phone;
+                    billingDetails.BillingAdress.FullName = shippingDetails.ShippingAddress.FullName;
+                    billingDetails.BillingAdress.Address1 = shippingDetails.ShippingAddress.Address1;
+                    billingDetails.BillingAdress.Address2 = shippingDetails.ShippingAddress.Address2;
+                    billingDetails.BillingAdress.City = shippingDetails.ShippingAddress.City;
+                    billingDetails.BillingAdress.State = shippingDetails.ShippingAddress.State;
+                    billingDetails.BillingAdress.Zip = shippingDetails.ShippingAddress.Zip;
+                    billingDetails.BillingAdress.Country = shippingDetails.ShippingAddress.Country;
+                    billingDetails.BillingAdress.Phone = shippingDetails.ShippingAddress.Phone;
                 }
                 else
                 {
                     var form = controllerContext.HttpContext.Request.Form;
 
-                    billingDetails.FullName = form["BillingDetails.FullName"];
-                    billingDetails.Address1 = form["BillingDetails.Address"];
-                    billingDetails.Address2 = form["BillingDetails.Address2"];
-                    billingDetails.City = form["BillingDetails.City"];
-                    billingDetails.State = form["BillingDetails.State"];
-                    billingDetails.Zip = form["BillingDetails.Zip"];
-                    billingDetails.Country = form["BillingDetails.Country"];
-                    billingDetails.Phone = form["BillingDetails.Phone"];
+                    billingDetails.BillingAdress.FullName = form["BillingAddress.FullName"];
+                    billingDetails.BillingAdress.Address1 = form["BillingAddress.Address"];
+                    billingDetails.BillingAdress.Address2 = form["BillingAddress.Address2"];
+                    billingDetails.BillingAdress.City = form["BillingAddress.City"];
+                    billingDetails.BillingAdress.State = form["BillingAddress.State"];
+                    billingDetails.BillingAdress.Zip = form["BillingAddress.Zip"];
+                    billingDetails.BillingAdress.Country = form["BillingAddress.Country"];
+                    billingDetails.BillingAdress.Phone = form["BillingAddress.Phone"];
                 }
             }
 
@@ -65,14 +64,14 @@ namespace ZG.Store.Presentation.Binders
                 var form = controllerContext.HttpContext.Request.Form;
 
                 var shippingDetails = checkoutDetails.ShippingDetails;
-                shippingDetails.FullName = form["FullName"];
-                shippingDetails.Address1 = form["Address1"];
-                shippingDetails.Address2 = form["Address2"];
-                shippingDetails.City = form["City"];
-                shippingDetails.State = form["State"];
-                shippingDetails.Zip = form["Zip"];
-                shippingDetails.Country = form["Country"];
-                shippingDetails.Phone = form["Phone"];
+                shippingDetails.ShippingAddress.FullName = form["ShippingAddress.FullName"];
+                shippingDetails.ShippingAddress.Address1 = form["ShippingAddress.Address1"];
+                shippingDetails.ShippingAddress.Address2 = form["ShippingAddress.Address2"];
+                shippingDetails.ShippingAddress.City = form["ShippingAddress.City"];
+                shippingDetails.ShippingAddress.State = form["ShippingAddress.State"];
+                shippingDetails.ShippingAddress.Zip = form["ShippingAddress.Zip"];
+                shippingDetails.ShippingAddress.Country = form["ShippingAddress.Country"];
+                shippingDetails.ShippingAddress.Phone = form["ShippingAddress.Phone"];
                 bool giftWrap;
                 if (bool.TryParse(form["GiftWrap"], out giftWrap))
                 {

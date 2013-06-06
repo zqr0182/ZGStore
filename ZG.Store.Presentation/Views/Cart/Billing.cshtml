@@ -1,5 +1,5 @@
 ﻿@using ZG.Common.DTO
-@model ZG.Common.DTO.CheckoutDetails
+@model ZG.Store.Presentation.ViewModels.BillingViewModel
 
 @{
     ViewBag.Title = "ZGStore: Billing Address";
@@ -9,15 +9,7 @@
 
 @using (Html.BeginForm("ReviewOrder", "Cart", new{SameAddress = true}))
 {
-    <div>@Html.DisplayFor(m => m.ShippingDetails.FullName)</div>
-    <div>@Html.DisplayFor(m => m.ShippingDetails.Address1)</div>
-    if (!string.IsNullOrWhiteSpace(Model.ShippingDetails.Address2))
-     {
-         <div>@Html.DisplayFor(m => m.ShippingDetails.Address2)</div>
-     }
-    <div>@Html.DisplayFor(m => m.ShippingDetails.City), @Html.DisplayFor(m => m.ShippingDetails.State) @Html.DisplayFor(m => m.ShippingDetails.Zip)</div>
-    <div>@Html.DisplayFor(m => m.ShippingDetails.Country)</div>
-    <div>@Html.DisplayFor(m => m.ShippingDetails.Phone)</div>
+    Html.RenderPartial("Address", Model.ShippingAddress);
     <p>
         <input type="submit" value="Use this address" />
     </p>
@@ -33,67 +25,67 @@
         <legend>BillingAddress</legend>
         
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.FullName)
+            @Html.LabelFor(m => m.BillingAddress.FullName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.FullName)
-            @Html.ValidationMessageFor(m => m.BillingDetails.FullName)
+            @Html.EditorFor(m => m.BillingAddress.FullName)
+            @Html.ValidationMessageFor(m => m.BillingAddress.FullName)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.Address1)
+            @Html.LabelFor(m => m.BillingAddress.Address1)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.Address1)
-            @Html.ValidationMessageFor(m => m.BillingDetails.Address1)
+            @Html.EditorFor(m => m.BillingAddress.Address1)
+            @Html.ValidationMessageFor(m => m.BillingAddress.Address1)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.Address2)
+            @Html.LabelFor(m => m.BillingAddress.Address2)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.Address2)
-            @Html.ValidationMessageFor(m => m.BillingDetails.Address2)
+            @Html.EditorFor(m => m.BillingAddress.Address2)
+            @Html.ValidationMessageFor(m => m.BillingAddress.Address2)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.City)
+            @Html.LabelFor(m => m.BillingAddress.City)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.City)
-            @Html.ValidationMessageFor(m => m.BillingDetails.City)
+            @Html.EditorFor(m => m.BillingAddress.City)
+            @Html.ValidationMessageFor(m => m.BillingAddress.City)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.State)
+            @Html.LabelFor(m => m.BillingAddress.State)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.State)
-            @Html.ValidationMessageFor(m => m.BillingDetails.State)
+            @Html.EditorFor(m => m.BillingAddress.State)
+            @Html.ValidationMessageFor(m => m.BillingAddress.State)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.Country)
+            @Html.LabelFor(m => m.BillingAddress.Country)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.Country)
-            @Html.ValidationMessageFor(m => m.BillingDetails.Country)
+            @Html.EditorFor(m => m.BillingAddress.Country)
+            @Html.ValidationMessageFor(m => m.BillingAddress.Country)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.Zip)
+            @Html.LabelFor(m => m.BillingAddress.Zip)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.Zip)
-            @Html.ValidationMessageFor(m => m.BillingDetails.Zip)
+            @Html.EditorFor(m => m.BillingAddress.Zip)
+            @Html.ValidationMessageFor(m => m.BillingAddress.Zip)
         </div>
         
         <div class="editor-label">
-            @Html.LabelFor(m => m.BillingDetails.Phone)
+            @Html.LabelFor(m => m.BillingAddress.Phone)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.BillingDetails.Phone)
-            @Html.ValidationMessageFor(m => m.BillingDetails.Phone)
+            @Html.EditorFor(m => m.BillingAddress.Phone)
+            @Html.ValidationMessageFor(m => m.BillingAddress.Phone)
         </div>
 
         <p>

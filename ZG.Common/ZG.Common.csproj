@@ -58,13 +58,13 @@
     <Compile Include="CustomExceptions\AppSettingKeyNotFoundException.cs" />
     <Compile Include="Concrete\EmailSettingsFactory.cs" />
     <Compile Include="DTO\Address.cs" />
-    <Compile Include="DTO\BillingDetails.cs" />
-    <Compile Include="DTO\CheckoutDetails.cs" />
+    <Compile Include="DTO\PaymentInformation.cs" />
     <Compile Include="DTO\EmailSendingResult.cs" />
     <Compile Include="DTO\PagingLinkProperties.cs" />
     <Compile Include="DTO\ProductIdQuantityAndCartSummary.cs" />
     <Compile Include="DTO\ShippingDetails.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Installers\CommonConcretesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs.cs" />

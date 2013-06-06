@@ -1,7 +1,15 @@
-﻿@model ZG.Store.Presentation.ViewModels.ReviewOrderViewModel
+﻿@using ZG.Common.DTO
+@model ZG.Store.Presentation.ViewModels.ReviewOrderViewModel
 
 @{
     ViewBag.Title = "ZGStore: ReviewOrder";
 }
 
-<h2>ReviewOrder</h2>
+<h2>Review your order</h2>
+
+<div>Shipping address</div>
+@Html.Partial("Address", Model.CheckoutDetails.ShippingDetails.ShippingAddress)
+
+<h2>Payment information</h2>
+<h3>Billing address</h3>
+

@@ -9,6 +9,7 @@ using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
+using Address = ZG.Common.DTO.Address;
 
 namespace ZG.Store.Presentation.Controllers
 {
@@ -91,7 +92,12 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                return View("Billing", checkoutDetails);
+                var billingViewModel = new BillingViewModel()
+                    {
+                        BillingAddress = new Address(),
+                        ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
+                    };
+                return View("Billing", billingViewModel);
             }
             else
             {
@@ -107,21 +113,28 @@ namespace ZG.Store.Presentation.Controllers
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
             }
 
-            if (string.IsNullOrWhiteSpace(checkoutDetails.ShippingDetails.FullName))
+            if (string.IsNullOrWhiteSpace(checkoutDetails.ShippingDetails.ShippingAddress.FullName))
             {
                 ModelState.AddModelError("", "Sorry, your shipping details is empty!");
             }
 
             if (ModelState.IsValid)
             {
+                //TODO: move these code into checkout action
                 //_orderProcessor.ProcessOrder(cart, shipping, billing);
                 //cart.Clear();
 
-                return View();
+                var reviewOrderViewModel = new ReviewOrderViewModel {Cart = cart, CheckoutDetails = checkoutDetails};
+                return View(reviewOrderViewModel);
             }
             else
             {
-                return View("Billing", checkoutDetails);
+                var billingViewModel = new BillingViewModel()
+                {
+                    BillingAddress = new Address(),
+                    ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
+                };
+                return View("Billing", billingViewModel);
             }
         }
     }

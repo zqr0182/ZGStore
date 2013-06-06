@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace ZG.Common.DTO
 {
-    public class ShippingDetails : Address
+    public class ShippingDetails
     {
+        public Address ShippingAddress { get; set; }
         public bool GiftWrap { get; set; }
+
+        public ShippingDetails()
+        {
+            ShippingAddress = new Address();
+        }
     }
 }

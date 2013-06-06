@@ -193,6 +193,7 @@
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\LoggerInstaller.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="ViewModels\BillingViewModel.cs" />
     <Compile Include="ViewModels\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\PagingViewModel.cs" />
@@ -278,6 +279,7 @@
     <Content Include="Views\Cart\Completed.cshtml" />
     <Content Include="Views\Cart\Billing.cshtml" />
     <Content Include="Views\Cart\ReviewOrder.cshtml" />
+    <Content Include="Views\Shared\Address.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,10 +28,10 @@ namespace ZG.Store.Presentation.App_Code
             set { HttpContext.Current.Session["ShippingDetails"] = value; }
         }
 
-        public static BillingDetails BillingDetails
+        public static PaymentInformation PaymentInformation
         {
-            get { return (BillingDetails)HttpContext.Current.Session["BillingDetails"]; }
-            set { HttpContext.Current.Session["BillingDetails"] = value; }
+            get { return (PaymentInformation)HttpContext.Current.Session["PaymentInformation"]; }
+            set { HttpContext.Current.Session["PaymentInformation"] = value; }
         }
     }
 }
