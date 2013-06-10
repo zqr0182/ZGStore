@@ -92,17 +92,38 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                var billingViewModel = new BillingViewModel()
-                    {
-                        BillingAddress = new Address(),
-                        ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
-                    };
-                return View("Billing", billingViewModel);
+                if (!checkoutDetails.IsBillingAddressAvailable())
+                {
+                    //var billingViewModel = new BillingViewModel()
+                    //    {
+                    //        BillingAddress = new Address(),
+                    //        ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
+                    //    };
+                    //return View("Billing", billingViewModel);
+
+                    return Billing(checkoutDetails);
+                }
+                else
+                {
+                    var reviewOrderViewModel = new ReviewOrderViewModel { Cart = cart, CheckoutDetails = checkoutDetails };
+                    return View("ReviewOrder", reviewOrderViewModel);
+                }
             }
             else
             {
                 return View(checkoutDetails.ShippingDetails);
             }
+        }
+
+        public ViewResult Billing(CheckoutDetails checkoutDetails)
+        {
+            var billingViewModel = new BillingViewModel()
+            {
+                NewBillingAddress = new Address(),
+                ExistingBillingAddress = checkoutDetails.PaymentInformation.BillingAdress,
+                ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
+            };
+            return View("Billing", billingViewModel);
         }
 
         [HttpPost]
@@ -129,12 +150,7 @@ namespace ZG.Store.Presentation.Controllers
             }
             else
             {
-                var billingViewModel = new BillingViewModel()
-                {
-                    BillingAddress = new Address(),
-                    ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
-                };
-                return View("Billing", billingViewModel);
+                return Billing(checkoutDetails);
             }
         }
     }

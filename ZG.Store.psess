@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<VSPerformanceSession Version="1.00">
+  <Options>
+    <Solution>ZG.sln</Solution>
+    <CollectionMethod>Sampling</CollectionMethod>
+    <AllocationMethod>None</AllocationMethod>
+    <AddReport>true</AddReport>
+    <ResourceBasedAnalysisSelected>true</ResourceBasedAnalysisSelected>
+    <UniqueReport>Timestamp</UniqueReport>
+    <SamplingMethod>Cycles</SamplingMethod>
+    <CycleCount>10000000</CycleCount>
+    <PageFaultCount>10</PageFaultCount>
+    <SysCallCount>10</SysCallCount>
+    <SamplingCounter Name="" ReloadValue="00000000000f4240" DisplayName="" />
+    <RelocateBinaries>false</RelocateBinaries>
+    <HardwareCounters EnableHWCounters="false" />
+    <EtwSettings />
+    <PdhSettings>
+      <PdhCountersEnabled>false</PdhCountersEnabled>
+      <PdhCountersRate>500</PdhCountersRate>
+      <PdhCounters>
+        <PdhCounter>\Memory\Pages/sec</PdhCounter>
+        <PdhCounter>\PhysicalDisk(_Total)\Avg. Disk Queue Length</PdhCounter>
+        <PdhCounter>\Processor(_Total)\% Processor Time</PdhCounter>
+      </PdhCounters>
+    </PdhSettings>
+  </Options>
+  <ExcludeSmallFuncs>true</ExcludeSmallFuncs>
+  <InteractionProfilingEnabled>false</InteractionProfilingEnabled>
+  <JScriptProfilingEnabled>false</JScriptProfilingEnabled>
+  <PreinstrumentEvent>
+    <InstrEventExclude>false</InstrEventExclude>
+  </PreinstrumentEvent>
+  <PostinstrumentEvent>
+    <InstrEventExclude>false</InstrEventExclude>
+  </PostinstrumentEvent>
+  <Binaries>
+    <ProjBinary>
+      <Path>ZG.Store.Presentation\\bin\ZG.Store.Presentation.dll</Path>
+      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
+      <Instrument>true</Instrument>
+      <Sample>true</Sample>
+      <ExternalWebsite>false</ExternalWebsite>
+      <InteractionProfilingEnabled>false</InteractionProfilingEnabled>
+      <IsLocalJavascript>false</IsLocalJavascript>
+      <IsWindowsStoreApp>false</IsWindowsStoreApp>
+      <IsWWA>false</IsWWA>
+      <LaunchProject>true</LaunchProject>
+      <OverrideProjectSettings>false</OverrideProjectSettings>
+      <LaunchMethod>Browser</LaunchMethod>
+      <LaunchUrl>http://localhost:49593/</LaunchUrl>
+      <SiteUrl>http://localhost:49593/</SiteUrl>
+      <LocalPath>C:\Zhang Xiao Work\Z&amp;amp;G Projects\ZGStore\ZG.Store.Presentation\</LocalPath>
+      <VRoot>
+      </VRoot>
+      <NetAppHost>IIS</NetAppHost>
+      <NetBrowser>InternetExplorer</NetBrowser>
+      <ExcludeSmallFuncs>true</ExcludeSmallFuncs>
+      <JScriptProfilingEnabled>false</JScriptProfilingEnabled>
+      <PreinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PreinstrumentEvent>
+      <PostinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PostinstrumentEvent>
+      <ProjRef>{AEEDF855-DF72-4427-BF68-83A56A5FA5DD}|ZG.Store.Presentation\ZG.Store.Presentation.csproj</ProjRef>
+      <ProjPath>ZG.Store.Presentation\ZG.Store.Presentation.csproj</ProjPath>
+      <ProjName>ZG.Store.Presentation</ProjName>
+    </ProjBinary>
+  </Binaries>
+  <Launches>
+    <ProjBinary>
+      <Path>:PB:{AEEDF855-DF72-4427-BF68-83A56A5FA5DD}|ZG.Store.Presentation\ZG.Store.Presentation.csproj</Path>
+    </ProjBinary>
+  </Launches>
+</VSPerformanceSession>

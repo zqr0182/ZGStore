@@ -10,6 +10,6 @@
 <div>Shipping address</div>
 @Html.Partial("Address", Model.CheckoutDetails.ShippingDetails.ShippingAddress)
 
-<h2>Payment information</h2>
-<h3>Billing address</h3>
+@Html.ActionLink("Change", "Shipping")
 
+@Html.Partial("PaymentInformation", Model.CheckoutDetails)

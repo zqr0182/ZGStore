@@ -19,6 +19,16 @@ namespace ZG.Domain.Concrete
             PaymentInformation = new PaymentInformation();
         }
 
+        public bool IsShippingDetailsAvailable()
+        {
+            return !string.IsNullOrWhiteSpace(ShippingDetails.ShippingAddress.FullName);
+        }
+
+        public bool IsBillingAddressAvailable()
+        {
+            return !string.IsNullOrWhiteSpace(PaymentInformation.BillingAdress.FullName);
+        }
+
         public bool IsBillingAddressSameAsShippingAddress()
         {
             return ShippingDetails.ShippingAddress.FullName.SameAs(PaymentInformation.BillingAdress.FullName)

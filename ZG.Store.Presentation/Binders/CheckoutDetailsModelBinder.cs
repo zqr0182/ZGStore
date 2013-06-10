@@ -28,8 +28,8 @@ namespace ZG.Store.Presentation.Binders
             {
                 var billingDetails = checkoutDetails.PaymentInformation;
 
-                bool sameAddress;
-                if (bool.TryParse(controllerContext.HttpContext.Request.QueryString["SameAddress"], out sameAddress) && sameAddress)
+                string existingAddressToUse = controllerContext.HttpContext.Request.QueryString["useExisting"];
+                if (existingAddressToUse == "shipping")
                 {
                     var shippingDetails = checkoutDetails.ShippingDetails;
 
@@ -42,18 +42,22 @@ namespace ZG.Store.Presentation.Binders
                     billingDetails.BillingAdress.Country = shippingDetails.ShippingAddress.Country;
                     billingDetails.BillingAdress.Phone = shippingDetails.ShippingAddress.Phone;
                 }
+                else if (existingAddressToUse == "billing")
+                {
+                    //do nothing
+                }
                 else
                 {
                     var form = controllerContext.HttpContext.Request.Form;
 
-                    billingDetails.BillingAdress.FullName = form["BillingAddress.FullName"];
-                    billingDetails.BillingAdress.Address1 = form["BillingAddress.Address"];
-                    billingDetails.BillingAdress.Address2 = form["BillingAddress.Address2"];
-                    billingDetails.BillingAdress.City = form["BillingAddress.City"];
-                    billingDetails.BillingAdress.State = form["BillingAddress.State"];
-                    billingDetails.BillingAdress.Zip = form["BillingAddress.Zip"];
-                    billingDetails.BillingAdress.Country = form["BillingAddress.Country"];
-                    billingDetails.BillingAdress.Phone = form["BillingAddress.Phone"];
+                    billingDetails.BillingAdress.FullName = form["NewBillingAddress.FullName"];
+                    billingDetails.BillingAdress.Address1 = form["NewBillingAddress.Address"];
+                    billingDetails.BillingAdress.Address2 = form["NewBillingAddress.Address2"];
+                    billingDetails.BillingAdress.City = form["NewBillingAddress.City"];
+                    billingDetails.BillingAdress.State = form["NewBillingAddress.State"];
+                    billingDetails.BillingAdress.Zip = form["NewBillingAddress.Zip"];
+                    billingDetails.BillingAdress.Country = form["NewBillingAddress.Country"];
+                    billingDetails.BillingAdress.Phone = form["NewBillingAddress.Phone"];
                 }
             }
 

@@ -1,0 +1,15 @@
+﻿@model ZG.Domain.Concrete.CheckoutDetails
+
+<h2>TODO: add payment infor here</h2>
+<h3>Billing address</h3>
+
+@if (Model.IsBillingAddressSameAsShippingAddress())
+{
+    @:Same as shipping address 
+}
+else
+{
+    @Html.Partial("Address", Model.PaymentInformation.BillingAdress)
+}
+
+@Html.ActionLink("Change", "Billing", "Cart")

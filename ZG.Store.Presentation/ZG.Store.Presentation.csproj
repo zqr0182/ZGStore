@@ -280,6 +280,7 @@
     <Content Include="Views\Cart\Billing.cshtml" />
     <Content Include="Views\Cart\ReviewOrder.cshtml" />
     <Content Include="Views\Shared\Address.cshtml" />
+    <Content Include="Views\Shared\PaymentInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
