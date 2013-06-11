@@ -51,6 +51,7 @@
     <Compile Include="CategoryService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="OrderService.cs" />
+    <Compile Include="PaymentService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Installers\ServicesInstaller.cs" />
     <Compile Include="ProductService.cs" />

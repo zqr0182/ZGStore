@@ -62,7 +62,6 @@ namespace ZG.Application
             UnitOfWork.Emails.Add(email);
             UnitOfWork.Commit();
 
-            //TODO: consider async processing the db operation and email sending
             EmailSendingResult result = _emailSender.Send(_emailSettings, subject, body, isBodyHtml);
 
             email.Status = result.Status.ToString();
