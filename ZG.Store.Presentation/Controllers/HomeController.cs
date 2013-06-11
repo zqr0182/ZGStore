@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 using ZG.Domain.Models;
 using ZG.Repository;
 using ZG.Application;
 
 namespace ZG.Store.Presentation.Controllers
 {
+    [SessionState(SessionStateBehavior.Disabled)]
     public class HomeController : Controller
     {
         private IUserService _userService;
