@@ -9,7 +9,7 @@
 
 @if (!Model.IsShippingAddressEmpty)
 {
-    using (Html.BeginForm("ReviewOrder", "Cart", new { useExisting = "shipping" }))
+    using (Html.BeginForm("ReviewOrder", "Checkout", new { useExisting = "shipping" }))
     {
         Html.RenderPartial("Address", Model.ShippingAddress);
         <p>
@@ -20,7 +20,7 @@
 
 @if (!Model.IsExistingBillingAddressEmpty)
 {
-    using (Html.BeginForm("ReviewOrder", "Cart", new { useExisting = "billing" }))
+    using (Html.BeginForm("ReviewOrder", "Checkout", new { useExisting = "billing" }))
     {
         Html.RenderPartial("Address", Model.ExistingBillingAddress);
         <p>
@@ -30,7 +30,7 @@
 }
 
 <h2>Or enter a new billing address</h2>
-@using (Html.BeginForm("ReviewOrder", "Cart"))
+@using (Html.BeginForm("ReviewOrder", "Checkout"))
 {
     @Html.ValidationSummary(true)
 

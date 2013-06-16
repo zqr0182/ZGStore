@@ -9,7 +9,6 @@ using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers
 {
-    [SessionState(SessionStateBehavior.Disabled)]
     public class ProductController : Controller
     {
         private IProductService _productService;

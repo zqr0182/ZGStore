@@ -22,7 +22,7 @@ namespace ZG.Store.Presentation.Binders
             }
 
             RouteData routeData = controllerContext.RouteData; 
-            if (string.Compare(routeData.Values["controller"].ToString(), "Cart", StringComparison.InvariantCultureIgnoreCase) == 0 &&
+            if (string.Compare(routeData.Values["controller"].ToString(), "Checkout", StringComparison.InvariantCultureIgnoreCase) == 0 &&
                 string.Compare(routeData.Values["action"].ToString(), "ReviewOrder", StringComparison.InvariantCultureIgnoreCase) == 0 &&
                 string.Compare(controllerContext.HttpContext.Request.HttpMethod, "POST", StringComparison.InvariantCultureIgnoreCase) == 0)
             {
@@ -61,7 +61,7 @@ namespace ZG.Store.Presentation.Binders
                 }
             }
 
-            if (string.Compare(routeData.Values["controller"].ToString(), "Cart", StringComparison.InvariantCultureIgnoreCase) == 0 &&
+            if (string.Compare(routeData.Values["controller"].ToString(), "Checkout", StringComparison.InvariantCultureIgnoreCase) == 0 &&
                 string.Compare(routeData.Values["action"].ToString(), "Shipping", StringComparison.InvariantCultureIgnoreCase) == 0 &&
                 string.Compare(controllerContext.HttpContext.Request.HttpMethod, "POST", StringComparison.InvariantCultureIgnoreCase) == 0)
             {

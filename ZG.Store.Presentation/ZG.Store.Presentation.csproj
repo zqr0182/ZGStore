@@ -185,6 +185,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChildActionController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RemoteDataController.cs" />
@@ -276,12 +277,13 @@
     <Content Include="Views\Cart\GetCartContent.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Cart\Shipping.cshtml" />
+    <Content Include="Views\Checkout\Shipping.cshtml" />
     <Content Include="Views\Cart\Completed.cshtml" />
-    <Content Include="Views\Cart\Billing.cshtml" />
-    <Content Include="Views\Cart\ReviewOrder.cshtml" />
+    <Content Include="Views\Checkout\Billing.cshtml" />
+    <Content Include="Views\Checkout\ReviewOrder.cshtml" />
     <Content Include="Views\Shared\Address.cshtml" />
     <Content Include="Views\Shared\PaymentInformation.cshtml" />
+    <Content Include="Views\Shared\ShippingSpeed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
