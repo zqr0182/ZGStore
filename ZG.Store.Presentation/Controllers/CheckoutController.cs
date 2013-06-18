@@ -38,14 +38,7 @@ namespace ZG.Store.Presentation.Controllers
             if (ModelState.IsValid)
             {
                 if (!checkoutDetails.IsBillingAddressAvailable())
-                {
-                    //var billingViewModel = new BillingViewModel()
-                    //    {
-                    //        BillingAddress = new Address(),
-                    //        ShippingAddress = checkoutDetails.ShippingDetails.ShippingAddress
-                    //    };
-                    //return View("Billing", billingViewModel);
-
+                {                   
                     return Billing(checkoutDetails);
                 }
                 else

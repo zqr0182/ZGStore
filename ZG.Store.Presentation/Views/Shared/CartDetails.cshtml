@@ -1,0 +1,10 @@
+﻿@model IEnumerable<ZG.Domain.Concrete.CartLine>
+
+@foreach (var cartLine in Model)
+{
+    <div>@cartLine.Product.ProductName</div>
+    <div>@cartLine.Product.Price.ToString("c")</div>
+    <div>Quantity: @cartLine.Quantity</div>
+
+}
+

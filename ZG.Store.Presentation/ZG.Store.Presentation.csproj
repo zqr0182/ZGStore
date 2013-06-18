@@ -284,6 +284,7 @@
     <Content Include="Views\Shared\Address.cshtml" />
     <Content Include="Views\Shared\PaymentInformation.cshtml" />
     <Content Include="Views\Shared\ShippingSpeed.cshtml" />
+    <Content Include="Views\Shared\CartDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
