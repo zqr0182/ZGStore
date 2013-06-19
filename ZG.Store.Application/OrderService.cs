@@ -13,7 +13,7 @@ namespace ZG.Application
 {
     public interface IOrderService
     {
-        void ProcessOrder(Cart cart, ShippingDetails shippingDetails, PaymentInformation billingDetails);
+        void ProcessOrder(Cart cart, CheckoutDetails checkoutDetails);
     }
 
     public class OrderService : BaseService, IOrderService
@@ -26,7 +26,7 @@ namespace ZG.Application
             _emailService = emailService;
         }
 
-        public void ProcessOrder(Cart cart, ShippingDetails shippingDetails, PaymentInformation billingDetails)
+        public void ProcessOrder(Cart cart, CheckoutDetails checkoutDetails)
         {
             //TODO: more order process steps
 

@@ -285,6 +285,8 @@
     <Content Include="Views\Shared\PaymentInformation.cshtml" />
     <Content Include="Views\Shared\ShippingSpeed.cshtml" />
     <Content Include="Views\Shared\CartDetails.cshtml" />
+    <Content Include="Views\Shared\OrderSummary.cshtml" />
+    <Content Include="Views\Checkout\OrderConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

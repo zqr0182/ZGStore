@@ -28,7 +28,7 @@ namespace ZG.Store.Presentation.Controllers
         }
 
         [HttpPost]
-        public ViewResult Shipping(Cart cart, CheckoutDetails checkoutDetails)
+        public ActionResult Shipping(Cart cart, CheckoutDetails checkoutDetails)
         {
             if (!cart.Lines.Any())
             {
@@ -38,13 +38,12 @@ namespace ZG.Store.Presentation.Controllers
             if (ModelState.IsValid)
             {
                 if (!checkoutDetails.IsBillingAddressAvailable())
-                {                   
-                    return Billing(checkoutDetails);
+                {
+                    return RedirectToAction("Billing");
                 }
                 else
                 {
-                    var reviewOrderViewModel = new ReviewOrderViewModel { Cart = cart, CheckoutDetails = checkoutDetails };
-                    return View("ReviewOrder", reviewOrderViewModel);
+                    return RedirectToAction("ReviewOrder");
                 }
             }
             else
@@ -64,7 +63,6 @@ namespace ZG.Store.Presentation.Controllers
             return View("Billing", billingViewModel);
         }
 
-        [HttpPost]
         public ViewResult ReviewOrder(Cart cart, CheckoutDetails checkoutDetails)
         {
             if (!cart.Lines.Any())
@@ -78,17 +76,30 @@ namespace ZG.Store.Presentation.Controllers
             }
 
             if (ModelState.IsValid)
-            {
-                //TODO: move these code into checkout action
-                //_orderProcessor.ProcessOrder(cart, shipping, billing);
-                //cart.Clear();
-
+            { 
                 var reviewOrderViewModel = new ReviewOrderViewModel {Cart = cart, CheckoutDetails = checkoutDetails};
                 return View(reviewOrderViewModel);
             }
             else
             {
-                return Billing(checkoutDetails);
+                return Billing(checkoutDetails); //???
+            }
+        }
+
+        [HttpPost]
+        public ViewResult PlaceOrder(Cart cart, CheckoutDetails checkoutDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                _orderProcessor.ProcessOrder(cart, checkoutDetails);
+                cart.Clear();
+
+                return View("OrderConfirmation");
+            }
+            else
+            {
+                var reviewOrderViewModel = new ReviewOrderViewModel { Cart = cart, CheckoutDetails = checkoutDetails };
+                return View("ReviewOrder", reviewOrderViewModel);
             }
         }
     }

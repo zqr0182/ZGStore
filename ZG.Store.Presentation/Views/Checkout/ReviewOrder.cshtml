@@ -17,3 +17,10 @@
 @Html.Partial("ShippingSpeed")
 
 @Html.Partial("CartDetails", Model.Cart.Lines)
+
+@using (Html.BeginForm("PlaceOrder", "Checkout"))
+{
+    <input type="submit" value="Place your order" />
+}
+
+@Html.Partial("OrderSummary", Model.Cart)

@@ -38,9 +38,29 @@ namespace ZG.Domain.Concrete
             _cartLines.RemoveAll(l => l.Product.Id == product.Id);
         }
 
-        public decimal ComputeTotalValue()
+        public decimal ComputeTotalItems()
         {
             return _cartLines.Sum(l => l.Quantity * l.Product.Price);
+        }
+
+        public decimal ComputeShippingAndHandling()
+        {
+            return 2.5m;
+        }
+
+        public decimal ComputeTotalBeforeTax()
+        {
+            return ComputeTotalItems() + ComputeShippingAndHandling();
+        }
+
+        public decimal ComputeTax()
+        {
+            return 4.5m;
+        }
+
+        public decimal ComputeOrderTotal()
+        {
+            return ComputeTotalBeforeTax() + ComputeTax();
         }
 
         public void Clear()

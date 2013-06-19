@@ -115,7 +115,7 @@ namespace ZG.Store.Tests.DomainModels
             _cart.AddItem(_p1, 2);
 
             //Act
-            decimal total = _cart.ComputeTotalValue();
+            decimal total = _cart.ComputeTotalItems();
 
             //Assert
             Assert.AreEqual(total, 650M);

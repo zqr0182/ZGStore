@@ -1,0 +1,15 @@
+﻿@model ZG.Domain.Concrete.Cart
+
+<h2>Order Summary</h2>
+@if(Model.NumerbOfItems > 0)
+{
+    <div>Items (@Model.NumerbOfItems): @Model.ComputeTotalItems().ToString("c")</div> 
+    <div>Shipping & Handling: @Model.ComputeShippingAndHandling().ToString("c")</div>
+    <hr />
+    <div>Total before tax: @Model.ComputeTotalBeforeTax().ToString("c")</div>
+    <div>Estimated tax to be collected: @Model.ComputeTax().ToString("c")</div>
+    <hr />
+    <div>Order total: @Model.ComputeOrderTotal().ToString("c")</div>
+}
+
+
