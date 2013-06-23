@@ -48,11 +48,11 @@ namespace ZG.Store.Presentation.Controllers
             }
             else
             {
-                return View(checkoutDetails.ShippingDetails);
+                return View("CartEmpty");
             }
         }
 
-        public ViewResult Billing(CheckoutDetails checkoutDetails)
+        public ViewResult Billing(Cart cart, CheckoutDetails checkoutDetails)
         {
             var billingViewModel = new BillingViewModel()
             {
@@ -65,14 +65,9 @@ namespace ZG.Store.Presentation.Controllers
 
         public ViewResult ReviewOrder(Cart cart, CheckoutDetails checkoutDetails)
         {
-            if (!cart.Lines.Any())
+            if (!cart.Lines.Any() || string.IsNullOrWhiteSpace(checkoutDetails.ShippingDetails.ShippingAddress.FullName) || string.IsNullOrWhiteSpace(checkoutDetails.PaymentInformation.BillingAdress.FullName))
             {
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
-            }
-
-            if (string.IsNullOrWhiteSpace(checkoutDetails.ShippingDetails.ShippingAddress.FullName))
-            {
-                ModelState.AddModelError("", "Sorry, your shipping details is empty!");
             }
 
             if (ModelState.IsValid)
@@ -82,7 +77,7 @@ namespace ZG.Store.Presentation.Controllers
             }
             else
             {
-                return Billing(checkoutDetails); //???
+                return View("CartEmpty");
             }
         }
 
