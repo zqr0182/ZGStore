@@ -51,7 +51,7 @@ namespace ZG.Store.Presentation.Binders
                     var form = controllerContext.HttpContext.Request.Form;
 
                     billingDetails.BillingAdress.FullName = form["NewBillingAddress.FullName"];
-                    billingDetails.BillingAdress.Address1 = form["NewBillingAddress.Address"];
+                    billingDetails.BillingAdress.Address1 = form["NewBillingAddress.Address1"];
                     billingDetails.BillingAdress.Address2 = form["NewBillingAddress.Address2"];
                     billingDetails.BillingAdress.City = form["NewBillingAddress.City"];
                     billingDetails.BillingAdress.State = form["NewBillingAddress.State"];

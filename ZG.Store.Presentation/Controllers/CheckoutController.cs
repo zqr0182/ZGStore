@@ -37,14 +37,7 @@ namespace ZG.Store.Presentation.Controllers
 
             if (ModelState.IsValid)
             {
-                if (!checkoutDetails.IsBillingAddressAvailable())
-                {
-                    return RedirectToAction("Billing");
-                }
-                else
-                {
-                    return RedirectToAction("ReviewOrder");
-                }
+                return RedirectToAction("Billing");
             }
             else
             {

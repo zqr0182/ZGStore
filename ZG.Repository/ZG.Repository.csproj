@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\AbstractCriteria.cs" />
+    <Compile Include="Criterias\ShippingProvidersByActive.cs" />
     <Compile Include="Criterias\ICriteria.cs" />
+    <Compile Include="Criterias\OrderStatusByActive.cs" />
     <Compile Include="Criterias\ProductsByCategory.cs" />
     <Compile Include="Criterias\ProductsByPage.cs" />
     <Compile Include="Criterias\TopCategories.cs" />

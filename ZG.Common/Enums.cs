@@ -31,4 +31,18 @@ namespace ZG.Common
         Shipping,
         ReviewOrder
     }
+
+    public enum OrderStatusEnum
+    {
+        Accepted,
+        Verifyed,
+        Shipped,
+        PaymentError
+    }
+
+    public enum ShippingProviderEnum
+    {
+        UPS,
+        USPS_Ground
+    }
 }

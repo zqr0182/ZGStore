@@ -12,5 +12,5 @@ namespace ZG.Common
         {
             return string.Compare(string1, sring2, StringComparison.OrdinalIgnoreCase) == 0;
         }
-    }
+    } 
 }

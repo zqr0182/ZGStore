@@ -42,6 +42,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,8 @@
     <Compile Include="Abstract\IEmailSender.cs" />
     <Compile Include="Abstract\IEmailSettingsFactory.cs" />
     <Compile Include="Concrete\EmailSender.cs" />
+    <Compile Include="Concrete\Util.cs" />
+    <Compile Include="Concrete\ZGCache.cs" />
     <Compile Include="Concrete\MailAddresses.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Concrete\EmailSettings.cs" />
