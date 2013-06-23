@@ -24,4 +24,11 @@ namespace ZG.Common
         Success,
         Failed
     }
+
+    public enum CheckoutBreadCrumb
+    {
+        Billing,
+        Shipping,
+        ReviewOrder
+    }
 }

@@ -7,6 +7,8 @@ using System.Web.SessionState;
 using ZG.Domain.Models;
 using ZG.Application;
 using ZG.Store.Presentation.ViewModels;
+using ZG.Domain.Concrete;
+using ZG.Common;
 
 namespace ZG.Store.Presentation.Controllers
 {
@@ -37,5 +39,23 @@ namespace ZG.Store.Presentation.Controllers
             return PartialView(model);
         }
 
+        [ChildActionOnly]
+        public PartialViewResult CheckoutBreadCrumbs(string activeCrumb)
+        {
+            if (string.Compare(activeCrumb, "shipping", true) == 0)
+            {
+                ViewBag.ActiveCrumb = CheckoutBreadCrumb.Shipping;
+            }
+            else if (string.Compare(activeCrumb, "billing", true) == 0)
+            {
+                ViewBag.ActiveCrumb = CheckoutBreadCrumb.Billing;
+            }
+            else if (string.Compare(activeCrumb, "revieworder", true) == 0)
+            {
+                ViewBag.ActiveCrumb = CheckoutBreadCrumb.ReviewOrder;
+            }
+
+            return PartialView();
+        }
     }
 }

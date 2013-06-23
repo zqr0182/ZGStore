@@ -4,6 +4,8 @@
     ViewBag.Title = "ZGStore: Shipping Details";
 }
 
+@Html.Action("CheckoutBreadCrumbs", "ChildAction", new {activeCrumb = "Shipping"})
+
 <p>Please enter your shipping details, and we'll ship your goods right away!</p>
 
 @using (Html.BeginForm()) {

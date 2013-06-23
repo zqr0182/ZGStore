@@ -1,0 +1,33 @@
+﻿@using ZG.Common;
+
+@if (ViewBag.ActiveCrumb != CheckoutBreadCrumb.Shipping)
+{
+    @Html.ActionLink("Shipping", "Shipping", "Checkout")
+}
+else
+{
+    @:Shipping
+}
+
+> 
+
+@if (ViewBag.ActiveCrumb != CheckoutBreadCrumb.Billing)
+{
+    @Html.ActionLink("Payment", "Billing", "Checkout")
+}
+else
+{
+    @:Payment
+}
+
+> 
+
+@if (ViewBag.ActiveCrumb != CheckoutBreadCrumb.ReviewOrder)
+{
+    @Html.ActionLink("Place Order", "ReviewOrder", "Checkout")
+}
+else
+{
+    @:Place Order
+}
+
