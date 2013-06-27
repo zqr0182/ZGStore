@@ -54,9 +54,9 @@ namespace ZG.Store.Presentation.Binders
                     billingDetails.BillingAdress.Address1 = form["NewBillingAddress.Address1"];
                     billingDetails.BillingAdress.Address2 = form["NewBillingAddress.Address2"];
                     billingDetails.BillingAdress.City = form["NewBillingAddress.City"];
-                    billingDetails.BillingAdress.State = form["NewBillingAddress.State"];
+                    billingDetails.BillingAdress.State = form["State"];
                     billingDetails.BillingAdress.Zip = form["NewBillingAddress.Zip"];
-                    billingDetails.BillingAdress.Country = form["NewBillingAddress.Country"];
+                    billingDetails.BillingAdress.Country = form["Country"];
                     billingDetails.BillingAdress.Phone = form["NewBillingAddress.Phone"];
                 }
             }
@@ -72,9 +72,9 @@ namespace ZG.Store.Presentation.Binders
                 shippingDetails.ShippingAddress.Address1 = form["ShippingAddress.Address1"];
                 shippingDetails.ShippingAddress.Address2 = form["ShippingAddress.Address2"];
                 shippingDetails.ShippingAddress.City = form["ShippingAddress.City"];
-                shippingDetails.ShippingAddress.State = form["ShippingAddress.State"];
+                shippingDetails.ShippingAddress.State = form["State"];
                 shippingDetails.ShippingAddress.Zip = form["ShippingAddress.Zip"];
-                shippingDetails.ShippingAddress.Country = form["ShippingAddress.Country"];
+                shippingDetails.ShippingAddress.Country = form["Country"];
                 shippingDetails.ShippingAddress.Phone = form["ShippingAddress.Phone"];
                 bool giftWrap;
                 if (bool.TryParse(form["GiftWrap"], out giftWrap))

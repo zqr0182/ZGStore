@@ -16,11 +16,13 @@ namespace ZG.Store.Tests.Controllers
         public void Can_Get_Categories()
         {
             //Arrange
-            var mock = new Mock<ICategoryService>();
-            mock.Setup(c => c.GetActiveCategoryNames()).Returns(new [] {"Category 1", "Category 2", "Category 3"});
+            var mockCategoryService = new Mock<ICategoryService>();
+            mockCategoryService.Setup(c => c.GetActiveCategoryNames()).Returns(new[] { "Category 1", "Category 2", "Category 3" });
+
+            var mockGeographyService = new Mock<IGeographyService>();
 
             //Act
-            var controller = new ChildActionController(mock.Object);
+            var controller = new ChildActionController(mockCategoryService.Object, mockGeographyService.Object);
             var results = (CategoriesViewModel)controller.Categories(null).Model;
             var categories = results.Categories.ToArray();
 
@@ -35,11 +37,13 @@ namespace ZG.Store.Tests.Controllers
         public void Indicates_Selected_Category()
         {
             //Arrange
-            var mock = new Mock<ICategoryService>();
-            mock.Setup(c => c.GetActiveCategoryNames()).Returns(new[] { "Category 1", "Category 2", "Category 3" });
+            var mockCategoryService = new Mock<ICategoryService>();
+            mockCategoryService.Setup(c => c.GetActiveCategoryNames()).Returns(new[] { "Category 1", "Category 2", "Category 3" });
+
+            var mockGeographyService = new Mock<IGeographyService>();
 
             //Act
-            var controller = new ChildActionController(mock.Object);
+            var controller = new ChildActionController(mockCategoryService.Object, mockGeographyService.Object);
             var results = (CategoriesViewModel)controller.Categories("Category 2").Model;
 
             //Assert

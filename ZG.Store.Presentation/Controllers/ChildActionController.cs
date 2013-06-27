@@ -16,10 +16,12 @@ namespace ZG.Store.Presentation.Controllers
     public class ChildActionController : Controller
     {
         private ICategoryService _categoryService;
+        private IGeographyService _geographyService;
 
-        public ChildActionController(ICategoryService categoryService)
+        public ChildActionController(ICategoryService categoryService, IGeographyService geographyService)
         {
             _categoryService = categoryService;
+            _geographyService = geographyService;
         }
 
         [ChildActionOnly]
@@ -56,6 +58,26 @@ namespace ZG.Store.Presentation.Controllers
             }
 
             return PartialView();
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult States(int id = 0)
+        {
+            var states = _geographyService.GetStates();
+            //states.Insert(0, new State { Id = 0, StateCode = "--- Select State ---" });
+
+            var stateViewModel = new StatesViewModel { States = states, SelectedStateId = id };
+            return PartialView(stateViewModel);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Countries(int id = 0)
+        {
+            var countries = _geographyService.GetCountries();
+            //countries.Insert(0, new Country { Id = 0, CountryName = "--- Select Country ---" });
+
+            var countryViewModel = new CountriesViewModel { Countries = countries, SelectedCountryId = id };
+            return PartialView(countryViewModel);
         }
     }
 }

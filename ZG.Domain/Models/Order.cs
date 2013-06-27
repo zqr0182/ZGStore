@@ -70,16 +70,25 @@ namespace ZG.Domain.Models
         public decimal Shipping { get; set; }
         public decimal Tax { get; set; }
         public bool Active { get; set; }
-        [ForeignKey("BillingCountryID")]
-        public virtual Country BillingCountry { get; set; }
-        [ForeignKey("OrderStatusID")]
-        public virtual OrderStatus OrderStatu { get; set; }
-        [ForeignKey("BillingProvinceID")]
-        public virtual Province BillingProvince { get; set; }
-        [ForeignKey("ShippingProviderID")]
-        public virtual ShippingProvider ShippingProvider { get; set; }
+
         [ForeignKey("BillingStateID")]
         public virtual State BillingState { get; set; }
+        [ForeignKey("BillingProvinceID")]
+        public virtual Province BillingProvince { get; set; }
+        [ForeignKey("BillingCountryID")]
+        public virtual Country BillingCountry { get; set; }
+
+        [ForeignKey("ShippingProviderID")]
+        public virtual ShippingProvider ShippingProvider { get; set; }
+        [ForeignKey("ShippingStateID")]
+        public virtual State ShippingState { get; set; }
+        [ForeignKey("ShippingProvinceID")]
+        public virtual Province ShippingProvince { get; set; }
+        [ForeignKey("ShippingCountryID")]
+        public virtual Country ShippingCountry { get; set; }
+        [ForeignKey("OrderStatusID")]
+        public virtual OrderStatus OrderStatu { get; set; }
+
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

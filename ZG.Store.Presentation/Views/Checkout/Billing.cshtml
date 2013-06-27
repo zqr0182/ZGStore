@@ -75,7 +75,8 @@
             @Html.LabelFor(m => m.NewBillingAddress.State)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.NewBillingAddress.State)
+            @*@Html.EditorFor(m => m.NewBillingAddress.State)*@
+            @Html.Action("States", "ChildAction")
             @Html.ValidationMessageFor(m => m.NewBillingAddress.State)
         </div>
 
@@ -83,7 +84,8 @@
             @Html.LabelFor(m => m.NewBillingAddress.Country)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(m => m.NewBillingAddress.Country)
+            @*@Html.EditorFor(m => m.NewBillingAddress.Country)*@
+            @Html.Action("Countries", "ChildAction")
             @Html.ValidationMessageFor(m => m.NewBillingAddress.Country)
         </div>
 

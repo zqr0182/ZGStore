@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BaseService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="GeographyService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="PaymentService.cs" />
