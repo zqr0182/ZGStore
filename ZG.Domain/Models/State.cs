@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
@@ -19,8 +20,10 @@ namespace ZG.Domain.Models
         public string StateCode { get; set; }
         public Nullable<bool> Active { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
-        //public virtual ICollection<Order> Orders1 { get; set; }
+        [InverseProperty("BillingState")]
+        public virtual ICollection<Order> OrdersBilling { get; set; }
+        [InverseProperty("ShippingState")]
+        public virtual ICollection<Order> OrdersShipping { get; set; }
         public virtual ICollection<Shipping> Shippings { get; set; }
         public virtual ICollection<Tax> Taxes { get; set; }
     }

@@ -68,7 +68,7 @@ namespace ZG.Domain.Models
         public decimal Tax { get; set; }
         public bool Active { get; set; }
 
-        [ForeignKey("BillingStateID")]
+        [ForeignKey("BillingStateID")]        
         public virtual State BillingState { get; set; }
         [ForeignKey("BillingProvinceID")]
         public virtual Province BillingProvince { get; set; }
