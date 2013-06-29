@@ -15,10 +15,10 @@ namespace ZG.Domain.Models
         public int InventoryID { get; set; }
         public int ProductOptionID { get; set; }
         public bool Active { get; set; }
-        [Required]
+
         [ForeignKey("InventoryID")]
         public virtual Inventory Inventory { get; set; }
-        [Required]
+
         [ForeignKey("ProductOptionID")]
         public virtual ProductOption ProductOption { get; set; }
     }

@@ -16,10 +16,10 @@ namespace ZG.Domain.Models
         public int ProductReviewID { get; set; }
         public int Rating { get; set; }
         public bool Active { get; set; }
-        [Required]
+
         [ForeignKey("ProductReviewID")]
         public virtual ProductReview ProductReview { get; set; }
-        [Required]
+
         [ForeignKey("ProductReviewCategoryID")]
         public virtual ProductReviewCategory ProductReviewCategory { get; set; }
     }

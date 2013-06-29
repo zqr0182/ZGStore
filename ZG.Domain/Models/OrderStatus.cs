@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class OrderStatus : IEntity  
     {
-        public OrderStatus()
-        {
-            this.Orders = new List<Order>();
-        }
-
         [Key]
         public int Id { get; set; }
         [MaxLength(50)]

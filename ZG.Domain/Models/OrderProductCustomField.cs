@@ -17,10 +17,10 @@ namespace ZG.Domain.Models
         [MaxLength(400)]
         public string OrderProductCustomFieldValue { get; set; }
         public bool Active { get; set; }
-        [Required]
+
         [ForeignKey("CustomFieldID")]
         public virtual CustomField CustomField { get; set; }
-        [Required]
+
         [ForeignKey("OrderProductID")]
         public virtual OrderProduct OrderProduct { get; set; }
     }

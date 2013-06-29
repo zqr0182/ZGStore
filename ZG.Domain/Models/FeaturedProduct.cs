@@ -17,7 +17,7 @@ namespace ZG.Domain.Models
         public bool Active { get; set; }
         [ForeignKey("CategoryID")]
         public virtual Category Category { get; set; }
-        [Required]
+
         [ForeignKey("ProductID")]
         public virtual Product Product { get; set; }
     }

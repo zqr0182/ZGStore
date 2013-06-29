@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class InventoryAction : IEntity  
     {
-        public InventoryAction()
-        {
-            this.Inventories = new List<Inventory>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]

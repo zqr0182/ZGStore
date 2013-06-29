@@ -61,7 +61,7 @@ namespace ZG.Application
                 ShippingAddress2 = checkoutDetails.ShippingDetails.ShippingAddress.Address2,
                 ShippingCity = checkoutDetails.ShippingDetails.ShippingAddress.City,
                 ShippingStateID = checkoutDetails.ShippingDetails.ShippingAddress.StateId,
-                ShippingProvinceID = 37, //TODO: fix this
+                ShippingProvinceID = 13, //TODO: fix this
                 ShippingCountryID = checkoutDetails.ShippingDetails.ShippingAddress.CountryId,
                 ShippingZipcode = checkoutDetails.ShippingDetails.ShippingAddress.Zip,
                 Comments = "",

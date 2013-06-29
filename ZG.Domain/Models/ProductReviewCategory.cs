@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class ProductReviewCategory : IEntity  
     {
-        public ProductReviewCategory()
-        {
-            this.ProductReviewCaregoryProductReviews = new List<ProductReviewCaregoryProductReview>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]

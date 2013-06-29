@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class CouponType : IEntity  
     {
-        public CouponType()
-        {
-            this.Coupons = new List<Coupon>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]

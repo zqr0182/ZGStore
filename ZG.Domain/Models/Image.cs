@@ -21,7 +21,7 @@ namespace ZG.Domain.Models
         [MaxLength(200)]
         public string ImageURL { get; set; }
         public bool Active { get; set; }
-        [Required]
+
         [ForeignKey("ProductID")]
         public virtual Product Product { get; set; }
     }

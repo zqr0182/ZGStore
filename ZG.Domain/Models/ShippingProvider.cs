@@ -9,12 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class ShippingProvider : IEntity  
     {
-        public ShippingProvider()
-        {
-            this.Orders = new List<Order>();
-            this.Shippings = new List<Shipping>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]

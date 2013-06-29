@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class CustomFieldType : IEntity  
     {
-        public CustomFieldType()
-        {
-            this.CustomFields = new List<CustomField>();
-        }
-
         [Key]
         public int Id { get; set; }
         [MaxLength(50)]

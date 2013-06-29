@@ -15,7 +15,7 @@ namespace ZG.Domain.Models
         public int GiftRegistryID { get; set; }
         public Nullable<int> ProductID { get; set; }
         public bool Active { get; set; }
-        [Required]
+ 
         [ForeignKey("GiftRegistryID")]
         public virtual GiftRegistry GiftRegistry { get; set; }
         [ForeignKey("ProductID")]

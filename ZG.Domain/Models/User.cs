@@ -12,13 +12,6 @@ namespace ZG.Domain.Models
 {
     public partial class User : IEntity
     {
-        public User()
-        {
-            this.Addresses = new List<Address>();
-            this.GiftRegistries = new List<GiftRegistry>();
-            this.ProductReviews = new List<ProductReview>();
-        }
-
         [NotMapped]
         public int Id { get; set; }
         [Key]

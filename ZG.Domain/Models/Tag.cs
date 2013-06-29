@@ -9,11 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class Tag : IEntity  
     {
-        public Tag()
-        {
-            this.ProductTags = new List<ProductTag>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]

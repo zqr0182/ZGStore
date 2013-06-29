@@ -36,14 +36,13 @@ namespace ZG.Domain.Models
         public DateTime CreationDate { get; set; }
         public bool IsBilling { get; set; }
         public bool IsShipping { get; set; }
-        [Required]
+ 
         [ForeignKey("CountryID")]
         public virtual Country Country { get; set; }
         [ForeignKey("ProvinceID")]
         public virtual Province Province { get; set; }
         [ForeignKey("StateID")]
         public virtual State State { get; set; }
-        [Required]
         [ForeignKey("UserID")]
         public virtual User User { get; set; }
     }

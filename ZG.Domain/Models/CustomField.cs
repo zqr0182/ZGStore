@@ -10,11 +10,6 @@ namespace ZG.Domain.Models
 {
     public partial class CustomField : IEntity  
     {
-        public CustomField()
-        {
-            this.OrderProductCustomFields = new List<OrderProductCustomField>();
-        }
-
         [Key]
         public int Id { get; set; }
         public Nullable<int> ProductID { get; set; }
@@ -24,7 +19,7 @@ namespace ZG.Domain.Models
         public int CustomFieldTypeID { get; set; }
         public bool IsRequired { get; set; }
         public bool Active { get; set; }
-        [Required]
+
         [ForeignKey("CustomFieldTypeID")]
         public virtual CustomFieldType CustomFieldType { get; set; }
         [ForeignKey("ProductID")]

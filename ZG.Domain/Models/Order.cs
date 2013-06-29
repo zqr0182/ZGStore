@@ -10,11 +10,6 @@ namespace ZG.Domain.Models
 {
     public partial class Order : IEntity
     {
-        public Order()
-        {
-            this.OrderProducts = new List<OrderProduct>();
-        }
-
         [Key]
         public int Id { get; set; }
         public int? UserId { get; set; }
@@ -40,10 +35,10 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string BillingCity { get; set; }
-        //[Required]
+        [Required]
         public int BillingStateID { get; set; }
         public int? BillingProvinceID { get; set; }
-        //[Required]
+        [Required]
         public int BillingCountryID { get; set; }
         [Required]
         [MaxLength(50)]
@@ -56,10 +51,10 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string ShippingCity { get; set; }
-        //[Required]
+        [Required]
         public int ShippingStateID { get; set; }
         public int? ShippingProvinceID { get; set; }
-        //[Required]
+        [Required]
         public int ShippingCountryID { get; set; }
         [Required]
         [MaxLength(50)]
@@ -73,23 +68,19 @@ namespace ZG.Domain.Models
         public decimal Tax { get; set; }
         public bool Active { get; set; }
 
-        //[Required]
         [ForeignKey("BillingStateID")]
         public virtual State BillingState { get; set; }
         [ForeignKey("BillingProvinceID")]
         public virtual Province BillingProvince { get; set; }
-        //[Required]
         [ForeignKey("BillingCountryID")]
         public virtual Country BillingCountry { get; set; }
 
         [ForeignKey("ShippingProviderID")]
         public virtual ShippingProvider ShippingProvider { get; set; }
-        //[Required]
         [ForeignKey("ShippingStateID")]
         public virtual State ShippingState { get; set; }
         [ForeignKey("ShippingProvinceID")]
         public virtual Province ShippingProvince { get; set; }
-        //[Required]
         [ForeignKey("ShippingCountryID")]
         public virtual Country ShippingCountry { get; set; }
         [ForeignKey("OrderStatusID")]

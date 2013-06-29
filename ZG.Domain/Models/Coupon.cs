@@ -25,7 +25,7 @@ namespace ZG.Domain.Models
         public System.DateTime IssuedDate { get; set; }
         public Nullable<System.DateTime> ExpirationDate { get; set; }
         public bool Active { get; set; }
-        [Required]
+ 
         [ForeignKey("CouponTypeID")]
         public virtual CouponType CouponType { get; set; }
         [ForeignKey("ProductID")]

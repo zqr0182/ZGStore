@@ -10,12 +10,6 @@ namespace ZG.Domain.Models
 {
     public partial class ProductOption : IEntity  
     {
-        public ProductOption()
-        {
-            this.InventoryProductOptions = new List<InventoryProductOption>();
-            this.OrderProductOptions = new List<OrderProductOption>();
-        }
-
         [Key]
         public int Id { get; set; }
         [Required]
@@ -29,7 +23,7 @@ namespace ZG.Domain.Models
         public bool Active { get; set; }
         public virtual ICollection<InventoryProductOption> InventoryProductOptions { get; set; }
         public virtual ICollection<OrderProductOption> OrderProductOptions { get; set; }
-        [Required]
+ 
         [ForeignKey("ProductID")]
         public virtual Product Product { get; set; }
     }

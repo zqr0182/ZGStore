@@ -9,25 +9,6 @@ namespace ZG.Domain.Models
 {
     public partial class Product : IEntity  
     {
-        public Product()
-        {
-            this.Coupons = new List<Coupon>();
-            this.CustomFields = new List<CustomField>();
-            this.FeaturedProducts = new List<FeaturedProduct>();
-            this.GiftRegistryProducts = new List<GiftRegistryProduct>();
-            this.Images = new List<Image>();
-            this.Inventories = new List<Inventory>();
-            this.OrderProducts = new List<OrderProduct>();
-            this.ProductDownloadKeys = new List<ProductDownloadKey>();
-            this.ProductCategories = new List<ProductCategory>();
-            this.ProductOptions = new List<ProductOption>();
-            this.ProductReviews = new List<ProductReview>();
-            this.ProductTags = new List<ProductTag>();
-            this.RelatedProducts = new List<RelatedProduct>();
-            this.RelatedProducts1 = new List<RelatedProduct>();
-            this.Shippings = new List<Shipping>();
-        }
-
         [Key]
         public int Id { get; set; }
         [MaxLength(50)]
