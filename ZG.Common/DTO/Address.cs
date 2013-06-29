@@ -21,12 +21,14 @@ namespace ZG.Common.DTO
         public string Address2 { get; set; }
 
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string City { get; set; }
+        public int CountryId { get; set; }
+
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public int StateId { get; set; }
 
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string State { get; set; }
+        public string City { get; set; }
 
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
         public string Province { get; set; }
@@ -34,10 +36,6 @@ namespace ZG.Common.DTO
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
         public string Zip { get; set; }
-
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string Country { get; set; }
 
         [Required(ErrorMessage = ValidationErrorMessage.RequiredAddressPhone)]
         [RegularExpression(Constants.PhonePatternTenDigits, ErrorMessage = ValidationErrorMessage.Phone)]

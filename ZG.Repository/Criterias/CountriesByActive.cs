@@ -18,14 +18,18 @@ namespace ZG.Repository.Criterias
 
         public override IQueryable<Country> BuildQueryOver(IQueryable<Country> queryBase)
         {
-            IQueryable<Country> countries = base.BuildQueryOver(queryBase);
+            const string UnitedStates = "UNITED STATES";
+            IQueryable<Country> allCountries = base.BuildQueryOver(queryBase);
 
             if (_activeOnly)
             {
-                countries = countries.Where(s => (s.Active));
+                allCountries = allCountries.Where(s => s.Active);
             }
 
-            return countries;
+            var us = allCountries.Where(s => (s.Active) && s.CountryName == UnitedStates);
+            var otherCountries = allCountries.Where(s => (s.Active) && s.CountryName != UnitedStates);
+
+            return us.Union(otherCountries);
         }
     }
 }

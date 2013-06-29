@@ -13,7 +13,7 @@ namespace ZG.Common
         public const string ConfirmPassword = "Please enter the same password again.";
         public const string Email = "Please enter a valid email address.";
         public const string ConfirmEmail = "Please enter the same e-mail address again.";
-        public const string Required = "This field is required.";
+        public const string Required = "This field is required";
         public const string RequiredAddressPhone = "Please supply a phone number so we can call if there are any problems using this address.";
         public const string Phone = "Please enter a valid phone number.";
     }

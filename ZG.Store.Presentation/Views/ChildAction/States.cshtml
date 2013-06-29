@@ -1,3 +1,4 @@
 ﻿@model ZG.Store.Presentation.ViewModels.StatesViewModel
 
-@Html.DropDownList("State", new SelectList(Model.States, "Id", "StateCode"))
+@Html.DropDownListFor(m => m.StateId, new SelectList(Model.States, "Id", "StateCode"), "--- Select State ---")
+@Html.ValidationMessageFor(model => model.StateId)

@@ -12,8 +12,8 @@ namespace ZG.Application
 {
     public interface IGeographyService
     {
-        IList<State> GetStates(bool isActive = true);
-        IList<Country> GetCountries(bool isActive = true);
+        IEnumerable<State> GetStates(bool isActive = true);
+        IEnumerable<Country> GetCountries(bool isActive = true);
     }
 
     public class GeographyService : BaseService, IGeographyService
@@ -23,16 +23,25 @@ namespace ZG.Application
         {
         }
 
-        public IList<State> GetStates(bool activeOnly = true)
+        public IEnumerable<State> GetStates(bool activeOnly = true)
         {
             string key = activeOnly ? "ActiveStates" : "AllStates";
-            return ZGCache.Cache(key, () => { return UnitOfWork.States.Matches(new StatesByActive(activeOnly)).ToList(); }, TimeSpan.FromMinutes(60));
+            return ZGCache.Cache(key, () => 
+            { 
+                var states = UnitOfWork.States.Matches(new StatesByActive(activeOnly)).ToList();
+                return states;
+            }, TimeSpan.FromMinutes(60));
         }
 
-        public IList<Country> GetCountries(bool activeOnly = true)
+        public IEnumerable<Country> GetCountries(bool activeOnly = true)
         {
             string key = activeOnly ? "ActiveCountries" : "AllCountries";
-            return ZGCache.Cache(key, () => { return UnitOfWork.Countries.Matches(new CountriesByActive(activeOnly)).ToList(); }, TimeSpan.FromMinutes(60));
+            return ZGCache.Cache(key, () => 
+            {
+                var countries = UnitOfWork.Countries.Matches(new CountriesByActive(activeOnly)).ToList(); 
+
+                return countries;
+            }, TimeSpan.FromMinutes(60));
         }
     }
 }

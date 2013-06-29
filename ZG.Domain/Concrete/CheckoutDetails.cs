@@ -35,9 +35,9 @@ namespace ZG.Domain.Concrete
                    && ShippingDetails.ShippingAddress.Address1.SameAs(PaymentInformation.BillingAdress.Address1)
                    && ShippingDetails.ShippingAddress.Address2.SameAs(PaymentInformation.BillingAdress.Address2)
                    && ShippingDetails.ShippingAddress.City.SameAs(PaymentInformation.BillingAdress.City)
-                   && ShippingDetails.ShippingAddress.State.SameAs(PaymentInformation.BillingAdress.State)
+                   && ShippingDetails.ShippingAddress.StateId == PaymentInformation.BillingAdress.StateId
                    && ShippingDetails.ShippingAddress.Province.SameAs(PaymentInformation.BillingAdress.Province)
-                   && ShippingDetails.ShippingAddress.Country.SameAs(PaymentInformation.BillingAdress.Country)
+                   && ShippingDetails.ShippingAddress.CountryId == PaymentInformation.BillingAdress.CountryId
                    && ShippingDetails.ShippingAddress.Zip.SameAs(PaymentInformation.BillingAdress.Zip);
         }
     }

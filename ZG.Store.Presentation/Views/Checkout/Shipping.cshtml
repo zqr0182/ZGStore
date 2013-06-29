@@ -29,28 +29,24 @@
         <p>Address 2:
             @Html.EditorFor(model => model.ShippingAddress.Address2)
             @Html.ValidationMessageFor(model => model.ShippingAddress.Address2)
+        </p>     
+
+        <p>Country:
+            @Html.Action("Countries", "ChildAction", new { id = Model.ShippingAddress.CountryId })
         </p>
+
+        <p>State:
+            @Html.Action("States", "ChildAction", new { id = Model.ShippingAddress.StateId})
+        </p>        
 
         <p>City:
             @Html.EditorFor(model => model.ShippingAddress.City)
             @Html.ValidationMessageFor(model => model.ShippingAddress.City)
-        </p>
-
-        <p>State:
-           @* @Html.EditorFor(model => model.ShippingAddress.State)*@
-            @Html.Action("States", "ChildAction")
-            @Html.ValidationMessageFor(model => model.ShippingAddress.State)
-        </p>
+        </p>   
 
         <p>ZIP:
             @Html.EditorFor(model => model.ShippingAddress.Zip)
             @Html.ValidationMessageFor(model => model.ShippingAddress.Zip)
-        </p>
-
-        <p>Country:
-            @*@Html.EditorFor(model => model.ShippingAddress.Country)*@
-            @Html.Action("Countries", "ChildAction")
-            @Html.ValidationMessageFor(model => model.ShippingAddress.Country)
         </p>
         
         <p>Phone Number:

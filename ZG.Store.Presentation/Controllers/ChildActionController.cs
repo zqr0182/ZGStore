@@ -61,22 +61,20 @@ namespace ZG.Store.Presentation.Controllers
         }
 
         [ChildActionOnly]
-        public PartialViewResult States(int id = 0)
+        public PartialViewResult States(int? id)
         {
             var states = _geographyService.GetStates();
-            //states.Insert(0, new State { Id = 0, StateCode = "--- Select State ---" });
 
-            var stateViewModel = new StatesViewModel { States = states, SelectedStateId = id };
+            var stateViewModel = new StatesViewModel { States = states, StateId = id };
             return PartialView(stateViewModel);
         }
 
         [ChildActionOnly]
-        public PartialViewResult Countries(int id = 0)
+        public PartialViewResult Countries(int? id)
         {
             var countries = _geographyService.GetCountries();
-            //countries.Insert(0, new Country { Id = 0, CountryName = "--- Select Country ---" });
 
-            var countryViewModel = new CountriesViewModel { Countries = countries, SelectedCountryId = id };
+            var countryViewModel = new CountriesViewModel { Countries = countries, CountryId = id };
             return PartialView(countryViewModel);
         }
     }
