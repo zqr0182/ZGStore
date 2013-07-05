@@ -8,10 +8,11 @@ using ZG.Domain.Models;
 
 namespace ZG.Store.Presentation.ViewModels
 {
-    public class USCanadaViewModel
+    public class ProvincesViewModel
     {
-        public IEnumerable<Country> USCanada { get; set; }
+        public IEnumerable<Province> Provinces { get; set; }
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
-        public int? CountryId { get; set; }
+        public int? ProvinceId { get; set; }
+        public string Province { get; set; }
     }
 }

@@ -63,13 +63,17 @@
             @Html.ValidationMessageFor(m => m.NewBillingAddress.Address2)
         </div>        
 
-        <p>Country:
-            @Html.Action("Countries", "ChildAction")
+        <p id="countries">Country:
+            @Html.Action("USCanada", "ChildAction")
         </p>
 
-        <p>State:
+        <p id="states">State:
             @Html.Action("States", "ChildAction")
-        </p>               
+        </p> 
+        
+        <p id="provinces">Province:
+            @Html.Action("Provinces", "ChildAction", new { id = Model.ShippingAddress.ProvinceId})
+        </p>                   
 
         <div class="editor-label">
             @Html.LabelFor(m => m.NewBillingAddress.City)
@@ -107,4 +111,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/countrystateprovince")
 }

@@ -18,9 +18,7 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(2)]
         public string ProvinceCode { get; set; }
-        [Required]
-        [StringLength(10, MinimumLength = 10)]
-        public string Active { get; set; }
+        public bool? Active { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         [InverseProperty("BillingProvince")]
         public virtual ICollection<Order> OrdersBilling { get; set; }

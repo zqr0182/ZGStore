@@ -36,10 +36,13 @@ namespace ZG.Store.Presentation.Binders
                     billingDetails.BillingAdress.FullName = shippingDetails.ShippingAddress.FullName;
                     billingDetails.BillingAdress.Address1 = shippingDetails.ShippingAddress.Address1;
                     billingDetails.BillingAdress.Address2 = shippingDetails.ShippingAddress.Address2;
-                    billingDetails.BillingAdress.City = shippingDetails.ShippingAddress.City;
-                    billingDetails.BillingAdress.StateId = shippingDetails.ShippingAddress.StateId;
-                    billingDetails.BillingAdress.Zip = shippingDetails.ShippingAddress.Zip;
                     billingDetails.BillingAdress.CountryId = shippingDetails.ShippingAddress.CountryId;
+                    billingDetails.BillingAdress.StateId = shippingDetails.ShippingAddress.StateId;
+                    billingDetails.BillingAdress.State = shippingDetails.ShippingAddress.State;
+                    billingDetails.BillingAdress.ProvinceId = shippingDetails.ShippingAddress.ProvinceId;
+                    billingDetails.BillingAdress.Province = shippingDetails.ShippingAddress.Province;
+                    billingDetails.BillingAdress.City = shippingDetails.ShippingAddress.City;
+                    billingDetails.BillingAdress.Zip = shippingDetails.ShippingAddress.Zip;
                     billingDetails.BillingAdress.Phone = shippingDetails.ShippingAddress.Phone;
                 }
                 else if (existingAddressToUse == "billing")
@@ -53,10 +56,20 @@ namespace ZG.Store.Presentation.Binders
                     billingDetails.BillingAdress.FullName = form["NewBillingAddress.FullName"];
                     billingDetails.BillingAdress.Address1 = form["NewBillingAddress.Address1"];
                     billingDetails.BillingAdress.Address2 = form["NewBillingAddress.Address2"];
-                    billingDetails.BillingAdress.City = form["NewBillingAddress.City"];
-                    billingDetails.BillingAdress.StateId = int.Parse(form["StateId"]);
-                    billingDetails.BillingAdress.Zip = form["NewBillingAddress.Zip"];
                     billingDetails.BillingAdress.CountryId = int.Parse(form["CountryId"]);
+
+                    int stateId;
+                    int.TryParse(form["StateId"], out stateId);
+                    billingDetails.BillingAdress.StateId = stateId;
+                    billingDetails.BillingAdress.State = form["State"];
+
+                    int provinceId;
+                    int.TryParse(form["ProvinceId"], out provinceId);
+                    billingDetails.BillingAdress.ProvinceId = provinceId;
+                    billingDetails.BillingAdress.Province = form["Province"];
+
+                    billingDetails.BillingAdress.City = form["NewBillingAddress.City"];
+                    billingDetails.BillingAdress.Zip = form["NewBillingAddress.Zip"];
                     billingDetails.BillingAdress.Phone = form["NewBillingAddress.Phone"];
                 }
             }
@@ -71,10 +84,20 @@ namespace ZG.Store.Presentation.Binders
                 shippingDetails.ShippingAddress.FullName = form["ShippingAddress.FullName"];
                 shippingDetails.ShippingAddress.Address1 = form["ShippingAddress.Address1"];
                 shippingDetails.ShippingAddress.Address2 = form["ShippingAddress.Address2"];
-                shippingDetails.ShippingAddress.City = form["ShippingAddress.City"];
-                shippingDetails.ShippingAddress.StateId = int.Parse(form["StateId"]);
-                shippingDetails.ShippingAddress.Zip = form["ShippingAddress.Zip"];
                 shippingDetails.ShippingAddress.CountryId = int.Parse(form["CountryId"]);
+
+                int stateId;
+                int.TryParse(form["StateId"], out stateId);
+                shippingDetails.ShippingAddress.StateId = stateId;
+                shippingDetails.ShippingAddress.State = form["State"];
+
+                int provinceId;
+                int.TryParse(form["ProvinceId"], out provinceId);
+                shippingDetails.ShippingAddress.ProvinceId = provinceId;
+                shippingDetails.ShippingAddress.Province = form["Province"];
+
+                shippingDetails.ShippingAddress.City = form["ShippingAddress.City"];
+                shippingDetails.ShippingAddress.Zip = form["ShippingAddress.Zip"];
                 shippingDetails.ShippingAddress.Phone = form["ShippingAddress.Phone"];
                 bool giftWrap;
                 if (bool.TryParse(form["GiftWrap"], out giftWrap))

@@ -26,12 +26,16 @@ namespace ZG.Common.DTO
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public int StateId { get; set; }
 
+        public string State { get; set; }
+
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public int ProvinceId { get; set; }
+
+        public string Province { get; set; }
+
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
         public string City { get; set; }
-
-        [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]
-        public string Province { get; set; }
 
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [StringLength(50, ErrorMessage = ValidationErrorMessage.MaximumLength, MinimumLength = 2)]

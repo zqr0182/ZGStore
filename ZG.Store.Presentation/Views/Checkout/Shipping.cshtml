@@ -31,12 +31,16 @@
             @Html.ValidationMessageFor(model => model.ShippingAddress.Address2)
         </p>     
 
-        <p>Country:
-            @Html.Action("Countries", "ChildAction", new { id = Model.ShippingAddress.CountryId })
+        <p id="countries">Country:
+            @Html.Action("USCanada", "ChildAction", new { id = Model.ShippingAddress.CountryId })
         </p>
 
-        <p>State:
+        <p id="states">State:
             @Html.Action("States", "ChildAction", new { id = Model.ShippingAddress.StateId})
+        </p>  
+        
+        <p id="provinces">Province:
+            @Html.Action("Provinces", "ChildAction", new { id = Model.ShippingAddress.ProvinceId})
         </p>        
 
         <p>City:
@@ -72,4 +76,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/countrystateprovince")
 }

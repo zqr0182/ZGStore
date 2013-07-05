@@ -13,5 +13,6 @@ namespace ZG.Store.Presentation.ViewModels
         public IEnumerable<State> States { get; set; }
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public int? StateId { get; set; }
+        public string State { get; set; }
     }
 }

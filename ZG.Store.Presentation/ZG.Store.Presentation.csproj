@@ -198,6 +198,7 @@
     <Compile Include="ViewModels\BillingViewModel.cs" />
     <Compile Include="ViewModels\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\ProvincesViewModel.cs" />
     <Compile Include="ViewModels\CountriesViewModel.cs" />
     <Compile Include="ViewModels\PagingViewModel.cs" />
     <Compile Include="ViewModels\ProductListViewModel.cs" />
@@ -230,6 +231,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\Store\Cart.js" />
+    <Content Include="Scripts\Store\CountryStateProvince.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -291,7 +293,8 @@
     <Content Include="Views\Shared\CheckoutBreadCrumbs.cshtml" />
     <Content Include="Views\Checkout\CartEmpty.cshtml" />
     <Content Include="Views\ChildAction\States.cshtml" />
-    <Content Include="Views\ChildAction\Countries.cshtml" />
+    <Content Include="Views\ChildAction\USCanada.cshtml" />
+    <Content Include="Views\ChildAction\Provinces.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

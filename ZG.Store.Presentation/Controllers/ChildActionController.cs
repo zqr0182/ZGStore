@@ -70,12 +70,21 @@ namespace ZG.Store.Presentation.Controllers
         }
 
         [ChildActionOnly]
-        public PartialViewResult Countries(int? id)
+        public PartialViewResult Provinces(int? id)
         {
-            var countries = _geographyService.GetCountries();
+            var provinces = _geographyService.GetProvinces();
 
-            var countryViewModel = new CountriesViewModel { Countries = countries, CountryId = id };
-            return PartialView(countryViewModel);
+            var provinceViewModel = new ProvincesViewModel { Provinces = provinces, ProvinceId = id };
+            return PartialView(provinceViewModel);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult USCanada(int? id)
+        {
+            var usCanada = _geographyService.GetUSAndCanada();
+
+            var viewModel = new USCanadaViewModel { USCanada = usCanada, CountryId = id };
+            return PartialView(viewModel);
         }
     }
 }

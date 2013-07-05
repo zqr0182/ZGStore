@@ -21,6 +21,9 @@ namespace ZG.Store.Presentation
             bundles.Add(new ScriptBundle("~/bundles/store").Include(
                         "~/Scripts/Store/cart.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/countrystateprovince").Include(
+                        "~/Scripts/Store/CountryStateProvince.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

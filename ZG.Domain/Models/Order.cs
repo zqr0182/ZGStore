@@ -35,8 +35,7 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string BillingCity { get; set; }
-        [Required]
-        public int BillingStateID { get; set; }
+        public int? BillingStateID { get; set; }
         public int? BillingProvinceID { get; set; }
         [Required]
         public int BillingCountryID { get; set; }
@@ -51,8 +50,7 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(50)]
         public string ShippingCity { get; set; }
-        [Required]
-        public int ShippingStateID { get; set; }
+        public int? ShippingStateID { get; set; }
         public int? ShippingProvinceID { get; set; }
         [Required]
         public int ShippingCountryID { get; set; }

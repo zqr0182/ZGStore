@@ -12,8 +12,9 @@ namespace ZG.Application
 {
     public interface IGeographyService
     {
-        IEnumerable<State> GetStates(bool isActive = true);
-        IEnumerable<Country> GetCountries(bool isActive = true);
+        IEnumerable<State> GetStates(bool activeOnly = true);
+        IEnumerable<Province> GetProvinces(bool activeOnly = true);
+        IEnumerable<Country> GetUSAndCanada();
     }
 
     public class GeographyService : BaseService, IGeographyService
@@ -33,14 +34,22 @@ namespace ZG.Application
             }, TimeSpan.FromMinutes(60));
         }
 
-        public IEnumerable<Country> GetCountries(bool activeOnly = true)
+        public IEnumerable<Province> GetProvinces(bool activeOnly = true)
         {
-            string key = activeOnly ? "ActiveCountries" : "AllCountries";
-            return ZGCache.Cache(key, () => 
+            string key = activeOnly ? "ActiveProvinces" : "AllProvinces";
+            return ZGCache.Cache(key, () =>
             {
-                var countries = UnitOfWork.Countries.Matches(new CountriesByActive(activeOnly)).ToList(); 
+                var provinces = UnitOfWork.Provinces.Matches(new ProvincesByActive(activeOnly)).ToList();
+                return provinces;
+            }, TimeSpan.FromMinutes(60));
+        }
 
-                return countries;
+        public IEnumerable<Country> GetUSAndCanada()
+        {
+            return ZGCache.Cache("UsAndCanda", () =>
+            {
+                var usCanada = UnitOfWork.Countries.Matches(new USAndCanada()).ToList();
+                return usCanada;
             }, TimeSpan.FromMinutes(60));
         }
     }

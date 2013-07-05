@@ -6,6 +6,16 @@
 {
     <div>@Html.DisplayFor(m => m.Address2)</div>
 }
-<div>@Html.DisplayFor(m => m.City), @Html.DisplayFor(m => m.StateId) @Html.DisplayFor(m => m.Zip)</div>
+<div>@Html.DisplayFor(m => m.City), 
+    @if(Model.StateId > 0)
+    {
+        @Html.DisplayFor(m => m.State) 
+    }
+    else 
+    {
+        @Html.DisplayFor(m => m.Province) 
+    } 
+    @Html.DisplayFor(m => m.Zip)
+</div>
 <div>@Html.DisplayFor(m => m.CountryId)</div>
 <div>@Html.DisplayFor(m => m.Phone)</div>

@@ -2,3 +2,5 @@
 
 @Html.DropDownListFor(m => m.StateId, new SelectList(Model.States, "Id", "StateCode"), "--- Select State ---")
 @Html.ValidationMessageFor(model => model.StateId)
+
+@Html.HiddenFor(m => m.State)
