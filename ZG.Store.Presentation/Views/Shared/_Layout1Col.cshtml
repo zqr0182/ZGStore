@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="col-container">
+    <div class="col">
+        @RenderBody()
+    </div>
+</div>
+
+@section scripts {
+    @RenderSection("scripts", false)
+}

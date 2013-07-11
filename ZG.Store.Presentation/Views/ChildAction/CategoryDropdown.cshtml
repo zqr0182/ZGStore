@@ -1,0 +1,3 @@
+﻿@model ZG.Store.Presentation.ViewModels.CategoriesViewModel
+
+@Html.DropDownListFor(m => m.SelectedCategory, new SelectList(Model.Categories, Model.SelectedCategory), "--- Select Category ---")

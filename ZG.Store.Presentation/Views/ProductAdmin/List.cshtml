@@ -1,0 +1,8 @@
+﻿@model ZG.Store.Presentation.ViewModels.ProductListViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout1Col.cshtml";
+    ViewBag.Title = "List";
+}
+
+<h2>Product Categories:  @Html.Action("CategoryDropdown", "ChildAction", new { category = Model.CurrentCategory}) </h2>

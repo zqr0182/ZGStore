@@ -1,6 +1,7 @@
 ﻿@model ZG.Store.Presentation.Models.LoginModel
 
 @{
+    Layout = "~/Views/Shared/_Layout1Col.cshtml";
     ViewBag.Title = "ZGStore: Log in";
 }
 
@@ -45,6 +46,6 @@
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 
-@section Scripts {
+@section scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

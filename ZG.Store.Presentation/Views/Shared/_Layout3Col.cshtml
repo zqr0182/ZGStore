@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="colmask threecol">
+    <div class="colmid">
+        <div class="colleft">
+            <div class="col1">
+                @RenderBody()
+            </div>
+            <div class="col2">
+                <div id="categories">
+                    @{ Html.RenderAction("CategoryLinks", "ChildAction");}
+                </div>
+            </div>
+            <div class="col3">
+                @RenderSection("rightColumn", false)
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @RenderSection("scripts", false)
+}

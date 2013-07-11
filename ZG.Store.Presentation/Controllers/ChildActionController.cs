@@ -33,7 +33,16 @@ namespace ZG.Store.Presentation.Controllers
         }
 
         [ChildActionOnly]
-        public PartialViewResult Categories(string category)
+        public PartialViewResult CategoryLinks(string category)
+        {
+            IEnumerable<string> categories = _categoryService.GetActiveCategoryNames();
+            var model = new CategoriesViewModel { Categories = categories, SelectedCategory = category };
+
+            return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult CategoryDropdown(string category)
         {
             IEnumerable<string> categories = _categoryService.GetActiveCategoryNames();
             var model = new CategoriesViewModel { Categories = categories, SelectedCategory = category };
