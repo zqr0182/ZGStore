@@ -9,8 +9,7 @@ using ZG.Repository;
 using ZG.Application;
 
 namespace ZG.Store.Presentation.Controllers
-{
-    [SessionState(SessionStateBehavior.Disabled)]
+{   
     public class HomeController : Controller
     {
         private IUserService _userService;

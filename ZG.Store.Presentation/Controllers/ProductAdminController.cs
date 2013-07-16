@@ -9,7 +9,7 @@ using ZG.Store.Presentation.ViewModels;
 
 namespace ZG.Store.Presentation.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class ProductAdminController : Controller
     {
         private IProductService _productService;
