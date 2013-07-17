@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout1Col.cshtml";
-    ViewBag.Title = "List";
+    ViewBag.Title = "ZGStore Admin: List";
 }
 
 <h2>Product Categories:  @Html.Action("CategoryDropdown", "ChildAction", new { category = Model.CurrentCategory}) </h2>
@@ -13,11 +13,13 @@
 {
     <tr>
         <td>@prod.Id</td>
-        <td>@Html.ActionLink(prod.ProductName, "Edit", new {prod.Id})</td>
+        <td>@Html.RouteLink(prod.ProductName, "AdminProductEdit", new {id = prod.Id})</td>
         <td>@prod.Price.ToString("c")</td>
-        <td>@using (Html.BeginForm("Delete", "ProductAdmin"))
+        <td>@using (Html.BeginRouteForm("AdminProductDelete"))
             {
-                @Html.Hidden("ProductId", prod.Id)
+                @Html.Hidden("productId", prod.Id)
+                @Html.Hidden("category", Model.CurrentCategory)
+                @Html.Hidden("page", Model.CurrentPageNum)
                 <input type="submit" value="Delete" />
             }
         </td>

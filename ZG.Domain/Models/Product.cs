@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ZG.Common;
 using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
@@ -11,21 +12,32 @@ namespace ZG.Domain.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [MaxLength(50)]
         public string ProductName { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [MaxLength(50)]
         public string CatalogNumber { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public string Description { get; set; }
         public decimal Price { get; set; }
         public decimal SalePrice { get; set; }
-        public Nullable<decimal> Weight { get; set; }
-        public Nullable<decimal> ShippingWeight { get; set; }
-        public Nullable<decimal> Height { get; set; }
-        public Nullable<decimal> ShippingHeight { get; set; }
-        public Nullable<decimal> Length { get; set; }
-        public Nullable<decimal> ShippingLength { get; set; }
-        public Nullable<decimal> Width { get; set; }
-        public Nullable<decimal> ShippingWidth { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal Weight { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal ShippingWeight { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal Height { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal ShippingHeight { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal Length { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal ShippingLength { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal Width { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
+        public decimal ShippingWidth { get; set; }
         [MaxLength(400)]
         public string ProductLink { get; set; }
         public bool IsDownloadable { get; set; }
@@ -36,6 +48,7 @@ namespace ZG.Domain.Models
         public bool IsReviewEnabled { get; set; }
         public int TotalReviewCount { get; set; }
         public Nullable<decimal> RatingScore { get; set; }
+        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public bool Active { get; set; }
         public virtual ICollection<Coupon> Coupons { get; set; }
         public virtual ICollection<CustomField> CustomFields { get; set; }

@@ -198,6 +198,7 @@
     <Compile Include="ViewModels\BillingViewModel.cs" />
     <Compile Include="ViewModels\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\ProductEditViewModel.cs" />
     <Compile Include="ViewModels\ProvincesViewModel.cs" />
     <Compile Include="ViewModels\CountriesViewModel.cs" />
     <Compile Include="ViewModels\PagingViewModel.cs" />
@@ -300,6 +301,7 @@
     <Content Include="Views\Shared\_Layout1Col.cshtml" />
     <Content Include="Views\ProductAdmin\List.cshtml" />
     <Content Include="Views\ChildAction\CategoryDropdown.cshtml" />
+    <Content Include="Views\ProductAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

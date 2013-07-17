@@ -37,5 +37,20 @@ namespace ZG.Store.Presentation.Controllers
 
             return View(productListViewModel);
         }
+
+        public ViewResult Edit(int id)
+        {
+            var prod = _productService.GetProductById(id);
+
+            return View(prod);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int productId, string category, int page = 1)
+        {
+            //TODO: implement delete??? Maybe don't need the delete button. Active/Inactive a product is enough.
+            category = "Category 2";
+            return RedirectToRoute("AdminProductsByCategoryAndPage", new { category = category, page = page });
+        }
     }
 }

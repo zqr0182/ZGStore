@@ -1,0 +1,207 @@
+﻿@model ZG.Domain.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout1Col.cshtml";
+    ViewBag.Title = "ZGStore Admin: Edit";
+}
+
+<h2>Edit @Model.ProductName</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductName)
+            @Html.ValidationMessageFor(model => model.ProductName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CatalogNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CatalogNumber)
+            @Html.ValidationMessageFor(model => model.CatalogNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SalePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SalePrice)
+            @Html.ValidationMessageFor(model => model.SalePrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Weight)
+            @Html.ValidationMessageFor(model => model.Weight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingWeight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippingWeight)
+            @Html.ValidationMessageFor(model => model.ShippingWeight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Height)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Height)
+            @Html.ValidationMessageFor(model => model.Height)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingHeight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippingHeight)
+            @Html.ValidationMessageFor(model => model.ShippingHeight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Length)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Length)
+            @Html.ValidationMessageFor(model => model.Length)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingLength)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippingLength)
+            @Html.ValidationMessageFor(model => model.ShippingLength)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Width)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Width)
+            @Html.ValidationMessageFor(model => model.Width)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippingWidth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippingWidth)
+            @Html.ValidationMessageFor(model => model.ShippingWidth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductLink)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductLink)
+            @Html.ValidationMessageFor(model => model.ProductLink)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDownloadable)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDownloadable)
+            @Html.ValidationMessageFor(model => model.IsDownloadable)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDownloadKeyRequired)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDownloadKeyRequired)
+            @Html.ValidationMessageFor(model => model.IsDownloadKeyRequired)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDownloadKeyUnique)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDownloadKeyUnique)
+            @Html.ValidationMessageFor(model => model.IsDownloadKeyUnique)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DownloadURL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DownloadURL)
+            @Html.ValidationMessageFor(model => model.DownloadURL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsReviewEnabled)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsReviewEnabled)
+            @Html.ValidationMessageFor(model => model.IsReviewEnabled)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalReviewCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TotalReviewCount)
+            @Html.ValidationMessageFor(model => model.TotalReviewCount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RatingScore)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RatingScore)
+            @Html.ValidationMessageFor(model => model.RatingScore)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Active)
+            @Html.ValidationMessageFor(model => model.Active)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.RouteLink("Back to List", "AdminProducts")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
