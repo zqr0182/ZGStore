@@ -8,22 +8,18 @@
 <h2>Product Categories:  @Html.Action("CategoryDropdown", "ChildAction", new { category = Model.CurrentCategory}) </h2>
 
 <table>
-    <tr><th>ID</th><th>Name</th><th>Price</th><th>Actions</th></tr>
+    <tr><th>ID</th><th>Name</th><th>Price</th></tr>
 @foreach (var prod in Model.Products)
 {
     <tr>
         <td>@prod.Id</td>
         <td>@Html.RouteLink(prod.ProductName, "AdminProductEdit", new {id = prod.Id})</td>
         <td>@prod.Price.ToString("c")</td>
-        <td>@using (Html.BeginRouteForm("AdminProductDelete"))
-            {
-                @Html.Hidden("productId", prod.Id)
-                @Html.Hidden("category", Model.CurrentCategory)
-                @Html.Hidden("page", Model.CurrentPageNum)
-                <input type="submit" value="Delete" />
-            }
-        </td>
     </tr>
 }
     
 </table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/productadmin")
+}

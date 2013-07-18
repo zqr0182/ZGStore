@@ -19,7 +19,10 @@ namespace ZG.Store.Presentation
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/store").Include(
-                        "~/Scripts/Store/cart.js"));
+                        "~/Scripts/Store/Cart.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/productadmin").Include(
+                        "~/Scripts/Admin/ProductEditPage.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/countrystateprovince").Include(
                         "~/Scripts/Store/CountryStateProvince.js"));

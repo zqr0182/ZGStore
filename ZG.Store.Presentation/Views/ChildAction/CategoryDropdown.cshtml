@@ -1,3 +1,12 @@
 ﻿@model ZG.Store.Presentation.ViewModels.CategoriesViewModel
 
-@Html.DropDownListFor(m => m.SelectedCategory, new SelectList(Model.Categories, Model.SelectedCategory), "--- Select Category ---")
+@*@Html.DropDownListFor(m => m.SelectedCategory, new SelectList(Model.Categories, Model.SelectedCategory), "--- Select Category ---") })*@
+
+
+<select id="category" name="category">
+    <option>--- Select Category ---</option>
+    @foreach (var cat in Model.Categories)
+    {
+        <option data-url="@Url.RouteUrl("AdminProductsByCategory", new{category = cat})">@cat</option>
+    }
+</select> 
