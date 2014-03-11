@@ -21,6 +21,7 @@ using ZG.Application.Installers;
 using ZG.Store.Presentation.Binders;
 using ZG.Store.Presentation.Models;
 using ZG.Store.Presentation.Plumbing;
+using Castle.Facilities.Logging;
 
 namespace ZG.Store.Presentation
 {
@@ -63,6 +64,8 @@ namespace ZG.Store.Presentation
                                                         FromAssembly.Containing<CommonConcretesInstaller>(),
                                                         FromAssembly.Containing<RepositoriesInstaller>(),
                                                         FromAssembly.Containing<ServicesInstaller>());
+
+            _container.AddFacility<LoggingFacility>(f => f.UseNLog());
 
             var controllerFactory = new WindsorControllerFactory(_container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory); 
