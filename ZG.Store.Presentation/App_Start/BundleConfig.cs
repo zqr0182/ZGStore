@@ -25,10 +25,10 @@ namespace ZG.Store.Presentation
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
 
-            var coffeeBundle = new ScriptBundle("~/bundles/coffee");
-            coffeeBundle.Transforms.Add(new CoffeeCompiler());
-            coffeeBundle.Transforms.Add(new JsMinify());
-            bundles.Add(coffeeBundle.IncludeDirectory("~/Scripts/CoffeeScripts", "*.coffee"));
+            //var coffeeBundle = new ScriptBundle("~/bundles/coffee");
+            //coffeeBundle.Transforms.Add(new CoffeeCompiler());
+            //coffeeBundle.Transforms.Add(new JsMinify());
+            //bundles.Add(coffeeBundle.IncludeDirectory("~/Scripts/CoffeeScripts", "*.coffee"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css", "~/Content/pagination.css"));

@@ -8,24 +8,24 @@ using System.Web.Optimization;
 
 namespace ZG.Store.Presentation.App_Code
 {
-    public class CoffeeCompiler : IBundleTransform
-    {
-        public void Process(BundleContext context, BundleResponse response)
-        {
-            var coffeeEngine = new CoffeeSharp.CoffeeScriptEngine();
-            var compiledCoffeeScript = new StringBuilder();
+    //public class CoffeeCompiler : IBundleTransform
+    //{
+    //    public void Process(BundleContext context, BundleResponse response)
+    //    {
+    //        var coffeeEngine = new CoffeeSharp.CoffeeScriptEngine();
+    //        var compiledCoffeeScript = new StringBuilder();
 
-            foreach (var file in response.Files)
-            {
-                using (var reader = new StreamReader(file.FullName))
-                {
-                    compiledCoffeeScript.AppendFormat("{0}\n", coffeeEngine.Compile(reader.ReadToEnd()));
-                }
-            }
+    //        foreach (var file in response.Files)
+    //        {
+    //            using (var reader = new StreamReader(file.IncludedVirtualPath)) //TODO: file.IncludedVirtualPath may not work
+    //            {
+    //                compiledCoffeeScript.AppendFormat("{0}\n", coffeeEngine.Compile(reader.ReadToEnd()));
+    //            }
+    //        }
 
-            response.Content = compiledCoffeeScript.ToString();
-            response.ContentType = "text/javascript";
-            response.Cacheability = HttpCacheability.Public;
-        }
-    }
+    //        response.Content = compiledCoffeeScript.ToString();
+    //        response.ContentType = "text/javascript";
+    //        response.Cacheability = HttpCacheability.Public;
+    //    }
+    //}
 }

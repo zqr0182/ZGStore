@@ -8,6 +8,7 @@ namespace ZG.Store.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
