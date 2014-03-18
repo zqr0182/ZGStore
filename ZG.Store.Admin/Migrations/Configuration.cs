@@ -17,20 +17,48 @@ namespace ZG.Store.Admin.Migrations
 
         protected override void Seed(ZG.Store.Admin.Models.ApplicationDbContext context)
         {
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            this.AddUserAndRoles();
+        }
 
-            // Create 4 test users:
-            for (int i = 0; i < 4; i++)
+        bool AddUserAndRoles()
+        {
+            bool success = false;
+  
+            var idManager = new IdentityManager();
+            success = idManager.CreateRole("Admin");
+            if (!success == true) return success;
+  
+            success = idManager.CreateRole("CanEdit");
+            if (!success == true) return success;
+  
+            success = idManager.CreateRole("User");
+            if (!success) return success;
+  
+  
+            var newUser = new ApplicationUser()
             {
-                var user = new ApplicationUser()
-                {
-                    UserName = string.Format("czhang{0}", i.ToString()),
-                    FirstName = string.Format("FirstName{0}", i.ToString()),
-                    LastName = string.Format("LastName{0}", i.ToString()),
-                    Email = string.Format("Email{0}@Example.com", i.ToString()),
-                };
-                manager.Create(user, string.Format("Password{0}", i.ToString()));
-            }
+                UserName = "czhang",
+                FirstName = "Charles",
+                LastName = "Zhang",
+                Email = "zhangxiao1234@hotmail.com"
+            };
+  
+            // Be careful here - you  will need to use a password which will 
+            // be valid under the password rules for the application, 
+            // or the process will abort:
+            success = idManager.CreateUser(newUser, "Abc123456!");
+            if (!success) return success;
+  
+            success = idManager.AddUserToRole(newUser.Id, "Admin");
+            if (!success) return success;
+  
+            success = idManager.AddUserToRole(newUser.Id, "CanEdit");
+            if (!success) return success;
+  
+            success = idManager.AddUserToRole(newUser.Id, "User");
+            if (!success) return success;
+  
+            return success;
         }
     }
 }
