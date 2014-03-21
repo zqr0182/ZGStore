@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="/Scripts/angular.js"></script>
+<script src="/Scripts/angular-route.js"></script>
+<script src="/Scripts/App/storeAdminApp.js"></script>
+<script src="/Scripts/App/controllers.js"></script>
+
+<h2>Index</h2>
+
+<div ng-app="storeAdminApp">
+    <div ng-view></div>
+</div>
+@*@section Scripts {
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/storeAdminApp")
+}*@
