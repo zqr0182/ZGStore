@@ -24,7 +24,7 @@ namespace ZG.Store.Admin.Controllers
         public JsonResult List()
         {
             var prods = _prodService.GetActiveProducts(null, 1, 500);
-            return Json(prods);
+            return Json(prods, JsonRequestBehavior.AllowGet);
         }
 
         //

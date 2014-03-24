@@ -2,17 +2,11 @@
 @{
     ViewBag.Title = "Product Administration";
 }
-<script src="/Scripts/angular.js"></script>
-<script src="/Scripts/angular-route.js"></script>
-<script src="/Scripts/angular-resource.js"></script>
-<script src="/Scripts/App/storeAdminApp.js"></script>
-<script src="/Scripts/App/controllers.js"></script>
-<script src="/Scripts/App/services.js"></script>
 
 <div ng-app="storeAdminApp">
     <div ng-view></div>
 </div>
-@*@section Scripts {
+@section Scripts {
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/storeAdminApp")
-}*@
+}

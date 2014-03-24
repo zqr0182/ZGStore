@@ -1,6 +1,6 @@
 ﻿/// <reference path="../scripts/angular.js" />
 
-var adminApp = angular.module('storeAdminApp', ['ngRoute', 'storeAdminControllers', 'ProdService']);
+var adminApp = angular.module('storeAdminApp', ['ngRoute', 'storeAdminControllers', 'prodAdminServices']);
 
 adminApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/product/:prodId', { templateUrl: 'app/partials/Edit.html', controller: 'EditProductCtrl' })
