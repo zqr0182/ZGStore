@@ -24,14 +24,14 @@ namespace ZG.Store.Admin
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/angular.js"
-                , "~/Scripts/angular-route.js"
-                , "~/Scripts/angular-resource.js"
+                "~/App/lib/angular/angular.js"
+                , "~/App/lib/angular/angular-route.js"
+                , "~/App/lib/angular/angular-resource.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/storeAdminApp").Include(
-                "~/Scripts/App/storeAdminApp.js"
-                ,"~/Scripts/App/controllers.js"
-                , "~/Scripts/App/services.js"
+                "~/App/js/storeAdminApp.js"
+                , "~/App/js/controllers.js"
+                , "~/App/js/services.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
