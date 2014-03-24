@@ -5,7 +5,7 @@ controllers.controller('EditProductCtrl', ['$scope', '$http',
       $scope.P1 = 'test';
   }]);
 
-controllers.controller('ProductListCtrl', ['$scope', '$routeParams',
-  function ($scope, $routeParams) {
-      $scope.P1 = 'test';
+controllers.controller('ProductListCtrl', ['$scope', '$routeParams', 'ProdService',
+  function ($scope, $routeParams, ProdService) {
+      $scope.Products = ProdService.get();
   }]);

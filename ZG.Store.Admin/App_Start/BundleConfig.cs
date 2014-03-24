@@ -23,10 +23,11 @@ namespace ZG.Store.Admin
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js", "~/Scripts/angular-route.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js", "~/Scripts/angular-route.js", "~/Scripts/angular-resource.js"));
             bundles.Add(new ScriptBundle("~/bundles/storeAdminApp").Include(
                 "~/Scripts/App/storeAdminApp.js",
-                "~/Scripts/App/controllers.js"
+                "~/Scripts/App/controllers.js",
+                "~/Scripts/App/services.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

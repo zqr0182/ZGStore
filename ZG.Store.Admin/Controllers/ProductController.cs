@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ZG.Application;
 
 namespace ZG.Store.Admin.Controllers
 {
     public class ProductController : Controller
     {
+        readonly IProductService _prodService;
+        public ProductController(IProductService prodService)
+        {
+            _prodService = prodService;
+        }
         //
         // GET: /Product/
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult List()
+        {
+            var prods = _prodService.GetActiveProducts(null, 1, 500);
+            return Json(prods);
         }
 
         //

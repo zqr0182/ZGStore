@@ -1,5 +1,27 @@
 ﻿
 
-<h2>List</h2>
+<h2>Product List</h2>
 
-<a href="#/product/5">P1</a>
+<table ng-controller="ProductListCtrl">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Price</td>
+        <td>Sale Price</td>
+        <td>Active</td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="prod in Products.Products">
+        <td>{{prod.Id}}</td>
+        <td>{{prod.Name}}</td>
+        <td>{{prod.Description}}</td>
+        <td>{{prod.Price}}</td>
+        <td>{{prod.SalesPrice}}</td>
+        <td>{{prod.Active}}</td>
+        <td>
+            <input type="button" ng-click="EditProd" />
+            <input type="button" ng-click="DeleteProd" />
+        </td>
+    </tr>
+</table>
