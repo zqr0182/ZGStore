@@ -2,7 +2,7 @@
 
 <h2>Product List</h2>
 
-<table ng-controller="ProductListCtrl">
+<table>
     <tr>
         <td>Id</td>
         <td>Name</td>
@@ -20,7 +20,7 @@
         <td>{{prod.SalesPrice}}</td>
         <td>{{prod.Active}}</td>
         <td>
-            <input type="button" ng-click="EditProd" value="Edit" />
+            <input type="button" ng-click="go('/product/edit/' + prod.Id)" value="Edit" />
             <input type="button" ng-click="DeleteProd" value="Delete" />
         </td>
     </tr>

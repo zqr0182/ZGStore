@@ -60,26 +60,10 @@ namespace ZG.Store.Admin.Controllers
 
         //
         // GET: /Product/Edit/5
-        public ActionResult Edit(int id)
+        public JsonResult Edit(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Product/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var prod = _prodService.GetProductById(id);
+            return Json(prod, JsonRequestBehavior.AllowGet);
         }
 
         //

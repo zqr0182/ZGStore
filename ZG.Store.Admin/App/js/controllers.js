@@ -1,11 +1,14 @@
 ﻿var controllers = angular.module('storeAdminControllers', []);
 
-controllers.controller('EditProductCtrl', ['$scope', '$http',
-  function ($scope, $http) {
-      $scope.P1 = 'test';
+controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService',
+  function ($scope, $http, $routeParams, ProdService) {
+      $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
   }]);
 
-controllers.controller('ProductListCtrl', ['$scope', '$routeParams', 'ProdService',
-  function ($scope, $routeParams, ProdService) {
-      $scope.Products = ProdService.get();
+controllers.controller('ProductListCtrl', ['$scope', '$location', 'ProdService',
+  function ($scope, $location, ProdService) {
+      $scope.Products = ProdService.products.get();
+      $scope.go = function (path) {
+          $location.path(path);
+      }
   }]);

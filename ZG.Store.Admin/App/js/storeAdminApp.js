@@ -3,7 +3,7 @@
 var adminApp = angular.module('storeAdminApp', ['ngRoute', 'storeAdminControllers', 'prodAdminServices']);
 
 adminApp.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/product/:prodId', { templateUrl: 'app/partials/Edit.html', controller: 'EditProductCtrl' })
+    $routeProvider.when('/product/edit/:prodId', { templateUrl: 'app/partials/Edit.html', controller: 'EditProductCtrl' })
     .when('/product', { templateUrl: 'app/partials/list.html', controller: 'ProductListCtrl' })
     .otherwise({ redirectTo: '/product' });
 }]);
