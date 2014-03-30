@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZG.Application;
+using ZG.Domain.Models;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -64,6 +65,13 @@ namespace ZG.Store.Admin.Controllers
         {
             var prod = _prodService.GetProductById(id);
             return Json(prod, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Edit(Product prod)
+        {
+            _prodService.Update(prod);
+            return Json(new { Message = "Product saved successfully." }, JsonRequestBehavior.AllowGet); 
         }
 
         //

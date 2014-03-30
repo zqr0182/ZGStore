@@ -2,5 +2,54 @@
 
 <h2>Edit</h2>
 <div>
-    {{prod.ProductName}}
+    Product Name: <input type="text" ng-model="prod.ProductName" />
 </div>
+<div>
+    Is Active: Yes <input type="radio" ng-model="prod.Active" value="1" name="IsActive">
+               No <input type="radio" ng-model="prod.Active" value="0" name="IsActive">
+</div>
+<div>
+    Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
+</div>
+<div>
+    Description: <input type="text" ng-model="prod.Description" />
+</div>
+<div>
+    Price: <input type="text" ng-model="prod.Price" />
+</div>
+<div>
+    SalePrice: <input type="text" ng-model="prod.SalePrice" />
+</div>
+<div>
+    Weight: <input type="text" ng-model="prod.Weight" />
+</div>
+<div>
+    Shipping Weight: <input type="text" ng-model="prod.ShippingWeight" />
+</div>
+<div>
+    Height: <input type="text" ng-model="prod.Height" />
+</div>
+<div>
+    Shipping Height: <input type="text" ng-model="prod.ShippingHeight" />
+</div>
+<div>
+    Length: <input type="text" ng-model="prod.Length" />
+</div>
+<div>
+    Shipping Length: <input type="text" ng-model="prod.ShippingLength" />
+</div>
+<div>
+    Product Link: <input type="text" ng-model="prod.ProductLink" />
+</div>
+<div>
+    Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="1" name="IsReviewEnabled">
+               No <input type="radio" ng-model="prod.IsReviewEnabled" value="0" name="IsReviewEnabled">
+</div>
+<div>
+    Total Review Count: {{prod.TotalReviewCount}}
+</div>
+<div>
+    Rating Score: {{prod.RatingScore}}
+</div>
+<input type="button" ng-click="saveProd()" value="Save">
+<div>{{resultOfSave}}</div>

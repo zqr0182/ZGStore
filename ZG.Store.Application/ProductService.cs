@@ -14,6 +14,7 @@ namespace ZG.Application
     {
         ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
+        void Update(Product prod);
     }
 
     public class ProductService : BaseService, IProductService
@@ -44,6 +45,29 @@ namespace ZG.Application
         public Product GetProductById(int id)
         {
             return UnitOfWork.Products.MatcheById(id);
+        }
+
+        public void Update(Product prod)
+        {
+            var product = GetProductById(prod.Id);
+            product.ProductName = prod.ProductName;
+            product.CatalogNumber = prod.CatalogNumber;
+            product.Description = prod.Description;
+            product.Price = prod.Price;
+            product.SalePrice = prod.SalePrice;
+            product.Weight = prod.Weight;
+            product.ShippingWeight = prod.ShippingWeight;
+            product.Height = prod.Height;
+            product.ShippingHeight = prod.ShippingHeight;
+            product.Length = prod.Length;
+            product.ShippingLength = prod.ShippingLength;
+            product.Width = prod.Width;
+            product.ShippingWidth = prod.ShippingWidth;
+            product.ProductLink = prod.ProductLink;
+            product.IsReviewEnabled = prod.IsReviewEnabled;
+            product.Active = prod.Active;
+
+            UnitOfWork.Commit();
         }
     }
 }
