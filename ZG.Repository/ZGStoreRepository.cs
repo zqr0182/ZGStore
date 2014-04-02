@@ -15,6 +15,7 @@ namespace ZG.Repository
     {
         IQueryable<T> MatcheAll();
         T MatcheById(int id);
+        T MatcheById(int id, params string[] includePaths);
         void Add(T newEntity);
         void Remove(T entity);
         IQueryable<T> Matches(ICriteria<T> criteria);
@@ -39,6 +40,17 @@ namespace ZG.Repository
         public virtual T MatcheById(int id)
         {
             return _dbSet.SingleOrDefault(o => o.Id == id);
+        }
+
+        public virtual T MatcheById(int id, params string[] includePaths)
+        {
+            var query = _dbSet.Where(o => o.Id == id);
+            foreach(string path in includePaths)
+            {
+                query.Include(path);
+            }
+
+            return query.FirstOrDefault();
         }
 
         public void Add(T newEntity)

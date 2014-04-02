@@ -65,5 +65,6 @@ namespace ZG.Domain.Models
         public virtual ICollection<RelatedProduct> RelatedProducts { get; set; }
         public virtual ICollection<RelatedProduct> RelatedProducts1 { get; set; }
         public virtual ICollection<Shipping> Shippings { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }
