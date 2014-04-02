@@ -24,9 +24,11 @@ namespace ZG.Store.Admin
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/App/lib/angular/angular.js"
+                "~/App/lib/angular/angular-file-upload-shim.js"
+                ,"~/App/lib/angular/angular.js"
                 , "~/App/lib/angular/angular-route.js"
                 , "~/App/lib/angular/angular-resource.js"
+                , "~/App/lib/angular/angular-file-upload.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/storeAdminApp").Include(
                 "~/App/js/storeAdminApp.js"

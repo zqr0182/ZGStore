@@ -26,16 +26,16 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
           }
       }
 
-      $scope.saveProd = function ($files) {
+      $scope.saveProd = function () {
           //ProdService.product.save({}, $scope.prod, function (value, responseHeaders) {
           //    $scope.resultOfSave = value.Message;
-          $scope.upload[index] = $upload.upload({
+          $upload.upload({
               url: '/product/edit',
               method: 'POST',
               headers: { 'my-header': 'my-header-value' },
               data: { prod: $scope.prod },
-              file: $files,
-              fileFormDataName: 'files'
+              file: $scope.selectedFiles,
+              fileFormDataName: 'myFile1, myFile2'
           }).progress(function (evt) {
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {

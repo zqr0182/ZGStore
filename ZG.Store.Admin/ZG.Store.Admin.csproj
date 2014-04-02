@@ -207,6 +207,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\lib\angular\angular-file-upload-html5-shim.js" />
+    <Content Include="App\lib\angular\angular-file-upload-html5-shim.min.js" />
+    <Content Include="App\lib\angular\angular-file-upload-shim.js" />
+    <Content Include="App\lib\angular\angular-file-upload-shim.min.js" />
+    <Content Include="App\lib\angular\angular-file-upload.js" />
+    <Content Include="App\lib\angular\angular-file-upload.min.js" />
+    <Content Include="App\lib\angular\FileAPI.min.js" />
     <Content Include="App\Partials\Create.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
