@@ -70,6 +70,18 @@ namespace ZG.Store.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(Product prod)
         {
+            foreach(string fileName in Request.Files)
+            {
+                var file = Request.Files[fileName];
+                if(file.ContentLength > 0)
+                {
+                    var prodImage = new ProductImage { ProductId = prod.Id, ImageMimeType = file.ContentType, ImageData = new byte[file.ContentLength] };
+                    file.InputStream.Read(prodImage.ImageData, 0, file.ContentLength);
+
+                    prod.ProductImages.Add(prodImage);
+                }
+            }
+
             _prodService.Update(prod);
             return Json(new { Message = "Product saved successfully." }, JsonRequestBehavior.AllowGet); 
         }

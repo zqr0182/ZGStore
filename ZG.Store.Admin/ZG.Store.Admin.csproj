@@ -238,6 +238,8 @@
     <Content Include="App\js\controllers.js" />
     <Content Include="App\js\services.js" />
     <Content Include="App\js\storeAdminApp.js" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="JavaScript1.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App\lib\angular\errors.json" />
