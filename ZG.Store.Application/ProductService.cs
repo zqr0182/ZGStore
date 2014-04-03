@@ -44,7 +44,7 @@ namespace ZG.Application
 
         public Product GetProductById(int id)
         {
-            return UnitOfWork.Products.MatcheById(id, "ProductImages");
+            return UnitOfWork.Products.MatcheById(id);
         }
 
         public void Update(Product prod)

@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZG.Application;
 using ZG.Domain.Models;
+using Newtonsoft.Json;
 
 namespace ZG.Store.Admin.Controllers
 {
     public class ProductController : Controller
     {
         readonly IProductService _prodService;
-        public ProductController(IProductService prodService)
+        readonly IFileService _fileService;
+        public ProductController(IProductService prodService, IFileService fileService)
         {
             _prodService = prodService;
+            _fileService = fileService;
         }
         //
         // GET: /Product/
@@ -68,21 +72,24 @@ namespace ZG.Store.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Edit(Product prod)
+        public JsonResult Edit(string prod)
         {
+            var product = JsonConvert.DeserializeObject<Product>(prod);
+
+            string dirPath = Server.MapPath(string.Format("~/ProdImages/{0}", product.Id));
+            _fileService.CreateDirectory(dirPath);
+
             foreach(string fileName in Request.Files)
             {
-                var file = Request.Files[fileName];
-                if(file.ContentLength > 0)
+                var postedFile = Request.Files[fileName];
+                if (postedFile.ContentLength > 0)
                 {
-                    var prodImage = new ProductImage { ProductId = prod.Id, ImageMimeType = file.ContentType, ImageData = new byte[file.ContentLength] };
-                    file.InputStream.Read(prodImage.ImageData, 0, file.ContentLength);
-
-                    prod.ProductImages.Add(prodImage);
+                    string path = dirPath + "\\" + postedFile.FileName;
+                    postedFile.SaveAs(path);
                 }
             }
 
-            _prodService.Update(prod);
+            _prodService.Update(product);
             return Json(new { Message = "Product saved successfully." }, JsonRequestBehavior.AllowGet); 
         }
 

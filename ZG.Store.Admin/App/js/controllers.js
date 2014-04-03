@@ -39,7 +39,7 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
           }).progress(function (evt) {
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {
-              $scope.resultOfSave = value.Message;
+              $scope.resultOfSave = response.data.Message;
           }, null);
       }
   }]);
