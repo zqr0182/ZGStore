@@ -14,13 +14,16 @@ namespace ZG.Application
     {
         ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
+        ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         void Update(Product prod);
     }
 
     public class ProductService : BaseService, IProductService
     {
-        public ProductService(IUnitOfWork uow) : base(uow)
+        readonly IFileService _fileService;
+        public ProductService(IUnitOfWork uow, IFileService fileService) : base(uow)
         {
+            _fileService = fileService;
         }
 
         public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
@@ -45,6 +48,35 @@ namespace ZG.Application
         public Product GetProductById(int id)
         {
             return UnitOfWork.Products.MatcheById(id);
+        }
+
+        public ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory)
+        {
+            var viewModel = new ProductEditViewModel()
+            {
+                Id = prod.Id,
+                ProductName = prod.ProductName,
+                CatalogNumber = prod.CatalogNumber,
+                Description = prod.Description,
+                Price = prod.Price,
+                SalePrice = prod.SalePrice,
+                Weight = prod.Weight,
+                ShippingWeight = prod.ShippingWeight,
+                Height = prod.Height,
+                ShippingHeight = prod.ShippingHeight,
+                Length = prod.Length,
+                ShippingLength = prod.ShippingLength,
+                Width = prod.Width,
+                ShippingWidth = prod.ShippingWidth,
+                ProductLink = prod.ProductLink,
+                IsReviewEnabled = prod.IsReviewEnabled,
+                TotalReviewCount = prod.TotalReviewCount,
+                RatingScore = prod.RatingScore,
+                Active = prod.Active,
+                ProductImageNames = _fileService.GetFileNames(prodImageDirectory)
+            };
+
+            return viewModel;
         }
 
         public void Update(Product prod)

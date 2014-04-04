@@ -10,6 +10,7 @@ namespace ZG.Application
     public interface IFileService
     {
         void CreateDirectory(string path);
+        List<string> GetFileNames(string directory);
     }
 
     public class FileService : IFileService
@@ -20,6 +21,17 @@ namespace ZG.Application
             {
                 Directory.CreateDirectory(path);
             }
+        }
+
+        public List<string> GetFileNames(string directory)
+        {
+            var dirInfo = new DirectoryInfo(directory);
+            var files = dirInfo.GetFiles();
+
+            var fileNames = new List<string>();
+            fileNames.AddRange(files.Select(f => f.Name));
+
+            return fileNames;
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using ZG.Application;
 using ZG.Domain.Models;
 using Newtonsoft.Json;
+using ZG.Common;
+using ZG.Store.Admin.App_Code;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -30,13 +32,6 @@ namespace ZG.Store.Admin.Controllers
         {
             var prods = _prodService.GetActiveProducts(null, 1, 500);
             return Json(prods, JsonRequestBehavior.AllowGet);
-        }
-
-        //
-        // GET: /Product/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         //
@@ -68,7 +63,10 @@ namespace ZG.Store.Admin.Controllers
         public JsonResult Edit(int id)
         {
             var prod = _prodService.GetProductById(id);
-            return Json(prod, JsonRequestBehavior.AllowGet);
+            string dirPath = PathUtil.GetProductImageDirectory(id);
+            var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -76,7 +74,9 @@ namespace ZG.Store.Admin.Controllers
         {
             var product = JsonConvert.DeserializeObject<Product>(prod);
 
-            string dirPath = Server.MapPath(string.Format("~/ProdImages/{0}", product.Id));
+            //TODO: add validation of product here
+
+            string dirPath = PathUtil.GetProductImageDirectory(product.Id);
             _fileService.CreateDirectory(dirPath);
 
             foreach(string fileName in Request.Files)

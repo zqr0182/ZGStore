@@ -51,6 +51,11 @@
 <div>
     Rating Score: {{prod.RatingScore}}
 </div>
+<div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
+    <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
+    <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
+</div>
+<p style="clear:both"></p>
 <div>
     <input type="file" ng-file-select="onFileSelect($files)" multiple>
     <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">drop files here</div>
@@ -59,7 +64,7 @@
     <div ng-show="selectedFiles != null">
         <div class="sel-file" ng-repeat="f in selectedFiles">
             {{($index + 1) + '.'}}
-            <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+            <img class="thumbnail" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
             <span class="progress" ng-show="progress != ''">
                 {{progress}}%
             </span>

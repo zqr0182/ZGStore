@@ -13,6 +13,10 @@ namespace ZG.Store.Admin
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+#if DEBUG
+            routes.IgnoreRoute("{*browserlink}", new { browserlink = @".*/arterySignalR/ping" });
+#endif
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

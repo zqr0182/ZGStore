@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\CheckoutDetails.cs" />
+    <Compile Include="DTO\ProductEditViewModel.cs" />
     <Compile Include="DTO\ProductsPerPage.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />

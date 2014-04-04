@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZG.Common
 {
-    public class Constants
+    public static class Constants
     {
         public static readonly DateTime DefaultDateTime = new DateTime(1900, 1, 1);
         public const string PhonePatternTenDigits = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
@@ -14,5 +14,7 @@ namespace ZG.Common
         /// p
         /// </summary>
         public const string PageNumberQueryStringParam = "p";
+
+        public const string ProductImageDirectory = "ProdImages";
     }
 }

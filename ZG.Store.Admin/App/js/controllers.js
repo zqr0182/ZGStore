@@ -4,14 +4,18 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
   function ($scope, $http, $routeParams, ProdService, $timeout, $upload) {
       $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
       $scope.resultOfSave = '';
+      $scope.deleteProductImage = function(imageName)
+      {
+          ProdService.product.deleteProductImage();
+      }
       
       $scope.onFileSelect = function ($files) {
           $scope.progress = '';
-
           $scope.selectedFiles = $files;
           $scope.dataUrls = [];
           for (var i = 0; i < $files.length; i++) {
               var $file = $files[i];
+
               if (window.FileReader && $file.type.indexOf('image') > -1) {
                   var fileReader = new FileReader();
                   fileReader.readAsDataURL($files[i]);
@@ -40,6 +44,9 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {
               $scope.resultOfSave = response.data.Message;
+              for (var i = 0; i < $scope.selectedFiles.length; i++) {
+                  $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
+              }
           }, null);
       }
   }]);
