@@ -3,11 +3,26 @@
 controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', '$timeout', '$upload', 
   function ($scope, $http, $routeParams, ProdService, $timeout, $upload) {
       $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
-      $scope.isSuccessful = false;
+      $scope.showDeleteImageSuccessfulMsg = false;
+      $scope.showDeleteImageFailureMsg = false;
+      $scope.deleteImageFailureMsg = '';
+      $scope.isSaveSuccessful = false;
       $scope.errors = null;
       $scope.deleteProductImage = function(imageName)
       {
-          ProdService.product.deleteProductImage();
+          if (window.confirm('Are you sure you want to delete this image?')) {
+              var imageNameNoExtension = imageName.split('.').splice(0, 1)[0];
+              ProdService.productImage.remove({ prodId: $scope.prod.Id, imageName: imageName }, {}, function (value, responseHeaders) {
+                  if (value.Success) {
+                      $scope.showDeleteImageSuccessfulMsg = true;
+                      $scope.prod.ProductImageNames = value.Images;
+                  }
+                  else {
+                      $scope.showDeleteImageFailureMsg = true;
+                      $scope.deleteImageFailureMsg = value.Error;
+                  }
+              });
+          }
       }
       
       $scope.onFileSelect = function ($files) {
@@ -32,8 +47,6 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
       }
 
       $scope.saveProd = function () {
-          //ProdService.product.save({}, $scope.prod, function (value, responseHeaders) {
-          //    $scope.resultOfSave = value.Message;
           $upload.upload({
               url: '/product/edit',
               method: 'POST',
@@ -45,14 +58,14 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {
               if (response.data.Success) {
-                  $scope.isSuccessful = true;
+                  $scope.isSaveSuccessful = true;
                   $scope.errors = null;
                   for (var i = 0; i < $scope.selectedFiles.length; i++) {
                       $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
                   }
               }
               else {
-                  $scope.isSuccessful = false;
+                  $scope.isSaveSuccessful = false;
                   $scope.errors = response.data.Errors;
               }
           }, null);

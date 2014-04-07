@@ -3,6 +3,7 @@
 prodAdminServices.factory('ProdService', ['$resource', function ($resource) {
     return {
         products: $resource('product/list', {}, {}),
-        product: $resource('product/edit/:prodId', {}, {})
+        product: $resource('product/edit/:prodId', {}, {}),
+        productImage: $resource('product/deleteimage/:imageName/:prodId', {}, {})
     };
 }]);

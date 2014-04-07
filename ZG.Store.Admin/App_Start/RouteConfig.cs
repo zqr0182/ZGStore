@@ -22,6 +22,12 @@ namespace ZG.Store.Admin
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "DeleteProductImage",
+                url: "{controller}/{action}/{imageName}/{prodId}",
+                defaults: new { controller = "Product", action = "DeleteImage"}
+            );
         }
     }
 }

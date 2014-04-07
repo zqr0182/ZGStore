@@ -11,6 +11,7 @@ namespace ZG.Application
     {
         void CreateDirectory(string path);
         List<string> GetFileNames(string directory);
+        void DeleteFile(string path);
     }
 
     public class FileService : IFileService
@@ -32,6 +33,11 @@ namespace ZG.Application
             fileNames.AddRange(files.Select(f => f.Name));
 
             return fileNames;
+        }
+
+        public void DeleteFile(string path)
+        {
+            File.Delete(path);
         }
     }
 }

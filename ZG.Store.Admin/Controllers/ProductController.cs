@@ -122,6 +122,26 @@ namespace ZG.Store.Admin.Controllers
             }
         }
 
+        [HttpDelete]
+        public JsonResult DeleteImage(int prodId, string imageName)
+        {
+            try
+            {
+                string dirPath = PathUtil.GetProductImageDirectory(prodId);
+                string path = dirPath + "\\" + imageName;
+
+                _fileService.DeleteFile(path);
+                var fileNames = _fileService.GetFileNames(dirPath);
+
+                return Json(new { Success = true, Images = fileNames }, JsonRequestBehavior.AllowGet); 
+            }
+            catch(Exception ex)
+            {
+                //TODO: log
+                return Json(new {Success = false, Error = "Error occured, unable to delete image. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
         private void ValidateProduct(Product prod)
         {
             if(string.IsNullOrWhiteSpace(prod.ProductName))

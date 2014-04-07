@@ -62,6 +62,8 @@
         <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
         <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
     </div>
+    <p ng-show="showDeleteImageSuccessfulMsg">Product image is deleted successfully.</p>
+    <p ng-show="showDeleteImageFailureMsg">{{deleteImageFailureMsg}}</p>
     <p style="clear:both"></p>
     <div>
         <input type="file" ng-file-select="onFileSelect($files)" multiple>
@@ -82,7 +84,7 @@
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>
 </form>
 
-<div ng-show="isSuccessful">Product saved successfully.</div>
+<div ng-show="isSaveSuccessful">Product saved successfully.</div>
 <div ng-show="errors">
     <div>Errors:</div>
     <ul ng-repeat="error in errors">
