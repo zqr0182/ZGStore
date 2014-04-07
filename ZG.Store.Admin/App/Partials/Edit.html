@@ -1,79 +1,88 @@
 ﻿
 
 <h2>Edit</h2>
-<div>
-    Product Name: <input type="text" ng-model="prod.ProductName" />
-</div>
-<div>
-    Is Active: Yes <input type="radio" ng-model="prod.Active" value="1" name="IsActive">
-               No <input type="radio" ng-model="prod.Active" value="0" name="IsActive">
-</div>
-<div>
-    Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
-</div>
-<div>
-    Description: <input type="text" ng-model="prod.Description" />
-</div>
-<div>
-    Price: <input type="text" ng-model="prod.Price" />
-</div>
-<div>
-    SalePrice: <input type="text" ng-model="prod.SalePrice" />
-</div>
-<div>
-    Weight: <input type="text" ng-model="prod.Weight" />
-</div>
-<div>
-    Shipping Weight: <input type="text" ng-model="prod.ShippingWeight" />
-</div>
-<div>
-    Height: <input type="text" ng-model="prod.Height" />
-</div>
-<div>
-    Shipping Height: <input type="text" ng-model="prod.ShippingHeight" />
-</div>
-<div>
-    Length: <input type="text" ng-model="prod.Length" />
-</div>
-<div>
-    Shipping Length: <input type="text" ng-model="prod.ShippingLength" />
-</div>
-<div>
-    Product Link: <input type="text" ng-model="prod.ProductLink" />
-</div>
-<div>
-    Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="1" name="IsReviewEnabled">
-               No <input type="radio" ng-model="prod.IsReviewEnabled" value="0" name="IsReviewEnabled">
-</div>
-<div>
-    Total Review Count: {{prod.TotalReviewCount}}
-</div>
-<div>
-    Rating Score: {{prod.RatingScore}}
-</div>
-<div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
-    <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
-    <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
-</div>
-<p style="clear:both"></p>
-<div>
-    <input type="file" ng-file-select="onFileSelect($files)" multiple>
-    <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">drop files here</div>
-    <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+<form name="prodForm" class="css-form" novalidate>
+    <div>
+        Id: {{prod.Id}}
+    </div>
+    <div>
+        Product Name: <input type="text" name="prodName" ng-model="prod.ProductName" required />
+        <div ng-show="prodForm.prodName.$dirty && prodForm.prodName.$invalid">Product Name is required</div>
+    </div>
+    <div>
+        Is Active: Yes <input type="radio" ng-model="prod.Active" value="1" name="IsActive" required>
+        No <input type="radio" ng-model="prod.Active" value="0" name="IsActive" required>
+    </div>
+    <div>
+        Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
+    </div>
+    <div>
+        Description: <input type="text" ng-model="prod.Description" />
+    </div>
+    <div>
+        Price: <input type="text" name="price" ng-model="prod.Price" required />
+        <div ng-show="prodForm.price.$dirty && prodForm.price.$invalid">Price is required</div>
+    </div>
+    <div>
+        SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required />
+        <div ng-show="prodForm.price.$dirty && prodForm.price.$invalid">Sale Price is required</div>
+    </div>
+    <div>
+        Weight: <input type="text" ng-model="prod.Weight" />
+    </div>
+    <div>
+        Shipping Weight: <input type="text" ng-model="prod.ShippingWeight" />
+    </div>
+    <div>
+        Height: <input type="text" ng-model="prod.Height" />
+    </div>
+    <div>
+        Shipping Height: <input type="text" ng-model="prod.ShippingHeight" />
+    </div>
+    <div>
+        Length: <input type="text" ng-model="prod.Length" />
+    </div>
+    <div>
+        Shipping Length: <input type="text" ng-model="prod.ShippingLength" />
+    </div>
+    <div>
+        Product Link: <input type="text" ng-model="prod.ProductLink" />
+    </div>
+    <div>
+        Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="1" name="IsReviewEnabled">
+        No <input type="radio" ng-model="prod.IsReviewEnabled" value="0" name="IsReviewEnabled">
+    </div>
+    <div>
+        Total Review Count: {{prod.TotalReviewCount}}
+    </div>
+    <div>
+        Rating Score: {{prod.RatingScore}}
+    </div>
+    <div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
+        <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
+        <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
+    </div>
+    <p style="clear:both"></p>
+    <div>
+        <input type="file" ng-file-select="onFileSelect($files)" multiple>
+        <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">drop files here</div>
+        <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
 
-    <div ng-show="selectedFiles != null">
-        <div class="sel-file" ng-repeat="f in selectedFiles">
-            {{($index + 1) + '.'}}
-            <img class="thumbnail" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
-            <span class="progress" ng-show="progress != ''">
-                {{progress}}%
-            </span>
-            {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+        <div ng-show="selectedFiles != null">
+            <div class="sel-file" ng-repeat="f in selectedFiles">
+                {{($index + 1) + '.'}}
+                <img class="thumbnail" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+                <span class="progress" ng-show="progress != ''">
+                    {{progress}}%
+                </span>
+                {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+            </div>
         </div>
     </div>
-</div>
-<input type="button" ng-click="saveProd()" value="Save">
-<div ng-show="!errors">Product saved successfully.</div>
+    <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>
+</form>
+
+<div ng-show="isSuccessful">Product saved successfully.</div>
 <div ng-show="errors">
     <div>Errors:</div>
     <ul ng-repeat="error in errors">

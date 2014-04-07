@@ -61,3 +61,7 @@ width: 110px;
 height: 90px;
 margin: 3px;
 }
+
+.css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+  }
