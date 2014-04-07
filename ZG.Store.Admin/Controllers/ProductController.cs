@@ -9,6 +9,7 @@ using ZG.Domain.Models;
 using Newtonsoft.Json;
 using ZG.Common;
 using ZG.Store.Admin.App_Code;
+using ZG.Domain.DTO;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -72,9 +73,13 @@ namespace ZG.Store.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(string prod)
         {
-            var product = JsonConvert.DeserializeObject<Product>(prod);
+            var product = JsonConvert.DeserializeObject<ProductEditViewModel>(prod);
 
-            //TODO: add validation of product here
+            if(!TryUpdateModel(product))
+            {
+                var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet); 
+            }
 
             string dirPath = PathUtil.GetProductImageDirectory(product.Id);
             _fileService.CreateDirectory(dirPath);
@@ -90,7 +95,7 @@ namespace ZG.Store.Admin.Controllers
             }
 
             _prodService.Update(product);
-            return Json(new { Message = "Product saved successfully." }, JsonRequestBehavior.AllowGet); 
+            return Json(new { Success = true }, JsonRequestBehavior.AllowGet); 
         }
 
         //
@@ -114,6 +119,14 @@ namespace ZG.Store.Admin.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        private void ValidateProduct(Product prod)
+        {
+            if(string.IsNullOrWhiteSpace(prod.ProductName))
+            {
+                ModelState.AddModelError("", "Please enter product name");
             }
         }
     }

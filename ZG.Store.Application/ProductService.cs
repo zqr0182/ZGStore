@@ -15,7 +15,7 @@ namespace ZG.Application
         ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
-        void Update(Product prod);
+        void Update(ProductEditViewModel prod);
     }
 
     public class ProductService : BaseService, IProductService
@@ -79,7 +79,7 @@ namespace ZG.Application
             return viewModel;
         }
 
-        public void Update(Product prod)
+        public void Update(ProductEditViewModel prod)
         {
             var product = GetProductById(prod.Id);
             product.ProductName = prod.ProductName;

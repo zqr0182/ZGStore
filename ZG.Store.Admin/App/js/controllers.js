@@ -3,7 +3,7 @@
 controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', '$timeout', '$upload', 
   function ($scope, $http, $routeParams, ProdService, $timeout, $upload) {
       $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
-      $scope.resultOfSave = '';
+      $scope.errors = {};
       $scope.deleteProductImage = function(imageName)
       {
           ProdService.product.deleteProductImage();
@@ -43,9 +43,14 @@ controllers.controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'P
           }).progress(function (evt) {
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {
-              $scope.resultOfSave = response.data.Message;
-              for (var i = 0; i < $scope.selectedFiles.length; i++) {
-                  $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
+              if (response.data.Success) {
+                  $scope.errors = null;
+                  for (var i = 0; i < $scope.selectedFiles.length; i++) {
+                      $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
+                  }
+              }
+              else {
+                  $scope.errors = response.data.Errors;
               }
           }, null);
       }

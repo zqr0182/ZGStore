@@ -73,4 +73,10 @@
     </div>
 </div>
 <input type="button" ng-click="saveProd()" value="Save">
-<div>{{resultOfSave}}</div>
+<div ng-show="!errors">Product saved successfully.</div>
+<div ng-show="errors">
+    <div>Errors:</div>
+    <ul ng-repeat="error in errors">
+        <li>{{error}}</li>
+    </ul>
+</div>

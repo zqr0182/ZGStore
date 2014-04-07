@@ -15,28 +15,18 @@ namespace ZG.Domain.Models
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [MaxLength(50)]
         public string ProductName { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         [MaxLength(50)]
         public string CatalogNumber { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public string Description { get; set; }
         public decimal Price { get; set; }
         public decimal SalePrice { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal Weight { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal ShippingWeight { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal Height { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal ShippingHeight { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal Length { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal ShippingLength { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal Width { get; set; }
-        [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public decimal ShippingWidth { get; set; }
         [MaxLength(400)]
         public string ProductLink { get; set; }
