@@ -208,6 +208,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\js\editProductController.js" />
+    <Content Include="App\js\productListController.js" />
     <Content Include="App\lib\angular\angular-file-upload-html5-shim.js" />
     <Content Include="App\lib\angular\angular-file-upload-html5-shim.min.js" />
     <Content Include="App\lib\angular\angular-file-upload-shim.js" />
