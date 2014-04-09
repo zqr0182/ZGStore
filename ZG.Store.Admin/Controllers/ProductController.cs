@@ -112,7 +112,6 @@ namespace ZG.Store.Admin.Controllers
         {
             try
             {
-                throw new Exception("aaaaaaaaaaaaa");
                 _prodService.Deactivate(id);
 
                 return Json(new { Success = true}, JsonRequestBehavior.DenyGet);
