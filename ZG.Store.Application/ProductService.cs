@@ -16,6 +16,8 @@ namespace ZG.Application
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         void Update(ProductEditViewModel prod);
+        void Activate(int prodId);
+        void Deactivate(int prodId);
     }
 
     public class ProductService : BaseService, IProductService
@@ -98,6 +100,25 @@ namespace ZG.Application
             product.ProductLink = prod.ProductLink;
             product.IsReviewEnabled = prod.IsReviewEnabled;
             product.Active = prod.Active;
+
+            UnitOfWork.Commit();
+        }
+
+
+        public void Activate(int prodId)
+        {
+            ToggleActive(prodId, true);
+        }
+
+        public void Deactivate(int prodId)
+        {
+            ToggleActive(prodId, false);
+        }
+
+        private void ToggleActive(int prodId, bool active)
+        {
+            var product = GetProductById(prodId);
+            product.Active = active;
 
             UnitOfWork.Commit();
         }

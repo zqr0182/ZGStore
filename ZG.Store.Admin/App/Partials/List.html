@@ -12,7 +12,7 @@
         <td>Active</td>
         <td></td>
     </tr>
-    <tr ng-repeat="prod in Products.Products">
+    <tr ng-repeat="prod in products.Products">
         <td>{{prod.Id}}</td>
         <td>{{prod.Name}}</td>
         <td>{{prod.Description}}</td>
@@ -20,8 +20,16 @@
         <td>{{prod.SalesPrice}}</td>
         <td>{{prod.Active}}</td>
         <td>
-            <input type="button" ng-click="go('/product/edit/' + prod.Id)" value="Edit" />
-            <input type="button" ng-click="DeleteProd" value="Delete" />
+            <div ng-show="prod.Active">
+                <input type="button" ng-click="go('/product/edit/' + prod.Id)" value="Edit" />
+                <input type="button" ng-click="deactivateProd(prod)" value="Deactivate" />
+            </div>
+            <div ng-show="!prod.Active">
+                Inactive
+            </div>
+            <div ng-show="isDeactivateFailed(prod.Id)">
+                Unable to deactivate product. We are fixing it.
+            </div>
         </td>
     </tr>
 </table>
