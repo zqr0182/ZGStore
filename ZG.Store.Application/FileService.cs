@@ -26,11 +26,13 @@ namespace ZG.Application
 
         public List<string> GetFileNames(string directory)
         {
-            var dirInfo = new DirectoryInfo(directory);
-            var files = dirInfo.GetFiles();
-
             var fileNames = new List<string>();
-            fileNames.AddRange(files.Select(f => f.Name));
+            var dirInfo = new DirectoryInfo(directory);
+            if (dirInfo.Exists)
+            {
+                var files = dirInfo.GetFiles();
+                fileNames.AddRange(files.Select(f => f.Name));
+            }
 
             return fileNames;
         }

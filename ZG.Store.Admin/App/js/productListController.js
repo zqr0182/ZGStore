@@ -1,8 +1,6 @@
 ﻿angular.module('storeAdminControllers').controller('ProductListCtrl', ['$scope', '$location', 'ProdService',
   function ($scope, $location, ProdService) {
       $scope.filterByStatus = 'active';
-      //$scope.products = {};
-      //$scope.products = ProdService.products.get({ filterBy: $scope.filterBy });
       $scope.getProducts = function () {
           $scope.products = ProdService.products.get({ filterByStatus: $scope.filterByStatus });
       }
