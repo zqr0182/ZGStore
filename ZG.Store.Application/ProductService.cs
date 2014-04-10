@@ -12,7 +12,7 @@ namespace ZG.Application
 {
     public interface IProductService
     {
-        ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
+        ProductsPerPage GetProducts(string category, bool active, int page, int pageSize);
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         void Update(ProductEditViewModel prod);
@@ -28,9 +28,9 @@ namespace ZG.Application
             _fileService = fileService;
         }
 
-        public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
+        public ProductsPerPage GetProducts(string category, bool active, int page, int pageSize)
         {
-            var productsByCategory = new ProductsByCategory(category, true);
+            var productsByCategory = new ProductsByCategory(category, active);
             IQueryable<Product> products = UnitOfWork.Products.Matches(productsByCategory);
 
             int totalProducts = products.Count();

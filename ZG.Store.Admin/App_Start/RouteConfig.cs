@@ -16,6 +16,11 @@ namespace ZG.Store.Admin
 #if DEBUG
             routes.IgnoreRoute("{*browserlink}", new { browserlink = @".*/arterySignalR/ping" });
 #endif
+            routes.MapRoute(
+                name: "ProductList",
+                url: "product/list/{filterByStatus}",
+                defaults: new { controller = "Product", action = "List" }
+            );
 
             routes.MapRoute(
                 name: "Default",

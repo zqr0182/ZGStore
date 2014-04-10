@@ -32,10 +32,11 @@ namespace ZG.Store.Admin.Controllers
         {
             return View();
         }
-        
-        public JsonResult List()
+
+        public JsonResult List(string filterByStatus)
         {
-            var prods = _prodService.GetActiveProducts(null, 1, 500);
+            bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;
+            var prods = _prodService.GetProducts(null, isActive, 1, 500);
             return Json(prods, JsonRequestBehavior.AllowGet);
         }
 
