@@ -4,15 +4,15 @@
 
 <table>
     <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Description</td>
-        <td>Price</td>
-        <td>Sale Price</td>
-        <td>Active</td>
+        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+        <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+        <td><a href="" ng-click="predicate='Description';reverse=!reverse">Description</a></td>
+        <td><a href="" ng-click="predicate='Price';reverse=!reverse">Price</a></td>
+        <td><a href="" ng-click="predicate='SalePrice';reverse=!reverse">Sale Price</a></td>
+        <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
         <td></td>
     </tr>
-    <tr ng-repeat="prod in products.Products">
+    <tr ng-repeat="prod in products.Products | orderBy:predicate:reverse">
         <td>{{prod.Id}}</td>
         <td>{{prod.Name}}</td>
         <td>{{prod.Description}}</td>
