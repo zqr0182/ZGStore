@@ -16,18 +16,7 @@
           if (window.confirm('Are you sure you want to inactivate this product?'))
           {
               ProdService.deactivateProduct.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
-                  if(value.Success)
-                  {
-                      prod.Active = false;
-                      var index = $scope.failedDeactivations.indexOf(prod.Id);
-                      if(index > -1)
-                      {
-                          $scope.failedDeactivations.splice(index, 1);
-                      }
-                  }
-                  else {
-                      $scope.failedDeactivations.push(prod.Id);
-                  }
+                  changeProductStatusHelper(false, prod, $scope.failedDeactivations, value);
               });
           }
       }
@@ -37,32 +26,23 @@
       $scope.failedActivations = [];
       $scope.activateProd = function (prod) {
           ProdService.activateProduct.save({ id: prod.Id }, {}, function (value, responseHeaders) {
-                  if (value.Success) {
-                      prod.Active = true;
-                      var index = $scope.failedActivation.indexOf(prod.Id);
-                      if (index > -1) {
-                          $scope.failedActivation.splice(index, 1);
-                      }
-                  }
-                  else {
-                      $scope.failedActivation.push(prod.Id);
-                  }
+                  changeProductStatusHelper(true, prod, $scope.failedActivations, value);
               });
       }
 
       $scope.isActivationFailed = isItemFound;
 
-      var changeProductStatusHelper = function(prod, arrayOfId, serverResult)
+      var changeProductStatusHelper = function(isActivation, prod, arrayOfId, serverResult)
       {
           if (serverResult.Success) {
-              prod.Active = true;
-              var index = $scope.failedActivation.indexOf(prod.Id);
+              prod.Active = isActivation ? true : false;
+              var index = arrayOfId.indexOf(prod.Id);
               if (index > -1) {
-                  $scope.failedActivation.splice(index, 1);
+                  arrayOfId.splice(index, 1);
               }
           }
           else {
-              $scope.failedActivation.push(prod.Id);
+              arrayOfId.push(prod.Id);
           }
       }
 
