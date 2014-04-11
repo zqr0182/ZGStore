@@ -10,30 +10,63 @@
           $location.path(path);
       }
 
-      $scope.deactivateFailed = [];
+      $scope.failedDeactivations = [];
       $scope.deactivateProd = function (prod)
       {
           if (window.confirm('Are you sure you want to inactivate this product?'))
           {
-              ProdService.productDeactive.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
+              ProdService.deactivateProduct.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
                   if(value.Success)
                   {
                       prod.Active = false;
-                      var index = $scope.deactivateFailed.indexOf(prod.Id);
+                      var index = $scope.failedDeactivations.indexOf(prod.Id);
                       if(index > -1)
                       {
-                          $scope.deactivateFailed.splice(index, 1);
+                          $scope.failedDeactivations.splice(index, 1);
                       }
                   }
                   else {
-                      $scope.deactivateFailed.push(prod.Id);
+                      $scope.failedDeactivations.push(prod.Id);
                   }
               });
           }
       }
       
-      $scope.isDeactivateFailed = function(prodId)
+      $scope.isDeactivationFailed = isItemFound;
+
+      $scope.failedActivations = [];
+      $scope.activateProd = function (prod) {
+          ProdService.activateProduct.save({ id: prod.Id }, {}, function (value, responseHeaders) {
+                  if (value.Success) {
+                      prod.Active = true;
+                      var index = $scope.failedActivation.indexOf(prod.Id);
+                      if (index > -1) {
+                          $scope.failedActivation.splice(index, 1);
+                      }
+                  }
+                  else {
+                      $scope.failedActivation.push(prod.Id);
+                  }
+              });
+      }
+
+      $scope.isActivationFailed = isItemFound;
+
+      var changeProductStatusHelper = function(prod, arrayOfId, serverResult)
       {
-          return $scope.deactivateFailed.indexOf(prodId) > -1;
+          if (serverResult.Success) {
+              prod.Active = true;
+              var index = $scope.failedActivation.indexOf(prod.Id);
+              if (index > -1) {
+                  $scope.failedActivation.splice(index, 1);
+              }
+          }
+          else {
+              $scope.failedActivation.push(prod.Id);
+          }
+      }
+
+      var isItemFound = function (array, item) {
+          return array.indexOf(item) > -1;
       }
   }]);

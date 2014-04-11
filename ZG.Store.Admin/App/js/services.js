@@ -4,7 +4,8 @@ prodAdminServices.factory('ProdService', ['$resource', function ($resource) {
     return {
         products: $resource('product/list/:filterByStatus', {}, {}),
         product: $resource('product/edit/:prodId', {}, {}),
-        productDeactive: $resource('product/deactivate/:prodId', {}, {}),
+        deactivateProduct: $resource('product/deactivate/:prodId', {}, {}),
+        activateProduct: $resource('product/activate', {}, {}),
         productImage: $resource('product/deleteimage/:imageName/:prodId', {}, {})
     };
 }]);

@@ -30,10 +30,13 @@ Filter by:
                 <input type="button" ng-click="deactivateProd(prod)" value="Deactivate" />
             </div>
             <div ng-show="!prod.Active">
-                Inactive
+                <input type="button" ng-click="activateProd(prod)" value="Activate" />
             </div>
-            <div ng-show="isDeactivateFailed(prod.Id)">
+            <div ng-show="isDeactivationFailed(prod.Id)">
                 Unable to deactivate product. We are fixing it.
+            </div>
+            <div ng-show="isActivationFailed(prod.Id)">
+                Unable to activate product. We are fixing it.
             </div>
         </td>
     </tr>

@@ -124,6 +124,22 @@ namespace ZG.Store.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult Activate(int id)
+        {
+            try
+            {
+                _prodService.Activate(id);
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to activate product {0}", id);
+                return Json(new { Success = false, Error = "Error occured, unable to activate product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
         [HttpDelete]
         public JsonResult DeleteImage(int prodId, string imageName)
         {
