@@ -269,7 +269,6 @@
     <Compile Include="Binders\CartModelBinder.cs" />
     <Compile Include="Binders\CheckoutDetailsModelBinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ProductAdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChildActionController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
@@ -682,9 +681,7 @@
     <Content Include="Views\Shared\_Layout3Col.cshtml" />
     <Content Include="Views\Shared\_Layout2Col.cshtml" />
     <Content Include="Views\Shared\_Layout1Col.cshtml" />
-    <Content Include="Views\ProductAdmin\List.cshtml" />
     <Content Include="Views\ChildAction\CategoryDropdown.cshtml" />
-    <Content Include="Views\ProductAdmin\Edit.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace ZG.Application
     public interface IProductCategoryService
     {
         IEnumerable<string> GetActiveCategoryNames();
-        CategoriesPerPage GetCategories(bool active, int page, int pageSize);
+        ProductCategoryListViewModel GetCategories(bool active, int page, int pageSize);
     }
 
     public class ProductCategoryService : BaseService, IProductCategoryService
@@ -29,7 +29,7 @@ namespace ZG.Application
         }
 
 
-        public CategoriesPerPage GetCategories(bool active, int page, int pageSize)
+        public ProductCategoryListViewModel GetCategories(bool active, int page, int pageSize)
         {
             var categoriesByActive = new CategoryByActive(active);
             var categories = UnitOfWork.Categories.Matches(categoriesByActive);
@@ -38,13 +38,13 @@ namespace ZG.Application
 
             categories = UnitOfWork.Categories.Matches(new CategoryByPage(page, pageSize, categoriesByActive));
 
-            var categoriesPerPage = new CategoriesPerPage()
+            var prodCategoryListViewModel = new ProductCategoryListViewModel()
             {
-                Categories = categories.ToList(),
-                TotalCategories = total
+                Categories = categories.Select(c => new ProductCategoryBriefInfo{Id = c.Id, CategoryName = c.CategoryName, ParentCategoryID = c.ParentCategoryID, Active = c.Active}),
+                Total = total
             };
 
-            return categoriesPerPage;
+            return prodCategoryListViewModel;
         }
     }
 }
