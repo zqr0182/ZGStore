@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\js\editProductController.js" />
+    <Content Include="App\js\productCategoryListController.js" />
     <Content Include="App\js\productListController.js" />
     <Content Include="App\lib\angular\angular-file-upload-html5-shim.js" />
     <Content Include="App\lib\angular\angular-file-upload-html5-shim.min.js" />
@@ -217,7 +219,10 @@
     <Content Include="App\lib\angular\angular-file-upload.js" />
     <Content Include="App\lib\angular\angular-file-upload.min.js" />
     <Content Include="App\lib\angular\FileAPI.min.js" />
-    <Content Include="App\Partials\Create.html" />
+    <Content Include="App\Partials\ProductCreate.html" />
+    <Content Include="App\Partials\Home.html" />
+    <Content Include="App\Partials\ProductCategoryEdit.html" />
+    <Content Include="App\Partials\ProductCategoryList.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -527,8 +532,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="App\Partials\Edit.html" />
-    <Content Include="App\Partials\List.html" />
+    <Content Include="App\Partials\ProductEdit.html" />
+    <Content Include="App\Partials\ProductList.html" />
+    <Content Include="ToDos.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -559,6 +565,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ProductCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

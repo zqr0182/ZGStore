@@ -15,12 +15,12 @@ namespace ZG.Store.Presentation.Controllers
     [SessionState(SessionStateBehavior.Disabled)]
     public class ChildActionController : Controller
     {
-        private ICategoryService _categoryService;
+        private IProductCategoryService _prodCategoryService;
         private IGeographyService _geographyService;
 
-        public ChildActionController(ICategoryService categoryService, IGeographyService geographyService)
+        public ChildActionController(IProductCategoryService categoryService, IGeographyService geographyService)
         {
-            _categoryService = categoryService;
+            _prodCategoryService = categoryService;
             _geographyService = geographyService;
         }
 
@@ -35,7 +35,7 @@ namespace ZG.Store.Presentation.Controllers
         [ChildActionOnly]
         public PartialViewResult CategoryLinks(string category)
         {
-            IEnumerable<string> categories = _categoryService.GetActiveCategoryNames();
+            IEnumerable<string> categories = _prodCategoryService.GetActiveCategoryNames();
             var model = new CategoriesViewModel { Categories = categories, SelectedCategory = category };
 
             return PartialView(model);
@@ -44,7 +44,7 @@ namespace ZG.Store.Presentation.Controllers
         [ChildActionOnly]
         public PartialViewResult CategoryDropdown(string category)
         {
-            IEnumerable<string> categories = _categoryService.GetActiveCategoryNames();
+            IEnumerable<string> categories = _prodCategoryService.GetActiveCategoryNames();
             var model = new CategoriesViewModel { Categories = categories, SelectedCategory = category };
 
             return PartialView(model);

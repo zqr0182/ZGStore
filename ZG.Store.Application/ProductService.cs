@@ -13,6 +13,7 @@ namespace ZG.Application
     public interface IProductService
     {
         ProductsPerPage GetProducts(string category, bool active, int page, int pageSize);
+        ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         void Update(ProductEditViewModel prod);
@@ -45,6 +46,11 @@ namespace ZG.Application
             };
 
             return productsPerPage;
+        }
+
+        public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
+        {
+            return GetProducts(category, true, page, pageSize);
         }
 
         public Product GetProductById(int id)

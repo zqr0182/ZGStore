@@ -1,0 +1,14 @@
+﻿Category list and details page
+Edit product page to add category
+Inventories related pages
+Order list and details page
+ShippingProviders page
+Shippings page
+Taxs page
+Users list and details page
+
+
+
+
+
+

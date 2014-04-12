@@ -28,10 +28,10 @@ namespace ZG.Store.Admin.Controllers
 
         //
         // GET: /Product/
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public JsonResult List(string filterByStatus)
         {

@@ -1,11 +1,17 @@
-﻿var prodAdminServices = angular.module('prodAdminServices', ['ngResource']);
+﻿var adminServices = angular.module('adminServices', ['ngResource']);
 
-prodAdminServices.factory('ProdService', ['$resource', function ($resource) {
+adminServices.factory('ProdService', ['$resource', function ($resource) {
     return {
         products: $resource('product/list/:filterByStatus', {}, {}),
         product: $resource('product/edit/:prodId', {}, {}),
         deactivateProduct: $resource('product/deactivate/:prodId', {}, {}),
         activateProduct: $resource('product/activate', {}, {}),
         productImage: $resource('product/deleteimage/:imageName/:prodId', {}, {})
+    };
+}]);
+
+adminServices.factory('ProdCategoryService', ['$resource', function ($resource) {
+    return {
+        categories: $resource('productcategory/list/:filterByStatus', {}, {})
     };
 }]);

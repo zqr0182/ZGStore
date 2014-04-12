@@ -10,19 +10,16 @@ using ZG.Repository.Criterias;
 
 namespace ZG.Application
 {
-    public interface ICategoryService
+    public interface IProductCategoryService
     {
         IEnumerable<string> GetActiveCategoryNames();
         CategoriesPerPage GetCategories(bool active, int page, int pageSize);
-        //Category GetCategoryById(int id);
-        //void Update(ProductCategoryEditViewModel prod);
-        //void Activate(int prodId);
-        //void Deactivate(int prodId);
     }
 
-    public class CategoryService : BaseService, ICategoryService
+    public class ProductCategoryService : BaseService, IProductCategoryService
     {
-        public CategoryService(IUnitOfWork uow) : base(uow)
+        public ProductCategoryService(IUnitOfWork uow)
+            : base(uow)
         {
         }
 

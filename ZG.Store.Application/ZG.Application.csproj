@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="CategoryService.cs" />
+    <Compile Include="ProductCategoryService.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="GeographyService.cs" />
     <Compile Include="EmailService.cs" />
