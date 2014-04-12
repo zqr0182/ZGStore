@@ -26,13 +26,6 @@ namespace ZG.Store.Admin.Controllers
             _logger = logger;
         }
 
-        //
-        // GET: /Product/
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public JsonResult List(string filterByStatus)
         {
             bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;

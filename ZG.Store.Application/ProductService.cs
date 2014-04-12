@@ -12,8 +12,8 @@ namespace ZG.Application
 {
     public interface IProductService
     {
-        ProductsPerPage GetProducts(string category, bool active, int page, int pageSize);
-        ProductsPerPage GetActiveProducts(string category, int page, int pageSize);
+        ProductListViewModel GetProducts(string category, bool active, int page, int pageSize);
+        ProductListViewModel GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         void Update(ProductEditViewModel prod);
@@ -29,7 +29,7 @@ namespace ZG.Application
             _fileService = fileService;
         }
 
-        public ProductsPerPage GetProducts(string category, bool active, int page, int pageSize)
+        public ProductListViewModel GetProducts(string category, bool active, int page, int pageSize)
         {
             var productsByCategory = new ProductsByCategory(category, active);
             IQueryable<Product> products = UnitOfWork.Products.Matches(productsByCategory);
@@ -39,16 +39,16 @@ namespace ZG.Application
             //products = products.Matches(new ProductsByPage(page, pageSize)); //This also works
             products = UnitOfWork.Products.Matches(new ProductsByPage(page, pageSize, productsByCategory));
 
-            var productsPerPage = new ProductsPerPage
+            var productsPerPage = new ProductListViewModel
             {
-                Products = products,
+                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, ProductName = p.ProductName, Description = p.Description, Price = p.Price, SalePrice = p.SalePrice, Active = p.Active}),
                 TotalProducts = totalProducts
             };
 
             return productsPerPage;
         }
 
-        public ProductsPerPage GetActiveProducts(string category, int page, int pageSize)
+        public ProductListViewModel GetActiveProducts(string category, int page, int pageSize)
         {
             return GetProducts(category, true, page, pageSize);
         }

@@ -21,8 +21,8 @@ namespace ZG.Store.Admin.Controllers
         public JsonResult List(string filterByStatus)
         {
             bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;
-            var prods = _prodCatService.GetCategories(isActive, 1, 500);
-            return Json(prods, JsonRequestBehavior.AllowGet);
+            var cats = _prodCatService.GetCategories(isActive, 1, 500);
+            return Json(cats, JsonRequestBehavior.AllowGet);
         }
 	}
 }

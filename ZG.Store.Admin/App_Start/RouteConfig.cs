@@ -23,6 +23,12 @@ namespace ZG.Store.Admin
             );
 
             routes.MapRoute(
+                name: "ProductCategoryList",
+                url: "productcategory/list/{filterByStatus}",
+                defaults: new { controller = "ProductCategory", action = "List" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }

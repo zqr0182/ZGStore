@@ -7,9 +7,9 @@ using ZG.Domain.Models;
 
 namespace ZG.Domain.DTO
 {
-    public class ProductsPerPage
+    public class ProductListViewModel
     {
-        public IQueryable<Product> Products { get; set; }
+        public IEnumerable<ProductBriefInfo> Products { get; set; }
         public int TotalProducts { get; set; }
     }
 }
