@@ -24,5 +24,37 @@ namespace ZG.Store.Admin.Controllers
             var cats = _prodCatService.GetCategories(isActive, 1, 500);
             return Json(cats, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpDelete]
+        public JsonResult Deactivate(int id)
+        {
+            try
+            {
+                _prodCatService.Deactivate(id);
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to deactivate category {0}", id);
+                return Json(new { Success = false, Error = "Error occured, unable to deactivate category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Activate(int id)
+        {
+            try
+            {
+                _prodCatService.Activate(id);
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to activate category {0}", id);
+                return Json(new { Success = false, Error = "Error occured, unable to activate category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
+        }
 	}
 }

@@ -14,6 +14,11 @@ namespace ZG.Application
     {
         IEnumerable<string> GetActiveCategoryNames();
         ProductCategoryListViewModel GetCategories(bool active, int page, int pageSize);
+        Category GetCategoryById(int id);
+        //CategoryEditViewModel GetCategoryEditViewModel(Category cat);
+        //void Update(CategoryEditViewModel cat);
+        void Activate(int catId);
+        void Deactivate(int catId);
     }
 
     public class ProductCategoryService : BaseService, IProductCategoryService
@@ -45,6 +50,30 @@ namespace ZG.Application
             };
 
             return prodCategoryListViewModel;
+        }
+
+
+        public void Activate(int catId)
+        {
+            ToggleActive(catId, true);
+        }
+
+        public void Deactivate(int catId)
+        {
+            ToggleActive(catId, false);
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            return UnitOfWork.Categories.MatcheById(id);
+        }
+
+        private void ToggleActive(int catId, bool active)
+        {
+            var cat = GetCategoryById(catId);
+            cat.Active = active;
+
+            UnitOfWork.Commit();
         }
     }
 }

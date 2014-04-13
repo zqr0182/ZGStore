@@ -22,7 +22,7 @@ Filter by:
         <td>
             <div ng-show="cat.Active">
                 <input type="button" ng-click="go('/productcategory/edit/' + prod.Id)" value="Edit" />
-                <input type="button" ng-click="deactivateProdCategory(prod)" value="Deactivate" />
+                <input type="button" ng-click="deactivateCategory(cat)" value="Deactivate" />
             </div>
             <div ng-show="!cat.Active">
                 <input type="button" ng-click="activateCategory(cat)" value="Activate" />

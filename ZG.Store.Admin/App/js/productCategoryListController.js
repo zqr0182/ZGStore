@@ -25,7 +25,7 @@
 
       $scope.failedActivations = [];
       $scope.activateCategory = function (cat) {
-          ProdCategoryService.activateProduct.save({ id: cat.Id }, {}, function (value, responseHeaders) {
+          ProdCategoryService.activateCategory.save({ id: cat.Id }, {}, function (value, responseHeaders) {
               changeCategoryStatusHelper(true, cat, $scope.failedActivations, value);
               });
       }
