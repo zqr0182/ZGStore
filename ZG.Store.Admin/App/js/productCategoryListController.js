@@ -2,7 +2,7 @@
   function ($scope, $location, ProdCategoryService) {
       $scope.filterByStatus = 'active';
       $scope.getProductCategories = function () {
-          $scope.productCategories = ProdCategoryService.categories.get({ filterByStatus: $scope.filterByStatus });
+          $scope.categories = ProdCategoryService.categories.get({ filterByStatus: $scope.filterByStatus });
       }
       $scope.getProductCategories();
 
@@ -10,43 +10,43 @@
           $location.path(path);
       }
 
-      //$scope.failedDeactivations = [];
-      //$scope.deactivateProd = function (prod)
-      //{
-      //    if (window.confirm('Are you sure you want to inactivate this product?'))
-      //    {
-      //        ProdService.deactivateProduct.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
-      //            changeProductStatusHelper(false, prod, $scope.failedDeactivations, value);
-      //        });
-      //    }
-      //}
+      $scope.failedDeactivations = [];
+      $scope.deactivateCategory = function (cat)
+      {
+          if (window.confirm('Are you sure you want to inactivate this category?'))
+          {
+              ProdCategoryService.deactivateCategory.remove({catId: cat.Id }, {}, function (value, responseHeaders) {
+                  changeCategoryStatusHelper(false, cat, $scope.failedDeactivations, value);
+              });
+          }
+      }
       
-      //$scope.isDeactivationFailed = isItemFound;
+      $scope.isDeactivationFailed = isItemFound;
 
-      //$scope.failedActivations = [];
-      //$scope.activateProd = function (prod) {
-      //    ProdService.activateProduct.save({ id: prod.Id }, {}, function (value, responseHeaders) {
-      //            changeProductStatusHelper(true, prod, $scope.failedActivations, value);
-      //        });
-      //}
+      $scope.failedActivations = [];
+      $scope.activateCategory = function (cat) {
+          ProdCategoryService.activateProduct.save({ id: cat.Id }, {}, function (value, responseHeaders) {
+              changeCategoryStatusHelper(true, cat, $scope.failedActivations, value);
+              });
+      }
 
-      //$scope.isActivationFailed = isItemFound;
+      $scope.isActivationFailed = isItemFound;
 
-      //var changeProductStatusHelper = function(isActivation, prod, arrayOfId, serverResult)
-      //{
-      //    if (serverResult.Success) {
-      //        prod.Active = isActivation ? true : false;
-      //        var index = arrayOfId.indexOf(prod.Id);
-      //        if (index > -1) {
-      //            arrayOfId.splice(index, 1);
-      //        }
-      //    }
-      //    else {
-      //        arrayOfId.push(prod.Id);
-      //    }
-      //}
+      var changeCategoryStatusHelper = function (isActivation, cat, arrayOfId, serverResult)
+      {
+          if (serverResult.Success) {
+              cat.Active = isActivation ? true : false;
+              var index = arrayOfId.indexOf(cat.Id);
+              if (index > -1) {
+                  arrayOfId.splice(index, 1);
+              }
+          }
+          else {
+              arrayOfId.push(cat.Id);
+          }
+      }
 
-      //var isItemFound = function (array, item) {
-      //    return array.indexOf(item) > -1;
-      //}
+      var isItemFound = function (array, item) {
+          return array.indexOf(item) > -1;
+      }
   }]);

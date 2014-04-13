@@ -10,7 +10,7 @@ namespace ZG.Domain.DTO
     {
         public int Id { get; set; }
         public int? ParentCategoryID { get; set; }
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
         public bool Active { get; set; }
     }
 }

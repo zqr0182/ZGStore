@@ -41,7 +41,7 @@ namespace ZG.Application
 
             var productsPerPage = new ProductListViewModel
             {
-                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, ProductName = p.ProductName, Description = p.Description, Price = p.Price, SalePrice = p.SalePrice, Active = p.Active}),
+                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, Name = p.ProductName, Description = p.Description, Price = p.Price, SalePrice = p.SalePrice, Active = p.Active}),
                 TotalProducts = totalProducts
             };
 

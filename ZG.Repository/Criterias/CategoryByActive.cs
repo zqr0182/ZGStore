@@ -9,23 +9,18 @@ namespace ZG.Repository.Criterias
 {
     public class CategoryByActive : AbstractCriteria<Category>
     {
-        private bool _activeOnly;
+        private bool _isActive;
 
-        public CategoryByActive(bool activeOnly)
+        public CategoryByActive(bool isActive)
         {
-            _activeOnly = activeOnly;
+            _isActive = isActive;
         }
 
         public override IQueryable<Category> BuildQueryOver(IQueryable<Category> queryBase)
         {
             IQueryable<Category> categories = base.BuildQueryOver(queryBase);
 
-            if (_activeOnly)
-            {
-                categories = categories.Where(s => (s.Active));
-            }
-
-            return categories;
+            return categories.Where(s => s.Active == _isActive);
         }
     }
 }

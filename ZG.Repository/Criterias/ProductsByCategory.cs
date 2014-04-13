@@ -10,12 +10,12 @@ namespace ZG.Repository.Criterias
     public class ProductsByCategory : AbstractCriteria<Product>
     {
         private readonly string _category;
-        private readonly bool _activeOnly;
+        private readonly bool _isActive;
 
-        public ProductsByCategory(string category, bool activeOnly)
+        public ProductsByCategory(string category, bool isActive)
         {
             _category = category;
-            _activeOnly = activeOnly;
+            _isActive = isActive;
         }
 
         public override IQueryable<Product> BuildQueryOver(IQueryable<Product> queryBase)
@@ -27,11 +27,11 @@ namespace ZG.Repository.Criterias
                 return (from prod in products
                         join prodCat in Context.ProductCategories on prod.Id equals prodCat.ProductID
                         join cat in Context.Categories on prodCat.CategoryID equals cat.Id
-                        where prod.Active == _activeOnly && (_category == null || cat.CategoryName == _category)
+                        where prod.Active == _isActive && (_category == null || cat.CategoryName == _category)
                         select prod);
             }
             
-            return products.Where(p => p.Active == _activeOnly)
+            return products.Where(p => p.Active == _isActive)
                            .SelectMany(p => p.ProductCategories
                                              .Where(c => _category == null || c.Category.CategoryName == _category)
                                              .Select(c => c.Product));

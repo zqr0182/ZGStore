@@ -1,3 +1,38 @@
-﻿
+﻿<h2>Product Category List</h2>
 
-<h2>Product Category List</h2>
+Filter by:
+<select ng-model="filterByStatus" ng-change="getProductCategories()">
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+</select>
+
+<table>
+    <tr>
+        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+        <td><a href="" ng-click="predicate='ParentCategoryID';reverse=!reverse">ParentCategoryID</a></td>
+        <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+        <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="cat in categories.Categories | orderBy:predicate:reverse">
+        <td>{{cat.Id}}</td>
+        <td>{{cat.ParentCategoryID}}</td>
+        <td>{{cat.Name}}</td>
+        <td>{{cat.Active}}</td>
+        <td>
+            <div ng-show="cat.Active">
+                <input type="button" ng-click="go('/productcategory/edit/' + prod.Id)" value="Edit" />
+                <input type="button" ng-click="deactivateProdCategory(prod)" value="Deactivate" />
+            </div>
+            <div ng-show="!cat.Active">
+                <input type="button" ng-click="activateCategory(cat)" value="Activate" />
+            </div>
+            <div ng-show="isDeactivationFailed(cat.Id)">
+                Unable to deactivate product. We are fixing it.
+            </div>
+            <div ng-show="isActivationFailed(cat.Id)">
+                Unable to activate product. We are fixing it.
+            </div>
+        </td>
+    </tr>
+</table>

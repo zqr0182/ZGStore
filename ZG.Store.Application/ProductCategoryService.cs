@@ -40,7 +40,7 @@ namespace ZG.Application
 
             var prodCategoryListViewModel = new ProductCategoryListViewModel()
             {
-                Categories = categories.Select(c => new ProductCategoryBriefInfo{Id = c.Id, CategoryName = c.CategoryName, ParentCategoryID = c.ParentCategoryID, Active = c.Active}),
+                Categories = categories.Select(c => new ProductCategoryBriefInfo{Id = c.Id, Name = c.CategoryName, ParentCategoryID = c.ParentCategoryID, Active = c.Active}).ToList(),
                 Total = total
             };
 
