@@ -1,3 +1,27 @@
-﻿
+﻿<h2>Edit Product Category</h2>
+<form name="prodCatForm" class="css-form" novalidate>
+    <div>
+        Id: {{cat.Id}}
+    </div>
+    <div>
+        Category Name: <input type="text" name="Name" ng-model="cat.Name" required />
+        <div ng-show="prodCatForm.Name.$dirty && prodCatForm.Name.$invalid">Category Name is required</div>
+    </div>
+    <div>
+        Is Active: Yes <input type="radio" ng-model="cat.Active" value="1" name="IsActive" required>
+        No <input type="radio" ng-model="cat.Active" value="0" name="IsActive" required>
+        <div ng-show="prodCatForm.Active.$dirty && prodCatForm.Active.$invalid">Is Active is Required</div>
+    </div>
+    <div>
+        Parent Category Id: <input type="text" ng-model="cat.ParentCategoryID" />
+    </div>
+    <button ng-click="saveProductCategory()" ng-disabled="prodCatForm.$invalid">Save</button>
+</form>
 
-<h2>Edit Product Category</h2>
+<div ng-show="isSaveSuccessful">Category saved successfully.</div>
+<div ng-show="errors">
+    <div>Errors:</div>
+    <ul ng-repeat="error in errors">
+        <li>{{error}}</li>
+    </ul>
+</div>

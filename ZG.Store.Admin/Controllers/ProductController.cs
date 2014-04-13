@@ -61,7 +61,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to get product. We are fixing it." }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = false, Errors = "Error occured, unable to get product. We are fixing it." }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -97,7 +97,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to edit product: {0}", prod);
-                return Json(new { Success = false, Error = "Error occured, unable to edit product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Errors = "Error occured, unable to edit product. We are fixing it." }, JsonRequestBehavior.DenyGet);
             }
         }
 

@@ -36,6 +36,7 @@ namespace ZG.Store.Admin
                 , "~/App/js/editProductController.js"
                 , "~/App/js/productListController.js"
                 , "~/App/js/productCategoryListController.js"
+                , "~/App/js/editProductCategoryController.js"
                 , "~/App/js/services.js"
                 ));
 

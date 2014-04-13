@@ -63,7 +63,7 @@ namespace ZG.Application
             var viewModel = new ProductEditViewModel()
             {
                 Id = prod.Id,
-                ProductName = prod.ProductName,
+                Name = prod.ProductName,
                 CatalogNumber = prod.CatalogNumber,
                 Description = prod.Description,
                 Price = prod.Price,
@@ -90,7 +90,7 @@ namespace ZG.Application
         public void Update(ProductEditViewModel prod)
         {
             var product = GetProductById(prod.Id);
-            product.ProductName = prod.ProductName;
+            product.ProductName = prod.Name;
             product.CatalogNumber = prod.CatalogNumber;
             product.Description = prod.Description;
             product.Price = prod.Price;
@@ -109,7 +109,6 @@ namespace ZG.Application
 
             UnitOfWork.Commit();
         }
-
 
         public void Activate(int prodId)
         {

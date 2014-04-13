@@ -15,8 +15,8 @@ namespace ZG.Application
         IEnumerable<string> GetActiveCategoryNames();
         ProductCategoryListViewModel GetCategories(bool active, int page, int pageSize);
         Category GetCategoryById(int id);
-        //CategoryEditViewModel GetCategoryEditViewModel(Category cat);
-        //void Update(CategoryEditViewModel cat);
+        ProductCategoryEditViewModel GetCategoryEditViewModel(Category cat);
+        void Update(ProductCategoryEditViewModel cat);
         void Activate(int catId);
         void Deactivate(int catId);
     }
@@ -72,6 +72,29 @@ namespace ZG.Application
         {
             var cat = GetCategoryById(catId);
             cat.Active = active;
+
+            UnitOfWork.Commit();
+        }
+
+        public ProductCategoryEditViewModel GetCategoryEditViewModel(Category cat)
+        {
+            var viewModel = new ProductCategoryEditViewModel()
+            {
+                Id = cat.Id,
+                ParentCategoryID = cat.ParentCategoryID,
+                Name = cat.CategoryName,
+                Active = cat.Active,
+            };
+
+            return viewModel;
+        }
+
+        public void Update(ProductCategoryEditViewModel cat)
+        {
+            var category = GetCategoryById(cat.Id);
+            category.CategoryName = cat.Name;
+            category.ParentCategoryID = cat.ParentCategoryID;
+            category.Active = cat.Active;
 
             UnitOfWork.Commit();
         }

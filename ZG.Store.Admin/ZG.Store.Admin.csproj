@@ -209,6 +209,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\js\editProductCategoryController.js" />
     <Content Include="App\js\editProductController.js" />
     <Content Include="App\js\productCategoryListController.js" />
     <Content Include="App\js\productListController.js" />

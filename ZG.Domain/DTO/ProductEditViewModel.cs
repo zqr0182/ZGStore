@@ -14,7 +14,7 @@ namespace ZG.Domain.DTO
         public int Id { get; set; }
         [Required(ErrorMessage = "Product Name is a required field")]
         [MaxLength(50)]
-        public string ProductName { get; set; }
+        public string Name { get; set; }
         [MaxLength(50)]
         public string CatalogNumber { get; set; }
         public string Description { get; set; }

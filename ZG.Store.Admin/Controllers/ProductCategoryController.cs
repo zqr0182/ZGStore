@@ -1,10 +1,12 @@
 ﻿using Castle.Core.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZG.Application;
+using ZG.Domain.DTO;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -23,6 +25,43 @@ namespace ZG.Store.Admin.Controllers
             bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;
             var cats = _prodCatService.GetCategories(isActive, 1, 500);
             return Json(cats, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Edit(int id)
+        {
+            try
+            {
+                var cat = _prodCatService.GetCategoryById(id);
+                var viewModel = _prodCatService.GetCategoryEditViewModel(cat);
+
+                return Json(viewModel, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to get category: {0}", id);
+                return Json(new { Success = false, Error = "Error occured, unable to get product. We are fixing it." }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Edit(ProductCategoryEditViewModel cat)
+        {
+            try
+            {
+                if (!TryUpdateModel(cat))
+                {
+                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                }
+
+                _prodCatService.Update(cat);
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to edit product category: {0}, {1}", cat.Id, cat.Name);
+                return Json(new { Success = false, Errors = "Error occured, unable to edit category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
         }
 
         [HttpDelete]
