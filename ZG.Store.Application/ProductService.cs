@@ -16,7 +16,8 @@ namespace ZG.Application
         ProductListViewModel GetActiveProducts(string category, int page, int pageSize);
         Product GetProductById(int id);
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
-        void Update(ProductEditViewModel prod);
+        Product Update(ProductEditViewModel prod);
+        Product Create(ProductEditViewModel prod);
         void Activate(int prodId);
         void Deactivate(int prodId);
     }
@@ -87,7 +88,7 @@ namespace ZG.Application
             return viewModel;
         }
 
-        public void Update(ProductEditViewModel prod)
+        public Product Update(ProductEditViewModel prod)
         {
             var product = GetProductById(prod.Id);
             product.ProductName = prod.Name;
@@ -108,6 +109,36 @@ namespace ZG.Application
             product.Active = prod.Active;
 
             UnitOfWork.Commit();
+
+            return product;
+        }
+
+        public Product Create(ProductEditViewModel prod)
+        {
+            var product = new Product()
+            {
+                ProductName = prod.Name,
+                CatalogNumber = prod.CatalogNumber,
+                Description = prod.Description,
+                Price = prod.Price,
+                SalePrice = prod.SalePrice,
+                Weight = prod.Weight,
+                ShippingWeight = prod.ShippingWeight,
+                Height = prod.Height,
+                ShippingHeight = prod.ShippingHeight,
+                Length = prod.Length,
+                ShippingLength = prod.ShippingLength,
+                Width = prod.Width,
+                ShippingWidth = prod.ShippingWidth,
+                ProductLink = prod.ProductLink,
+                IsReviewEnabled = prod.IsReviewEnabled,
+                Active = prod.Active
+            };
+
+            UnitOfWork.Products.Add(product);
+            UnitOfWork.Commit();
+
+            return product;
         }
 
         public void Activate(int prodId)

@@ -34,18 +34,9 @@ namespace ZG.Store.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string prod)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return UpsertProduct(prod);   
         }
 
         public JsonResult Edit(int id)
@@ -68,37 +59,7 @@ namespace ZG.Store.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(string prod)
         {
-            try
-            {
-                var product = JsonConvert.DeserializeObject<ProductEditViewModel>(prod);
-
-                if (!TryUpdateModel(product))
-                {
-                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
-                }
-
-                string dirPath = PathUtil.GetProductImageDirectory(product.Id);
-                _fileService.CreateDirectory(dirPath);
-
-                foreach (string fileName in Request.Files)
-                {
-                    var postedFile = Request.Files[fileName];
-                    if (postedFile.ContentLength > 0)
-                    {
-                        string path = dirPath + "\\" + postedFile.FileName;
-                        postedFile.SaveAs(path);
-                    }
-                }
-
-                _prodService.Update(product);
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
-            }
-            catch (Exception ex)
-            {
-                _logger.ErrorFormat(ex, "Failed to edit product: {0}", prod);
-                return Json(new { Success = false, Errors = "Error occured, unable to edit product. We are fixing it." }, JsonRequestBehavior.DenyGet);
-            }
+            return UpsertProduct(prod);            
         }
 
         [HttpDelete]
@@ -158,6 +119,52 @@ namespace ZG.Store.Admin.Controllers
             if(string.IsNullOrWhiteSpace(prod.ProductName))
             {
                 ModelState.AddModelError("", "Please enter product name");
+            }
+        }
+
+        private JsonResult UpsertProduct(string prod)
+        {
+            try
+            {
+                var productEditViewModel = JsonConvert.DeserializeObject<ProductEditViewModel>(prod);
+               
+                if (!TryUpdateModel(productEditViewModel))
+                {
+                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                } 
+                
+                var isUpdate = productEditViewModel.Id > 0 ? true : false;
+
+                Product product = null;
+                if (isUpdate)
+                {
+                    product = _prodService.Update(productEditViewModel);
+                }
+                else
+                {
+                    product = _prodService.Create(productEditViewModel);
+                }
+
+                string dirPath = PathUtil.GetProductImageDirectory(product.Id);
+                _fileService.CreateDirectory(dirPath);
+
+                foreach (string fileName in Request.Files)
+                {
+                    var postedFile = Request.Files[fileName];
+                    if (postedFile.ContentLength > 0)
+                    {
+                        string path = dirPath + "\\" + postedFile.FileName;
+                        postedFile.SaveAs(path);
+                    }
+                }
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to upsert product: {0}", prod);
+                return Json(new { Success = false, Errors = "Error occured, unable to upsert product. We are fixing it." }, JsonRequestBehavior.DenyGet);
             }
         }
     }

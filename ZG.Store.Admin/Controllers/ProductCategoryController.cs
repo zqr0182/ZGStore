@@ -48,7 +48,7 @@ namespace ZG.Store.Admin.Controllers
         {
             try
             {
-                if (!TryUpdateModel(cat))
+                if (ModelState.IsValid)
                 {
                     var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
                     return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);

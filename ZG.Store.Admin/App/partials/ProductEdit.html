@@ -10,8 +10,8 @@
         <div ng-show="prodForm.prodName.$dirty && prodForm.prodName.$invalid">Product Name is required</div>
     </div>
     <div>
-        Is Active: Yes <input type="radio" ng-model="prod.Active" value="1" name="IsActive" required>
-        No <input type="radio" ng-model="prod.Active" value="0" name="IsActive" required>
+        Is Active: Yes <input type="radio" ng-model="prod.Active" value="true" name="IsActive" required>
+        No <input type="radio" ng-model="prod.Active" value="false" name="IsActive" required>
         <div ng-show="prodForm.Active.$dirty && prodForm.Active.$invalid">Is Active is Required</div>
     </div>
     <div>
@@ -50,8 +50,8 @@
         Product Link: <input type="text" ng-model="prod.ProductLink" />
     </div>
     <div>
-        Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="1" name="IsReviewEnabled">
-        No <input type="radio" ng-model="prod.IsReviewEnabled" value="0" name="IsReviewEnabled">
+        Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="true" name="IsReviewEnabled">
+        No <input type="radio" ng-model="prod.IsReviewEnabled" value="false" name="IsReviewEnabled">
     </div>
     <div>
         Total Review Count: {{prod.TotalReviewCount}}

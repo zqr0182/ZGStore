@@ -1,4 +1,5 @@
-﻿Category list and details page
+﻿Add category dropdown to Product Create/Edit page 
+Category list and details page
 Edit product page to add category
 Inventories related pages
 Order list and details page

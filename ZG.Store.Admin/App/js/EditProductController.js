@@ -1,6 +1,8 @@
 ﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', '$timeout', '$upload',
   function ($scope, $http, $routeParams, ProdService, $timeout, $upload) {
-      $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
+      if ($routeParams.prodId > 0) {
+          $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
+      }
       $scope.showDeleteImageSuccessfulMsg = false;
       $scope.showDeleteImageFailureMsg = false;
       $scope.deleteImageFailureMsg = '';
@@ -44,8 +46,9 @@
       }
 
       $scope.saveProd = function () {
+          var url = ($routeParams.prodId > 0) ? "/product/edit" : "/product/create";
           $upload.upload({
-              url: '/product/edit',
+              url: url,
               method: 'POST',
               headers: { 'my-header': 'my-header-value' },
               data: { prod: $scope.prod },

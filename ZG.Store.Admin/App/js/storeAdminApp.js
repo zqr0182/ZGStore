@@ -4,6 +4,7 @@ var adminApp = angular.module('storeAdminApp', ['ngRoute', 'storeAdminController
 
 adminApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
+    .when('/product/create', { templateUrl: 'app/partials/productEdit.html', controller: 'EditProductCtrl' })
     .when('/product/edit/:prodId', { templateUrl: 'app/partials/productEdit.html', controller: 'EditProductCtrl' })
     .when('/product', { templateUrl: 'app/partials/productlist.html', controller: 'ProductListCtrl' })
     .when('/productcategory/edit/:catId', { templateUrl: 'app/partials/productCategoryEdit.html', controller: 'EditProductCategoryCtrl' })
