@@ -10,10 +10,13 @@
         <div ng-show="prodForm.prodName.$dirty && prodForm.prodName.$invalid">Product Name is required</div>
     </div>
     <div>
-        Is Active: Yes <input type="radio" ng-model="prod.Active" value="true" name="IsActive" required>
-        No <input type="radio" ng-model="prod.Active" value="false" name="IsActive" required>
+        Is Active: Yes <input type="radio" ng-model="prod.Active" ng-value="true" name="IsActive" required>
+        No <input type="radio" ng-model="prod.Active" ng-value="false" name="IsActive" required>
         <div ng-show="prodForm.Active.$dirty && prodForm.Active.$invalid">Is Active is Required</div>
     </div>
+
+    <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
+
     <div>
         Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
     </div>

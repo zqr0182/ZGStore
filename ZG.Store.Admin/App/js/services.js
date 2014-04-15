@@ -13,6 +13,7 @@ adminServices.factory('ProdService', ['$resource', function ($resource) {
 adminServices.factory('ProdCategoryService', ['$resource', function ($resource) {
     return {
         categories: $resource('productcategory/list/:filterByStatus', {}, {}),
+        categoryIdNames: $resource('productcategory/GetActiveCategoryIdNames', {}, {}),
         category: $resource('productcategory/edit/:catId', {}, {}),
         deactivateCategory: $resource('productcategory/deactivate/:catId', {}, {}),
         activateCategory: $resource('productcategory/activate', {}, {}),

@@ -95,5 +95,11 @@ namespace ZG.Store.Admin.Controllers
                 return Json(new { Success = false, Error = "Error occured, unable to activate category. We are fixing it." }, JsonRequestBehavior.DenyGet);
             }
         }
+
+        public JsonResult GetActiveCategoryIdNames()
+        {
+            var cats = _prodCatService.GetActiveCategoryIdNames();
+            return Json(cats, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

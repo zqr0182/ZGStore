@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -44,13 +45,19 @@ namespace ZG.Repository
 
         public virtual T MatcheById(int id, params string[] includePaths)
         {
-            var query = _dbSet.Where(o => o.Id == id);
-            foreach(string path in includePaths)
+            //var query = _dbSet.Where(o => o.Id == id);
+            //foreach(string path in includePaths)
+            //{
+            //    query.Include(path);
+            //}
+
+            DbQuery<T> query = _dbSet;
+            foreach (string path in includePaths)
             {
-                query.Include(path);
+                query = _dbSet.Include(path);
             }
 
-            return query.FirstOrDefault();
+            return query.Where(o => o.Id == id).FirstOrDefault();
         }
 
         public void Add(T newEntity)

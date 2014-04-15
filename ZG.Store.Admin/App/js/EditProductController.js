@@ -1,7 +1,26 @@
-﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', '$timeout', '$upload',
-  function ($scope, $http, $routeParams, ProdService, $timeout, $upload) {
+﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', 'ProdCategoryService', '$timeout', '$upload',
+  function ($scope, $http, $routeParams, ProdService, ProdCategoryService, $timeout, $upload) {
+      $scope.allProdCategories = ProdCategoryService.categoryIdNames.query(function (data) {
+          $scope.selectedOptions = [data[0], data[1]];
+      });
+      
       if ($routeParams.prodId > 0) {
-          $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId });
+          $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId }, function (data) {
+              var currentProdCats = [];              
+
+              $scope.prod.ProductCategories.forEach(function (pc) {
+                  $scope.allProdCategories.forEach(function (pc2) {
+                      if (pc.Id == pc2.Id) {
+                          currentProdCats.push(pc2);
+                      }
+                  });
+              });
+
+              if (currentProdCats.length > 0)
+              {
+                  $scope.prod.ProductCategories = currentProdCats;
+              }
+          });
       }
       $scope.showDeleteImageSuccessfulMsg = false;
       $scope.showDeleteImageFailureMsg = false;

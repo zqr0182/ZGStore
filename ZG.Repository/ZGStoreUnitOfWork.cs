@@ -12,6 +12,7 @@ namespace ZG.Repository
     public interface IUnitOfWork
     {
         IRepository<Product> Products { get; }
+        IRepository<ProductCategory> ProductCategories { get; }
         IRepository<User> Users { get; }
         IRepository<Category> Categories { get; }
         IRepository<Email> Emails { get; }
@@ -30,6 +31,7 @@ namespace ZG.Repository
         private readonly ZGStoreContext _context;
 
         public IRepository<Product> Products { get; private set; }
+        public IRepository<ProductCategory> ProductCategories { get; private set; }
         public IRepository<User> Users { get; private set; }
         public IRepository<Category> Categories { get; private set; }
         public IRepository<Email> Emails { get; private set; }
@@ -40,13 +42,14 @@ namespace ZG.Repository
         public IRepository<Province> Provinces { get; private set; }
         public IRepository<Country> Countries { get; private set; }
 
-        public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo, IRepository<Email> emailRepo,
+        public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<ProductCategory> productCategoriesRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo, IRepository<Email> emailRepo,
                                  IRepository<Order> OrderRepo, IRepository<OrderStatus> orderStatusRepo, IRepository<ShippingProvider> shippingProvidersRepo, IRepository<State> stateRepo,
                                  IRepository<Province> provinceRepo, IRepository<Country> CountryRepo)
         {
             _context = context;
 
             Products = productRepo;
+            ProductCategories = productCategoriesRepo;
             Users = userRepo;
             Categories = categoryRepo;
             Emails = emailRepo;

@@ -14,7 +14,8 @@ namespace ZG.Application
     {
         ProductListViewModel GetProducts(string category, bool active, int page, int pageSize);
         ProductListViewModel GetActiveProducts(string category, int page, int pageSize);
-        Product GetProductById(int id);
+        Product GetProductById(int id); 
+        Product GetProductById(int id, params string[] includePaths); 
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         Product Update(ProductEditViewModel prod);
         Product Create(ProductEditViewModel prod);
@@ -59,6 +60,11 @@ namespace ZG.Application
             return UnitOfWork.Products.MatcheById(id);
         }
 
+        public Product GetProductById(int id, params string[] includePaths)
+        {
+            return UnitOfWork.Products.MatcheById(id, includePaths);
+        }
+
         public ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory)
         {
             var viewModel = new ProductEditViewModel()
@@ -82,7 +88,8 @@ namespace ZG.Application
                 TotalReviewCount = prod.TotalReviewCount,
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
-                ProductImageNames = _fileService.GetFileNames(prodImageDirectory)
+                ProductImageNames = _fileService.GetFileNames(prodImageDirectory),
+                ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName{Id = c.Category.Id, Name = c.Category.CategoryName}).ToList()
             };
 
             return viewModel;
@@ -90,7 +97,7 @@ namespace ZG.Application
 
         public Product Update(ProductEditViewModel prod)
         {
-            var product = GetProductById(prod.Id);
+            var product = GetProductById(prod.Id, "ProductCategories");
             product.ProductName = prod.Name;
             product.CatalogNumber = prod.CatalogNumber;
             product.Description = prod.Description;
@@ -107,6 +114,11 @@ namespace ZG.Application
             product.ProductLink = prod.ProductLink;
             product.IsReviewEnabled = prod.IsReviewEnabled;
             product.Active = prod.Active;
+
+            product.ProductCategories.ToList().ForEach(c => UnitOfWork.ProductCategories.Remove(c));
+            product.ProductCategories.Clear();
+            prod.ProductCategories.ForEach(c => product.ProductCategories.Add(new ProductCategory { CategoryID = c.Id, ProductID = prod.Id, Active = true }));
+          
 
             UnitOfWork.Commit();
 
