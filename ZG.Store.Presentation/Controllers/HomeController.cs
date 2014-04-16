@@ -21,8 +21,6 @@ namespace ZG.Store.Presentation.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             var user = _userService.FindByUserName("zhangxiao1234@hotmail.com");
 
             return View();

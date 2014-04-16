@@ -1,7 +1,7 @@
-﻿@model ZG.Domain.Models.Product
+﻿@model ZG.Domain.DTO.ProductBriefInfo
 
 <div class="item">
-    <div>@Html.ActionLink(Model.ProductName, "Details", "Product", new{id = Model.Id}, null) </div>
+    <div>@Html.ActionLink(Model.Name, "Details", "Product", new{id = Model.Id}, null) </div>
     <div>@Model.Description </div>
     <div>@Html.ActionLink(Model.Price.ToString("c"), "Details", "Product", new{id = Model.Id}, null) </div>
 </div>
