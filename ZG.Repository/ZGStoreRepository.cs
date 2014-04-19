@@ -45,12 +45,6 @@ namespace ZG.Repository
 
         public virtual T MatcheById(int id, params string[] includePaths)
         {
-            //var query = _dbSet.Where(o => o.Id == id);
-            //foreach(string path in includePaths)
-            //{
-            //    query.Include(path);
-            //}
-
             DbQuery<T> query = _dbSet;
             foreach (string path in includePaths)
             {

@@ -43,7 +43,7 @@ namespace ZG.Application
 
             var productsPerPage = new ProductListViewModel
             {
-                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, Name = p.ProductName, Description = p.Description, Price = p.Price, SalePrice = p.SalePrice, Active = p.Active}),
+                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, Name = p.ProductName, Description = p.Description, Price = p.Price, SalePrice = p.SalePrice, Active = p.Active}).ToList(),
                 TotalProducts = totalProducts
             };
 
@@ -144,7 +144,9 @@ namespace ZG.Application
                 ShippingWidth = prod.ShippingWidth,
                 ProductLink = prod.ProductLink,
                 IsReviewEnabled = prod.IsReviewEnabled,
-                Active = prod.Active
+                Active = prod.Active,
+
+                ProductCategories = prod.ProductCategories.Select(pc => new ProductCategory {  ProductID = prod.Id, CategoryID = pc.Id, Active = true}).ToList()
             };
 
             UnitOfWork.Products.Add(product);

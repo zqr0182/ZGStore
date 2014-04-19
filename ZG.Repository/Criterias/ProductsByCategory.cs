@@ -21,20 +21,9 @@ namespace ZG.Repository.Criterias
         public override IQueryable<Product> BuildQueryOver(IQueryable<Product> queryBase)
         {
             IQueryable<Product> products = base.BuildQueryOver(queryBase);
-            if (Context != null)
-            {
-                //the generated query executes faster than the other one.
-                return (from prod in products
-                        join prodCat in Context.ProductCategories on prod.Id equals prodCat.ProductID
-                        join cat in Context.Categories on prodCat.CategoryID equals cat.Id
-                        where prod.Active == _isActive && (_category == null || cat.CategoryName == _category)
-                        select prod);
-            }
-            
-            return products.Where(p => p.Active == _isActive)
-                           .SelectMany(p => p.ProductCategories
-                                             .Where(c => _category == null || c.Category.CategoryName == _category)
-                                             .Select(c => c.Product));
+            return products.Include("ProductCategories.Category")
+                           .Where(p => p.Active == _isActive && p.ProductCategories.Any(pc => _category == null || pc.Category.CategoryName == _category))
+                           .Select(p => p);
         }
     }
 }
