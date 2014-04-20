@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ZG.Common;
 using ZG.Domain.Abstract;
 
@@ -40,6 +41,9 @@ namespace ZG.Domain.Models
         public Nullable<decimal> RatingScore { get; set; }
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public bool Active { get; set; }
+        public int SupplierId { get; set; }
+        [ForeignKey("SupplierId")]
+        public virtual Supplier Supplier { get; set; }
         public virtual ICollection<Coupon> Coupons { get; set; }
         public virtual ICollection<CustomField> CustomFields { get; set; }
         public virtual ICollection<FeaturedProduct> FeaturedProducts { get; set; }
@@ -47,9 +51,7 @@ namespace ZG.Domain.Models
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-        public virtual ICollection<ProductDownloadKey> ProductDownloadKeys { get; set; }
         public virtual ICollection<ProductCategory> ProductCategories { get; set; }
-        public virtual ICollection<ProductOption> ProductOptions { get; set; }
         public virtual ICollection<ProductReview> ProductReviews { get; set; }
         public virtual ICollection<ProductTag> ProductTags { get; set; }
         public virtual ICollection<RelatedProduct> RelatedProducts { get; set; }

@@ -80,17 +80,11 @@
     <Compile Include="Models\GiftRegistryProduct.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\InventoryAction.cs" />
-    <Compile Include="Models\InventoryProductOption.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderProduct.cs" />
-    <Compile Include="Models\OrderProductCustomField.cs" />
-    <Compile Include="Models\OrderProductOption.cs" />
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\ProductDownloadKey.cs" />
-    <Compile Include="Models\ProductOption.cs" />
     <Compile Include="Models\ProductReview.cs" />
     <Compile Include="Models\ProductReviewCaregoryProductReview.cs" />
     <Compile Include="Models\ProductReviewCategory.cs" />
@@ -101,6 +95,7 @@
     <Compile Include="Models\ShippingProvider.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\StoreConfiguration.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\User.cs" />

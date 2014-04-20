@@ -36,17 +36,11 @@ namespace ZG.Repository
         public DbSet<GiftRegistryProduct> GiftRegistryProducts { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
-        public DbSet<InventoryAction> InventoryActions { get; set; }
-        public DbSet<InventoryProductOption> InventoryProductOptions { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
-        public DbSet<OrderProductCustomField> OrderProductCustomFields { get; set; }
-        public DbSet<OrderProductOption> OrderProductOptions { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<ProductDownloadKey> ProductDownloadKeys { get; set; }
-        public DbSet<ProductOption> ProductOptions { get; set; }
         public DbSet<ProductReview> ProductReviews { get; set; }
         public DbSet<ProductReviewCaregoryProductReview> ProductReviewCaregoryProductReviews { get; set; }
         public DbSet<ProductReviewCategory> ProductReviewCategories { get; set; }

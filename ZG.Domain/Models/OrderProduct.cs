@@ -31,7 +31,5 @@ namespace ZG.Domain.Models
 
         [ForeignKey("ProductID")]
         public virtual Product Product { get; set; }
-        public virtual ICollection<OrderProductCustomField> OrderProductCustomFields { get; set; }
-        public virtual ICollection<OrderProductOption> OrderProductOptions { get; set; }
     }
 }
