@@ -18,6 +18,7 @@ namespace ZG.Application
         Category GetCategoryById(int id);
         ProductCategoryEditViewModel GetCategoryEditViewModel(Category cat);
         void Update(ProductCategoryEditViewModel cat);
+        void Create(ProductCategoryEditViewModel cat);
         void Activate(int catId);
         void Deactivate(int catId);
     }
@@ -104,6 +105,14 @@ namespace ZG.Application
             category.ParentCategoryID = cat.ParentCategoryID;
             category.Active = cat.Active;
 
+            UnitOfWork.Commit();
+        }
+
+        public void Create(ProductCategoryEditViewModel cat)
+        {
+            var newCat = new Category { CategoryName = cat.Name, ParentCategoryID = cat.ParentCategoryID, Active = cat.Active};
+
+            UnitOfWork.Categories.Add(newCat);
             UnitOfWork.Commit();
         }
     }

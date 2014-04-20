@@ -46,22 +46,13 @@ namespace ZG.Store.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(ProductCategoryEditViewModel cat)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
-                }
+            return UpsertProductCategory(cat);
+        }
 
-                _prodCatService.Update(cat);
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
-            }
-            catch (Exception ex)
-            {
-                _logger.ErrorFormat(ex, "Failed to edit product category: {0}, {1}", cat.Id, cat.Name);
-                return Json(new { Success = false, Errors = "Error occured, unable to edit category. We are fixing it." }, JsonRequestBehavior.DenyGet);
-            }
+        [HttpPost]
+        public JsonResult Create(ProductCategoryEditViewModel cat)
+        {
+            return UpsertProductCategory(cat);
         }
 
         [HttpDelete]
@@ -100,6 +91,34 @@ namespace ZG.Store.Admin.Controllers
         {
             var cats = _prodCatService.GetActiveCategoryIdNames();
             return Json(cats, JsonRequestBehavior.AllowGet);
+        }
+
+        private JsonResult UpsertProductCategory(ProductCategoryEditViewModel cat)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                }
+
+                if (cat.Id > 0)
+                {
+                    _prodCatService.Update(cat);
+                }
+                else
+                {
+                    _prodCatService.Create(cat);
+                }
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to upsert product category: {0}, {1}", cat.Id, cat.Name);
+                return Json(new { Success = false, Errors = "Error occured, unable to upsert category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
         }
 	}
 }

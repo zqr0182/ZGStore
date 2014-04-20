@@ -8,9 +8,9 @@
         <div ng-show="prodCatForm.Name.$dirty && prodCatForm.Name.$invalid">Category Name is required</div>
     </div>
     <div>
-        Is Active: Yes <input type="radio" ng-model="cat.Active" value="1" name="IsActive" required>
-        No <input type="radio" ng-model="cat.Active" value="0" name="IsActive" required>
-        <div ng-show="prodCatForm.Active.$dirty && prodCatForm.Active.$invalid">Is Active is Required</div>
+        Is Active: Yes <input type="radio" ng-model="cat.Active" ng-value="true" name="IsActive" required>
+        No <input type="radio" ng-model="cat.Active" ng-value="false" name="IsActive" required>
+        <div ng-show="prodCatForm.IsActive.$dirty && prodCatForm.IsActive.$invalid">Is Active is Required</div>
     </div>
     <div>
         Parent Category Id: <input type="text" ng-model="cat.ParentCategoryID" />

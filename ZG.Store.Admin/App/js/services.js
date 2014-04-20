@@ -14,7 +14,8 @@ adminServices.factory('ProdCategoryService', ['$resource', function ($resource) 
     return {
         categories: $resource('productcategory/list/:filterByStatus', {}, {}),
         categoryIdNames: $resource('productcategory/GetActiveCategoryIdNames', {}, {}),
-        category: $resource('productcategory/edit/:catId', {}, {}),
+        categoryEdit: $resource('productcategory/edit/:catId', {}, {}),
+        categoryCreate: $resource('productcategory/create', {}, {}),
         deactivateCategory: $resource('productcategory/deactivate/:catId', {}, {}),
         activateCategory: $resource('productcategory/activate', {}, {}),
     };
