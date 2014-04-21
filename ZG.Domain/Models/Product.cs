@@ -41,6 +41,7 @@ namespace ZG.Domain.Models
         public Nullable<decimal> RatingScore { get; set; }
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public bool Active { get; set; }
+        [Required]
         public int SupplierId { get; set; }
         [ForeignKey("SupplierId")]
         public virtual Supplier Supplier { get; set; }

@@ -48,7 +48,7 @@ namespace ZG.Repository
             DbQuery<T> query = _dbSet;
             foreach (string path in includePaths)
             {
-                query = _dbSet.Include(path);
+                query = query.Include(path);
             }
 
             return query.Where(o => o.Id == id).FirstOrDefault();

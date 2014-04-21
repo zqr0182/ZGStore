@@ -1,6 +1,7 @@
 ﻿--Add category dropdown to Product Create/Edit page 
 --Category list and details and create page
---Edit productcategory page to add category
+--Edit productcategory page to add category\
+Supplier List, Create, Edit Pages
 Inventories related pages
 Order list and details page
 ShippingProviders page

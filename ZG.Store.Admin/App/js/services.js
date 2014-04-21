@@ -20,3 +20,43 @@ adminServices.factory('ProdCategoryService', ['$resource', function ($resource) 
         activateCategory: $resource('productcategory/activate', {}, {}),
     };
 }]);
+
+adminServices.factory('SupplierService', ['$resource', function ($resource) {
+    return {
+        supplier: $resource('supplier/GetActiveSupplierIdNames', {}, {})
+    };
+}]);
+
+adminServices.factory('CommonFunctions', [function () {
+    return {
+        getArrayById: function (array1, array2) {
+            var result = [];
+
+            array1.forEach(function (item1) {
+                array2.forEach(function (item2) {
+                    if (item1.Id == item2.Id) {
+                        result.push(item2);
+                    }
+                });
+            });
+
+            return result;
+        },
+        getItemById: function (id, array) {
+            var results = array.filter(function (item) {
+                return item.Id == id;
+            });
+
+            if(results != null)
+            {
+                return results[0];
+            }
+
+            return null;
+        },
+        sum: function(val1, val2)
+        {
+            return val1 + val2;
+        }
+    };
+}]);

@@ -66,6 +66,7 @@
     <Compile Include="DTO\ProductEditViewModel.cs" />
     <Compile Include="DTO\ProductCategoryListViewModel.cs" />
     <Compile Include="DTO\ProductListViewModel.cs" />
+    <Compile Include="DTO\SupplierIdName.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />

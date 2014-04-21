@@ -45,4 +45,10 @@ namespace ZG.Common
         UPS,
         USPS_Ground
     }
+
+    public enum SupplierStatus
+    {
+        Active,
+        Inactive
+    }
 }

@@ -38,5 +38,7 @@ namespace ZG.Domain.DTO
 
         public List<string> ProductImageNames { get; set; }
         public List<ProductCategoryIdName> ProductCategories { get; set; }
+        [Required]
+        public SupplierIdName SupplierIdName { get; set; }
     }
 }

@@ -1,25 +1,21 @@
-﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', 'ProdCategoryService', '$timeout', '$upload',
-  function ($scope, $http, $routeParams, ProdService, ProdCategoryService, $timeout, $upload) {
-      $scope.allProdCategories = ProdCategoryService.categoryIdNames.query(function (data) {
-          $scope.selectedOptions = [data[0], data[1]];
-      });
+﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload',
+  function ($scope, $http, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
+      $scope.allSuppliers = SupplierService.supplier.query();
+      $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();
       
       if ($routeParams.prodId > 0) {
           $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId }, function (data) {
-              var currentProdCats = [];              
-
-              $scope.prod.ProductCategories.forEach(function (pc) {
-                  $scope.allProdCategories.forEach(function (pc2) {
-                      if (pc.Id == pc2.Id) {
-                          currentProdCats.push(pc2);
-                      }
-                  });
-              });
-
+              var currentProdCats = CommonFunctions.getArrayById($scope.prod.ProductCategories, $scope.allProdCategories);
               if (currentProdCats.length > 0)
               {
                   $scope.prod.ProductCategories = currentProdCats;
               }
+
+              $scope.prod.SupplierIdName = CommonFunctions.getItemById($scope.prod.SupplierIdName.Id, $scope.allSuppliers);
+
+              //$scope.prod.SupplierIdName = $scope.allSuppliers.filter(function (s) {
+              //    return s.Id == $scope.prod.SupplierIdName.Id;
+              //})[0];
           });
       }
       $scope.showDeleteImageSuccessfulMsg = false;

@@ -89,6 +89,7 @@ namespace ZG.Application
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
                 ProductImageNames = _fileService.GetFileNames(prodImageDirectory),
+                SupplierIdName = new SupplierIdName { Id = prod.Supplier.Id, Name = prod.Supplier.Name },
                 ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName{Id = c.Category.Id, Name = c.Category.CategoryName}).ToList()
             };
 
@@ -115,6 +116,7 @@ namespace ZG.Application
             product.IsReviewEnabled = prod.IsReviewEnabled;
             product.Active = prod.Active;
 
+            product.SupplierId = prod.SupplierIdName.Id;
             product.ProductCategories.ToList().ForEach(c => UnitOfWork.ProductCategories.Remove(c));
             product.ProductCategories.Clear();
             prod.ProductCategories.ForEach(c => product.ProductCategories.Add(new ProductCategory { CategoryID = c.Id, ProductID = prod.Id, Active = true }));

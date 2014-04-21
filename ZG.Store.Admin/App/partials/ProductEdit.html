@@ -15,7 +15,15 @@
         <div ng-show="prodForm.IsActive.$dirty && prodForm.IsActive.$invalid">Is Active is Required</div>
     </div>
 
-    <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
+    <div>
+        Product Categories:<br />
+        <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
+    </div>
+    <div>Supplier:<br />
+        <select ng-model="prod.SupplierIdName" ng-options="s.Name for s in allSuppliers">
+            <option value="">-- Choose Supplier --</option>
+        </select>
+    </div>
 
     <div>
         Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
