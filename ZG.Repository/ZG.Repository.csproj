@@ -60,7 +60,7 @@
     <Compile Include="Criterias\AbstractCriteria.cs" />
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
-    <Compile Include="Criterias\SupplierByStatus.cs" />
+    <Compile Include="Criterias\SupplierByActive.cs" />
     <Compile Include="Criterias\USAndCanada.cs" />
     <Compile Include="Criterias\ProvincesByActive.cs" />
     <Compile Include="Criterias\CountriesByActive.cs" />

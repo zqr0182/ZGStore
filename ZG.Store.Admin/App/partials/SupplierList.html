@@ -1,0 +1,37 @@
+﻿<h2>Supplier List</h2>
+
+<a href="#/supplier/create">Create New Supplier</a> <br />
+
+Filter by:
+<select ng-model="filterByStatus" ng-change="getSuppliers()">
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+</select>
+
+<table>
+    <tr>
+        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+        <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+        <td>Active</td>
+    </tr>
+    <tr ng-repeat="sup in suppliers | orderBy:predicate:reverse">
+        <td>{{sup.Id}}</td>
+        <td>{{sup.Name}}</td>
+        <td>{{sup.Active}}</td>
+        <td>
+            <div ng-show="sup.Active">
+                <input type="button" ng-click="go('/supplier/edit/' + sup.Id)" value="Edit" />
+                <input type="button" ng-click="deactivateSupplier(sup)" value="Deactivate" />
+            </div>
+            <div ng-show="!sup.Active">
+                <input type="button" ng-click="activateSupplier(sup)" value="Activate" />
+            </div>
+            <div ng-show="isDeactivationFailed(sup.Id)">
+                Unable to deactivate supplier. We are fixing it.
+            </div>
+            <div ng-show="isActivationFailed(sup.Id)">
+                Unable to activate supplier. We are fixing it.
+            </div>
+        </td>
+    </tr>
+</table>

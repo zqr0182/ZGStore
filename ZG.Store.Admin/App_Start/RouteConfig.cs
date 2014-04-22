@@ -29,6 +29,12 @@ namespace ZG.Store.Admin
             );
 
             routes.MapRoute(
+               name: "SupplierList",
+               url: "supplier/GetSupplierIdNames/{filterByStatus}",
+               defaults: new { controller = "Supplier", action = "GetSupplierIdNames" }
+           );
+
+            routes.MapRoute(
                 name: "ProdCatCreate",
                 url: "productcategory/create",
                 defaults: new { controller = "ProductCategory", action = "Create" }

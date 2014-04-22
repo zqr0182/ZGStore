@@ -1,6 +1,12 @@
 ﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload',
   function ($scope, $http, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
-      $scope.allSuppliers = SupplierService.supplier.query();
+      $scope.showDeleteImageSuccessfulMsg = false;
+      $scope.showDeleteImageFailureMsg = false;
+      $scope.deleteImageFailureMsg = '';
+      $scope.isSaveSuccessful = false;
+      $scope.errors = null;
+
+      $scope.allSuppliers = SupplierService.supplier.query({ filterByStatus: 'Active' });
       $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();
       
       if ($routeParams.prodId > 0) {
@@ -12,17 +18,9 @@
               }
 
               $scope.prod.SupplierIdName = CommonFunctions.getItemById($scope.prod.SupplierIdName.Id, $scope.allSuppliers);
-
-              //$scope.prod.SupplierIdName = $scope.allSuppliers.filter(function (s) {
-              //    return s.Id == $scope.prod.SupplierIdName.Id;
-              //})[0];
           });
       }
-      $scope.showDeleteImageSuccessfulMsg = false;
-      $scope.showDeleteImageFailureMsg = false;
-      $scope.deleteImageFailureMsg = '';
-      $scope.isSaveSuccessful = false;
-      $scope.errors = null;
+
       $scope.deleteProductImage = function (imageName) {
           if (window.confirm('Are you sure you want to delete this image?')) {
               var imageNameNoExtension = imageName.split('.').splice(0, 1)[0];

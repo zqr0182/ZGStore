@@ -25,7 +25,7 @@
 
       $scope.failedActivations = [];
       $scope.activateProd = function (prod) {
-          ProdService.activateProduct.save({ id: prod.Id }, {}, function (value, responseHeaders) {
+          ProdService.activateProduct.save({}, { id: prod.Id }, function (value, responseHeaders) {
                   changeProductStatusHelper(true, prod, $scope.failedActivations, value);
               });
       }

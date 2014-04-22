@@ -23,7 +23,9 @@ adminServices.factory('ProdCategoryService', ['$resource', function ($resource) 
 
 adminServices.factory('SupplierService', ['$resource', function ($resource) {
     return {
-        supplier: $resource('supplier/GetActiveSupplierIdNames', {}, {})
+        supplier: $resource('supplier/GetSupplierIdNames/:filterByStatus', {}, {}),
+        deactivateSupplier: $resource('supplier/deactivate/:id', {}, {}),
+        activateSupplier: $resource('supplier/activate', {}, {}),
     };
 }]);
 

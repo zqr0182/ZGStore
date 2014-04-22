@@ -8,20 +8,17 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class SupplierByStatus : AbstractCriteria<Supplier>
+    public class SupplierByActive : AbstractCriteria<Supplier>
     {
-        SupplierStatus _supplierStatus;
-
-        public SupplierByStatus(SupplierStatus status)
+        bool _active;
+        public SupplierByActive(bool active)
         {
-            _supplierStatus = status;
+            _active = active;
         }
 
         public override IQueryable<Supplier> BuildQueryOver(IQueryable<Supplier> queryBase)
         {
-            var status = _supplierStatus.ToString();
-
-            return base.BuildQueryOver(queryBase).Where(s => s.Status == status);
+            return base.BuildQueryOver(queryBase).Where(s => s.Active == _active);
         }
     }
 }

@@ -33,10 +33,11 @@ namespace ZG.Store.Admin
             bundles.Add(new ScriptBundle("~/bundles/storeAdminApp").Include(
                 "~/App/js/storeAdminApp.js"
                 , "~/App/js/controllers.js"
-                , "~/App/js/editProductController.js"
                 , "~/App/js/productListController.js"
+                , "~/App/js/editProductController.js"
                 , "~/App/js/productCategoryListController.js"
                 , "~/App/js/editProductCategoryController.js"
+                , "~/App/js/supplierListController.js"
                 , "~/App/js/services.js"
                 ));
 

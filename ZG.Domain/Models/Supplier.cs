@@ -16,12 +16,10 @@ namespace ZG.Domain.Models
         [MaxLength(100)]
         public string Name { get; set; }
         [Required]
-        [MaxLength(50)]
-        public string Status { get; set; }
+        public bool Active { get; set; }
         [Required]
         [MaxLength(100)]
         public string Address1 { get; set; }
-        [Required]
         [MaxLength(100)]
         public string Address2 { get; set; }
         [Required]
