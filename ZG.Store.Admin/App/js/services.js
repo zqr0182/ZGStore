@@ -59,9 +59,21 @@ adminServices.factory('CommonFunctions', [function () {
 
             return null;
         },
-        sum: function(val1, val2)
+        changeStatusHelper: function (isActivation, model, arrayOfId, serverResult)
         {
-            return val1 + val2;
+            if (serverResult.Success) {
+                model.Active = isActivation ? true : false;
+                var index = arrayOfId.indexOf(model.Id);
+                if (index > -1) {
+                    arrayOfId.splice(index, 1);
+                }
+            }
+            else {
+                arrayOfId.push(model.Id);
+            }
+        },
+        isItemFound: function (array, item) {
+            return array.indexOf(item) > -1;
         }
     };
 }]);

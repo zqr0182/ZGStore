@@ -1,5 +1,5 @@
-﻿angular.module('storeAdminControllers').controller('ProductListCtrl', ['$scope', '$location', 'ProdService',
-  function ($scope, $location, ProdService) {
+﻿angular.module('storeAdminControllers').controller('ProductListCtrl', ['$scope', '$location', 'ProdService', 'CommonFunctions',
+  function ($scope, $location, ProdService, CommonFunctions) {
       $scope.filterByStatus = 'active';
       $scope.getProducts = function () {
           $scope.products = ProdService.products.get({ filterByStatus: $scope.filterByStatus });
@@ -16,37 +16,23 @@
           if (window.confirm('Are you sure you want to inactivate this product?'))
           {
               ProdService.deactivateProduct.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
-                  changeProductStatusHelper(false, prod, $scope.failedDeactivations, value);
+                  CommonFunctions.changeStatusHelper(false, prod, $scope.failedDeactivations, value);
               });
           }
       }
       
-      $scope.isDeactivationFailed = isItemFound;
+      $scope.isDeactivationFailed = function (id) {
+          return CommonFunctions.isItemFound($scope.failedDeactivations, id);
+      }
 
       $scope.failedActivations = [];
       $scope.activateProd = function (prod) {
           ProdService.activateProduct.save({}, { id: prod.Id }, function (value, responseHeaders) {
-                  changeProductStatusHelper(true, prod, $scope.failedActivations, value);
+              CommonFunctions.changeStatusHelper(true, prod, $scope.failedActivations, value);
               });
       }
 
-      $scope.isActivationFailed = isItemFound;
-
-      var changeProductStatusHelper = function(isActivation, prod, arrayOfId, serverResult)
-      {
-          if (serverResult.Success) {
-              prod.Active = isActivation ? true : false;
-              var index = arrayOfId.indexOf(prod.Id);
-              if (index > -1) {
-                  arrayOfId.splice(index, 1);
-              }
-          }
-          else {
-              arrayOfId.push(prod.Id);
-          }
-      }
-
-      var isItemFound = function (array, item) {
-          return array.indexOf(item) > -1;
+      $scope.isActivationFailed = function (id) {
+          return CommonFunctions.isItemFound($scope.failedActivations, id);
       }
   }]);
