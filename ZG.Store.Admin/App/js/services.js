@@ -25,6 +25,8 @@ adminServices.factory('SupplierService', ['$resource', function ($resource) {
     return {
         supplier: $resource('supplier/GetSuppliers/:filterByStatus', {}, {}),
         supplierIdNames: $resource('supplier/GetSupplierIdNames/:filterByStatus', {}, {}),
+        supplierEdit: $resource('supplier/edit/:supId', {}, {}),
+        supplierCreate: $resource('supplier/create', {}, {}),
         deactivateSupplier: $resource('supplier/deactivate/:id', {}, {}),
         activateSupplier: $resource('supplier/activate', {}, {}),
     };

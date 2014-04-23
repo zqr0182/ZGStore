@@ -1,0 +1,51 @@
+﻿<h2>Create/Edit Supplier</h2>
+<form name="supplierForm" class="css-form" novalidate>
+    <div>
+        Id: {{sup.Id}}
+    </div>
+    <div>
+        Supplier Name: <input type="text" name="Name" ng-model="sup.Name" required />
+        <div ng-show="supplierForm.Name.$dirty && supplierForm.Name.$invalid">Supplier Name is required</div>
+    </div>
+    <div>
+        Is Active: Yes <input type="radio" ng-model="sup.Active" ng-value="true" name="IsActive" required>
+        No <input type="radio" ng-model="sup.Active" ng-value="false" name="IsActive" required>
+        <div ng-show="supplierForm.IsActive.$dirty && supplierForm.IsActive.$invalid">Is Active is Required</div>
+    </div>
+    <div>
+        Address 1: <input type="text" name="Address1" ng-model="sup.Address1" required />
+        <div ng-show="supplierForm.Address1.$dirty && supplierForm.Address1.$invalid">Address 1 is required</div>
+    </div>
+    <div>
+        Address 2: <input type="text" name="Address21" ng-model="sup.Address2"/>
+    </div>
+    <div>
+        City: <input type="text" name="City" ng-model="sup.City" required />
+        <div ng-show="supplierForm.City.$dirty && supplierForm.City.$invalid">City is required</div>
+    </div>
+    <div>
+        State: <input type="text" name="State" ng-model="sup.State" required />
+        <div ng-show="supplierForm.State.$dirty && supplierForm.State.$invalid">State is required</div>
+    </div>
+    <div>
+        Zip Code: <input type="text" name="Zip" ng-model="sup.Zip" required />
+        <div ng-show="supplierForm.Zip.$dirty && supplierForm.Zip.$invalid">Zip Code is required</div>
+    </div>
+    <div>
+        Country: <input type="text" name="Country" ng-model="sup.Country" required />
+        <div ng-show="supplierForm.Country.$dirty && supplierForm.Country.$invalid">Country is required</div>
+    </div>
+    <div>
+        Phone: <input type="text" name="Phone" ng-model="sup.Phone" required />
+        <div ng-show="supplierForm.Phone.$dirty && supplierForm.Phone.$invalid">Phone is required</div>
+    </div>
+    <button ng-click="saveSupplier()" ng-disabled="supplierForm.$invalid">Save</button>
+</form>
+
+<div ng-show="isSaveSuccessful">Supplier saved successfully.</div>
+<div ng-show="errors">
+    <div>Errors:</div>
+    <ul ng-repeat="error in errors">
+        <li>{{error}}</li>
+    </ul>
+</div>

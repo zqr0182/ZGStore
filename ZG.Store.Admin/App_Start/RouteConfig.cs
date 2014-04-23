@@ -34,11 +34,11 @@ namespace ZG.Store.Admin
                defaults: new { controller = "Supplier", Action = "Deactivate" }
            );
 
-           //routes.MapRoute(
-           //    name: "Supplier",
-           //    url: "{controller}/{action}",
-           //    defaults: new { controller = "Supplier", Action = "Activate" }
-           //);
+            routes.MapRoute(
+               name: "SupplierEdit",
+               url: "supplier/edit/{id}",
+               defaults: new { controller = "Supplier", action = "Edit" }
+           );
 
             routes.MapRoute(
                name: "SupplierList",
