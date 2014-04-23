@@ -29,9 +29,21 @@ namespace ZG.Store.Admin
             );
 
             routes.MapRoute(
+               name: "SupplierDeactivate",
+               url: "supplier/deactivate/{id}",
+               defaults: new { controller = "Supplier", Action = "Deactivate" }
+           );
+
+           //routes.MapRoute(
+           //    name: "Supplier",
+           //    url: "{controller}/{action}",
+           //    defaults: new { controller = "Supplier", Action = "Activate" }
+           //);
+
+            routes.MapRoute(
                name: "SupplierList",
-               url: "supplier/GetSupplierIdNames/{filterByStatus}",
-               defaults: new { controller = "Supplier", action = "GetSupplierIdNames" }
+               url: "supplier/{action}/{filterByStatus}",
+               defaults: new { controller = "Supplier", filterByStatus = UrlParameter.Optional }
            );
 
             routes.MapRoute(

@@ -19,6 +19,13 @@ namespace ZG.Store.Admin.Controllers
             _logger = logger;
         }
 
+        public JsonResult GetSuppliers(string filterByStatus)
+        {
+            var active = string.Compare(filterByStatus, "Active", true) == 0 ? true : false;
+            var result = _supplierService.GetSuppliers(active).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetSupplierIdNames(string filterByStatus)
         {
             var active = string.Compare(filterByStatus, "Active", true) == 0 ? true : false;

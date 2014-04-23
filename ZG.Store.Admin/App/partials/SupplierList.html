@@ -12,11 +12,24 @@ Filter by:
     <tr>
         <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
         <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+        <td>Address 1</td>
+        <td>Address 2</td>
+        <td><a href="" ng-click="predicate='City';reverse=!reverse">City</a></td>
+        <td><a href="" ng-click="predicate='State';reverse=!reverse">State</a></td>
+        <td><a href="" ng-click="predicate='Zip';reverse=!reverse">Zip Code</a></td>
+        <td><a href="" ng-click="predicate='Country';reverse=!reverse">Country</a></td>
+        <td>Phone</td>
         <td>Active</td>
     </tr>
     <tr ng-repeat="sup in suppliers | orderBy:predicate:reverse">
         <td>{{sup.Id}}</td>
         <td>{{sup.Name}}</td>
+        <td>{{sup.Address1}}</td>
+        <td>{{sup.Address2}}</td>
+        <td>{{sup.City}}</td>
+        <td>{{sup.State}}</td>
+        <td>{{sup.Zip}}</td>
+        <td>{{sup.Country}}</td>
         <td>{{sup.Active}}</td>
         <td>
             <div ng-show="sup.Active">

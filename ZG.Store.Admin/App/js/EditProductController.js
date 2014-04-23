@@ -6,7 +6,7 @@
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
 
-      $scope.allSuppliers = SupplierService.supplier.query({ filterByStatus: 'Active' });
+      $scope.allSuppliers = SupplierService.supplierIdNames.query({ filterByStatus: 'Active' });
       $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();
       
       if ($routeParams.prodId > 0) {
