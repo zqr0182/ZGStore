@@ -101,11 +101,14 @@ namespace ZG.Application
         public void Update(ProductCategoryEditViewModel cat)
         {
             var category = GetCategoryById(cat.Id);
-            category.CategoryName = cat.Name;
-            category.ParentCategoryID = cat.ParentCategoryID;
-            category.Active = cat.Active;
+            if (category != null)
+            {
+                category.CategoryName = cat.Name;
+                category.ParentCategoryID = cat.ParentCategoryID;
+                category.Active = cat.Active;
 
-            UnitOfWork.Commit();
+                UnitOfWork.Commit();
+            }
         }
 
         public void Create(ProductCategoryEditViewModel cat)
