@@ -35,22 +35,4 @@
       $scope.isActivationFailed = function (id) {
           return CommonFunctions.isItemFound($scope.failedActivations, id);
       }
-
-      var changeCategoryStatusHelper = function (isActivation, cat, arrayOfId, serverResult)
-      {
-          if (serverResult.Success) {
-              cat.Active = isActivation ? true : false;
-              var index = arrayOfId.indexOf(cat.Id);
-              if (index > -1) {
-                  arrayOfId.splice(index, 1);
-              }
-          }
-          else {
-              arrayOfId.push(cat.Id);
-          }
-      }
-
-      var isItemFound = function (array, item) {
-          return array.indexOf(item) > -1;
-      }
   }]);
