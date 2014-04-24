@@ -80,7 +80,8 @@ adminServices.factory('CommonFunctions', [function () {
                 phone: /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/,
                 zip: /\d{5}(-\d{4})?/,
                 decimal: /^\d+(\.\d{1,2})?$/,
-                fourDigit: /^\d{1,4}$/
+                fourDigit: /^\d{1,4}$/,
+                tenDigit: /^\d{1,10}$/
             };
         }
     };

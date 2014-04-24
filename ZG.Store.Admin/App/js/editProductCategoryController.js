@@ -1,10 +1,11 @@
-﻿angular.module('storeAdminControllers').controller('EditProductCategoryCtrl', ['$scope', '$http', '$routeParams', 'ProdCategoryService',
-  function ($scope, $http, $routeParams, ProdCategoryService) {
+﻿angular.module('storeAdminControllers').controller('EditProductCategoryCtrl', ['$scope', '$http', '$routeParams', 'ProdCategoryService', 'CommonFunctions',
+  function ($scope, $http, $routeParams, ProdCategoryService, CommonFunctions) {
       if ($routeParams.catId > 0) {
           $scope.cat = ProdCategoryService.categoryEdit.get({ catId: $routeParams.catId });
       }
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
+      $scope.pattern = CommonFunctions.regExpPattern();
 
       $scope.saveProductCategory = function () {
 

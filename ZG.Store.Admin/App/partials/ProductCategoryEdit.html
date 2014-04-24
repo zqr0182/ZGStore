@@ -13,7 +13,8 @@
         <div ng-show="prodCatForm.IsActive.$dirty && prodCatForm.IsActive.$invalid">Is Active is Required</div>
     </div>
     <div>
-        Parent Category Id: <input type="text" ng-model="cat.ParentCategoryID" />
+        Parent Category Id: <input type="text" name="parentCat" ng-model="cat.ParentCategoryID" ng-pattern="pattern.tenDigit" />
+        <div ng-show="prodCatForm.parentCat.$error.pattern">Invalid Parent Category Id</div>
     </div>
     <button ng-click="saveProductCategory()" ng-disabled="prodCatForm.$invalid">Save</button>
 </form>
