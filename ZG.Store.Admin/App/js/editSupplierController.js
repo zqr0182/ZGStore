@@ -1,10 +1,11 @@
-﻿angular.module('storeAdminControllers').controller('EditSupplierCtrl', ['$scope', '$http', '$routeParams', 'SupplierService',
-  function ($scope, $http, $routeParams, SupplierService) {
+﻿angular.module('storeAdminControllers').controller('EditSupplierCtrl', ['$scope', '$http', '$routeParams', 'SupplierService', 'CommonFunctions',
+  function ($scope, $http, $routeParams, SupplierService, CommonFunctions) {
       if ($routeParams.supId > 0) {
           $scope.sup = SupplierService.supplierEdit.get({ supId: $routeParams.supId });
       }
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
+      $scope.pattern = CommonFunctions.regExpPattern();
 
       $scope.saveSupplier = function () {
 

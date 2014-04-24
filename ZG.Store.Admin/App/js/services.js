@@ -74,6 +74,12 @@ adminServices.factory('CommonFunctions', [function () {
         },
         isItemFound: function (array, item) {
             return array.indexOf(item) > -1;
+        },
+        regExpPattern: function(){
+            return {
+                phone: /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/,
+                zip: /\d{5}(-\d{4})?/
+            };
         }
     };
 }]);

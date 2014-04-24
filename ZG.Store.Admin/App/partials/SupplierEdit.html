@@ -13,7 +13,7 @@
         <div ng-show="supplierForm.IsActive.$dirty && supplierForm.IsActive.$invalid">Is Active is Required</div>
     </div>
     <div>
-        Address 1: <input type="text" name="Address1" ng-model="sup.Address1" required />
+        Address 1: <input type="text" name="Address1" ng-model="sup.Address1" ng-required="true" />
         <div ng-show="supplierForm.Address1.$dirty && supplierForm.Address1.$invalid">Address 1 is required</div>
     </div>
     <div>
@@ -28,16 +28,18 @@
         <div ng-show="supplierForm.State.$dirty && supplierForm.State.$invalid">State is required</div>
     </div>
     <div>
-        Zip Code: <input type="text" name="Zip" ng-model="sup.Zip" required />
-        <div ng-show="supplierForm.Zip.$dirty && supplierForm.Zip.$invalid">Zip Code is required</div>
+        Zip Code: <input type="text" name="Zip" ng-model="sup.Zip" required ng-pattern="pattern.zip"/>
+        <div ng-show="supplierForm.Zip.$error.required">Zip Code is required</div>
+        <div ng-show="supplierForm.Zip.$error.pattern">Invalid Zip Code</div>
     </div>
     <div>
         Country: <input type="text" name="Country" ng-model="sup.Country" required />
         <div ng-show="supplierForm.Country.$dirty && supplierForm.Country.$invalid">Country is required</div>
     </div>
     <div>
-        Phone: <input type="text" name="Phone" ng-model="sup.Phone" required />
-        <div ng-show="supplierForm.Phone.$dirty && supplierForm.Phone.$invalid">Phone is required</div>
+        Phone: <input type="text" name="Phone" ng-model="sup.Phone" required ng-pattern="pattern.phone" />
+        <div ng-show="supplierForm.Phone.$error.required">Phone is required</div>
+        <div ng-show="supplierForm.Phone.$error.pattern">Invalid phone format</div>
     </div>
     <button ng-click="saveSupplier()" ng-disabled="supplierForm.$invalid">Save</button>
 </form>
