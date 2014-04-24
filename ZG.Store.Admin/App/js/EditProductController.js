@@ -5,6 +5,7 @@
       $scope.deleteImageFailureMsg = '';
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
+      $scope.pattern = CommonFunctions.regExpPattern();
 
       $scope.allSuppliers = SupplierService.supplierIdNames.query({ filterByStatus: 'Active' });
       $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();

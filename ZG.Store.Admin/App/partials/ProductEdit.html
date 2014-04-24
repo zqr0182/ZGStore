@@ -32,30 +32,38 @@
         Description: <input type="text" ng-model="prod.Description" />
     </div>
     <div>
-        Price: <input type="text" name="price" ng-model="prod.Price" required />
-        <div ng-show="prodForm.price.$dirty && prodForm.price.$invalid">Price is required</div>
+        Price: <input type="text" name="price" ng-model="prod.Price" required ng-pattern="pattern.decimal" />
+        <div ng-show="prodForm.price.$error.required">Price is required</div>
+        <div ng-show="prodForm.price.$error.pattern">Invalid Price</div>
     </div>
     <div>
-        SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required />
-        <div ng-show="prodForm.salePrice.$dirty && prodForm.salePrice.$invalid">Sale Price is required</div>
+        SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required ng-pattern="pattern.decimal" />
+        <div ng-show="prodForm.salePrice.$error.required">Sale Price is required</div>
+        <div ng-show="prodForm.salePrice.$error.pattern">Invalid Sale Price</div>
     </div>
     <div>
-        Weight: <input type="text" ng-model="prod.Weight" />
+        Weight: <input type="text" name="weight" ng-model="prod.Weight" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.weight.$error.pattern">Invalid Weight</div>
     </div>
     <div>
-        Shipping Weight: <input type="text" ng-model="prod.ShippingWeight" />
+        Shipping Weight: <input type="text" name="shippingWeight" ng-model="prod.ShippingWeight" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.shippingWeight.$error.pattern">Invalid Shipping Weight</div>
     </div>
     <div>
-        Height: <input type="text" ng-model="prod.Height" />
+        Height: <input type="text" name="height" ng-model="prod.Height" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.height.$error.pattern">Invalid Height</div>
     </div>
     <div>
-        Shipping Height: <input type="text" ng-model="prod.ShippingHeight" />
+        Shipping Height: <input type="text" name="shippingHeight" ng-model="prod.ShippingHeight" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.shippingHeight.$error.pattern">Invalid Shipping Height</div>
     </div>
     <div>
-        Length: <input type="text" ng-model="prod.Length" />
+        Length: <input type="text" name="length" ng-model="prod.Length" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.length.$error.pattern">Invalid Length</div>
     </div>
     <div>
-        Shipping Length: <input type="text" ng-model="prod.ShippingLength" />
+        Shipping Length: <input type="text" name="shippingLength" ng-model="prod.ShippingLength" ng-pattern="pattern.fourDigit" />
+        <div ng-show="prodForm.shippingLength.$error.pattern">Invalid Shipping Length</div>
     </div>
     <div>
         Product Link: <input type="text" ng-model="prod.ProductLink" />
