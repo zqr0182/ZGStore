@@ -24,7 +24,7 @@ namespace ZG.Application
 
     public class SupplierService : BaseService, ISupplierService
     {
-        public SupplierService(IUnitOfWork uow) :base(uow)
+        public SupplierService(IUnitOfWork uow, IInventoryService inventoryService) :base(uow)
         {}
 
         public IQueryable<Supplier> GetSuppliers(bool active)

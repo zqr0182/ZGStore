@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZG.Common;
+using ZG.Domain.Models;
 
 namespace ZG.Domain.DTO
 {
@@ -18,7 +19,7 @@ namespace ZG.Domain.DTO
         [MaxLength(50)]
         public string CatalogNumber { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        [Required]
         public decimal SalePrice { get; set; }
         public decimal Weight { get; set; }
         public decimal ShippingWeight { get; set; }
@@ -38,7 +39,6 @@ namespace ZG.Domain.DTO
 
         public List<string> ProductImageNames { get; set; }
         public List<ProductCategoryIdName> ProductCategories { get; set; }
-        [Required]
-        public SupplierIdName SupplierIdName { get; set; }
+        public List<Inventory> Inventories { get; set; }
     }
 }

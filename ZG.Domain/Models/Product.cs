@@ -19,7 +19,7 @@ namespace ZG.Domain.Models
         [MaxLength(50)]
         public string CatalogNumber { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        [Required]
         public decimal SalePrice { get; set; }
         public decimal Weight { get; set; }
         public decimal ShippingWeight { get; set; }
@@ -36,10 +36,6 @@ namespace ZG.Domain.Models
         public Nullable<decimal> RatingScore { get; set; }
         [Required(ErrorMessage = ValidationErrorMessage.Required)]
         public bool Active { get; set; }
-        [Required]
-        public int SupplierId { get; set; }
-        [ForeignKey("SupplierId")]
-        public virtual Supplier Supplier { get; set; }
         public virtual ICollection<Coupon> Coupons { get; set; }
         public virtual ICollection<CustomField> CustomFields { get; set; }
         public virtual ICollection<FeaturedProduct> FeaturedProducts { get; set; }

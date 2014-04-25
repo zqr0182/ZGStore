@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using ZG.Domain.Models;
 using ZG.Repository;
+using ZG.Repository.Criterias;
 
 namespace ZG.Application
 {
     public interface IInventoryService
     {
-        List<Inventory> GetInventories();
+        List<Inventory> GetInventoriesByProductId(int prodId);
     }
 
     public class InventoryService : BaseService, IInventoryService
@@ -18,9 +19,9 @@ namespace ZG.Application
         public InventoryService(IUnitOfWork uow) : base(uow)
         { }
 
-        public List<Inventory> GetInventories()
+        public List<Inventory> GetInventoriesByProductId(int prodId)
         {
-            return null;
+            return UnitOfWork.Inventories.Matches(new InventoryByProductId(prodId)).ToList();
         }
     }
 }

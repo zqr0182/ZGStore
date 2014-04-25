@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\AbstractCriteria.cs" />
+    <Compile Include="Criterias\InventoryByProductId.cs" />
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
     <Compile Include="Criterias\SupplierByActive.cs" />

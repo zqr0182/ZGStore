@@ -40,7 +40,7 @@ namespace ZG.Domain.Concrete
 
         public decimal ComputeTotalItems()
         {
-            return _cartLines.Sum(l => l.Quantity * l.Product.Price);
+            return _cartLines.Sum(l => l.Quantity * l.Product.SalePrice);
         }
 
         public decimal ComputeShippingAndHandling()

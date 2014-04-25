@@ -19,22 +19,17 @@
         Product Categories:<br />
         <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
     </div>
-    <div>Supplier:<br />
+    <!--<div>Supplier:<br />
         <select ng-model="prod.SupplierIdName" ng-options="s.Name for s in allSuppliers">
             <option value="">-- Choose Supplier --</option>
         </select>
-    </div>
+    </div>-->
 
     <div>
         Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
     </div>
     <div>
         Description: <input type="text" ng-model="prod.Description" />
-    </div>
-    <div>
-        Price: <input type="text" name="price" ng-model="prod.Price" required ng-pattern="pattern.decimal" />
-        <div ng-show="prodForm.price.$error.required">Price is required</div>
-        <div ng-show="prodForm.price.$error.pattern">Invalid Price</div>
     </div>
     <div>
         SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required ng-pattern="pattern.decimal" />
