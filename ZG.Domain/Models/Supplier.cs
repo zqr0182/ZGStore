@@ -34,7 +34,29 @@ namespace ZG.Domain.Models
         [MaxLength(50)]
         public string Country { get; set; }
         [Required]
-        [MaxLength(50)]
+        [MaxLength(30)]
         public string Phone { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string Fax { get; set; }
+        [Required]
+        [MaxLength(80)]
+        public string Email { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string WebSite { get; set; }
+        [Required]
+        [MaxLength(2000)]
+        public string Note { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string ContactFName { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string ContactLName { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string ContactTitle { get; set; }
+
     }
 }

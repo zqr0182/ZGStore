@@ -61,6 +61,9 @@ namespace ZG.Application
             if(supplier != null)
             {
                 supplier.Name = sup.Name;
+                supplier.ContactFName = sup.ContactFName;
+                supplier.ContactLName = sup.ContactLName;
+                supplier.ContactTitle = sup.ContactTitle;
                 supplier.Address1 = sup.Address1;
                 supplier.Address2 = sup.Address2;
                 supplier.City = sup.City;
@@ -68,6 +71,10 @@ namespace ZG.Application
                 supplier.Zip = sup.Zip;
                 supplier.Country = sup.Country;
                 supplier.Phone = sup.Phone;
+                supplier.Fax = sup.Fax;
+                supplier.Email = sup.Email;
+                supplier.WebSite = sup.WebSite;
+                supplier.Note = sup.Note;
                 supplier.Active = sup.Active;
 
                 UnitOfWork.Commit();

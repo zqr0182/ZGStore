@@ -30,12 +30,7 @@ namespace ZG.Domain.Models
         public decimal Width { get; set; }
         public decimal ShippingWidth { get; set; }
         [MaxLength(400)]
-        public string ProductLink { get; set; }
-        public bool IsDownloadable { get; set; }
-        public Nullable<bool> IsDownloadKeyRequired { get; set; }
-        public Nullable<bool> IsDownloadKeyUnique { get; set; }
-        [MaxLength(400)]
-        public string DownloadURL { get; set; }
+        public string ProductLink { get; set; }        
         public bool IsReviewEnabled { get; set; }
         public int TotalReviewCount { get; set; }
         public Nullable<decimal> RatingScore { get; set; }

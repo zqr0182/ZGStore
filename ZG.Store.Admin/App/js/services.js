@@ -77,6 +77,7 @@ adminServices.factory('CommonFunctions', [function () {
         },
         regExpPattern: function(){
             return {
+                email: /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
                 phone: /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/,
                 zip: /\d{5}(-\d{4})?/,
                 decimal: /^\d+(\.\d{1,2})?$/,

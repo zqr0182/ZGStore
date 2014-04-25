@@ -23,6 +23,7 @@ namespace ZG.Repository
         IRepository<Province> Provinces { get; }
         IRepository<Country> Countries { get; }
         IRepository<Supplier> Suppliers { get; }
+        IRepository<Inventory> Inventories { get; }
 
         void Commit();
     }
@@ -43,10 +44,11 @@ namespace ZG.Repository
         public IRepository<Province> Provinces { get; private set; }
         public IRepository<Country> Countries { get; private set; }
         public IRepository<Supplier> Suppliers { get; private set; }
+        public IRepository<Inventory> Inventories { get; private set; }
 
         public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<ProductCategory> productCategoriesRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo, IRepository<Email> emailRepo,
                                  IRepository<Order> OrderRepo, IRepository<OrderStatus> orderStatusRepo, IRepository<ShippingProvider> shippingProvidersRepo, IRepository<State> stateRepo,
-                                 IRepository<Province> provinceRepo, IRepository<Country> CountryRepo, IRepository<Supplier> SupplierRepo)
+                                 IRepository<Province> provinceRepo, IRepository<Country> countryRepo, IRepository<Supplier> supplierRepo, IRepository<Inventory> inventoryRepo)
         {
             _context = context;
 
@@ -60,8 +62,9 @@ namespace ZG.Repository
             ShippingProviders = shippingProvidersRepo;
             States = stateRepo;
             Provinces = provinceRepo;
-            Countries = CountryRepo;
-            Suppliers = SupplierRepo;
+            Countries = countryRepo;
+            Suppliers = supplierRepo;
+            Inventories = inventoryRepo;
         }
 
         public void Commit()

@@ -14,7 +14,6 @@ namespace ZG.Domain.Models
         public int Id { get; set; }
         public int ProductID { get; set; }
         public int ProductAmountInStock { get; set; }
-        public bool Active { get; set; }
 
         [ForeignKey("ProductID")]
         public virtual Product Product { get; set; }

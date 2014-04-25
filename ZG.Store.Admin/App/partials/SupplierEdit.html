@@ -13,6 +13,17 @@
         <div ng-show="supplierForm.IsActive.$dirty && supplierForm.IsActive.$invalid">Is Active is Required</div>
     </div>
     <div>
+        Contact First Name: <input type="text" name="ContactFName" ng-model="sup.ContactFName" required />
+        <div ng-show="supplierForm.ContactFName.$dirty && supplierForm.ContactFName.$invalid">Contact First Name is required</div>
+    </div>
+    <div>
+        Contact Last Name: <input type="text" name="ContactLName" ng-model="sup.ContactLName" required />
+        <div ng-show="supplierForm.ContactLName.$dirty && supplierForm.ContactLName.$invalid">Contact Last Name is required</div>
+    </div>
+    <div>
+        Contact Title: <input type="text" name="ContactTitle" ng-model="sup.ContactTitle" />
+    </div>
+    <div>
         Address 1: <input type="text" name="Address1" ng-model="sup.Address1" ng-required="true" />
         <div ng-show="supplierForm.Address1.$dirty && supplierForm.Address1.$invalid">Address 1 is required</div>
     </div>
@@ -38,8 +49,23 @@
     </div>
     <div>
         Phone: <input type="text" name="Phone" ng-model="sup.Phone" required ng-pattern="pattern.phone" />
-        <div ng-show="supplierForm.Phone.$error.required">Phone is required</div>
-        <div ng-show="supplierForm.Phone.$error.pattern">Invalid phone format</div>
+        <div ng-show="supplierForm.Phone.$dirty && supplierForm.Phone.$error.required">Phone is required</div>
+        <div ng-show="supplierForm.Phone.$dirty && supplierForm.Phone.$error.pattern">Invalid phone format</div>
+    </div>
+    <div>
+        Fax: <input type="text" name="Fax" ng-model="sup.Fax" ng-pattern="pattern.phone" />
+        <div ng-show="supplierForm.Fax.$dirty && supplierForm.Fax.$error.pattern">Invalid fax format</div>
+    </div>
+    <div>
+        Email: <input type="text" name="Email" ng-model="sup.Email" required ng-pattern="pattern.email" />
+        <div ng-show="supplierForm.Email.$error.required">Email is required</div>
+        <div ng-show="supplierForm.Email.$error.pattern">Invalid email</div>
+    </div>
+    <div>
+        Website: <input type="text" name="Website" ng-model="sup.WebSite" />
+    </div>
+    <div>
+        Note: <textarea name="Note" ng-model="sup.Note" />
     </div>
     <button ng-click="saveSupplier()" ng-disabled="supplierForm.$invalid">Save</button>
 </form>
