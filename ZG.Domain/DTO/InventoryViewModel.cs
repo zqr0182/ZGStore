@@ -1,17 +1,17 @@
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using ZG.Domain.Abstract;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ZG.Domain.Models
+namespace ZG.Domain.DTO
 {
-    public partial class Inventory : IEntity  
+    public class InventoryViewModel
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public int ProductID { get; set; }
         [Required]
         public int ProductAmountOrdered { get; set; }
@@ -19,12 +19,9 @@ namespace ZG.Domain.Models
         public int ProductAmountInStock { get; set; }
         [Required]
         public decimal Price { get; set; }
+        [Required]
         public int SupplierId { get; set; }
+        [Required]
         public bool Active { get; set; }
-
-        [ForeignKey("ProductID")]
-        public virtual Product Product { get; set; }
-        [ForeignKey("SupplierId")]
-        public virtual Supplier Supplier { get; set; }
     }
 }

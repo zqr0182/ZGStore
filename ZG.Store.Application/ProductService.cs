@@ -88,7 +88,7 @@ namespace ZG.Application
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
                 ProductImageNames = _fileService.GetFileNames(prodImageDirectory),
-                SupplierIdName = new SupplierIdName { Id = prod.Supplier.Id, Name = prod.Supplier.Name },
+                Inventories = prod.Inventories.Select(i => new InventoryViewModel{ Id = i.Id, ProductID = i.ProductID, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierId, Active = i.Active}).ToList(),
                 ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName{Id = c.Category.Id, Name = c.Category.CategoryName}).ToList()
             };
 
@@ -97,11 +97,10 @@ namespace ZG.Application
 
         public Product Update(ProductEditViewModel prod)
         {
-            var product = GetProductById(prod.Id, "ProductCategories");
+            var product = GetProductById(prod.Id, "ProductCategories", "Inventories");
             product.ProductName = prod.Name;
             product.CatalogNumber = prod.CatalogNumber;
             product.Description = prod.Description;
-            product.Price = prod.Price;
             product.SalePrice = prod.SalePrice;
             product.Weight = prod.Weight;
             product.ShippingWeight = prod.ShippingWeight;
@@ -115,11 +114,11 @@ namespace ZG.Application
             product.IsReviewEnabled = prod.IsReviewEnabled;
             product.Active = prod.Active;
 
-            product.SupplierId = prod.SupplierIdName.Id;
             product.ProductCategories.ToList().ForEach(c => UnitOfWork.ProductCategories.Remove(c));
             product.ProductCategories.Clear();
             prod.ProductCategories.ForEach(c => product.ProductCategories.Add(new ProductCategory { CategoryID = c.Id, ProductID = prod.Id, Active = true }));
-          
+
+            prod.Inventories.ForEach(i => UpdateProductInventories(i, product));
 
             UnitOfWork.Commit();
 
@@ -133,7 +132,6 @@ namespace ZG.Application
                 ProductName = prod.Name,
                 CatalogNumber = prod.CatalogNumber,
                 Description = prod.Description,
-                Price = prod.Price,
                 SalePrice = prod.SalePrice,
                 Weight = prod.Weight,
                 ShippingWeight = prod.ShippingWeight,
@@ -147,7 +145,8 @@ namespace ZG.Application
                 IsReviewEnabled = prod.IsReviewEnabled,
                 Active = prod.Active,
 
-                ProductCategories = prod.ProductCategories.Select(pc => new ProductCategory {  ProductID = prod.Id, CategoryID = pc.Id, Active = true}).ToList()
+                ProductCategories = prod.ProductCategories.Select(pc => new ProductCategory {  ProductID = prod.Id, CategoryID = pc.Id, Active = true}).ToList(),
+                Inventories = (ICollection<Inventory>)prod.Inventories.Select(i => new Inventory{ ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierId, Active = i.Active})
             };
 
             UnitOfWork.Products.Add(product);
@@ -164,6 +163,20 @@ namespace ZG.Application
         public void Deactivate(int prodId)
         {
             ToggleActive(prodId, false);
+        }
+
+        private void UpdateProductInventories(InventoryViewModel inventory, Product prod)
+        {
+            var inventoryInDb = prod.Inventories.FirstOrDefault(i => i.Id == inventory.Id);
+
+            if (inventoryInDb != null)
+            {
+                inventoryInDb.ProductAmountOrdered = inventory.ProductAmountOrdered;
+                inventoryInDb.ProductAmountInStock = inventory.ProductAmountInStock;
+                inventoryInDb.Price = inventory.Price;
+                inventoryInDb.SupplierId = inventory.SupplierId;
+                inventoryInDb.Active = inventory.Active;
+            }
         }
 
         private void ToggleActive(int prodId, bool active)
