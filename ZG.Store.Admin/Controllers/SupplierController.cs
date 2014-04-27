@@ -22,14 +22,14 @@ namespace ZG.Store.Admin.Controllers
 
         public JsonResult GetSuppliers(string filterByStatus)
         {
-            var active = string.Compare(filterByStatus, "Active", true) == 0 ? true : false;
+            var active = Utility.StatusToBool(filterByStatus);
             var result = _supplierService.GetSuppliers(active).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSupplierIdNames(string filterByStatus)
         {
-            var active = string.Compare(filterByStatus, "Active", true) == 0 ? true : false;
+            var active = Utility.StatusToBool(filterByStatus);
             var result = _supplierService.GetSupplierIdNames(active);
             return Json(result, JsonRequestBehavior.AllowGet);
         }

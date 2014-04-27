@@ -98,7 +98,7 @@ namespace ZG.Application
         private int GetShippingProviderId(ShippingProviderEnum provider)
         {
             var shippingProviders = ZGCache.Cache("ShippingProviders", () => { return GetShippingProviders(true); }, TimeSpan.FromMinutes(60));
-            return shippingProviders.Where(s => s.ShippingProviderName == Util.ReplaceUnderscoreWithSpace(provider)).Select(s => s.Id).FirstOrDefault();
+            return shippingProviders.Where(s => s.Name == Util.ReplaceUnderscoreWithSpace(provider)).Select(s => s.Id).FirstOrDefault();
         }
 
     }

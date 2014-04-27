@@ -6,11 +6,11 @@
 --Move fields from Product into Inventory table
 --Inventory list/create/edit pages
 --Inventory IsActive Radio unselected when sort: fixed: no need to name radio button, angular will give them names
-Order list/details page
 ShippingProviders list/create/edit page
 Shippings list/create/edit page
 Taxs page
 Users list and details page
+Order list/details page
 StoreConfigurations list/create/edit page
 
 

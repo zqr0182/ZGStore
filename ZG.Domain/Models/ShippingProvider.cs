@@ -13,8 +13,10 @@ namespace ZG.Domain.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public string ShippingProviderName { get; set; }
+        public string Name { get; set; }
+        [Required]
         public decimal ShippingCost { get; set; }
+        [Required]
         public bool Active { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Shipping> Shippings { get; set; }
