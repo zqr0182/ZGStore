@@ -89,8 +89,8 @@ namespace ZG.Application
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
                 ProductImageNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns),
-                Inventories = prod.Inventories.Select(i => new InventoryViewModel{ Id = i.Id, ProductID = i.ProductID, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierId, Active = i.Active}).ToList(),
-                ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName{Id = c.Category.Id, Name = c.Category.CategoryName}).ToList()
+                Inventories = prod.Inventories.Select(i => new InventoryViewModel { Id = i.Id, ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierIdName = new SupplierIdName { Id = i.SupplierId, Name = i.Supplier.Name }, Active = i.Active }).ToList(),
+                ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName { Id = c.Category.Id, Name = c.Category.CategoryName }).ToList()
             };
 
             return viewModel;
@@ -147,7 +147,7 @@ namespace ZG.Application
                 Active = prod.Active,
 
                 ProductCategories = prod.ProductCategories.Select(pc => new ProductCategory {  ProductID = prod.Id, CategoryID = pc.Id, Active = true}).ToList(),
-                Inventories = (ICollection<Inventory>)prod.Inventories.Select(i => new Inventory{ ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierId, Active = i.Active})
+                Inventories = (ICollection<Inventory>)prod.Inventories.Select(i => new Inventory{ ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierIdName.Id, Active = i.Active})
             };
 
             UnitOfWork.Products.Add(product);
@@ -175,7 +175,7 @@ namespace ZG.Application
                 inventoryInDb.ProductAmountOrdered = inventory.ProductAmountOrdered;
                 inventoryInDb.ProductAmountInStock = inventory.ProductAmountInStock;
                 inventoryInDb.Price = inventory.Price;
-                inventoryInDb.SupplierId = inventory.SupplierId;
+                inventoryInDb.SupplierId = inventory.SupplierIdName.Id;
                 inventoryInDb.Active = inventory.Active;
             }
         }

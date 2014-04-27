@@ -43,7 +43,7 @@ namespace ZG.Store.Admin.Controllers
         {
             try
             {
-                var prod = _prodService.GetProductById(id, new string[] { "ProductCategories.Category", "Inventories" });
+                var prod = _prodService.GetProductById(id, new string[] { "ProductCategories.Category", "Inventories.Supplier" });
                 string dirPath = PathUtil.GetProductImageDirectory(id);
                 var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
                 

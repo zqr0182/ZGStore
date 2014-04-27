@@ -17,7 +17,10 @@
                   $scope.prod.ProductCategories = currentProdCats;
               }
 
-              $scope.prod.SupplierIdName = CommonFunctions.getItemById($scope.prod.SupplierIdName.Id, $scope.allSuppliers);
+              //$scope.prod.SupplierIdName = CommonFunctions.getItemById($scope.prod.SupplierIdName.Id, $scope.allSuppliers);
+              $scope.prod.Inventories.forEach(function (inventory) {
+                  inventory.SupplierIdName = CommonFunctions.getItemById(inventory.SupplierIdName.Id, $scope.allSuppliers);
+              });
           });
       }
 
