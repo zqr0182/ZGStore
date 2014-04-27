@@ -129,9 +129,8 @@
                     </td>
                     <td>
                         <div>
-                            Yes <input type="radio" ng-model="inventory.Active" ng-value="true" name="inventory{{$index}}" required>
-                            No <input type="radio" ng-model="inventory.Active" ng-value="false" name="inventory{{$index}}" required>
-                            <div ng-show="prodForm.inventory{{$index}}.$dirty && prodForm.inventory{{$index}}.$invalid">Is Active is Required</div>
+                            Yes <input type="radio" ng-model="inventory.Active" ng-value="true" required>
+                            No <input type="radio" ng-model="inventory.Active" ng-value="false" required>
                         </div>
                     </td>
                     <td>

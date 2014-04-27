@@ -62,7 +62,7 @@
       }
 
       $scope.addInventory = function () {
-          $scope.prod.Inventories.push({});
+          $scope.prod.Inventories.push({Active: true});
       }
 
       $scope.deleteInventory = function(inventory)
