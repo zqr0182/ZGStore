@@ -17,7 +17,7 @@ namespace ZG.Common
         public const string RequiredAddressPhone = "Please supply a phone number so we can call if there are any problems using this address.";
         public const string Phone = "Please enter a valid phone number.";
     }
-
+    
     public struct RoleName
     {
         public const string Admin = "Admin";

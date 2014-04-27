@@ -1,1 +1,1 @@
-﻿angular.module('storeAdminControllers', []);
+﻿angular.module('storeAdminControllers', ['ui.bootstrap']);

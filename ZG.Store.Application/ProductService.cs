@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZG.Common;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Repository;
@@ -87,7 +88,7 @@ namespace ZG.Application
                 TotalReviewCount = prod.TotalReviewCount,
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
-                ProductImageNames = _fileService.GetFileNames(prodImageDirectory),
+                ProductImageNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns),
                 Inventories = prod.Inventories.Select(i => new InventoryViewModel{ Id = i.Id, ProductID = i.ProductID, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId = i.SupplierId, Active = i.Active}).ToList(),
                 ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName{Id = c.Category.Id, Name = c.Category.CategoryName}).ToList()
             };

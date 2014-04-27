@@ -17,4 +17,15 @@ namespace ZG.Common
 
         public const string ProductImageDirectory = "ProdImages";
     }
+
+    public static class ImageFileNamePatterns
+    {
+        public static string[] Patterns 
+        {
+            get 
+            {
+                return new string[]{ "*.jpeg", "*.jpg", "*.bmp", "*.png" }; 
+            }
+        }
+    }
 }

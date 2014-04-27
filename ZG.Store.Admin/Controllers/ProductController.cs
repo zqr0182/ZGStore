@@ -103,7 +103,7 @@ namespace ZG.Store.Admin.Controllers
                 string path = dirPath + "\\" + imageName;
 
                 _fileService.DeleteFile(path);
-                var fileNames = _fileService.GetFileNames(dirPath);
+                var fileNames = _fileService.GetFileNames(dirPath, ImageFileNamePatterns.Patterns);
 
                 return Json(new { Success = true, Images = fileNames }, JsonRequestBehavior.DenyGet); 
             }

@@ -6,6 +6,7 @@
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
       $scope.pattern = CommonFunctions.regExpPattern();
+      $scope.alerts = [];
 
       $scope.allSuppliers = SupplierService.supplierIdNames.query({ filterByStatus: 'Active' });
       $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();
@@ -72,15 +73,21 @@
               $scope.progress = 'percent: ' + parseInt(100.0 * evt.loaded / evt.total);
           }).then(function (response) {
               if (response.data.Success) {
-                  $scope.isSaveSuccessful = true;
-                  $scope.errors = null;
+                  $scope.alerts = [];
+                  $scope.alerts.push({type: 'success', msg: 'Product saved successfully.'});
+                  //$scope.isSaveSuccessful = true;
+                  //$scope.errors = null;
                   for (var i = 0; i < $scope.selectedFiles.length; i++) {
                       $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
                   }
               }
               else {
-                  $scope.isSaveSuccessful = false;
-                  $scope.errors = response.data.Errors;
+                  //$scope.isSaveSuccessful = false;
+                  //$scope.errors = response.data.Errors;
+                  $scope.alerts = [];
+                  response.data.Errors.forEach(function (item) {
+                      $scope.alerts.push({ type: 'danger', msg: item });
+                  });
               }
           }, null);
       }

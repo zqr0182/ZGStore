@@ -23,6 +23,10 @@ namespace ZG.Store.Admin
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/uibootstrap").Include(
+                      "~/Scripts/ui-bootstrap*",
+                      "~/Scripts/ui-bootstrap-tpls*"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/App/lib/angular/angular-file-upload-shim.js"
                 ,"~/App/lib/angular/angular.js"

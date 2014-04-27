@@ -10,7 +10,7 @@ namespace ZG.Application
     public interface IFileService
     {
         void CreateDirectory(string path);
-        List<string> GetFileNames(string directory);
+        List<string> GetFileNames(string directory, params string[] searchPatterns);
         void DeleteFile(string path);
     }
 
@@ -24,14 +24,16 @@ namespace ZG.Application
             }
         }
 
-        public List<string> GetFileNames(string directory)
+        public List<string> GetFileNames(string directory, params string[] searchPatterns)
         {
             var fileNames = new List<string>();
             var dirInfo = new DirectoryInfo(directory);
             if (dirInfo.Exists)
             {
-                var files = dirInfo.GetFiles();
-                fileNames.AddRange(files.Select(f => f.Name));
+                foreach (var pattern in searchPatterns)
+                {
+                    fileNames.AddRange(dirInfo.GetFiles(pattern).Select(f => f.Name));
+                }
             }
 
             return fileNames;
