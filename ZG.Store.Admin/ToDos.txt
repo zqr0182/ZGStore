@@ -4,7 +4,8 @@
 --Supplier List, Create, Edit Pages
 --Supplier Create/Edit phone and zip box validation
 --Move fields from Product into Inventory table
-Inventory list/create/edit pages
+--Inventory list/create/edit pages
+--Inventory IsActive Radio unselected when sort
 Order list/details page
 ShippingProviders list/create/edit page
 Shippings list/create/edit page
