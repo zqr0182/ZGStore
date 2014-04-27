@@ -112,7 +112,8 @@
                     Is Active: Yes <input type="radio" ng-model="inventory.Active" ng-value="true" name="IsInventoryActive" required>
                     No <input type="radio" ng-model="inventory.Active" ng-value="false" name="IsInventoryActive" required>
                     <div ng-show="prodForm.inventory.$dirty && prodForm.inventory.$invalid">Is Active is Required</div>
-                </div>            
+                </div> 
+            </div>           
         </tab>
     </tabset>
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>
