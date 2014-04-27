@@ -46,7 +46,7 @@ namespace ZG.Store.Admin.Controllers
                 var prod = _prodService.GetProductById(id, new string[] { "ProductCategories.Category", "Inventories" });
                 string dirPath = PathUtil.GetProductImageDirectory(id);
                 var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
-
+                
                 return Json(viewModel, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -164,7 +164,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert product: {0}", prod);
-                return Json(new { Success = false, Errors = "Error occured, unable to upsert product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Errors = new []{"Error occured. Unable to upsert product. We are fixing it."} }, JsonRequestBehavior.DenyGet);
             }
         }
     }

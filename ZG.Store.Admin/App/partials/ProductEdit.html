@@ -99,11 +99,4 @@
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>
 </form>
 
-<div ng-show="isSaveSuccessful">Product saved successfully.</div>
-<div ng-show="errors">
-    <div>Errors:</div>
-    <ul ng-repeat="error in errors">
-        <li>{{error}}</li>
-    </ul>
-</div>
 <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>

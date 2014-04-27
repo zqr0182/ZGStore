@@ -2,9 +2,7 @@
   function ($scope, $http, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
       $scope.showDeleteImageSuccessfulMsg = false;
       $scope.showDeleteImageFailureMsg = false;
-      $scope.deleteImageFailureMsg = '';
-      $scope.isSaveSuccessful = false;
-      $scope.errors = null;
+      $scope.deleteImageFailureMsg = '';    
       $scope.pattern = CommonFunctions.regExpPattern();
       $scope.alerts = [];
 
@@ -74,16 +72,13 @@
           }).then(function (response) {
               if (response.data.Success) {
                   $scope.alerts = [];
-                  $scope.alerts.push({type: 'success', msg: 'Product saved successfully.'});
-                  //$scope.isSaveSuccessful = true;
-                  //$scope.errors = null;
+                  $scope.alerts.push({ type: 'success', msg: 'Product saved successfully.' });
+
                   for (var i = 0; i < $scope.selectedFiles.length; i++) {
                       $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
                   }
               }
               else {
-                  //$scope.isSaveSuccessful = false;
-                  //$scope.errors = response.data.Errors;
                   $scope.alerts = [];
                   response.data.Errors.forEach(function (item) {
                       $scope.alerts.push({ type: 'danger', msg: item });
