@@ -9,8 +9,8 @@
       $scope.allSuppliers = SupplierService.supplierIdNames.query({ filterByStatus: 'Active' });
       $scope.allProdCategories = ProdCategoryService.categoryIdNames.query();
       
-      if ($routeParams.prodId > 0) {
-          $scope.prod = ProdService.product.get({ prodId: $routeParams.prodId }, function (data) {
+      if ($routeParams.id > 0) {
+          $scope.prod = ProdService.product.get({ id: $routeParams.id }, function (data) {
               var currentProdCats = CommonFunctions.getArrayById($scope.prod.ProductCategories, $scope.allProdCategories);
               if (currentProdCats.length > 0)
               {
@@ -27,7 +27,7 @@
       $scope.deleteProductImage = function (imageName) {
           if (window.confirm('Are you sure you want to delete this image?')) {
               var imageNameNoExtension = imageName.split('.').splice(0, 1)[0];
-              ProdService.productImage.remove({ prodId: $scope.prod.Id, imageName: imageName }, {}, function (value, responseHeaders) {
+              ProdService.productImage.remove({ id: $scope.prod.Id, imageName: imageName }, {}, function (value, responseHeaders) {
                   if (value.Success) {
                       $scope.showDeleteImageSuccessfulMsg = true;
                       $scope.prod.ProductImageNames = value.Images;
@@ -71,7 +71,7 @@
       }
 
       $scope.saveProd = function () {
-          var url = ($routeParams.prodId > 0) ? "/product/edit" : "/product/create";
+          var url = ($routeParams.id > 0) ? "/product/edit" : "/product/create";
           $upload.upload({
               url: url,
               method: 'POST',

@@ -15,7 +15,7 @@
       {
           if (window.confirm('Are you sure you want to inactivate this product?'))
           {
-              ProdService.deactivateProduct.remove({ prodId: prod.Id }, {}, function (value, responseHeaders) {
+              ProdService.deactivateProduct.remove({ id: prod.Id }, {}, function (value, responseHeaders) {
                   CommonFunctions.changeStatusHelper(false, prod, $scope.failedDeactivations, value);
               });
           }

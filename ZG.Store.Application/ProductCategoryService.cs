@@ -19,8 +19,8 @@ namespace ZG.Application
         ProductCategoryEditViewModel GetCategoryEditViewModel(Category cat);
         void Update(ProductCategoryEditViewModel cat);
         void Create(ProductCategoryEditViewModel cat);
-        void Activate(int catId);
-        void Deactivate(int catId);
+        void Activate(int id);
+        void Deactivate(int id);
     }
 
     public class ProductCategoryService : BaseService, IProductCategoryService
@@ -62,14 +62,14 @@ namespace ZG.Application
             return categories.Select(c => new ProductCategoryIdName { Id = c.Id, Name = c.CategoryName }).ToList();
         }
 
-        public void Activate(int catId)
+        public void Activate(int id)
         {
-            ToggleActive(catId, true);
+            ToggleActive(id, true);
         }
 
-        public void Deactivate(int catId)
+        public void Deactivate(int id)
         {
-            ToggleActive(catId, false);
+            ToggleActive(id, false);
         }
 
         public Category GetCategoryById(int id)
@@ -77,9 +77,9 @@ namespace ZG.Application
             return UnitOfWork.Categories.MatcheById(id);
         }
 
-        private void ToggleActive(int catId, bool active)
+        private void ToggleActive(int id, bool active)
         {
-            var cat = GetCategoryById(catId);
+            var cat = GetCategoryById(id);
             cat.Active = active;
 
             UnitOfWork.Commit();

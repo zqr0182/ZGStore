@@ -15,7 +15,7 @@
       {
           if (window.confirm('Are you sure you want to inactivate this category?'))
           {
-              ProdCategoryService.deactivateCategory.remove({catId: cat.Id }, {}, function (value, responseHeaders) {
+              ProdCategoryService.deactivateCategory.remove({id: cat.Id }, {}, function (value, responseHeaders) {
                   CommonFunctions.changeStatusHelper(false, cat, $scope.failedDeactivations, value);
               });
           }

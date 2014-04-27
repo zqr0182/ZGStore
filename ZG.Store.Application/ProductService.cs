@@ -20,8 +20,8 @@ namespace ZG.Application
         ProductEditViewModel GetProductEditViewModel(Product prod, string prodImageDirectory);
         Product Update(ProductEditViewModel prod);
         Product Create(ProductEditViewModel prod);
-        void Activate(int prodId);
-        void Deactivate(int prodId);
+        void Activate(int id);
+        void Deactivate(int id);
     }
 
     public class ProductService : BaseService, IProductService
@@ -156,14 +156,14 @@ namespace ZG.Application
             return product;
         }
 
-        public void Activate(int prodId)
+        public void Activate(int id)
         {
-            ToggleActive(prodId, true);
+            ToggleActive(id, true);
         }
 
-        public void Deactivate(int prodId)
+        public void Deactivate(int id)
         {
-            ToggleActive(prodId, false);
+            ToggleActive(id, false);
         }
 
         private void UpdateProductInventories(InventoryViewModel inventory, Product prod)
@@ -188,9 +188,9 @@ namespace ZG.Application
             }
         }
 
-        private void ToggleActive(int prodId, bool active)
+        private void ToggleActive(int id, bool active)
         {
-            var product = GetProductById(prodId);
+            var product = GetProductById(id);
             product.Active = active;
 
             UnitOfWork.Commit();

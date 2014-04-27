@@ -1,0 +1,39 @@
+﻿<h2>Supplier List</h2>
+
+<a href="#/shippingprovider/create">Create New Shipping Provider</a> <br />
+
+Filter by:
+<select ng-model="filterByStatus" ng-change="getShippingProviders()">
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+</select>
+
+<table>
+    <tr>
+        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+        <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+        <td><a href="" ng-click="predicate='ShippingCost';reverse=!reverse">Shipping Cost</a></td>
+        <td>Active</td>
+    </tr>
+    <tr ng-repeat="sp in shippingProviders | orderBy:predicate:reverse">
+        <td>{{sp.Id}}</td>
+        <td>{{sp.Name}}</td>
+        <td>{{sp.ShippingCost}}</td>
+        <td>{{sp.Active}}</td>
+        <td>
+            <div ng-show="sp.Active">
+                <input type="button" ng-click="go('/shippingprovider/edit/' + sp.Id)" value="Edit" />
+                <input type="button" ng-click="deactivateShippingProvider(sp)" value="Deactivate" />
+            </div>
+            <div ng-show="!sp.Active">
+                <input type="button" ng-click="activateShippingProvider(sp)" value="Activate" />
+            </div>
+            <div ng-show="isDeactivationFailed(sp.Id)">
+                Unable to deactivate shipping provider. We are fixing it.
+            </div>
+            <div ng-show="isActivationFailed(sp.Id)">
+                Unable to activate shipping provider. We are fixing it.
+            </div>
+        </td>
+    </tr>
+</table>

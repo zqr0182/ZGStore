@@ -3,10 +3,10 @@
 adminServices.factory('ProdService', ['$resource', function ($resource) {
     return {
         products: $resource('product/list/:filterByStatus', {}, {}),
-        product: $resource('product/edit/:prodId', {}, {}),
-        deactivateProduct: $resource('product/deactivate/:prodId', {}, {}),
+        product: $resource('product/edit/:id', {}, {}),
+        deactivateProduct: $resource('product/deactivate/:id', {}, {}),
         activateProduct: $resource('product/activate', {}, {}),
-        productImage: $resource('product/deleteimage/:imageName/:prodId', {}, {})
+        productImage: $resource('product/deleteimage/:imageName/:id', {}, {})
     };
 }]);
 
@@ -14,9 +14,9 @@ adminServices.factory('ProdCategoryService', ['$resource', function ($resource) 
     return {
         categories: $resource('productcategory/list/:filterByStatus', {}, {}),
         categoryIdNames: $resource('productcategory/GetActiveCategoryIdNames', {}, {}),
-        categoryEdit: $resource('productcategory/edit/:catId', {}, {}),
+        categoryEdit: $resource('productcategory/edit/:id', {}, {}),
         categoryCreate: $resource('productcategory/create', {}, {}),
-        deactivateCategory: $resource('productcategory/deactivate/:catId', {}, {}),
+        deactivateCategory: $resource('productcategory/deactivate/:id', {}, {}),
         activateCategory: $resource('productcategory/activate', {}, {}),
     };
 }]);
@@ -29,6 +29,16 @@ adminServices.factory('SupplierService', ['$resource', function ($resource) {
         supplierCreate: $resource('supplier/create', {}, {}),
         deactivateSupplier: $resource('supplier/deactivate/:id', {}, {}),
         activateSupplier: $resource('supplier/activate', {}, {}),
+    };
+}]);
+
+adminServices.factory('ShippingProviderService', ['$resource', function ($resource) {
+    return {
+        shippingProvider: $resource('shippingProvider/GetShippingProviders/:filterByStatus', {}, {}),
+        shippingProviderEdit: $resource('shippingProvider/edit/:id', {}, {}),
+        shippingProviderCreate: $resource('shippingProvider/create', {}, {}),
+        deactivateShippingProvider: $resource('shippingProvider/deactivate/:id', {}, {}),
+        activateShippingProvider: $resource('shippingProvider/activate', {}, {}),
     };
 }]);
 

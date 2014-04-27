@@ -29,30 +29,48 @@ namespace ZG.Store.Admin
             );
 
             routes.MapRoute(
+                 name: "ProdCatCreate",
+                 url: "productcategory/create",
+                 defaults: new { controller = "ProductCategory", action = "Create" }
+             );
+
+            routes.MapRoute(
                name: "SupplierDeactivate",
                url: "supplier/deactivate/{id}",
                defaults: new { controller = "Supplier", Action = "Deactivate" }
            );
 
-            routes.MapRoute(
+           routes.MapRoute(
                name: "SupplierEdit",
                url: "supplier/edit/{id}",
                defaults: new { controller = "Supplier", action = "Edit" }
            );
 
-            routes.MapRoute(
+           routes.MapRoute(
                name: "SupplierList",
                url: "supplier/{action}/{filterByStatus}",
                defaults: new { controller = "Supplier", filterByStatus = UrlParameter.Optional }
            );
 
-            routes.MapRoute(
-                name: "ProdCatCreate",
-                url: "productcategory/create",
-                defaults: new { controller = "ProductCategory", action = "Create" }
-            );
+           routes.MapRoute(
+              name: "ShippingProviderDeactivate",
+              url: "shippingprovider/deactivate/{id}",
+              defaults: new { controller = "ShippingProvider", Action = "Deactivate" }
+          );
 
-            routes.MapRoute(
+           routes.MapRoute(
+               name: "ShippingProviderEdit",
+               url: "shippingProvider/edit/{id}",
+               defaults: new { controller = "ShippingProvider", action = "Edit" }
+           );
+
+           routes.MapRoute(
+               name: "ShippingProviderList",
+               url: "shippingprovider/{action}/{filterByStatus}",
+               defaults: new { controller = "ShippingProvider", filterByStatus = UrlParameter.Optional }
+           );
+
+           routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
@@ -60,7 +78,7 @@ namespace ZG.Store.Admin
 
             routes.MapRoute(
                 name: "DeleteProductImage",
-                url: "{controller}/{action}/{imageName}/{prodId}",
+                url: "{controller}/{action}/{imageName}/{id}",
                 defaults: new { controller = "Product", action = "DeleteImage"}
             );
         }

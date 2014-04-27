@@ -11,7 +11,7 @@ namespace ZG.Application
 {
     public interface IInventoryService
     {
-        List<Inventory> GetInventoriesByProductId(int prodId);
+        List<Inventory> GetInventoriesByProductId(int id);
     }
 
     public class InventoryService : BaseService, IInventoryService
@@ -19,9 +19,9 @@ namespace ZG.Application
         public InventoryService(IUnitOfWork uow) : base(uow)
         { }
 
-        public List<Inventory> GetInventoriesByProductId(int prodId)
+        public List<Inventory> GetInventoriesByProductId(int id)
         {
-            return UnitOfWork.Inventories.Matches(new InventoryByProductId(prodId)).ToList();
+            return UnitOfWork.Inventories.Matches(new InventoryByProductId(id)).ToList();
         }
     }
 }

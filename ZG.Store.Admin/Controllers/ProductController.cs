@@ -95,11 +95,11 @@ namespace ZG.Store.Admin.Controllers
         }
 
         [HttpDelete]
-        public JsonResult DeleteImage(int prodId, string imageName)
+        public JsonResult DeleteImage(int id, string imageName)
         {
             try
             {
-                string dirPath = PathUtil.GetProductImageDirectory(prodId);
+                string dirPath = PathUtil.GetProductImageDirectory(id);
                 string path = dirPath + "\\" + imageName;
 
                 _fileService.DeleteFile(path);
@@ -109,7 +109,7 @@ namespace ZG.Store.Admin.Controllers
             }
             catch(Exception ex)
             {
-                _logger.ErrorFormat(ex, "Failed to delete product image. Product id {0}, image name: {1}", prodId, imageName);
+                _logger.ErrorFormat(ex, "Failed to delete product image. Product id {0}, image name: {1}", id, imageName);
                 return Json(new {Success = false, Error = "Error occured, unable to delete image. We are fixing it." }, JsonRequestBehavior.DenyGet);
             }
         }

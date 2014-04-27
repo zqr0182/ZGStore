@@ -11,9 +11,9 @@ namespace ZG.Repository.Criterias
     {
         private int _prodId;
 
-        public InventoryByProductId(int prodId)
+        public InventoryByProductId(int id)
         {
-            _prodId = prodId;
+            _prodId = id;
         }
 
         public override IQueryable<Inventory> BuildQueryOver(IQueryable<Inventory> queryBase)
