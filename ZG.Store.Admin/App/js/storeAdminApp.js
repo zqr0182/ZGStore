@@ -10,7 +10,7 @@ adminApp.config(['$routeProvider', function ($routeProvider) {
     .when('/productcategory/edit/:catId', { templateUrl: 'app/partials/productCategoryEdit.html', controller: 'EditProductCategoryCtrl' })
     .when('/productcategory/create', { templateUrl: 'app/partials/productCategoryEdit.html', controller: 'EditProductCategoryCtrl' })
     .when('/productcategory', { templateUrl: 'app/partials/productCategoryList.html', controller: 'ProductCategoryListCtrl' })
-    .when('/supplier/edit/:supId', { templateUrl: 'app/partials/SupplierEdit.html', controller: 'EditSupplierCtrl' })
+    .when('/supplier/edit/:id', { templateUrl: 'app/partials/SupplierEdit.html', controller: 'EditSupplierCtrl' })
     .when('/supplier/create', { templateUrl: 'app/partials/SupplierEdit.html', controller: 'EditSupplierCtrl' })
     .when('/supplier', { templateUrl: 'app/partials/supplierlist.html', controller: 'SupplierListCtrl' })
     .when('/home', { templateUrl: 'app/partials/home.html', controller: '' })

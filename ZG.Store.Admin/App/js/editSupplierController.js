@@ -1,7 +1,7 @@
 ﻿angular.module('storeAdminControllers').controller('EditSupplierCtrl', ['$scope', '$http', '$routeParams', 'SupplierService', 'CommonFunctions',
   function ($scope, $http, $routeParams, SupplierService, CommonFunctions) {
-      if ($routeParams.supId > 0) {
-          $scope.sup = SupplierService.supplierEdit.get({ supId: $routeParams.supId });
+      if ($routeParams.id > 0) {
+          $scope.sup = SupplierService.supplierEdit.get({ id: $routeParams.id });
       }
       $scope.isSaveSuccessful = false;
       $scope.errors = null;
@@ -10,7 +10,7 @@
       $scope.saveSupplier = function () {
 
           var service;
-          if ($routeParams.supId > 0)
+          if ($routeParams.id > 0)
           {
               service = SupplierService.supplierEdit;
           }

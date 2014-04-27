@@ -42,7 +42,6 @@ namespace ZG.Domain.Models
         [Required]
         [MaxLength(80)]
         public string Email { get; set; }
-        [Required]
         [MaxLength(100)]
         public string WebSite { get; set; }
         [Required]

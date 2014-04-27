@@ -92,7 +92,14 @@ namespace ZG.Application
                 State = sup.State,
                 Zip = sup.Zip,
                 Country = sup.Country,
+                ContactFName = sup.ContactFName,
+                ContactLName = sup.ContactLName,
+                ContactTitle = sup.ContactTitle,
                 Phone = sup.Phone,
+                Fax = sup.Fax,
+                Email = sup.Email,
+                WebSite = sup.WebSite,
+                Note = sup.Note,
                 Active = sup.Active
             };
 
