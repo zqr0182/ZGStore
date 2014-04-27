@@ -92,28 +92,53 @@
             </div>
         </tab>
         <tab heading="Inventories">
-            <div ng-repeat="inventory in prod.Inventories">
-                <div>Product Amount Ordered: <input type="text" ng-model="inventory.ProductAmountOrdered" name="productAmountOrdered" required ng-pattern="pattern.fourDigit"></div>
-                <div ng-show="prodForm.productAmountOrdered.$error.required">ProductAmountOrdered is Required</div>
-                <div ng-show="prodForm.productAmountOrdered.$error.pattern">Invalid Amount</div>
-                <div>Product Amount In Stock: <input type="text" ng-model="inventory.ProductAmountInStock" name="productAmountInStock" required ng-pattern="pattern.fourDigit"></div>
-                <div ng-show="prodForm.productAmountInStock.$error.required">ProductAmountInStock is Required</div>
-                <div ng-show="prodForm.productAmountInStock.$error.pattern">Invalid Amount</div>
-                <div>Price: <input type="text" ng-model="inventory.Price" name="price" required ng-pattern="pattern.decimal"></div>
-                <div ng-show="prodForm.price.$error.required">Price is Required</div>
-                <div ng-show="prodForm.price.$error.pattern">Invalid Price</div>
-                <div>
-                    Supplier:<br />
-                    <select ng-model="inventory.SupplierIdName" ng-options="s.Name for s in allSuppliers">
-                        <option value="">-- Choose Supplier --</option>
-                    </select>
-                </div>
-                <div>
-                    Is Active: Yes <input type="radio" ng-model="inventory.Active" ng-value="true" name="IsInventoryActive" required>
-                    No <input type="radio" ng-model="inventory.Active" ng-value="false" name="IsInventoryActive" required>
-                    <div ng-show="prodForm.inventory.$dirty && prodForm.inventory.$invalid">Is Active is Required</div>
-                </div> 
-            </div>           
+            <button ng-click="addInventory()">Add Inventory</button>
+            <table>
+                <tr>
+                    <td><a href="" ng-click="predicate='ProductAmountOrdered';reverse=!reverse">Product Amount Ordered</a></td>
+                    <td><a href="" ng-click="predicate='ProductAmountInStock';reverse=!reverse">Product Amount In Stock</a></td>
+                    <td><a href="" ng-click="predicate='Price';reverse=!reverse">Price</a></td>
+                    <td>Supplier</td>
+                    <td>Is Active</td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="inventory in prod.Inventories | orderBy:predicate:reverse">
+                    <td>
+                        <div>
+                            <input type="text" ng-model="inventory.ProductAmountOrdered" name="productAmountOrdered{{$index}}" required ng-pattern="pattern.fourDigit">
+                        </div>
+                        <div ng-show="prodForm.productAmountOrdered{{$index}}.$error.required">ProductAmountOrdered is Required</div>
+                        <div ng-show="prodForm.productAmountOrdered{{$index}}.$error.pattern">Invalid Amount</div>
+                    </td>
+                    <td>
+                        <div><input type="text" ng-model="inventory.ProductAmountInStock" name="productAmountInStock{{$index}}" required ng-pattern="pattern.fourDigit"></div>
+                        <div ng-show="prodForm.productAmountInStock{{$index}}.$error.required">ProductAmountInStock is Required</div>
+                        <div ng-show="prodForm.productAmountInStock{{$index}}.$error.pattern">Invalid Amount</div>
+                    </td>
+                    <td>
+                        <div><input type="text" ng-model="inventory.Price" name="price{{$index}}" required ng-pattern="pattern.decimal"></div>
+                        <div ng-show="prodForm.price{{$index}}.$error.required">Price is Required</div>
+                        <div ng-show="prodForm.price{{$index}}.$error.pattern">Invalid Price</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select ng-model="inventory.SupplierIdName" ng-options="s.Name for s in allSuppliers">
+                                <option value="">-- Choose Supplier --</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            Yes <input type="radio" ng-model="inventory.Active" ng-value="true" name="inventory{{$index}}" required>
+                            No <input type="radio" ng-model="inventory.Active" ng-value="false" name="inventory{{$index}}" required>
+                            <div ng-show="prodForm.inventory{{$index}}.$dirty && prodForm.inventory{{$index}}.$invalid">Is Active is Required</div>
+                        </div>
+                    </td>
+                    <td>
+                        <button ng-click="deleteInventory(inventory)" ng-show="!inventory.Id">Delete</button>
+                    </td>
+                </tr>
+            </table>       
         </tab>
     </tabset>
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>

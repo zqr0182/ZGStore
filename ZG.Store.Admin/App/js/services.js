@@ -84,6 +84,11 @@ adminServices.factory('CommonFunctions', [function () {
                 fourDigit: /^\d{1,4}$/,
                 tenDigit: /^\d{1,10}$/
             };
+        },
+        removeFromArray: function(array, item)
+        {
+            var index = array.indexOf(item);
+            array.splice(index, 1);
         }
     };
 }]);

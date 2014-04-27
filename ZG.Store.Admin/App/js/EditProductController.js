@@ -61,6 +61,15 @@
           }
       }
 
+      $scope.addInventory = function () {
+          $scope.prod.Inventories.push({});
+      }
+
+      $scope.deleteInventory = function(inventory)
+      {
+          CommonFunctions.removeFromArray($scope.prod.Inventories, inventory);
+      }
+
       $scope.saveProd = function () {
           var url = ($routeParams.prodId > 0) ? "/product/edit" : "/product/create";
           $upload.upload({

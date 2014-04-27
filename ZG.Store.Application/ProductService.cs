@@ -168,15 +168,23 @@ namespace ZG.Application
 
         private void UpdateProductInventories(InventoryViewModel inventory, Product prod)
         {
-            var inventoryInDb = prod.Inventories.FirstOrDefault(i => i.Id == inventory.Id);
-
-            if (inventoryInDb != null)
+            if (inventory.Id > 0)
             {
-                inventoryInDb.ProductAmountOrdered = inventory.ProductAmountOrdered;
-                inventoryInDb.ProductAmountInStock = inventory.ProductAmountInStock;
-                inventoryInDb.Price = inventory.Price;
-                inventoryInDb.SupplierId = inventory.SupplierIdName.Id;
-                inventoryInDb.Active = inventory.Active;
+                var inventoryInDb = prod.Inventories.FirstOrDefault(i => i.Id == inventory.Id);
+
+                if (inventoryInDb != null)
+                {
+                    inventoryInDb.ProductAmountOrdered = inventory.ProductAmountOrdered;
+                    inventoryInDb.ProductAmountInStock = inventory.ProductAmountInStock;
+                    inventoryInDb.Price = inventory.Price;
+                    inventoryInDb.SupplierId = inventory.SupplierIdName.Id;
+                    inventoryInDb.Active = inventory.Active;
+                }
+            }
+            else
+            {
+                var newInventory = new Inventory { ProductID = prod.Id, ProductAmountOrdered = inventory.ProductAmountOrdered, ProductAmountInStock = inventory.ProductAmountInStock, Price = inventory.Price, SupplierId = inventory.SupplierIdName.Id, Active = inventory.Active };
+                prod.Inventories.Add(newInventory);
             }
         }
 
