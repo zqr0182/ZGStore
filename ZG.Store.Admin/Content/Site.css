@@ -65,3 +65,8 @@ margin: 3px;
 .css-form input.ng-invalid.ng-dirty {
     background-color: #FA787E;
   }
+
+.tab-content > .active {
+  border: 1px solid #DDD;
+  border-top: none;
+}

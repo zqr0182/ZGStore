@@ -9,93 +9,97 @@
         Product Name: <input type="text" name="prodName" ng-model="prod.Name" required />
         <div ng-show="prodForm.prodName.$dirty && prodForm.prodName.$invalid">Product Name is required</div>
     </div>
-    <div>
-        Is Active: Yes <input type="radio" ng-model="prod.Active" ng-value="true" name="IsActive" required>
-        No <input type="radio" ng-model="prod.Active" ng-value="false" name="IsActive" required>
-        <div ng-show="prodForm.IsActive.$dirty && prodForm.IsActive.$invalid">Is Active is Required</div>
-    </div>
-
-    <div>
-        Product Categories:<br />
-        <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
-    </div>
-    <!--<div>Supplier:<br />
-        <select ng-model="prod.SupplierIdName" ng-options="s.Name for s in allSuppliers">
-            <option value="">-- Choose Supplier --</option>
-        </select>
-    </div>-->
-
-    <div>
-        Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
-    </div>
-    <div>
-        Description: <input type="text" ng-model="prod.Description" />
-    </div>
-    <div>
-        SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required ng-pattern="pattern.decimal" />
-        <div ng-show="prodForm.salePrice.$error.required">Sale Price is required</div>
-        <div ng-show="prodForm.salePrice.$error.pattern">Invalid Sale Price</div>
-    </div>
-    <div>
-        Weight: <input type="text" name="weight" ng-model="prod.Weight" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.weight.$error.pattern">Invalid Weight</div>
-    </div>
-    <div>
-        Shipping Weight: <input type="text" name="shippingWeight" ng-model="prod.ShippingWeight" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.shippingWeight.$error.pattern">Invalid Shipping Weight</div>
-    </div>
-    <div>
-        Height: <input type="text" name="height" ng-model="prod.Height" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.height.$error.pattern">Invalid Height</div>
-    </div>
-    <div>
-        Shipping Height: <input type="text" name="shippingHeight" ng-model="prod.ShippingHeight" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.shippingHeight.$error.pattern">Invalid Shipping Height</div>
-    </div>
-    <div>
-        Length: <input type="text" name="length" ng-model="prod.Length" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.length.$error.pattern">Invalid Length</div>
-    </div>
-    <div>
-        Shipping Length: <input type="text" name="shippingLength" ng-model="prod.ShippingLength" ng-pattern="pattern.fourDigit" />
-        <div ng-show="prodForm.shippingLength.$error.pattern">Invalid Shipping Length</div>
-    </div>
-    <div>
-        Product Link: <input type="text" ng-model="prod.ProductLink" />
-    </div>
-    <div>
-        Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="true" name="IsReviewEnabled">
-        No <input type="radio" ng-model="prod.IsReviewEnabled" value="false" name="IsReviewEnabled">
-    </div>
-    <div>
-        Total Review Count: {{prod.TotalReviewCount}}
-    </div>
-    <div>
-        Rating Score: {{prod.RatingScore}}
-    </div>
-    <div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
-        <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
-        <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
-    </div>
-    <p ng-show="showDeleteImageSuccessfulMsg">Product image is deleted successfully.</p>
-    <p ng-show="showDeleteImageFailureMsg">{{deleteImageFailureMsg}}</p>
-    <p style="clear:both"></p>
-    <div>
-        <input type="file" ng-file-select="onFileSelect($files)" multiple>
-        <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">drop files here</div>
-        <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-
-        <div ng-show="selectedFiles != null">
-            <div class="sel-file" ng-repeat="f in selectedFiles">
-                {{($index + 1) + '.'}}
-                <img class="thumbnail" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
-                <span class="progress" ng-show="progress != ''">
-                    {{progress}}%
-                </span>
-                {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+    <tabset>
+        <tab heading="Details">
+            <div>
+                Is Active: Yes <input type="radio" ng-model="prod.Active" ng-value="true" name="IsActive" required>
+                No <input type="radio" ng-model="prod.Active" ng-value="false" name="IsActive" required>
+            <div ng-show="prodForm.IsActive.$dirty && prodForm.IsActive.$invalid">Is Active is Required</div>
             </div>
-        </div>
-    </div>
+            <div>
+                Product Categories:<br />
+            <select multiple ng-model="prod.ProductCategories" ng-options="c.Name for c in allProdCategories"></select>
+            </div>
+            <!--<div>Supplier:<br />
+            <select ng-model="prod.SupplierIdName" ng-options="s.Name for s in allSuppliers">
+                <option value="">-- Choose Supplier --</option>
+            </select>
+        </div>-->
+            <div>
+                Catalog Number: <input type="text" ng-model="prod.CatalogNumber" />
+            </div>
+            <div>
+                Description: <input type="text" ng-model="prod.Description" />
+            </div>
+            <div>
+                SalePrice: <input type="text" name="salePrice" ng-model="prod.SalePrice" required ng-pattern="pattern.decimal" />
+            <div ng-show="prodForm.salePrice.$error.required">Sale Price is required</div>
+            <div ng-show="prodForm.salePrice.$error.pattern">Invalid Sale Price</div>
+            </div>
+            <div>
+                Weight: <input type="text" name="weight" ng-model="prod.Weight" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.weight.$error.pattern">Invalid Weight</div>
+            </div>
+            <div>
+                Shipping Weight: <input type="text" name="shippingWeight" ng-model="prod.ShippingWeight" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.shippingWeight.$error.pattern">Invalid Shipping Weight</div>
+            </div>
+            <div>
+                Height: <input type="text" name="height" ng-model="prod.Height" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.height.$error.pattern">Invalid Height</div>
+            </div>
+            <div>
+                Shipping Height: <input type="text" name="shippingHeight" ng-model="prod.ShippingHeight" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.shippingHeight.$error.pattern">Invalid Shipping Height</div>
+            </div>
+            <div>
+                Length: <input type="text" name="length" ng-model="prod.Length" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.length.$error.pattern">Invalid Length</div>
+            </div>
+            <div>
+                Shipping Length: <input type="text" name="shippingLength" ng-model="prod.ShippingLength" ng-pattern="pattern.fourDigit" />
+            <div ng-show="prodForm.shippingLength.$error.pattern">Invalid Shipping Length</div>
+            </div>
+            <div>
+                Product Link: <input type="text" ng-model="prod.ProductLink" />
+            </div>
+            <div>
+                Is Review Enabled: Yes <input type="radio" ng-model="prod.IsReviewEnabled" value="true" name="IsReviewEnabled">
+                No <input type="radio" ng-model="prod.IsReviewEnabled" value="false" name="IsReviewEnabled">
+            </div>
+            <div>
+                Total Review Count: {{prod.TotalReviewCount}}
+            </div>
+            <div>
+                Rating Score: {{prod.RatingScore}}
+            </div>
+            <div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
+            <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
+            <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
+            </div>
+            <p ng-show="showDeleteImageSuccessfulMsg">Product image is deleted successfully.</p>
+            <p ng-show="showDeleteImageFailureMsg">{{deleteImageFailureMsg}}</p>
+            <p style="clear:both"></p>
+            <div>
+            <input type="file" ng-file-select="onFileSelect($files)" multiple>
+            <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class" ng-show="dropSupported">drop files here</div>
+            <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+            <div ng-show="selectedFiles != null">
+            <div class="sel-file" ng-repeat="f in selectedFiles">
+                        {{($index + 1) + '.'}}
+            <img class="thumbnail" ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+            <span class="progress" ng-show="progress != ''">
+                            {{progress}}%
+                        </span>
+                        {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+                    </div>
+                </div>
+            </div>
+        </tab>
+        <tab heading="Inventories">
+
+        </tab>
+    </tabset>
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>
 </form>
 
