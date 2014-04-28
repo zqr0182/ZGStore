@@ -2,9 +2,7 @@
   function ($scope, $location, SupplierService, CommonFunctions) {
       $scope.filterByStatus = 'active';
       $scope.getSuppliers = function () {
-          $scope.suppliers = SupplierService.supplier.query({ filterByStatus: $scope.filterByStatus }, function (data) {
-              var result = data;
-          });
+          $scope.suppliers = SupplierService.supplier.query({ filterByStatus: $scope.filterByStatus });
       }
       $scope.getSuppliers();
 

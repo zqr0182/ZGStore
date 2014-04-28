@@ -10,15 +10,15 @@ namespace ZG.Repository.Criterias
 {
     public class ShippingProviderByActive : AbstractCriteria<ShippingProvider>
     {
-        bool _active;
-        public ShippingProviderByActive(bool active)
+        bool? _active;
+        public ShippingProviderByActive(bool? active)
         {
             _active = active;
         }
 
         public override IQueryable<ShippingProvider> BuildQueryOver(IQueryable<ShippingProvider> queryBase)
         {
-            return base.BuildQueryOver(queryBase).Where(s => s.Active == _active);
+            return base.BuildQueryOver(queryBase).Where(s => s.Active == (_active.HasValue ? _active.Value : s.Active));
         }
     }
 }

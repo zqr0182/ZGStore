@@ -13,12 +13,9 @@ namespace ZG.Application
 {
     public interface IShippingProviderService
     {
-        IQueryable<ShippingProvider> GetShippingProviders(bool active);
+        List<ShippingProviderEditViewModel> GetShippingProviders(bool? active);
         ShippingProvider GetShippingProviderById(int id);
-        void Activate(int id);
-        void Deactivate(int id);
-        void Update(ShippingProvider shippingProvider);
-        void Create(ShippingProvider shippingProvider);
+        void Upsert(List<ShippingProviderEditViewModel> shippingProviders);
     }
 
     public class ShippingProviderService : BaseService, IShippingProviderService
@@ -27,10 +24,10 @@ namespace ZG.Application
             : base(uow)
         {}
 
-        public IQueryable<ShippingProvider> GetShippingProviders(bool active)
+        public List<ShippingProviderEditViewModel> GetShippingProviders(bool? active)
         {
             var suppliersByActive = new ShippingProviderByActive(active);
-            return UnitOfWork.ShippingProviders.Matches(suppliersByActive);
+            return UnitOfWork.ShippingProviders.Matches(suppliersByActive).Select(p => new ShippingProviderEditViewModel{ Id = p.Id, Name = p.Name, ShippingCost = p.ShippingCost, Active = p.Active}).ToList();
         }
 
         public ShippingProvider GetShippingProviderById(int id)
@@ -38,17 +35,26 @@ namespace ZG.Application
             return UnitOfWork.ShippingProviders.MatcheById(id);
         }
 
-        public void Activate(int id)
+        public void Upsert(List<ShippingProviderEditViewModel> shippingProviders)
         {
-            ToggleActive(id, true);
+            shippingProviders.ForEach(p => Upsert(p));
+
+            UnitOfWork.Commit();
         }
 
-        public void Deactivate(int id)
+        private void Upsert(ShippingProviderEditViewModel shippingProvider)
         {
-            ToggleActive(id, false);
+            if(shippingProvider.Id > 0)
+            {
+                Update(shippingProvider);
+            }
+            else
+            {
+                Create(shippingProvider);
+            }
         }
 
-        public void Update(ShippingProvider shippingProvider)
+        private void Update(ShippingProviderEditViewModel shippingProvider)
         {
             var sp = GetShippingProviderById(shippingProvider.Id);
 
@@ -57,12 +63,10 @@ namespace ZG.Application
                 sp.Name = shippingProvider.Name;
                 sp.ShippingCost = shippingProvider.ShippingCost;
                 sp.Active = shippingProvider.Active;
-
-                UnitOfWork.Commit();
             }
         }
 
-        public void Create(ShippingProvider shippingProvider)
+        private void Create(ShippingProviderEditViewModel shippingProvider)
         {
             var sp = new ShippingProvider()
             {
@@ -71,16 +75,7 @@ namespace ZG.Application
                 Active = shippingProvider.Active
             };
 
-            UnitOfWork.ShippingProviders.Add(shippingProvider);
-            UnitOfWork.Commit();
-        }
-
-        private void ToggleActive(int id, bool active)
-        {
-            var sp = GetShippingProviderById(id);
-            sp.Active = active;
-
-            UnitOfWork.Commit();
+            UnitOfWork.ShippingProviders.Add(sp);
         }
     }
 }

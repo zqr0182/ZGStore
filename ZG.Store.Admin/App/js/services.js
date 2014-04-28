@@ -34,11 +34,8 @@ adminServices.factory('SupplierService', ['$resource', function ($resource) {
 
 adminServices.factory('ShippingProviderService', ['$resource', function ($resource) {
     return {
-        shippingProvider: $resource('shippingProvider/GetShippingProviders/:filterByStatus', {}, {}),
-        shippingProviderEdit: $resource('shippingProvider/edit/:id', {}, {}),
-        shippingProviderCreate: $resource('shippingProvider/create', {}, {}),
-        deactivateShippingProvider: $resource('shippingProvider/deactivate/:id', {}, {}),
-        activateShippingProvider: $resource('shippingProvider/activate', {}, {}),
+        get: $resource('shippingProvider/GetShippingProviders', {}, {}),
+        save: $resource('shippingProvider/save', {}, {})
     };
 }]);
 

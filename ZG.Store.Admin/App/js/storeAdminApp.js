@@ -13,8 +13,6 @@ adminApp.config(['$routeProvider', function ($routeProvider) {
     .when('/supplier/edit/:id', { templateUrl: 'app/partials/SupplierEdit.html', controller: 'EditSupplierCtrl' })
     .when('/supplier/create', { templateUrl: 'app/partials/SupplierEdit.html', controller: 'EditSupplierCtrl' })
     .when('/supplier', { templateUrl: 'app/partials/supplierlist.html', controller: 'SupplierListCtrl' })
-    .when('/shippingprovider/edit/:id', { templateUrl: 'app/partials/ShippingProviderEdit.html', controller: 'EditShippingProviderCtrl' })
-    .when('/shippingprovider/create', { templateUrl: 'app/partials/ShippingProviderEdit.html', controller: 'EditShippingProviderCtrl' })
     .when('/shippingprovider', { templateUrl: 'app/partials/ShippingProviderlist.html', controller: 'ShippingProviderListCtrl' })
     .when('/home', { templateUrl: 'app/partials/home.html', controller: '' })
     .otherwise({ redirectTo: '/home' });

@@ -1,39 +1,39 @@
 ﻿<h2>Supplier List</h2>
 
-<a href="#/shippingprovider/create">Create New Shipping Provider</a> <br />
+<button ng-click="add()">New</button>
 
-Filter by:
-<select ng-model="filterByStatus" ng-change="getShippingProviders()">
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-</select>
+<form name="spForm" class="css-form" novalidate>
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+            <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+            <td><a href="" ng-click="predicate='ShippingCost';reverse=!reverse">Shipping Cost</a></td>
+            <td>Active</td>
+        </tr>
+        <tr ng-repeat="sp in shippingProviders | orderBy:predicate:reverse">
+            <td>{{sp.Id}}</td>
+            <td>
+                <div>
+                    <input type="text" name="Name" ng-model="sp.Name" required >
+                    <div ng-show="spForm.Name.$dirty && spForm.Name.$invalid">Name is required</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="sp.ShippingCost" name="shippingCost{{$index}}" required ng-pattern="pattern.decimal">
+                    <div ng-show="spForm.shippingCost{{$index}}.$error.required">Shipping Cost is Required</div>
+                    <div ng-show="spForm.shippingCost{{$index}}.$error.pattern">Invalid Shipping Cost</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="sp.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="sp.Active" ng-value="false" required>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-<table>
-    <tr>
-        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
-        <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
-        <td><a href="" ng-click="predicate='ShippingCost';reverse=!reverse">Shipping Cost</a></td>
-        <td>Active</td>
-    </tr>
-    <tr ng-repeat="sp in shippingProviders | orderBy:predicate:reverse">
-        <td>{{sp.Id}}</td>
-        <td>{{sp.Name}}</td>
-        <td>{{sp.ShippingCost}}</td>
-        <td>{{sp.Active}}</td>
-        <td>
-            <div ng-show="sp.Active">
-                <input type="button" ng-click="go('/shippingprovider/edit/' + sp.Id)" value="Edit" />
-                <input type="button" ng-click="deactivateShippingProvider(sp)" value="Deactivate" />
-            </div>
-            <div ng-show="!sp.Active">
-                <input type="button" ng-click="activateShippingProvider(sp)" value="Activate" />
-            </div>
-            <div ng-show="isDeactivationFailed(sp.Id)">
-                Unable to deactivate shipping provider. We are fixing it.
-            </div>
-            <div ng-show="isActivationFailed(sp.Id)">
-                Unable to activate shipping provider. We are fixing it.
-            </div>
-        </td>
-    </tr>
-</table>
+    <button ng-click="save()">Save</button>
+    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+</form>

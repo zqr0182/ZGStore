@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZG.Application;
 using ZG.Common;
+using ZG.Domain.DTO;
 using ZG.Domain.Models;
 
 namespace ZG.Store.Admin.Controllers
@@ -21,73 +22,19 @@ namespace ZG.Store.Admin.Controllers
             _logger = logger;
         }
 
-        public JsonResult GetShippingProviders(string filterByStatus)
+        public JsonResult GetShippingProviders()
         {
-            var active = Utility.StatusToBool(filterByStatus);
-            var result = _shippingProviderService.GetShippingProviders(active).ToList();
+            var result = _shippingProviderService.GetShippingProviders(null).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Edit(int id)
-        {
-            try
-            {
-                var sp = _shippingProviderService.GetShippingProviderById(id);
-
-                return Json(sp, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                _logger.ErrorFormat(ex, "Failed to get supplier: {0}", id);
-                return Json(new { Success = false, Error = "Error occured. Unable to get shipping provider. We are fixing it." }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
         [HttpPost]
-        public JsonResult Edit(ShippingProvider shippingProvider)
+        public JsonResult Save(List<ShippingProviderEditViewModel> shippingProviders)
         {
-            return UpsertShippingProvider(shippingProvider);
+            return UpsertShippingProvider(shippingProviders);
         }
 
-        [HttpPost]
-        public JsonResult Create(ShippingProvider shippingProvider)
-        {
-            return UpsertShippingProvider(shippingProvider);
-        }
-
-        [HttpDelete]
-        public JsonResult Deactivate(int id)
-        {
-            try
-            {
-                _shippingProviderService.Deactivate(id);
-
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
-            }
-            catch (Exception ex)
-            {
-                _logger.ErrorFormat(ex, "Failed to deactivate shipping provider {0}", id);
-                return Json(new { Success = false, Error = "Error occured. Unable to deactivate shipping provider. We are fixing it." }, JsonRequestBehavior.DenyGet);
-            }
-        }
-
-        [HttpPost]
-        public JsonResult Activate(int id)
-        {
-            try
-            {
-                _shippingProviderService.Activate(id);
-
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
-            }
-            catch (Exception ex)
-            {
-                _logger.ErrorFormat(ex, "Failed to activate shipping provider {0}", id);
-                return Json(new { Success = false, Error = "Error occured. Unable to activate shipping provider. We are fixing it." }, JsonRequestBehavior.DenyGet);
-            }
-        }
-
-        private JsonResult UpsertShippingProvider(ShippingProvider shippingProvider)
+        private JsonResult UpsertShippingProvider(List<ShippingProviderEditViewModel> shippingProviders)
         {
             try
             {
@@ -97,20 +44,13 @@ namespace ZG.Store.Admin.Controllers
                     return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
                 }
 
-                if (shippingProvider.Id > 0)
-                {
-                    _shippingProviderService.Update(shippingProvider);
-                }
-                else
-                {
-                    _shippingProviderService.Create(shippingProvider);
-                }
+                _shippingProviderService.Upsert(shippingProviders);
 
                 return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
             }
             catch (Exception ex)
             {
-                _logger.ErrorFormat(ex, "Failed to upsert shipping provider: {0}, {1}", shippingProvider.Id, shippingProvider.Name);
+                _logger.ErrorFormat(ex, "Failed to upsert shipping providers.");
                 return Json(new { Success = false, Errors = "Error occured. Unable to upsert shipping provider. We are fixing it." }, JsonRequestBehavior.DenyGet);
             }
         }
