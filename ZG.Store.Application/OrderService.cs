@@ -91,7 +91,7 @@ namespace ZG.Application
 
         public IEnumerable<ShippingProvider> GetShippingProviders(bool isActive)
         {
-            var status = new ShippingProvidersByActive(isActive);
+            var status = new ShippingProviderByActive(isActive);
             return UnitOfWork.ShippingProviders.Matches(status).ToList();
         }
 

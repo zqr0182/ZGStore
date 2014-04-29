@@ -39,7 +39,7 @@ namespace ZG.Application
             string key = activeOnly ? "ActiveProvinces" : "AllProvinces";
             return ZGCache.Cache(key, () =>
             {
-                var provinces = UnitOfWork.Provinces.Matches(new ProvincesByActive(activeOnly)).ToList();
+                var provinces = UnitOfWork.Provinces.Matches(new ProvinceByActive(activeOnly)).ToList();
                 return provinces;
             }, TimeSpan.FromMinutes(60));
         }

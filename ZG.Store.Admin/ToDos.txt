@@ -1,12 +1,13 @@
 ﻿--Add category dropdown to Product Create/Edit page 
 --Category list and details and create page
---Edit productcategory page to add category\
+--Edit productcategory page to add category
 --Supplier List, Create, Edit Pages
 --Supplier Create/Edit phone and zip box validation
 --Move fields from Product into Inventory table
 --Inventory list/create/edit pages
 --Inventory IsActive Radio unselected when sort: fixed: no need to name radio button, angular will give them names
 --ShippingProviders list/create/edit page
+Province list/edit page
 Shippings list/create/edit page
 Taxs page
 Users list and details page

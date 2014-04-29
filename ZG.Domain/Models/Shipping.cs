@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +11,8 @@ namespace ZG.Domain.Models
         [Key]
         public int Id { get; set; }
         public int CountryID { get; set; }
-        public int StateID { get; set; }
+        public int? StateID { get; set; }
+        public string City { get; set; }
         public Nullable<int> ProvinceID { get; set; }
         public int ProductID { get; set; }
         public int ShippingProviderID { get; set; }

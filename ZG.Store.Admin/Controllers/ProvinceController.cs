@@ -1,0 +1,58 @@
+﻿using Castle.Core.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ZG.Application;
+using ZG.Common;
+using ZG.Domain.DTO;
+using ZG.Domain.Models;
+
+namespace ZG.Store.Admin.Controllers
+{
+    public class ProvinceController : Controller
+    {
+        IProvinceService _provinceService;
+        readonly ILogger _logger;
+
+        public ProvinceController(IProvinceService provinceService, ILogger logger)
+        {
+            _provinceService = provinceService;
+            _logger = logger;
+        }
+
+        public JsonResult GetProvinces()
+        {
+            var result = _provinceService.GetProvinces(null).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Save(List<ProvinceEditViewModel> provinces)
+        {
+            return UpsertProvince(provinces);
+        }
+
+        private JsonResult UpsertProvince(List<ProvinceEditViewModel> provinces)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                }
+
+                _provinceService.Upsert(provinces);
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to upsert provinces.");
+                return Json(new { Success = false, Errors = "Error occured. Unable to upsert provinces. We are fixing it." }, JsonRequestBehavior.DenyGet);
+            }
+        }
+    }
+}

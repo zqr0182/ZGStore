@@ -7,11 +7,11 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class ProvincesByActive : AbstractCriteria<Province>
+    public class ProvinceByActive : AbstractCriteria<Province>
     {
-        private bool _activeOnly;
+        private bool? _activeOnly;
 
-        public ProvincesByActive(bool activeOnly)
+        public ProvinceByActive(bool? activeOnly)
         {
             _activeOnly = activeOnly;
         }
@@ -20,10 +20,7 @@ namespace ZG.Repository.Criterias
         {
             IQueryable<Province> provinces = base.BuildQueryOver(queryBase);
 
-            if (_activeOnly)
-            {
-                provinces = provinces.Where(s => (s.Active.HasValue && s.Active.Value == true));
-            }
+            provinces = provinces.Where(s => s.Active == (_activeOnly.HasValue ? _activeOnly.Value : s.Active));
 
             return provinces;
         }

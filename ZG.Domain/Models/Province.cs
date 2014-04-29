@@ -12,13 +12,16 @@ namespace ZG.Domain.Models
     {
         [Key]
         public int Id { get; set; }
+        public int CountryId { get; set; }
         [Required]
         [MaxLength(50)]
         public string ProvinceName { get; set; }
-        [Required]
         [MaxLength(2)]
         public string ProvinceCode { get; set; }
-        public bool? Active { get; set; }
+        public bool Active { get; set; }
+
+        [ForeignKey("CountryId")]
+        public virtual Country Country { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         [InverseProperty("BillingProvince")]
         public virtual ICollection<Order> OrdersBilling { get; set; }

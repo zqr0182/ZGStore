@@ -64,10 +64,9 @@
     <Compile Include="Criterias\ShippingProviderByActive.cs" />
     <Compile Include="Criterias\SupplierByActive.cs" />
     <Compile Include="Criterias\USAndCanada.cs" />
-    <Compile Include="Criterias\ProvincesByActive.cs" />
+    <Compile Include="Criterias\ProvinceByActive.cs" />
     <Compile Include="Criterias\CountriesByActive.cs" />
     <Compile Include="Criterias\StatesByActive.cs" />
-    <Compile Include="Criterias\ShippingProvidersByActive.cs" />
     <Compile Include="Criterias\ICriteria.cs" />
     <Compile Include="Criterias\OrderStatusByActive.cs" />
     <Compile Include="Criterias\ProductsByCategory.cs" />
