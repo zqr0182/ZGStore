@@ -52,11 +52,11 @@ namespace ZG.Store.Admin
                defaults: new { controller = "Supplier", filterByStatus = UrlParameter.Optional }
            );
 
-           //routes.MapRoute(
-           //    name: "ShippingProviderEdit",
-           //    url: "shippingProvider/edit",
-           //    defaults: new { controller = "ShippingProvider", action = "Edit" }
-           //);
+           routes.MapRoute(
+              name: "CountryList",
+              url: "country/{action}/{filterByStatus}",
+              defaults: new { controller = "Country", filterByStatus = UrlParameter.Optional }
+          );
 
            routes.MapRoute(
                 name: "Default",

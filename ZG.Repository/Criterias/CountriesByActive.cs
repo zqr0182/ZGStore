@@ -25,7 +25,7 @@ namespace ZG.Repository.Criterias
                 allCountries = allCountries.Where(s => s.Active);
             }
 
-            return allCountries.OrderBy(c => c.CountryName);
+            return allCountries.OrderBy(c => c.Name);
         }
     }
 }

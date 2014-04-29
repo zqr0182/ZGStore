@@ -32,10 +32,23 @@ adminServices.factory('SupplierService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('CountryService', ['$resource', function ($resource) {
+    return {
+        countryIdNames: $resource('country/GetCountryIdNames/:filterByStatus', {}, {})
+    };
+}]);
+
 adminServices.factory('ShippingProviderService', ['$resource', function ($resource) {
     return {
         get: $resource('shippingProvider/GetShippingProviders', {}, {}),
         save: $resource('shippingProvider/save', {}, {})
+    };
+}]);
+
+adminServices.factory('ProvinceService', ['$resource', function ($resource) {
+    return {
+        get: $resource('province/GetProvinces', {}, {}),
+        save: $resource('province/save', {}, {})
     };
 }]);
 

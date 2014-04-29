@@ -1,0 +1,46 @@
+﻿<h2>Province List</h2>
+
+<button ng-click="add()">New</button>
+
+<form name="pForm" class="css-form" novalidate>
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+            <td>Country</td>
+            <td><a href="" ng-click="predicate='Name';reverse=!reverse">Province Name</a></td>
+            <td><a href="" ng-click="predicate='Code';reverse=!reverse">Province Code</a></td>
+            <td>Active</td>
+        </tr>
+        <tr ng-repeat="p in provinces | orderBy:predicate:reverse">
+            <td>{{p.Id}}</td>
+            <td>
+                <div>
+                    <select ng-model="p.CountryIdName" ng-options="c.Name for c in allCountries">
+                        <option value="">-- Choose Country --</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" name="Name" ng-model="p.Name" required>
+                    <div ng-show="pForm.Name.$dirty && pForm.Name.$invalid">Name is required</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="p.Code" name="code{{$index}}" required maxlength="2" minlenght="2">
+                    <div ng-show="pForm.code{{$index}}.$dirty && pForm.code{{$index}}.$invalid">Length of Code must be 2</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="p.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="p.Active" ng-value="false" required>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <button ng-click="save()" ng-disabled="sForm.$invalid">Save</button>
+    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+</form>

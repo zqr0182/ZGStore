@@ -9,18 +9,18 @@ namespace ZG.Repository.Criterias
 {
     public class ProvinceByActive : AbstractCriteria<Province>
     {
-        private bool? _activeOnly;
+        private bool? _active;
 
-        public ProvinceByActive(bool? activeOnly)
+        public ProvinceByActive(bool? active)
         {
-            _activeOnly = activeOnly;
+            _active = active;
         }
 
         public override IQueryable<Province> BuildQueryOver(IQueryable<Province> queryBase)
         {
             IQueryable<Province> provinces = base.BuildQueryOver(queryBase);
 
-            provinces = provinces.Where(s => s.Active == (_activeOnly.HasValue ? _activeOnly.Value : s.Active));
+            provinces = provinces.Where(s => s.Active == (_active.HasValue ? _active.Value : s.Active));
 
             return provinces;
         }

@@ -7,7 +7,10 @@
 --Inventory list/create/edit pages
 --Inventory IsActive Radio unselected when sort: fixed: no need to name radio button, angular will give them names
 --ShippingProviders list/create/edit page
-Province list/edit page
+-Province list/edit page
+   Make country dropdown only contains China and Canada. On select of country, retrieve all provinces of this country
+
+Test error callback on ShippingProvider and Province controller js
 Shippings list/create/edit page
 Taxs page
 Users list and details page

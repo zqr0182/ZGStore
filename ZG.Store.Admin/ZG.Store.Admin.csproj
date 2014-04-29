@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\ShippingProviderController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +217,7 @@
     <Content Include="App\js\editProductCategoryController.js" />
     <Content Include="App\js\editProductController.js" />
     <Content Include="App\js\productCategoryListController.js" />
+    <Content Include="App\js\provinceListController.js" />
     <Content Include="App\js\shippingProviderListController.js" />
     <Content Include="App\js\supplierListController.js" />
     <Content Include="App\js\productListController.js" />
@@ -227,6 +229,7 @@
     <Content Include="App\lib\angular\angular-file-upload.min.js" />
     <Content Include="App\lib\angular\FileAPI.min.js" />
     <Content Include="App\Partials\Home.html" />
+    <Content Include="App\Partials\ProvinceList.html" />
     <Content Include="App\Partials\SupplierEdit.html" />
     <Content Include="App\Partials\ProductCategoryEdit.html" />
     <Content Include="App\Partials\ProductCategoryList.html" />

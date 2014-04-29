@@ -27,7 +27,7 @@ namespace ZG.Application
         public List<ProvinceEditViewModel> GetProvinces(bool? active)
         {
             var provinceByActive = new ProvinceByActive(active);
-            return UnitOfWork.Provinces.Matches(provinceByActive).Select(p => new ProvinceEditViewModel { Id = p.Id, CountryId = p.CountryId, ProvinceName = p.ProvinceName, ProvinceCode = p.ProvinceCode, Active = p.Active }).ToList();
+            return UnitOfWork.Provinces.Matches(provinceByActive).Include("Country").Select(p => new ProvinceEditViewModel { Id = p.Id, CountryIdName = new CountryIdName { Id = p.CountryId, Name = p.Country.Name }, Name = p.ProvinceName, Code = p.ProvinceCode, Active = p.Active }).ToList();
         }
 
         public Province GetProvinceById(int id)
@@ -60,9 +60,9 @@ namespace ZG.Application
 
             if (p != null)
             {
-                p.CountryId = province.CountryId;
-                p.ProvinceName = province.ProvinceName;
-                p.ProvinceCode = province.ProvinceCode;
+                p.CountryId = province.CountryIdName.Id;
+                p.ProvinceName = province.Name;
+                p.ProvinceCode = province.Code;
                 p.Active = province.Active;
             }
         }
@@ -71,9 +71,9 @@ namespace ZG.Application
         {
             var p = new Province()
             {
-                CountryId = province.CountryId,
-                ProvinceName = province.ProvinceName,
-                ProvinceCode = province.ProvinceCode,
+                CountryId = province.CountryIdName.Id,
+                ProvinceName = province.Name,
+                ProvinceCode = province.Code,
                 Active = province.Active
             };
 
