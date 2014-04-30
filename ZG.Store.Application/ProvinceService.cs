@@ -13,7 +13,7 @@ namespace ZG.Application
 {
     public interface IProvinceService
     {
-        List<ProvinceEditViewModel> GetProvinces(bool? active);
+        List<ProvinceEditViewModel> GetProvinces(bool? active, int countryId);
         Province GetProvinceById(int id);
         void Upsert(List<ProvinceEditViewModel> provinces);
     }
@@ -24,10 +24,10 @@ namespace ZG.Application
             : base(uow)
         {}
 
-        public List<ProvinceEditViewModel> GetProvinces(bool? active)
+        public List<ProvinceEditViewModel> GetProvinces(bool? active, int countryId)
         {
-            var provinceByActive = new ProvinceByActive(active);
-            return UnitOfWork.Provinces.Matches(provinceByActive).Include("Country").Select(p => new ProvinceEditViewModel { Id = p.Id, CountryIdName = new CountryIdName { Id = p.CountryId, Name = p.Country.Name }, Name = p.ProvinceName, Code = p.ProvinceCode, Active = p.Active }).ToList();
+            var provinceByCountry = new ProvinceByCountry(countryId, new ProvinceByActive(active));
+            return UnitOfWork.Provinces.Matches(provinceByCountry).Select(p => new ProvinceEditViewModel { Id = p.Id, CountryId = p.CountryId, Name = p.ProvinceName, Code = p.ProvinceCode, Active = p.Active }).ToList();
         }
 
         public Province GetProvinceById(int id)
@@ -60,7 +60,7 @@ namespace ZG.Application
 
             if (p != null)
             {
-                p.CountryId = province.CountryIdName.Id;
+                p.CountryId = province.CountryId;
                 p.ProvinceName = province.Name;
                 p.ProvinceCode = province.Code;
                 p.Active = province.Active;
@@ -71,7 +71,7 @@ namespace ZG.Application
         {
             var p = new Province()
             {
-                CountryId = province.CountryIdName.Id,
+                CountryId = province.CountryId,
                 ProvinceName = province.Name,
                 ProvinceCode = province.Code,
                 Active = province.Active

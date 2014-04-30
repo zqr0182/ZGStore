@@ -14,16 +14,24 @@ namespace ZG.Store.Admin.Controllers
     {
         ICountryService _countryService;
         readonly ILogger _logger;
+        List<string> _countryNames = new List<string> { "Canada", "China" };
+
         public CountryController(ICountryService countryService, ILogger logger)
         {
             _countryService = countryService;
             _logger = logger;
         }
 
+        public JsonResult GetCanadaChina()
+        {
+            var result = _countryService.GetCountyIdNames(true, _countryNames);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetCountryIdNames(string filterByStatus)
         {
             var active = Utility.StatusToBool(filterByStatus);
-            var result = _countryService.GetCountries(active);
+            var result = _countryService.GetCountyIdNames(active, null);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 	}

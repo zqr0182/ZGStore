@@ -22,9 +22,9 @@ namespace ZG.Store.Admin.Controllers
             _logger = logger;
         }
 
-        public JsonResult GetProvinces()
+        public JsonResult GetProvinces(int id)
         {
-            var result = _provinceService.GetProvinces(null).ToList();
+            var result = _provinceService.GetProvinces(null, id).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

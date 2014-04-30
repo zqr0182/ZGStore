@@ -1,15 +1,18 @@
 ﻿angular.module('storeAdminControllers').controller('ProvinceListCtrl', ['$scope', 'ProvinceService', 'CountryService', 'CommonFunctions',
   function ($scope, ProvinceService, CountryService, CommonFunctions) {
-      $scope.allCountries = CountryService.countryIdNames.query({ filterByStatus: 'Active' });
-      $scope.provinces = ProvinceService.get.query(function (data) {
-          var countryIdName = $scope.provinces.CountryIdName;
-          countryIdName = CommonFunctions.getItemById(countryIdName.Id, $scope.allCountries);
-      });
       $scope.alerts = [];
+      $scope.selectedCountry;
+      $scope.allCountries = CountryService.countryIdNames.query();
+
+      $scope.getProvinces = function () {
+          $scope.alerts = [];
+          $scope.provinces = ProvinceService.get.query({ countryId: $scope.selectedCountry.Id });
+      }
 
       $scope.add = function()
       {
-          $scope.provinces.push({ Active: true });
+          $scope.alerts = [];
+          $scope.provinces.push({CountryId: $scope.selectedCountry.Id, Active: true });
       }
 
       $scope.save = function()

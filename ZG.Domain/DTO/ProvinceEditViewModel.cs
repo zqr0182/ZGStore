@@ -12,7 +12,7 @@ namespace ZG.Domain.DTO
         [Key]
         public int Id { get; set; }
         [Required]
-        public CountryIdName CountryIdName { get; set; }
+        public int CountryId { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }

@@ -7,20 +7,21 @@ using ZG.Domain.Models;
 
 namespace ZG.Repository.Criterias
 {
-    public class ProvinceByActive : AbstractCriteria<Province>
+    public class ProvinceByCountry : AbstractCriteria<Province>
     {
-        private bool? _active;
+        private int _countryId;
 
-        public ProvinceByActive(bool? active)
+        public ProvinceByCountry(int countryId, ICriteria<Province> initialCriteria = null)
+            : base(initialCriteria)
         {
-            _active = active;
+            _countryId = countryId;
         }
 
         public override IQueryable<Province> BuildQueryOver(IQueryable<Province> queryBase)
         {
             IQueryable<Province> provinces = base.BuildQueryOver(queryBase);
 
-            return provinces.Where(s => s.Active == (_active.HasValue ? _active.Value : s.Active));
+            return provinces.Where(s => s.CountryId == _countryId);
         }
     }
 }

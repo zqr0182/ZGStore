@@ -13,7 +13,8 @@ namespace ZG.Application
 {
     public interface ICountryService
     {
-        List<CountryIdName> GetCountries(bool? active);
+        IQueryable<Country> GetCountries(bool? active);
+        List<CountryIdName> GetCountyIdNames(bool? active, List<string> countryNames);
     }
 
     public class CountryService : BaseService, ICountryService
@@ -22,10 +23,19 @@ namespace ZG.Application
             : base(uow)
         {}
 
-        public List<CountryIdName> GetCountries(bool? active)
+        public IQueryable<Country> GetCountries(bool? active)
         {
             var countryByActive = new CountryByActive(active);
-            return UnitOfWork.Countries.Matches(countryByActive).Select(p => new CountryIdName { Id = p.Id, Name = p.Name}).ToList();
+            return UnitOfWork.Countries.Matches(countryByActive);
+        }
+
+        public List<CountryIdName> GetCountyIdNames(bool? active, List<string> countryNames)
+        {
+            var countryByActive = new CountryByActive(active);
+            bool ignoreCountryNames = (countryNames == null || !countryNames.Any());
+            return UnitOfWork.Countries.Matches(countryByActive)
+                                       .Where(c => ignoreCountryNames || countryNames.Contains(c.Name))
+                                       .Select(p => new CountryIdName { Id = p.Id, Name = p.Name }).ToList();
         }
     }
 }

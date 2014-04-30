@@ -61,6 +61,7 @@
     <Compile Include="Criterias\InventoryByProductId.cs" />
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
+    <Compile Include="Criterias\ProvinceByCountry.cs" />
     <Compile Include="Criterias\ShippingProviderByActive.cs" />
     <Compile Include="Criterias\CountryByActive.cs" />
     <Compile Include="Criterias\SupplierByActive.cs" />
