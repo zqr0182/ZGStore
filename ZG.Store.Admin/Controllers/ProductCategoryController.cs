@@ -39,7 +39,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get category: {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to get product. We are fixing it." }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to get product. We are fixing it."} }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -67,7 +67,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to deactivate category {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to deactivate category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to deactivate category. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -83,7 +83,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to activate category {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to activate category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to activate category. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -117,7 +117,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert product category: {0}, {1}", cat.Id, cat.Name);
-                return Json(new { Success = false, Errors = "Error occured, unable to upsert category. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Errors = new []{"Error occured, unable to upsert category. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 	}

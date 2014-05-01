@@ -51,7 +51,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert shipping providers.");
-                return Json(new { Success = false, Errors = "Error occured. Unable to upsert shipping provider. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Errors = new []{"Error occured. Unable to upsert shipping provider. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
     }

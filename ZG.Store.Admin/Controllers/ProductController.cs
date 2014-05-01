@@ -52,7 +52,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
-                return Json(new { Success = false, Errors = "Error occured, unable to get product. We are fixing it." }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = false, Errors = new []{"Error occured, unable to get product. We are fixing it." }}, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -74,7 +74,7 @@ namespace ZG.Store.Admin.Controllers
             catch(Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to deactivate product {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to deactivate product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to deactivate product. We are fixing it."} }, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -90,7 +90,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to activate product {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to activate product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to activate product. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -110,7 +110,7 @@ namespace ZG.Store.Admin.Controllers
             catch(Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to delete product image. Product id {0}, image name: {1}", id, imageName);
-                return Json(new {Success = false, Error = "Error occured, unable to delete image. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new {Success = false, Error = new []{"Error occured, unable to delete image. We are fixing it."} }, JsonRequestBehavior.DenyGet);
             }
         }
 

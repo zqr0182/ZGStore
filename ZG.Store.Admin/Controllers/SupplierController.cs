@@ -45,7 +45,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get supplier: {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to get supplier. We are fixing it." }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to get supplier. We are fixing it." }}, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -73,7 +73,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to deactivate product {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to deactivate product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to deactivate product. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -89,7 +89,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to activate product {0}", id);
-                return Json(new { Success = false, Error = "Error occured, unable to activate product. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Error = new []{"Error occured, unable to activate product. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -117,7 +117,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert supplier: {0}, {1}", sup.Id, sup.Name);
-                return Json(new { Success = false, Errors = "Error occured, unable to upsert supplier. We are fixing it." }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Errors = new []{"Error occured, unable to upsert supplier. We are fixing it." }}, JsonRequestBehavior.DenyGet);
             }
         }
 	}
