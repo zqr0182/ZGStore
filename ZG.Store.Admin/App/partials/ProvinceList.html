@@ -3,6 +3,7 @@
 <button ng-click="add()">New</button>
 
 <form name="pForm" class="css-form" novalidate>
+    <div ng-show="isFormDirty">The form has unsaved changes</div>
     <div>
         <select ng-model="selectedCountry" ng-options="c.Name for c in allCountries" ng-change="getProvinces()">
             <option value="">-- Choose Country --</option>
