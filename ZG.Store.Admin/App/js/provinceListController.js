@@ -3,7 +3,7 @@
       $scope.isFormDirty = false;
       $scope.alerts = [];
       $scope.selectedCountry;
-      $scope.allCountries = CountryService.countryIdNames.query();
+      $scope.allCountries = CountryService.countryIdNamesOfCanadaChina.query();
 
       var deregisterWatch;
       $scope.getProvinces = function () {

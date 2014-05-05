@@ -28,10 +28,9 @@ namespace ZG.Store.Admin.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetCountryIdNames(string filterByStatus)
+        public JsonResult GetCountryIdNames()
         {
-            var active = Utility.StatusToBool(filterByStatus);
-            var result = _countryService.GetCountyIdNames(active, null);
+            var result = _countryService.GetCountyIdNames(true, null);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 	}

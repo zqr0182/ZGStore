@@ -34,9 +34,9 @@ namespace ZG.Store.Admin.Controllers
             return UpsertProvince(provinces);
         }
 
-        public JsonResult GetProvinceIdNames()
+        public JsonResult GetProvinceIdNames(int id)
         {
-            var result = _provinceService.GetProvinceIdNames(true);
+            var result = _provinceService.GetProvinceIdNames(true, id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

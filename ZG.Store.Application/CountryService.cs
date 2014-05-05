@@ -26,9 +26,20 @@ namespace ZG.Application
         {
             var countryByActive = new CountriesByActive(active);
             bool ignoreCountryNames = (countryNames == null || !countryNames.Any());
-            return UnitOfWork.Countries.Matches(countryByActive)
-                                       .Where(c => ignoreCountryNames || countryNames.Contains(c.Name))
-                                       .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
+            var query = UnitOfWork.Countries.Matches(countryByActive);
+
+            if(!ignoreCountryNames)
+            {
+                query = query.Where(c => countryNames.Contains(c.Name));
+            }
+
+            var result = query.Select(p => new IdName { Id = p.Id, Name = p.Name }).OrderBy(c => c.Name).ToList();
+
+            var us = result.FirstOrDefault(c => c.Name == "UNITED STATES");
+            result.Remove(us);
+            result.Insert(0, us);
+
+            return result;
         }
     }
 }

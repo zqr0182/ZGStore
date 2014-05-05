@@ -36,9 +36,9 @@ namespace ZG.Application
                                        {
                                            Id = s.Id,
                                            CountryID = s.CountryID,
-                                           StateIdName = (s.State != null) ? new StateIdName { Id = s.State.Id, Name = s.State.Name } : null,
+                                           StateIdName = new StateIdName { Id = s.StateID.HasValue ? s.State.Id : 0, Name = s.StateID.HasValue ? s.State.Name : "" },
                                            City = s.City,
-                                           ProvinceIdName = (s.Province != null) ? new ProvinceIdName { Id = s.Province.Id, Name = s.Province.Name } : null,
+                                           ProvinceIdName = new ProvinceIdName { Id = s.ProvinceID.HasValue ? s.Province.Id : 0, Name = s.ProvinceID.HasValue ? s.Province.Name : "" },
                                            ProductIdName = new ProductIdName { Id = s.Product.Id, Name = s.Product.Name },
                                            ShippingProviderIdName = new ShippingProviderIdName { Id = s.ShippingProvider.Id, Name = s.ShippingProvider.Name },
                                            Rate = s.Rate,

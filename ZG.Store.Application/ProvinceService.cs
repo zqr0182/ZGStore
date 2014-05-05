@@ -16,7 +16,7 @@ namespace ZG.Application
         List<ProvinceEditViewModel> GetProvinces(bool? active, int countryId);
         Province GetProvinceById(int id);
         void Upsert(List<ProvinceEditViewModel> provinces);
-        List<IdName> GetProvinceIdNames(bool active);
+        List<IdName> GetProvinceIdNames(bool active, int countryId);
     }
 
     public class ProvinceService : BaseService, IProvinceService
@@ -43,10 +43,10 @@ namespace ZG.Application
             UnitOfWork.Commit();
         }
 
-        public List<IdName> GetProvinceIdNames(bool active)
+        public List<IdName> GetProvinceIdNames(bool active, int countryId)
         {
-            var provinceByActive = new ProvinceByActive(active);
-            return UnitOfWork.Provinces.Matches(provinceByActive)
+            var provinceByCountry = new ProvinceByCountry(countryId, new ProvinceByActive(active));
+            return UnitOfWork.Provinces.Matches(provinceByCountry)
                                        .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
         }
 

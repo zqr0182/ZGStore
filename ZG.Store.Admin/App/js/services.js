@@ -35,7 +35,8 @@ adminServices.factory('SupplierService', ['$resource', function ($resource) {
 
 adminServices.factory('CountryService', ['$resource', function ($resource) {
     return {
-        countryIdNames: $resource('country/GetCanadaChina', {}, {})
+        countryIdNamesOfCanadaChina: $resource('country/GetCanadaChina', {}, {}),
+        countryIdNames: $resource('country/GetCountryIdNames', {}, {})
     };
 }]);
 
@@ -57,7 +58,7 @@ adminServices.factory('ProvinceService', ['$resource', function ($resource) {
     return {
         get: $resource('province/GetProvinces/:countryId', {}, {}),
         save: $resource('province/save', {}, {}),
-        provinceIdNames: $resource('province/GetProvinceIdNames', {}, {})
+        provinceIdNames: $resource('province/GetProvinceIdNames/:countryId', {}, {})
     };
 }]);
 
