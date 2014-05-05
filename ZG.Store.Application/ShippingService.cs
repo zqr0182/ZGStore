@@ -32,7 +32,18 @@ namespace ZG.Application
                                        .Include("Province")
                                        .Include("Product")
                                        .Include("ShippingProvider")
-                                       .Select(s => new ShippingEditViewModel { Id = s.Id, CountryID = s.CountryID, StateIdName = new StateIdName { Id = s.StateID, Name = s.State.Name }, City = s.City, ProvinceID = s.ProvinceID, ProductID = s.ProductID, ShippingProviderID = s.ShippingProviderID, Rate = s.Rate, Active = s.Active }).ToList();
+                                       .Select(s => new ShippingEditViewModel
+                                       {
+                                           Id = s.Id,
+                                           CountryID = s.CountryID,
+                                           StateIdName = (s.State != null) ? new StateIdName { Id = s.State.Id, Name = s.State.Name } : null,
+                                           City = s.City,
+                                           ProvinceIdName = (s.Province != null) ? new ProvinceIdName { Id = s.Province.Id, Name = s.Province.Name } : null,
+                                           ProductIdName = new ProductIdName { Id = s.Product.Id, Name = s.Product.Name },
+                                           ShippingProviderIdName = new ShippingProviderIdName { Id = s.ShippingProvider.Id, Name = s.ShippingProvider.Name },
+                                           Rate = s.Rate,
+                                           Active = s.Active
+                                       }).ToList();
         }
 
         public Shipping GetShippingById(int id)
@@ -80,9 +91,9 @@ namespace ZG.Application
         private void UpdateShipping(Shipping shippingInDb, ShippingEditViewModel shipping)
         {
             shippingInDb.CountryID = shipping.CountryID;
-            shippingInDb.StateID = shipping.StateIdName.Id;
+            shippingInDb.StateID = (shipping.StateIdName != null) ? shipping.StateIdName.Id : default(int?);
             shippingInDb.City = shipping.City;
-            shippingInDb.ProvinceID = shipping.ProvinceIdName.Id;
+            shippingInDb.ProvinceID = (shipping.ProvinceIdName != null) ? shipping.ProvinceIdName.Id : default(int?);
             shippingInDb.ProductID = shipping.ProductIdName.Id;
             shippingInDb.ShippingProviderID = shipping.ShippingProviderIdName.Id;
             shippingInDb.Rate = shipping.Rate;

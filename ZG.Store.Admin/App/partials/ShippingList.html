@@ -1,0 +1,81 @@
+﻿<h2>Shipping List</h2>
+
+<button ng-click="add()">New</button>
+
+<form name="pForm" class="css-form" novalidate>
+    <div ng-show="isFormDirty">The form has unsaved changes</div>
+    <div>
+        <select ng-model="selectedCountry" ng-options="c.Name for c in allCountries" ng-change="getShippings()">
+            <option value="">-- Choose Country --</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+            <td ng-show="selectedCountry.Name == 'UNITED STATES'">State</td>
+            <td ng-show="selectedCountry.Name == 'CHINA' || selectedCountry.Name == 'CANADA'">Province</td>
+            <td>City</td>
+            <td>Product</td>
+            <td>Shipping Provider</td>
+            <td><a href="" ng-click="predicate='Rate';reverse=!reverse">Rate</a></td>
+            <td>Active</td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="s in shippings | orderBy:predicate:reverse">
+            <td>{{s.Id}}</td>
+            <td ng-show ="selectedCountry.Name == 'UNITED STATES'">
+                <div>
+                    <select ng-model="s.StateIdName" ng-options="s.Name for s in allStates">
+                        <option value="">-- Choose State --</option>
+                    </select>
+                </div>
+            </td>
+            <td ng-show="selectedCountry.Name == 'CHINA' || selectedCountry.Name == 'CANADA'">
+                <div>
+                    <select ng-model="s.ProvinceIdName" ng-options="s.Name for s in allProvinces">
+                        <option value="">-- Choose Province --</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="s.City">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <select ng-model="s.ProductIdName" ng-options="s.Name for s in allProducts">
+                        <option value="">-- Choose Product --</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <select ng-model="s.ShippingProviderIdName" ng-options="s.Name for s in allShippingProviders">
+                        <option value="">-- Choose Shipping Provider --</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <div><input type="text" ng-model="s.Rate" name="rate{{$index}}" required ng-pattern="pattern.decimal"></div>
+                    <div ng-show="prodForm.rate{{$index}}.$error.required">Rate is Required</div>
+                    <div ng-show="prodForm.rate{{$index}}.$error.pattern">Invalid Rate</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="p.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="p.Active" ng-value="false" required>
+                </div>
+            </td>
+            <td>
+                <button ng-click="delete(s)" ng-show="!s.Id">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <button ng-click="save()" ng-disabled="sForm.$invalid">Save</button>
+    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+</form>

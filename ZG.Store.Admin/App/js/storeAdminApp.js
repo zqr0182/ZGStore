@@ -15,6 +15,7 @@ adminApp.config(['$routeProvider', function ($routeProvider) {
     .when('/supplier', { templateUrl: 'app/partials/supplierlist.html', controller: 'SupplierListCtrl' })
     .when('/shippingprovider', { templateUrl: 'app/partials/ShippingProviderlist.html', controller: 'ShippingProviderListCtrl' })
     .when('/province', { templateUrl: 'app/partials/ProvinceList.html', controller: 'ProvinceListCtrl' })
+    .when('/shipping', { templateUrl: 'app/partials/ShippingList.html', controller: 'ShippingListCtrl' })
     .when('/home', { templateUrl: 'app/partials/home.html', controller: '' })
     .otherwise({ redirectTo: '/home' });
 }]);

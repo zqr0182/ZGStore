@@ -6,7 +6,8 @@ adminServices.factory('ProdService', ['$resource', function ($resource) {
         product: $resource('product/edit/:id', {}, {}),
         deactivateProduct: $resource('product/deactivate/:id', {}, {}),
         activateProduct: $resource('product/activate', {}, {}),
-        productImage: $resource('product/deleteimage/:imageName/:id', {}, {})
+        productImage: $resource('product/deleteimage/:imageName/:id', {}, {}),
+        prodIdNames: $resource('product/GetProductIdNames', {}, {})
     };
 }]);
 
@@ -38,17 +39,32 @@ adminServices.factory('CountryService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('StateService', ['$resource', function ($resource) {
+    return {
+        stateIdNames: $resource('state/GetStateIdNames', {}, {})
+    };
+}]);
+
 adminServices.factory('ShippingProviderService', ['$resource', function ($resource) {
     return {
         get: $resource('shippingProvider/GetShippingProviders', {}, {}),
-        save: $resource('shippingProvider/save', {}, {})
+        save: $resource('shippingProvider/save', {}, {}),
+        shippingProviderIdNames: $resource('shippingProvider/GetShippingProviderIdNames', {}, {})
     };
 }]);
 
 adminServices.factory('ProvinceService', ['$resource', function ($resource) {
     return {
         get: $resource('province/GetProvinces/:countryId', {}, {}),
-        save: $resource('province/save', {}, {})
+        save: $resource('province/save', {}, {}),
+        provinceIdNames: $resource('province/GetProvinceIdNames', {}, {})
+    };
+}]);
+
+adminServices.factory('ShippingService', ['$resource', function ($resource) {
+    return {
+        get: $resource('shipping/GetShippings/:countryId', {}, {}),
+        save: $resource('shipping/save', {}, {})
     };
 }]);
 
