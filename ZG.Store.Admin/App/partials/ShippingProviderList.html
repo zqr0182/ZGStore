@@ -1,4 +1,4 @@
-﻿<h2>Supplier List</h2>
+﻿<h2>Shipping Provider List</h2>
 
 <button ng-click="add()">New</button>
 
@@ -9,6 +9,7 @@
             <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
             <td><a href="" ng-click="predicate='ShippingCost';reverse=!reverse">Shipping Cost</a></td>
             <td>Active</td>
+            <td></td>
         </tr>
         <tr ng-repeat="sp in shippingProviders | orderBy:predicate:reverse">
             <td>{{sp.Id}}</td>
@@ -30,6 +31,9 @@
                     Yes <input type="radio" ng-model="sp.Active" ng-value="true" required>
                     No <input type="radio" ng-model="sp.Active" ng-value="false" required>
                 </div>
+            </td>
+            <td>
+                <button ng-click="delete(sp)" ng-show="!sp.Id">Delete</button>
             </td>
         </tr>
     </table>

@@ -15,19 +15,22 @@
 
           $scope.provinces = ProvinceService.get.query({ countryId: $scope.selectedCountry.Id }, function (data) {             
               deregisterWatch = $scope.$watch('provinces', function (newValue, oldValue) {
-                  if (newValue !== oldValue) {
+                  if (!angular.equals(newValue, oldValue)) {
                       $scope.isFormDirty = true;
                   }
               }, true);
           });
-      }
-
-      
+      }      
 
       $scope.add = function()
       {
           $scope.alerts = [];
           $scope.provinces.push({CountryId: $scope.selectedCountry.Id, Active: true });
+      }
+
+      $scope.delete = function(province)
+      {
+          CommonFunctions.removeFromArray($scope.provinces, province);
       }
 
       $scope.save = function()

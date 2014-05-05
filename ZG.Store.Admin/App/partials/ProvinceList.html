@@ -16,6 +16,7 @@
             <td><a href="" ng-click="predicate='Name';reverse=!reverse">Province Name</a></td>
             <td><a href="" ng-click="predicate='Code';reverse=!reverse">Province Code</a></td>
             <td>Active</td>
+            <td></td>
         </tr>
         <tr ng-repeat="p in provinces | orderBy:predicate:reverse">
             <td>{{p.Id}}</td>
@@ -36,6 +37,9 @@
                     Yes <input type="radio" ng-model="p.Active" ng-value="true" required>
                     No <input type="radio" ng-model="p.Active" ng-value="false" required>
                 </div>
+            </td>
+            <td>
+                <button ng-click="delete(p)" ng-show="!p.Id">Delete</button>
             </td>
         </tr>
     </table>

@@ -9,6 +9,7 @@
 --ShippingProviders list/create/edit page
 --Province list/edit page
    --Make country dropdown only contains China and Canada. On select of country, retrieve all provinces of this country
+   --Add delete button to new items
 Shippings list/create/edit page
 Taxs page
 Users list and details page

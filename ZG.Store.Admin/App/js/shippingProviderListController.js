@@ -9,6 +9,10 @@
           $scope.shippingProviders.push({Active:true});
       }
 
+      $scope.delete = function (shippingProvider) {
+          CommonFunctions.removeFromArray($scope.shippingProviders, shippingProvider);
+      }
+
       $scope.save = function()
       {
           ShippingProviderService.save.save($scope.shippingProviders, function (data) {
