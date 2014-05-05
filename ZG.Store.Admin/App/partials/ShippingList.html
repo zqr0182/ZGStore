@@ -2,7 +2,7 @@
 
 <button ng-click="add()">New</button>
 
-<form name="pForm" class="css-form" novalidate>
+<form name="sForm" class="css-form" novalidate>
     <div ng-show="isFormDirty">The form has unsaved changes</div>
     <div>
         <select ng-model="selectedCountry" ng-options="c.Name for c in allCountries" ng-change="getShippings()">
@@ -60,14 +60,14 @@
             <td>
                 <div>
                     <div><input type="text" ng-model="s.Rate" name="rate{{$index}}" required ng-pattern="pattern.decimal"></div>
-                    <div ng-show="prodForm.rate{{$index}}.$error.required">Rate is Required</div>
-                    <div ng-show="prodForm.rate{{$index}}.$error.pattern">Invalid Rate</div>
+                    <div ng-show="sForm.rate{{$index}}.$error.required">Rate is Required</div>
+                    <div ng-show="sForm.rate{{$index}}.$error.pattern">Invalid Rate</div>
                 </div>
             </td>
             <td>
                 <div>
-                    Yes <input type="radio" ng-model="p.Active" ng-value="true" required>
-                    No <input type="radio" ng-model="p.Active" ng-value="false" required>
+                    Yes <input type="radio" ng-model="s.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="s.Active" ng-value="false" required>
                 </div>
             </td>
             <td>

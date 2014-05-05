@@ -28,4 +28,11 @@ namespace ZG.Common
             }
         }
     }
+
+    public static class Countries
+    {
+        public static string UNITED_STATES = "UNITED STATES";
+        public static string CHINA = "CHINA";
+        public static string CANADA = "CANADA";
+    }
 }

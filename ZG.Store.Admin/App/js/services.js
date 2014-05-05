@@ -69,6 +69,17 @@ adminServices.factory('ShippingService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
+    return {
+        keys: [],
+        cache: $cacheFactory('storeAdminCache'),
+        put: function (key, value) {
+            this.cache.put(key, value);
+            this.keys.push(key);
+        }
+    };
+}]);
+
 adminServices.factory('CommonFunctions', [function () {
     return {
         getArrayById: function (array1, array2) {
@@ -85,13 +96,14 @@ adminServices.factory('CommonFunctions', [function () {
             return result;
         },
         getItemById: function (id, array) {
-            var results = array.filter(function (item) {
-                return item.Id == id;
-            });
+            if (array) {
+                var results = array.filter(function (item) {
+                    return item.Id == id;
+                });
 
-            if(results != null)
-            {
-                return results[0];
+                if (results != null) {
+                    return results[0];
+                }
             }
 
             return null;

@@ -1,5 +1,5 @@
-﻿angular.module('storeAdminControllers').controller('ShippingListCtrl', ['$scope', 'ShippingService', 'CountryService', 'StateService', 'ProvinceService', 'ProdService', 'ShippingProviderService', 'CommonFunctions',
-  function ($scope, ShippingService, CountryService, StateService, ProvinceService, ProdService, ShippingProviderService, CommonFunctions) {
+﻿angular.module('storeAdminControllers').controller('ShippingListCtrl', ['$scope', 'ShippingService', 'CountryService', 'StateService', 'ProvinceService', 'ProdService', 'ShippingProviderService', 'CacheService', 'CommonFunctions',
+  function ($scope, ShippingService, CountryService, StateService, ProvinceService, ProdService, ShippingProviderService, CacheService, CommonFunctions) {
       $scope.isFormDirty = false;
       $scope.alerts = [];
       $scope.pattern = CommonFunctions.regExpPattern();
@@ -14,11 +14,27 @@
           var country = $scope.selectedCountry;
           if (country.Name == "UNITED STATES")
           {
-              $scope.allStates = StateService.stateIdNames.query();
+              var statesKey = 'allStates';
+              $scope.allStates = CacheService.cache.get(statesKey);
+              if(!$scope.allStates)
+              {
+                  StateService.stateIdNames.query(function (data) {
+                      $scope.allStates = data;
+                      CacheService.put(statesKey, data);
+                  });
+              }
           }
 
           if (country.Name == "CHINA" || country.Name == "CANADA") {
-              $scope.allProvinces = ProvinceService.provinceIdNames.query({ countryId: $scope.selectedCountry.Id});
+              var provincesKey = $scope.selectedCountry.Id + '-provinces';
+              $scope.allProvinces = CacheService.cache.get(provincesKey);
+              if(!$scope.allProvinces)
+              {
+                  ProvinceService.provinceIdNames.query({ countryId: $scope.selectedCountry.Id }, function (data) {
+                      $scope.allProvinces = data;
+                      CacheService.put(provincesKey, data);
+                  });
+              }
           }
 
           $scope.alerts = [];
@@ -33,6 +49,13 @@
                       $scope.isFormDirty = true;
                   }
               }, true);
+
+              $scope.shippings.forEach(function (shipping) {
+                  shipping.StateIdName = CommonFunctions.getItemById(shipping.StateIdName.Id, $scope.allStates);
+                  shipping.ProvinceIdName = CommonFunctions.getItemById(shipping.ProvinceIdName.Id, $scope.allProvinces);
+                  shipping.ProductIdName = CommonFunctions.getItemById(shipping.ProductIdName.Id, $scope.allProducts);
+                  shipping.ShippingProviderIdName = CommonFunctions.getItemById(shipping.ShippingProviderIdName.Id, $scope.allShippingProviders);
+              });
           });
       }      
 

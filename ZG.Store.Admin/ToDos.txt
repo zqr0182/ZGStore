@@ -10,7 +10,8 @@
 --Province list/edit page
    --Make country dropdown only contains China and Canada. On select of country, retrieve all provinces of this country
    --Add delete button to new items
-Shippings list/create/edit page
+-Shippings list/create/edit page
+	Cache countries, states, products, shipping providers
 Taxs page
 Users list and details page
 Order list/details page
