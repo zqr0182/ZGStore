@@ -50,7 +50,7 @@ namespace ZG.Store.Tests.Controllers
             const int productId = 2;
             var cart = new Cart();
 
-            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
+            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, Name = "P2" });
 
             //Act
             _cartController.AddToCart(cart, productId, null);
@@ -67,7 +67,7 @@ namespace ZG.Store.Tests.Controllers
             const int productId = 2;
             var cart = new Cart();
 
-            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, ProductName = "P2" });
+            _mockProdServcice.Setup(p => p.GetProductById(It.Is<int>(v => v == productId))).Returns(new Product { Id = productId, Name = "P2" });
 
             //Act
             RedirectToRouteResult results = _cartController.AddToCart(cart, productId, "myUrl");

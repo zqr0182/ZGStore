@@ -21,7 +21,7 @@ namespace ZG.Store.Tests.Controllers
             //Arrange
             var products = new[]
                     {
-                        new Product {Id = 5, ProductName = "P 5"}, new Product {Id = 6, ProductName = "P 6"}, new Product {Id = 7, ProductName = "P 7"}
+                        new Product {Id = 5, Name = "P 5"}, new Product {Id = 6, Name = "P 6"}, new Product {Id = 7, Name = "P 7"}
                     }.AsQueryable();
 
             var mock = new Mock<IProductService>();
@@ -36,9 +36,9 @@ namespace ZG.Store.Tests.Controllers
             //Assert
             Product[] arrProd = result.Products.ToArray();
             Assert.IsTrue(arrProd.Length == 3);
-            Assert.AreEqual(arrProd[0].ProductName, "P 5");
-            Assert.AreEqual(arrProd[1].ProductName, "P 6");
-            Assert.AreEqual(arrProd[2].ProductName, "P 7");
+            Assert.AreEqual(arrProd[0].Name, "P 5");
+            Assert.AreEqual(arrProd[1].Name, "P 6");
+            Assert.AreEqual(arrProd[2].Name, "P 7");
             Assert.AreEqual(result.CurrentPageNum, 2);
             Assert.AreEqual(result.RecordsPerPage, 4);
             Assert.AreEqual(result.TotalPages, 2);
@@ -50,7 +50,7 @@ namespace ZG.Store.Tests.Controllers
         {
             //Arrange
             string category = "Category 2";
-            var products = new[]{new Product {Id = 5, ProductName = "P 5"}, new Product {Id = 6, ProductName = "P 6"}, new Product {Id = 7, ProductName = "P 7"}, new Product {Id = 8, ProductName = "P 8"}
+            var products = new[]{new Product {Id = 5, Name = "P 5"}, new Product {Id = 6, Name = "P 6"}, new Product {Id = 7, Name = "P 7"}, new Product {Id = 8, Name = "P 8"}
                     }.AsQueryable();
 
             var mock = new Mock<IProductService>();
@@ -65,10 +65,10 @@ namespace ZG.Store.Tests.Controllers
             //Assert
             Product[] arrProd = result.Products.ToArray();
             Assert.IsTrue(arrProd.Length == 4);
-            Assert.AreEqual(arrProd[0].ProductName, "P 5");
-            Assert.AreEqual(arrProd[1].ProductName, "P 6");
-            Assert.AreEqual(arrProd[2].ProductName, "P 7");
-            Assert.AreEqual(arrProd[3].ProductName, "P 8");
+            Assert.AreEqual(arrProd[0].Name, "P 5");
+            Assert.AreEqual(arrProd[1].Name, "P 6");
+            Assert.AreEqual(arrProd[2].Name, "P 7");
+            Assert.AreEqual(arrProd[3].Name, "P 8");
             Assert.AreEqual(result.CurrentPageNum, 1);
             Assert.AreEqual(result.RecordsPerPage, 4);
             Assert.AreEqual(result.TotalPages, 2);

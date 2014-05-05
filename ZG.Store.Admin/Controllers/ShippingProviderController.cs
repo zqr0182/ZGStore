@@ -34,6 +34,12 @@ namespace ZG.Store.Admin.Controllers
             return UpsertShippingProvider(shippingProviders);
         }
 
+        public JsonResult GetShippingProviderIdNames()
+        {
+            var result = _shippingProviderService.GetShippingProviderIdNames(true);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         private JsonResult UpsertShippingProvider(List<ShippingProviderEditViewModel> shippingProviders)
         {
             try

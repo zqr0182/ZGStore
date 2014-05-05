@@ -14,10 +14,10 @@ namespace ZG.Domain.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public string StateName { get; set; }
+        public string Name { get; set; }
         [Required]
         [MaxLength(2)]
-        public string StateCode { get; set; }
+        public string Code { get; set; }
         public Nullable<bool> Active { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         [InverseProperty("BillingState")]

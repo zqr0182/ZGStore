@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="StateService.cs" />
     <Compile Include="InventoryService.cs" />
     <Compile Include="ProductCategoryService.cs" />
     <Compile Include="FileService.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="OrderService.cs" />
     <Compile Include="PaymentService.cs" />
     <Compile Include="CountryService.cs" />
+    <Compile Include="ShippingService.cs" />
     <Compile Include="ProvinceService.cs" />
     <Compile Include="ShippingProviderService.cs" />
     <Compile Include="SupplierService.cs" />

@@ -34,6 +34,12 @@ namespace ZG.Store.Admin.Controllers
             return UpsertProvince(provinces);
         }
 
+        public JsonResult GetProvinceIdNames()
+        {
+            var result = _provinceService.GetProvinceIdNames(true);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         private JsonResult UpsertProvince(List<ProvinceEditViewModel> provinces)
         {
             try

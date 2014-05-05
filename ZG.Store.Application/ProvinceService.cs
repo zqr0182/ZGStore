@@ -16,6 +16,7 @@ namespace ZG.Application
         List<ProvinceEditViewModel> GetProvinces(bool? active, int countryId);
         Province GetProvinceById(int id);
         void Upsert(List<ProvinceEditViewModel> provinces);
+        List<IdName> GetProvinceIdNames(bool active);
     }
 
     public class ProvinceService : BaseService, IProvinceService
@@ -27,7 +28,7 @@ namespace ZG.Application
         public List<ProvinceEditViewModel> GetProvinces(bool? active, int countryId)
         {
             var provinceByCountry = new ProvinceByCountry(countryId, new ProvinceByActive(active));
-            return UnitOfWork.Provinces.Matches(provinceByCountry).Select(p => new ProvinceEditViewModel { Id = p.Id, CountryId = p.CountryId, Name = p.ProvinceName, Code = p.ProvinceCode, Active = p.Active }).ToList();
+            return UnitOfWork.Provinces.Matches(provinceByCountry).Select(p => new ProvinceEditViewModel { Id = p.Id, CountryId = p.CountryId, Name = p.Name, Code = p.Code, Active = p.Active }).ToList();
         }
 
         public Province GetProvinceById(int id)
@@ -40,6 +41,13 @@ namespace ZG.Application
             provinces.ForEach(p => Upsert(p));
 
             UnitOfWork.Commit();
+        }
+
+        public List<IdName> GetProvinceIdNames(bool active)
+        {
+            var provinceByActive = new ProvinceByActive(active);
+            return UnitOfWork.Provinces.Matches(provinceByActive)
+                                       .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
         }
 
         private void Upsert(ProvinceEditViewModel province)
@@ -60,24 +68,24 @@ namespace ZG.Application
 
             if (p != null)
             {
-                p.CountryId = province.CountryId;
-                p.ProvinceName = province.Name;
-                p.ProvinceCode = province.Code;
-                p.Active = province.Active;
+                UpdateProvince(p, province);
             }
         }
 
         private void Create(ProvinceEditViewModel province)
         {
-            var p = new Province()
-            {
-                CountryId = province.CountryId,
-                ProvinceName = province.Name,
-                ProvinceCode = province.Code,
-                Active = province.Active
-            };
+            var p = new Province();
+            UpdateProvince(p, province);
 
             UnitOfWork.Provinces.Add(p);
+        }
+
+        private void UpdateProvince(Province provinceInDb, ProvinceEditViewModel province)
+        {
+            provinceInDb.CountryId = province.CountryId;
+            provinceInDb.Name = province.Name;
+            provinceInDb.Code = province.Code;
+            provinceInDb.Active = province.Active;
         }
     }
 }

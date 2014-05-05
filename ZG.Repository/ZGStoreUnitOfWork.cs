@@ -19,6 +19,7 @@ namespace ZG.Repository
         IRepository<Order> Orders { get; }
         IRepository<OrderStatus> OrderStatuses { get; }
         IRepository<ShippingProvider> ShippingProviders { get; }
+        IRepository<Shipping> Shippings { get; }
         IRepository<State> States { get; }
         IRepository<Province> Provinces { get; }
         IRepository<Country> Countries { get; }
@@ -40,6 +41,7 @@ namespace ZG.Repository
         public IRepository<Order> Orders { get; private set; }
         public IRepository<OrderStatus> OrderStatuses { get; private set; }
         public IRepository<ShippingProvider> ShippingProviders { get; private set; }
+        public IRepository<Shipping> Shippings { get; private set; }
         public IRepository<State> States { get; private set; }
         public IRepository<Province> Provinces { get; private set; }
         public IRepository<Country> Countries { get; private set; }
@@ -47,8 +49,8 @@ namespace ZG.Repository
         public IRepository<Inventory> Inventories { get; private set; }
 
         public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<ProductCategory> productCategoriesRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo, IRepository<Email> emailRepo,
-                                 IRepository<Order> OrderRepo, IRepository<OrderStatus> orderStatusRepo, IRepository<ShippingProvider> shippingProvidersRepo, IRepository<State> stateRepo,
-                                 IRepository<Province> provinceRepo, IRepository<Country> countryRepo, IRepository<Supplier> supplierRepo, IRepository<Inventory> inventoryRepo)
+                                 IRepository<Order> OrderRepo, IRepository<OrderStatus> orderStatusRepo, IRepository<ShippingProvider> shippingProvidersRepo, IRepository<Shipping> shippingsRepo, 
+                                 IRepository<State> stateRepo, IRepository<Province> provinceRepo, IRepository<Country> countryRepo, IRepository<Supplier> supplierRepo, IRepository<Inventory> inventoryRepo)
         {
             _context = context;
 
@@ -60,6 +62,7 @@ namespace ZG.Repository
             Orders = OrderRepo;
             OrderStatuses = orderStatusRepo;
             ShippingProviders = shippingProvidersRepo;
+            Shippings = shippingsRepo;
             States = stateRepo;
             Provinces = provinceRepo;
             Countries = countryRepo;

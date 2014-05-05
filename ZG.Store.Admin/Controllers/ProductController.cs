@@ -114,9 +114,15 @@ namespace ZG.Store.Admin.Controllers
             }
         }
 
+        public JsonResult GetProductIdNames()
+        {
+            var result = _prodService.GetProductIdNames(true);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         private void ValidateProduct(Product prod)
         {
-            if(string.IsNullOrWhiteSpace(prod.ProductName))
+            if(string.IsNullOrWhiteSpace(prod.Name))
             {
                 ModelState.AddModelError("", "Please enter product name");
             }

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZG.Domain.DTO
 {
-    public class ProductCategoryIdName
+    public class ShippingProviderIdName : IdName
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

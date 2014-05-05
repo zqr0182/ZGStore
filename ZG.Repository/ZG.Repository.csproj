@@ -61,9 +61,11 @@
     <Compile Include="Criterias\InventoryByProductId.cs" />
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
+    <Compile Include="Criterias\ProductByActive.cs" />
+    <Compile Include="Criterias\ShippingByCountry.cs" />
+    <Compile Include="Criterias\ShippingByActive.cs" />
     <Compile Include="Criterias\ProvinceByCountry.cs" />
     <Compile Include="Criterias\ShippingProviderByActive.cs" />
-    <Compile Include="Criterias\CountryByActive.cs" />
     <Compile Include="Criterias\SupplierByActive.cs" />
     <Compile Include="Criterias\USAndCanada.cs" />
     <Compile Include="Criterias\ProvinceByActive.cs" />

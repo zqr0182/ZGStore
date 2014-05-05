@@ -38,7 +38,7 @@ namespace ZG.Domain.DTO
         public bool Active { get; set; }
 
         public List<string> ProductImageNames { get; set; }
-        public List<ProductCategoryIdName> ProductCategories { get; set; }
+        public List<IdName> ProductCategories { get; set; }
         public List<InventoryViewModel> Inventories { get; set; }
     }
 }

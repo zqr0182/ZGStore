@@ -4,7 +4,7 @@
 {
     var trId = "tr" + line.Product.Id;
     <tr id="@trId">
-        <td align="left">@line.Product.ProductName</td>
+        <td align="left">@line.Product.Name</td>
         <td align="right">@line.Product.Price.ToString("c")</td>
         <td>
             @using (Ajax.BeginForm(new AjaxOptions{Url = Url.Action("UpdateCart"), OnSuccess = "processCartData"}))

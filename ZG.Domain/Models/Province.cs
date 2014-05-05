@@ -15,9 +15,9 @@ namespace ZG.Domain.Models
         public int CountryId { get; set; }
         [Required]
         [MaxLength(50)]
-        public string ProvinceName { get; set; }
+        public string Name { get; set; }
         [MaxLength(2)]
-        public string ProvinceCode { get; set; }
+        public string Code { get; set; }
         public bool Active { get; set; }
 
         [ForeignKey("CountryId")]

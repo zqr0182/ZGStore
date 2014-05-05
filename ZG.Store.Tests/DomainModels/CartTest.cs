@@ -19,8 +19,8 @@ namespace ZG.Store.Tests.DomainModels
         public CartTest()
         {
             //Arrange
-            _p1 = new Product { Id = 1, ProductName = "P1", Price = 100M};
-            _p2 = new Product { Id = 2, ProductName = "P2", Price = 50M};
+            _p1 = new Product { Id = 1, Name = "P1", Price = 100M};
+            _p2 = new Product { Id = 2, Name = "P2", Price = 50M};
 
             _cart = new Cart();
         }

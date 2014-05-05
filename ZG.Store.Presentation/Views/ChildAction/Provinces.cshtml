@@ -1,6 +1,6 @@
 ﻿@model ZG.Store.Presentation.ViewModels.ProvincesViewModel
 
-@Html.DropDownListFor(m => m.ProvinceId, new SelectList(Model.Provinces, "Id", "ProvinceCode"), "--- Select Province ---")
+@Html.DropDownListFor(m => m.ProvinceId, new SelectList(Model.Provinces, "Id", "Code"), "--- Select Province ---")
 @Html.ValidationMessageFor(model => model.ProvinceId)
 
 @Html.HiddenFor(m => m.Province)

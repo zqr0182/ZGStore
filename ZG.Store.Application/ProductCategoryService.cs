@@ -14,7 +14,7 @@ namespace ZG.Application
     {
         IEnumerable<string> GetActiveCategoryNames();
         ProductCategoryListViewModel GetCategories(bool active, int page, int pageSize);
-        List<ProductCategoryIdName> GetActiveCategoryIdNames();
+        List<IdName> GetActiveCategoryIdNames();
         Category GetCategoryById(int id);
         ProductCategoryEditViewModel GetCategoryEditViewModel(Category cat);
         void Update(ProductCategoryEditViewModel cat);
@@ -54,12 +54,12 @@ namespace ZG.Application
             return prodCategoryListViewModel;
         }
 
-        public List<ProductCategoryIdName> GetActiveCategoryIdNames()
+        public List<IdName> GetActiveCategoryIdNames()
         {
             var categoriesByActive = new CategoryByActive(true);
             var categories = UnitOfWork.Categories.Matches(categoriesByActive);
 
-            return categories.Select(c => new ProductCategoryIdName { Id = c.Id, Name = c.CategoryName }).ToList();
+            return categories.Select(c => new IdName { Id = c.Id, Name = c.CategoryName }).ToList();
         }
 
         public void Activate(int id)

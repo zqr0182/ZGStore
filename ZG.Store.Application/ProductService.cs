@@ -22,6 +22,7 @@ namespace ZG.Application
         Product Create(ProductEditViewModel prod);
         void Activate(int id);
         void Deactivate(int id);
+        List<IdName> GetProductIdNames(bool active);
     }
 
     public class ProductService : BaseService, IProductService
@@ -44,7 +45,7 @@ namespace ZG.Application
 
             var productsPerPage = new ProductListViewModel
             {
-                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, Name = p.ProductName, Description = p.Description, SalePrice = p.SalePrice, Active = p.Active}).ToList(),
+                Products = products.Select(p => new ProductBriefInfo{ Id = p.Id, Name = p.Name, Description = p.Description, SalePrice = p.SalePrice, Active = p.Active}).ToList(),
                 TotalProducts = totalProducts
             };
 
@@ -71,7 +72,7 @@ namespace ZG.Application
             var viewModel = new ProductEditViewModel()
             {
                 Id = prod.Id,
-                Name = prod.ProductName,
+                Name = prod.Name,
                 CatalogNumber = prod.CatalogNumber,
                 Description = prod.Description,
                 SalePrice = prod.SalePrice,
@@ -90,7 +91,7 @@ namespace ZG.Application
                 Active = prod.Active,
                 ProductImageNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns),
                 Inventories = prod.Inventories.Select(i => new InventoryViewModel { Id = i.Id, ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierIdName = new SupplierIdName { Id = i.SupplierId, Name = i.Supplier.Name }, Active = i.Active }).ToList(),
-                ProductCategories = prod.ProductCategories.Select(c => new ProductCategoryIdName { Id = c.Category.Id, Name = c.Category.CategoryName }).ToList()
+                ProductCategories = prod.ProductCategories.Select(c => new IdName { Id = c.Category.Id, Name = c.Category.CategoryName }).ToList()
             };
 
             return viewModel;
@@ -99,7 +100,7 @@ namespace ZG.Application
         public Product Update(ProductEditViewModel prod)
         {
             var product = GetProductById(prod.Id, "ProductCategories", "Inventories");
-            product.ProductName = prod.Name;
+            product.Name = prod.Name;
             product.CatalogNumber = prod.CatalogNumber;
             product.Description = prod.Description;
             product.SalePrice = prod.SalePrice;
@@ -130,7 +131,7 @@ namespace ZG.Application
         {
             var product = new Product()
             {
-                ProductName = prod.Name,
+                Name = prod.Name,
                 CatalogNumber = prod.CatalogNumber,
                 Description = prod.Description,
                 SalePrice = prod.SalePrice,
@@ -164,6 +165,13 @@ namespace ZG.Application
         public void Deactivate(int id)
         {
             ToggleActive(id, false);
+        }
+
+        public List<IdName> GetProductIdNames(bool active)
+        {
+            var productByActive = new ProductByActive(active);
+            return UnitOfWork.Products.Matches(productByActive)
+                                       .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
         }
 
         private void UpdateProductInventories(InventoryViewModel inventory, Product prod)

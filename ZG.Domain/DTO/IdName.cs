@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZG.Domain.DTO
 {
-    public class SupplierIdName : IdName
+    public class IdName
     {
-        public bool Active { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
