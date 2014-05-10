@@ -1,0 +1,73 @@
+﻿<h2>Tax List</h2>
+
+<button ng-click="add()">New</button>
+
+<form name="tForm" class="css-form" novalidate>
+    <div ng-show="isFormDirty">The form has unsaved changes</div>
+    <div>
+        <select ng-model="selectedCountry" ng-options="c.Name for c in allCountries" ng-change="getTaxes()">
+            <option value="">-- Choose Country --</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+            <td><a href="" ng-click="predicate='Name';reverse=!reverse">Name</a></td>
+            <td><a href="" ng-click="predicate='Fixed';reverse=!reverse">Fixed</a></td>
+            <td><a href="" ng-click="predicate='Amount';reverse=!reverse">Amount</a></td>
+            <td ng-show="selectedCountry.Name == 'UNITED STATES'"><a href="" ng-click="predicate='State';reverse=!reverse">State</a></td>
+            <td ng-show="selectedCountry.Name == 'CHINA' || selectedCountry.Name == 'CANADA'"><a href="" ng-click="predicate='Province';reverse=!reverse">Province</a></td>
+            <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="t in taxes | orderBy:predicate:reverse">
+            <td>{{t.Id}}</td>
+            <td>
+                <div>
+                    <input type="text" ng-model="t.Name" name="name{{$index}}" required>
+                    <div ng-show="tForm.name{{$index}}.$dirty && tForm.name{{$index}}.$invalid">Name is required</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="t.Fixed" ng-value="true" required>
+                    No <input type="radio" ng-model="t.Fixed" ng-value="false" required>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="t.Amount" name="amount{{$index}}" required ng-pattern="pattern.decimal">
+                    <div ng-show="tForm.amount{{$index}}.$error.required">Amount is Required</div>
+                    <div ng-show="tForm.amount{{$index}}.$error.pattern">Invalid Amount</div>
+                </div>
+            </td>
+            <td ng-show ="selectedCountry.Name == 'UNITED STATES'">
+                <div>
+                    <select ng-model="t.StateId" ng-options="s.Id as s.Name for s in allStates">
+                        <option value="">-- Choose State --</option>
+                    </select>
+                </div>
+            </td>
+            <td ng-show="selectedCountry.Name == 'CHINA' || selectedCountry.Name == 'CANADA'">
+                <div>
+                    <select ng-model="t.ProvinceId" ng-options="p.Id as p.Name for p in allProvinces">
+                        <option value="">-- Choose Province --</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="t.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="t.Active" ng-value="false" required>
+                </div>
+            </td>
+            <td>
+                <button ng-click="delete(s)" ng-show="!t.Id">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <button ng-click="save()" ng-disabled="tForm.$invalid">Save</button>
+    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+</form>

@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\TaxController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -219,6 +220,7 @@
     <Content Include="App\js\editProductCategoryController.js" />
     <Content Include="App\js\editProductController.js" />
     <Content Include="App\js\productCategoryListController.js" />
+    <Content Include="App\js\taxListController.js" />
     <Content Include="App\js\shippingListController.js" />
     <Content Include="App\js\provinceListController.js" />
     <Content Include="App\js\shippingProviderListController.js" />
@@ -232,6 +234,7 @@
     <Content Include="App\lib\angular\angular-file-upload.min.js" />
     <Content Include="App\lib\angular\FileAPI.min.js" />
     <Content Include="App\Partials\Home.html" />
+    <Content Include="App\Partials\TaxList.html" />
     <Content Include="App\Partials\ShippingList.html" />
     <Content Include="App\Partials\ProvinceList.html" />
     <Content Include="App\Partials\SupplierEdit.html" />

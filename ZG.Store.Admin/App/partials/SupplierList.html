@@ -26,7 +26,7 @@ Filter by:
         <td>Email</td>
         <td>Website</td>
         <td>Note</td>
-        <td>Active</td>
+        <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
     </tr>
     <tr ng-repeat="sup in suppliers | orderBy:predicate:reverse">
         <td>{{sup.Id}}</td>

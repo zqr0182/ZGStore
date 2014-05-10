@@ -69,6 +69,13 @@ adminServices.factory('ShippingService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('TaxService', ['$resource', function ($resource) {
+    return {
+        get: $resource('tax/GetTaxes/:countryId', {}, {}),
+        save: $resource('tax/save', {}, {})
+    };
+}]);
+
 adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
     return {
         keys: [],

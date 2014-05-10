@@ -35,13 +35,20 @@ namespace ZG.Application
 
             var result = query.Select(p => new IdName { Id = p.Id, Name = p.Name }).OrderBy(c => c.Name).ToList();
 
-            var us = result.FirstOrDefault(c => c.Name == Countries.CANADA);
-            result.Remove(us);
-            result.Insert(0, us);
+            var canada = result.FirstOrDefault(c => c.Name == Countries.CANADA);
+            result.Remove(canada);
+            result.Insert(0, canada);
 
             var cn = result.FirstOrDefault(c => c.Name == Countries.CHINA);
             result.Remove(cn);
-            result.Insert(1, cn);
+            result.Insert(0, cn);
+
+            var us = result.FirstOrDefault(c => c.Name == Countries.UNITED_STATES);
+            if (us != null)
+            {
+                result.Remove(us);
+                result.Insert(0, us);
+            }
 
             return result;
         }

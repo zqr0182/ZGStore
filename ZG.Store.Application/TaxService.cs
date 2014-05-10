@@ -13,9 +13,9 @@ namespace ZG.Application
 {
     public interface ITaxService
     {
-        //List<ShippingEditViewModel> GetTaxs(bool? active, int countryId);
-        //Shipping GetShippingById(int id);
-        //void Upsert(List<ShippingEditViewModel> shippings);
+        List<TaxViewModel> GetTaxes(bool? active, int countryId);
+        Tax GetTaxById(int id);
+        void Upsert(List<TaxViewModel> taxes);
     }
 
     public class TaxService : BaseService, ITaxService
@@ -24,80 +24,74 @@ namespace ZG.Application
             : base(uow)
         {}
 
-        //public List<ShippingEditViewModel> GetShippings(bool? active, int countryId)
-        //{
-        //    var shippingByCountry = new ShippingByCountry(countryId, new ShippingByActive(active));
-        //    return UnitOfWork.Shippings.Matches(shippingByCountry)
-        //                               .Include("State")
-        //                               .Include("Province")
-        //                               .Include("Product")
-        //                               .Include("ShippingProvider")
-        //                               .Select(s => new ShippingEditViewModel
-        //                               {
-        //                                   Id = s.Id,
-        //                                   CountryID = s.CountryID,
-        //                                   StateIdName = new StateIdName { Id = s.StateID.HasValue ? s.State.Id : 0, Name = s.StateID.HasValue ? s.State.Name : "" },
-        //                                   City = s.City,
-        //                                   ProvinceIdName = new ProvinceIdName { Id = s.ProvinceID.HasValue ? s.Province.Id : 0, Name = s.ProvinceID.HasValue ? s.Province.Name : "" },
-        //                                   ProductIdName = new ProductIdName { Id = s.Product.Id, Name = s.Product.Name },
-        //                                   ShippingProviderIdName = new ShippingProviderIdName { Id = s.ShippingProvider.Id, Name = s.ShippingProvider.Name },
-        //                                   Rate = s.Rate,
-        //                                   Active = s.Active
-        //                               }).ToList();
-        //}
+        public List<TaxViewModel> GetTaxes(bool? active, int countryId)
+        {
+            var taxByCountry = new TaxByCountry(countryId, new TaxByActive(active));
+            return UnitOfWork.Taxes.Matches(taxByCountry)
+                                        .Select(s => new TaxViewModel
+                                        {
+                                            Id = s.Id,
+                                            Name = s.Name,
+                                            Fixed = s.Fixed,
+                                            Amount = s.Amount,
+                                            CountryId = s.CountryID,
+                                            StateId = s.StateID,
+                                            ProvinceId = s.ProvinceID,
+                                            Active = s.Active
+                                        }).ToList();
+        }
 
-        //public Shipping GetShippingById(int id)
-        //{
-        //    return UnitOfWork.Shippings.MatcheById(id);
-        //}
+        public Tax GetTaxById(int id)
+        {
+            return UnitOfWork.Taxes.MatcheById(id);
+        }
 
-        //public void Upsert(List<ShippingEditViewModel> shippings)
-        //{
-        //    shippings.ForEach(s => Upsert(s));
+        public void Upsert(List<TaxViewModel> taxes)
+        {
+            taxes.ForEach(s => Upsert(s));
 
-        //    UnitOfWork.Commit();
-        //}
+            UnitOfWork.Commit();
+        }
 
-        //private void Upsert(ShippingEditViewModel shipping)
-        //{
-        //    if (shipping.Id > 0)
-        //    {
-        //        Update(shipping);
-        //    }
-        //    else
-        //    {
-        //        Create(shipping);
-        //    }
-        //}
+        private void Upsert(TaxViewModel tax)
+        {
+            if (tax.Id > 0)
+            {
+                Update(tax);
+            }
+            else
+            {
+                Create(tax);
+            }
+        }
 
-        //private void Update(ShippingEditViewModel shipping)
-        //{
-        //    var s = GetShippingById(shipping.Id);
+        private void Update(TaxViewModel tax)
+        {
+            var t = GetTaxById(tax.Id);
 
-        //    if (s != null)
-        //    {
-        //        UpdateShipping(s, shipping);
-        //    }
-        //}
+            if (t != null)
+            {
+                UpdateTax(t, tax);
+            }
+        }
 
-        //private void Create(ShippingEditViewModel shipping)
-        //{
-        //    var s = new Shipping();
-        //    UpdateShipping(s, shipping);
+        private void Create(TaxViewModel tax)
+        {
+            var t = new Tax();
+            UpdateTax(t, tax);
 
-        //    UnitOfWork.Shippings.Add(s);
-        //}
+            UnitOfWork.Taxes.Add(t);
+        }
 
-        //private void UpdateShipping(Shipping shippingInDb, ShippingEditViewModel shipping)
-        //{
-        //    shippingInDb.CountryID = shipping.CountryID;
-        //    shippingInDb.StateID = (shipping.StateIdName != null) ? shipping.StateIdName.Id : default(int?);
-        //    shippingInDb.City = shipping.City;
-        //    shippingInDb.ProvinceID = (shipping.ProvinceIdName != null) ? shipping.ProvinceIdName.Id : default(int?);
-        //    shippingInDb.ProductID = shipping.ProductIdName.Id;
-        //    shippingInDb.ShippingProviderID = shipping.ShippingProviderIdName.Id;
-        //    shippingInDb.Rate = shipping.Rate;
-        //    shippingInDb.Active = shipping.Active;
-        //}
+        private void UpdateTax(Tax taxInDb, TaxViewModel tax)
+        {
+            taxInDb.Name = tax.Name;
+            taxInDb.Fixed = tax.Fixed;
+            taxInDb.Amount = tax.Amount;
+            taxInDb.CountryID = tax.CountryId;
+            taxInDb.StateID = tax.StateId;
+            taxInDb.ProvinceID = tax.ProvinceId;
+            taxInDb.Active = tax.Active;
+        }
     }
 }

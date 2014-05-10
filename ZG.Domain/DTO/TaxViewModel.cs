@@ -16,9 +16,9 @@ namespace ZG.Domain.DTO
         [Required]
         public bool Fixed { get; set; }
         public decimal Amount { get; set; }
-        public int CountryID { get; set; }
-        public Nullable<int> StateID { get; set; }
-        public Nullable<int> ProvinceID { get; set; }
+        public int CountryId { get; set; }
+        public Nullable<int> StateId { get; set; }
+        public Nullable<int> ProvinceId { get; set; }
         [Required]
         public bool Active { get; set; }
     }

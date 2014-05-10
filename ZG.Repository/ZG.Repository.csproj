@@ -62,6 +62,8 @@
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
     <Compile Include="Criterias\ProductByActive.cs" />
+    <Compile Include="Criterias\TaxByActive.cs" />
+    <Compile Include="Criterias\TaxByCountry.cs" />
     <Compile Include="Criterias\ShippingByCountry.cs" />
     <Compile Include="Criterias\ShippingByActive.cs" />
     <Compile Include="Criterias\ProvinceByCountry.cs" />
