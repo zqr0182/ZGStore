@@ -28,19 +28,15 @@ namespace ZG.Application
         {
             var shippingByCountry = new ShippingByCountry(countryId, new ShippingByActive(active));
             return UnitOfWork.Shippings.Matches(shippingByCountry)
-                                       .Include("State")
-                                       .Include("Province")
-                                       .Include("Product")
-                                       .Include("ShippingProvider")
                                        .Select(s => new ShippingEditViewModel
                                        {
                                            Id = s.Id,
                                            CountryID = s.CountryID,
-                                           StateIdName = new StateIdName { Id = s.StateID.HasValue ? s.State.Id : 0, Name = s.StateID.HasValue ? s.State.Name : "" },
+                                           StateId = s.StateID,
                                            City = s.City,
-                                           ProvinceIdName = new ProvinceIdName { Id = s.ProvinceID.HasValue ? s.Province.Id : 0, Name = s.ProvinceID.HasValue ? s.Province.Name : "" },
-                                           ProductIdName = new ProductIdName { Id = s.Product.Id, Name = s.Product.Name },
-                                           ShippingProviderIdName = new ShippingProviderIdName { Id = s.ShippingProvider.Id, Name = s.ShippingProvider.Name },
+                                           ProvinceId = s.ProvinceID,
+                                           ProductId = s.ProductID,
+                                           ShippingProviderId = s.ShippingProviderID,
                                            Rate = s.Rate,
                                            Active = s.Active
                                        }).ToList();
@@ -91,11 +87,11 @@ namespace ZG.Application
         private void UpdateShipping(Shipping shippingInDb, ShippingEditViewModel shipping)
         {
             shippingInDb.CountryID = shipping.CountryID;
-            shippingInDb.StateID = (shipping.StateIdName != null) ? shipping.StateIdName.Id : default(int?);
+            shippingInDb.StateID = shipping.StateId;
             shippingInDb.City = shipping.City;
-            shippingInDb.ProvinceID = (shipping.ProvinceIdName != null) ? shipping.ProvinceIdName.Id : default(int?);
-            shippingInDb.ProductID = shipping.ProductIdName.Id;
-            shippingInDb.ShippingProviderID = shipping.ShippingProviderIdName.Id;
+            shippingInDb.ProvinceID = shipping.ProvinceId;
+            shippingInDb.ProductID = shipping.ProductId;
+            shippingInDb.ShippingProviderID = shipping.ShippingProviderId;
             shippingInDb.Rate = shipping.Rate;
             shippingInDb.Active = shipping.Active;
         }

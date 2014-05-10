@@ -12,13 +12,15 @@ namespace ZG.Domain.Models
     {
         [Key]
         public int Id { get; set; }
-        public string TaxName { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
         public bool Fixed { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public bool IsAfterShipping { get; set; }
+        public decimal Amount { get; set; }
         public int CountryID { get; set; }
         public Nullable<int> StateID { get; set; }
         public Nullable<int> ProvinceID { get; set; }
+        [Required]
         public bool Active { get; set; }
 
         [ForeignKey("CountryID")]

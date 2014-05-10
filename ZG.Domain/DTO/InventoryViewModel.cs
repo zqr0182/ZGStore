@@ -20,7 +20,7 @@ namespace ZG.Domain.DTO
         [Required]
         public decimal Price { get; set; }
         [Required]
-        public SupplierIdName SupplierIdName { get; set; }
+        public int SupplierId { get; set; }
         [Required]
         public bool Active { get; set; }
     }

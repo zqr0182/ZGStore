@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace ZG.Domain.DTO
 {
-    public class ShippingEditViewModel
+    public class TaxViewModel
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public bool Fixed { get; set; }
+        public decimal Amount { get; set; }
         public int CountryID { get; set; }
-        public int? StateId { get; set; }
-        public string City { get; set; }
-        public int? ProvinceId { get; set; }
-        public int ProductId { get; set; }
-        public int ShippingProviderId { get; set; }
-        public decimal Rate { get; set; }
+        public Nullable<int> StateID { get; set; }
+        public Nullable<int> ProvinceID { get; set; }
+        [Required]
         public bool Active { get; set; }
     }
 }

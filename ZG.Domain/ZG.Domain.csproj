@@ -75,6 +75,7 @@
     <Compile Include="DTO\ProvinceIdName.cs" />
     <Compile Include="DTO\StateIdName.cs" />
     <Compile Include="DTO\SupplierIdName.cs" />
+    <Compile Include="DTO\TaxViewModel.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Models\Category.cs" />

@@ -49,13 +49,6 @@
                       $scope.isFormDirty = true;
                   }
               }, true);
-
-              $scope.shippings.forEach(function (shipping) {
-                  shipping.StateIdName = CommonFunctions.getItemById(shipping.StateIdName.Id, $scope.allStates);
-                  shipping.ProvinceIdName = CommonFunctions.getItemById(shipping.ProvinceIdName.Id, $scope.allProvinces);
-                  shipping.ProductIdName = CommonFunctions.getItemById(shipping.ProductIdName.Id, $scope.allProducts);
-                  shipping.ShippingProviderIdName = CommonFunctions.getItemById(shipping.ShippingProviderIdName.Id, $scope.allShippingProviders);
-              });
           });
       }      
 

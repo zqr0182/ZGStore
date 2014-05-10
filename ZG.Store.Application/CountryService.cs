@@ -35,7 +35,7 @@ namespace ZG.Application
 
             var result = query.Select(p => new IdName { Id = p.Id, Name = p.Name }).OrderBy(c => c.Name).ToList();
 
-            var us = result.FirstOrDefault(c => c.Name == Countries.UNITED_STATES);
+            var us = result.FirstOrDefault(c => c.Name == Countries.CANADA);
             result.Remove(us);
             result.Insert(0, us);
 

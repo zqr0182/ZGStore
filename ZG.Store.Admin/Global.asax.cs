@@ -41,6 +41,12 @@ namespace ZG.Store.Admin
             _container.Dispose();
         }
 
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var ex = Server.GetLastError();
+            NLog.LogManager.GetLogger("*").ErrorException("Unhandled error", ex);
+        }
+
         private static void BootstrapContainer()
         {
             _container = new WindsorContainer().Install(FromAssembly.This(),

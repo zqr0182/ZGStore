@@ -26,14 +26,14 @@
             <td>{{s.Id}}</td>
             <td ng-show ="selectedCountry.Name == 'UNITED STATES'">
                 <div>
-                    <select ng-model="s.StateIdName" ng-options="s.Name for s in allStates">
+                    <select ng-model="s.StateId" ng-options="s.Id as s.Name for s in allStates">
                         <option value="">-- Choose State --</option>
                     </select>
                 </div>
             </td>
             <td ng-show="selectedCountry.Name == 'CHINA' || selectedCountry.Name == 'CANADA'">
                 <div>
-                    <select ng-model="s.ProvinceIdName" ng-options="s.Name for s in allProvinces">
+                    <select ng-model="s.ProvinceId" ng-options="p.Id as p.Name for p in allProvinces">
                         <option value="">-- Choose Province --</option>
                     </select>
                 </div>
@@ -45,14 +45,14 @@
             </td>
             <td>
                 <div>
-                    <select ng-model="s.ProductIdName" ng-options="s.Name for s in allProducts">
+                    <select ng-model="s.ProductId" ng-options="p.Id as p.Name for p in allProducts">
                         <option value="">-- Choose Product --</option>
                     </select>
                 </div>
             </td>
             <td>
                 <div>
-                    <select ng-model="s.ShippingProviderIdName" ng-options="s.Name for s in allShippingProviders">
+                    <select ng-model="s.ShippingProviderId" ng-options="s.Id as s.Name for s in allShippingProviders">
                         <option value="">-- Choose Shipping Provider --</option>
                     </select>
                 </div>
