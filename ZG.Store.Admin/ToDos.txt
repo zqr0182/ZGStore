@@ -14,7 +14,7 @@
 	--Cache countries, states
 --Error handling and redirecting to Error.cshtml
 --Taxes page
-Users list and details page
+-Users list and details page
 Order list/details page
 StoreConfigurations list/create/edit page
 
