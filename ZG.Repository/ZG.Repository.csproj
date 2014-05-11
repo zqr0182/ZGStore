@@ -62,6 +62,7 @@
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
     <Compile Include="Criterias\ProductByActive.cs" />
+    <Compile Include="Criterias\UserByActive.cs" />
     <Compile Include="Criterias\TaxByActive.cs" />
     <Compile Include="Criterias\TaxByCountry.cs" />
     <Compile Include="Criterias\ShippingByCountry.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Criterias\ProductsByCategory.cs" />
     <Compile Include="Criterias\ProductsByPage.cs" />
     <Compile Include="Criterias\TopCategories.cs" />
+    <Compile Include="Criterias\UserById.cs" />
     <Compile Include="Criterias\UserByName.cs" />
     <Compile Include="Installers\RepositoriesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

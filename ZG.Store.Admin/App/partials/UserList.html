@@ -1,0 +1,77 @@
+﻿<h2>User List</h2>
+
+<button ng-click="add()">New</button>
+
+<form name="uForm" class="css-form" novalidate>
+    <div ng-show="isFormDirty">The form has unsaved changes</div>
+    <div>
+        Filter by:
+        <select ng-model="filterByStatus" ng-change="getUsers()">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='UserId';reverse=!reverse">Id</a></td>
+            <td><a href="" ng-click="predicate='UserName';reverse=!reverse">User Name</a></td>
+            <td><a href="" ng-click="predicate='FirstName';reverse=!reverse">First Name</a></td>
+            <td><a href="" ng-click="predicate='LastName';reverse=!reverse">Last Name</a></td>
+            <td><a href="" ng-click="predicate='Phone';reverse=!reverse">Phone</a></td>
+            <td><a href="" ng-click="predicate='DateCreated';reverse=!reverse">Date Created</a></td>
+            <td><a href="" ng-click="predicate='DateUpdated';reverse=!reverse">Date Updated</a></td>
+            <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="u in users | orderBy:predicate:reverse">
+            <td>{{u.UserId}}</td>
+            <td>
+                <div>
+                    <input type="text" ng-model="u.UserName" name="name{{$index}}" required ng-maxlength="50">
+                    <div ng-show="uForm.name{{$index}}.$error.required">Name is required</div>
+                    <div ng-show="uForm.name{{$index}}.$error.maxlength">Max length exceeded</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="u.FirstName" name="fname{{$index}}" required ng-maxlength="50">
+                    <div ng-show="uForm.fname{{$index}}.$error.required">First Name is required</div>
+                    <div ng-show="uForm.fname{{$index}}.$error.maxlength">Max length exceeded</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="u.LastName" name="lname{{$index}}" required ng-maxlength="50">
+                    <div ng-show="uForm.lname{{$index}}.$error.required">Last Name is required</div>
+                    <div ng-show="uForm.lname{{$index}}.$error.maxlength">Max length exceeded</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" ng-model="u.Phone" name="phone{{$index}}" required ng-pattern="pattern.phone">
+                    <div ng-show="uForm.phone{{$index}}.$error.required">Phone is required</div>
+                    <div ng-show="uForm.phone{{$index}}.$error.pattern">Invalid phone number</div>
+                </div>
+            </td>
+            <td>
+                {{u.DateCreated}}
+            </td>
+            <td>
+                {{u.DateUpdated}}
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="u.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="u.Active" ng-value="false" required>
+                </div>
+            </td>
+            <td>
+                <button ng-click="delete(s)" ng-show="!u.Id">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <button ng-click="save()" ng-disabled="uForm.$invalid">Save</button>
+    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+</form>

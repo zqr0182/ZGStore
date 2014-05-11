@@ -76,6 +76,13 @@ adminServices.factory('TaxService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('UserService', ['$resource', function ($resource) {
+    return {
+        get: $resource('user/GetUsers/:filterByStatus', {}, {}),
+        save: $resource('user/save', {}, {})
+    };
+}]);
+
 adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
     return {
         keys: [],

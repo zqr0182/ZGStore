@@ -28,8 +28,9 @@
             </td>
             <td>
                 <div>
-                    <input type="text" ng-model="p.Code" name="code{{$index}}" required maxlength="2" minlenght="2">
-                    <div ng-show="pForm.code{{$index}}.$dirty && pForm.code{{$index}}.$invalid">Length of Code must be 2</div>
+                    <input type="text" ng-model="p.Code" name="code{{$index}}" required ng-maxlength="2" ng-minlength="2">
+                    <div ng-show="pForm.code{{$index}}.$error.required">Code is required</div>
+                    <div ng-show="pForm.code{{$index}}.$error.maxlength || pForm.code{{$index}}.$error.minlength">Length of Code must be 2</div>
                 </div>
             </td>
             <td>
@@ -44,6 +45,6 @@
         </tr>
     </table>
 
-    <button ng-click="save()" ng-disabled="sForm.$invalid">Save</button>
+    <button ng-click="save()" ng-disabled="pForm.$invalid">Save</button>
     <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
 </form>
