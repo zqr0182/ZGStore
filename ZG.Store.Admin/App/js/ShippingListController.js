@@ -65,15 +65,19 @@
 
       $scope.save = function()
       {
+          $scope.alerts = [];
           ShippingService.save.save($scope.shippings, function (data) {
               $scope.isFormDirty = false;
-              $scope.alerts = [];
-              $scope.alerts.push({ type: 'success', msg: 'Shippings saved successfully.' });
+              if (data.Success) {
+                  $scope.alerts.push({ type: 'success', msg: 'Shippings saved successfully.' });
+              }
+              else {
+                  data.Errors.forEach(function (item) {
+                      $scope.alerts.push({ type: 'danger', msg: item });
+                  });
+              }
           }, function (error) {
-              $scope.alerts = [];
-              error.Errors.forEach(function (item) {
-                  $scope.alerts.push({ type: 'danger', msg: item });
-              });
+              $scope.alerts.push({ type: 'danger', msg: 'Unable to upsert shippings. Please try again later.' });
           });
       }
   }]);
