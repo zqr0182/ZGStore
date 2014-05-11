@@ -20,7 +20,9 @@
                   }
               }, true);
           });
-      }      
+      }
+
+      $scope.getUsers();
 
       $scope.add = function()
       {

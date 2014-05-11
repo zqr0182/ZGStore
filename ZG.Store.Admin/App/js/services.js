@@ -78,7 +78,7 @@ adminServices.factory('TaxService', ['$resource', function ($resource) {
 
 adminServices.factory('UserService', ['$resource', function ($resource) {
     return {
-        get: $resource('user/GetUsers/:filterByStatus', {}, {}),
+        get: $resource('user/list/:filterByStatus', {}, {}),
         save: $resource('user/save', {}, {})
     };
 }]);
