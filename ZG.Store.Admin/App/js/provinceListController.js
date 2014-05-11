@@ -38,12 +38,17 @@
           ProvinceService.save.save($scope.provinces, function (data) {
               $scope.isFormDirty = false;
               $scope.alerts = [];
-              $scope.alerts.push({ type: 'success', msg: 'Provinces saved successfully.' });
+              if (data.Success) {
+                  $scope.alerts.push({ type: 'success', msg: 'Provinces saved successfully.' });
+              }
+              else {
+                  data.Errors.forEach(function (item) {
+                      $scope.alerts.push({ type: 'danger', msg: item });
+                  });
+              }
           }, function (error) {
               $scope.alerts = [];
-              error.Errors.forEach(function (item) {
-                  $scope.alerts.push({ type: 'danger', msg: item });
-              });
+              $scope.alerts.push({ type: 'danger', msg: 'Unable to upsert provinces. Please try again later.' });
           });
       }
   }]);

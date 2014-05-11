@@ -17,8 +17,9 @@
 Users list and details page
 Order list/details page
 StoreConfigurations list/create/edit page
+
 Use of cache
-Test error callback on ShippingProvider and Province controller js
+--Test error callback on ShippingProvider and Province controller js
 Validation error message not showing for elements in repeated table rows.
 
 
