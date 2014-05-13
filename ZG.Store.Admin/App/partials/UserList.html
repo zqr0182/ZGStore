@@ -19,8 +19,8 @@
             <td><a href="" ng-click="predicate='FirstName';reverse=!reverse">First Name</a></td>
             <td><a href="" ng-click="predicate='LastName';reverse=!reverse">Last Name</a></td>
             <td><a href="" ng-click="predicate='Phone';reverse=!reverse">Phone</a></td>
-            <td><a href="" ng-click="predicate='DateCreated';reverse=!reverse">Date Created</a></td>
-            <td><a href="" ng-click="predicate='DateUpdated';reverse=!reverse">Date Updated</a></td>
+            <td><a href="" ng-click="predicate='DateCreatedString';reverse=!reverse">Date Created</a></td>
+            <td><a href="" ng-click="predicate='DateUpdatedString';reverse=!reverse">Date Updated</a></td>
             <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
             <td></td>
         </tr>
@@ -55,10 +55,10 @@
                 </div>
             </td>
             <td>
-                {{u.DateCreated}}
+                {{u.DateCreatedString}}
             </td>
             <td>
-                {{u.DateUpdated}}
+                {{u.DateUpdatedString}}
             </td>
             <td>
                 <div>

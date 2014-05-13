@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace ZG.Domain.DTO
 {
@@ -23,8 +24,12 @@ namespace ZG.Domain.DTO
         [Required]
         [MaxLength(50)]
         public string Phone { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        [ScriptIgnore]
+        public DateTime DateCreated { get; set; }
+        public string DateCreatedString { get { return DateCreated.ToShortDateString(); } }
+        [ScriptIgnore]
         public DateTime? DateUpdated { get; set; }
+        public string DateUpdatedString { get { return DateUpdated.HasValue ? DateUpdated.Value.ToShortDateString() : ""; } }
         public bool Active { get; set; }
     }
 }
