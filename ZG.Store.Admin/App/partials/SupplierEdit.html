@@ -57,7 +57,7 @@
         <div ng-show="supplierForm.Fax.$dirty && supplierForm.Fax.$error.pattern">Invalid fax format</div>
     </div>
     <div>
-        Email: <input type="text" name="Email" ng-model="sup.Email" required ng-pattern="pattern.email" />
+        Email: <input type="text" name="Email" ng-model="sup.Email" ng-model-options="{ updateOn: 'blur' }" required ng-pattern="pattern.email" />
         <div ng-show="supplierForm.Email.$error.required">Email is required</div>
         <div ng-show="supplierForm.Email.$error.pattern">Invalid email</div>
     </div>
