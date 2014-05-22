@@ -31,5 +31,6 @@ namespace ZG.Domain.DTO
         public DateTime? DateUpdated { get; set; }
         public string DateUpdatedString { get { return DateUpdated.HasValue ? DateUpdated.Value.ToShortDateString() : ""; } }
         public bool Active { get; set; }
+        public bool IsCreate { get; set; }
     }
 }

@@ -27,7 +27,7 @@
       $scope.add = function()
       {
           $scope.alerts = [];
-          $scope.users.push({ Active: true });
+          $scope.users.push({ Active: true, IsCreate: true });
       }
 
       $scope.delete = function(user)
@@ -38,9 +38,10 @@
       $scope.save = function()
       {
           $scope.alerts = [];
-          UserService.save.save($scope.users, function (data) {
+          UserService.save.save({ filterByStatus: $scope.filterByStatus }, $scope.users, function (data) {
               $scope.isFormDirty = false;
               if (data.Success) {
+                  $scope.users = data.Users;
                   $scope.alerts.push({ type: 'success', msg: 'Users saved successfully.' });
               }
               else {

@@ -91,6 +91,7 @@ namespace ZG.Application
 
         private void UpdateUser(User userInDb, UserViewModel user)
         {
+            userInDb.UserName = user.UserName;
             userInDb.FirstName = user.FirstName;
             userInDb.LastName = user.LastName;
             userInDb.Phone = user.Phone;

@@ -28,7 +28,7 @@
             <td>{{u.UserId}}</td>
             <td>
                 <div>
-                    <input type="text" ng-model="u.UserName" name="name{{$index}}" required ng-maxlength="50">
+                    <input type="text" ng-model="u.UserName" name="name{{$index}}" required ng-maxlength="50" ng-disabled="!u.IsCreate">
                     <div ng-show="uForm.name{{$index}}.$error.required">Name is required</div>
                     <div ng-show="uForm.name{{$index}}.$error.maxlength">Max length exceeded</div>
                 </div>

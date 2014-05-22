@@ -24,19 +24,17 @@ namespace ZG.Store.Admin.Controllers
 
         public JsonResult List(string filterByStatus)
         {
-            bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;
-
-            var result = _userService.GetUsers(isActive).ToList();
+            var result = GetUsers(filterByStatus);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult Save(List<UserViewModel> users)
+        public JsonResult Save(List<UserViewModel> users, string filterByStatus)
         {
-            return UpsertUsers(users);
+            return UpsertUsers(users, filterByStatus);
         }
 
-        private JsonResult UpsertUsers(List<UserViewModel> users)
+        private JsonResult UpsertUsers(List<UserViewModel> users, string filterByStatus)
         {
             try
             {
@@ -47,14 +45,22 @@ namespace ZG.Store.Admin.Controllers
                 }
 
                 _userService.Upsert(users);
+                var usersInDb = GetUsers(filterByStatus);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = true, Users = usersInDb }, JsonRequestBehavior.DenyGet);
             }
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert users.");
                 return Json(new { Success = false, Errors = new[] { "Error occured. Unable to upsert users. We are fixing it." } }, JsonRequestBehavior.DenyGet);
             }
+        }
+
+        private List<UserViewModel> GetUsers(string filterByStatus)
+        {
+            bool isActive = (string.Compare(filterByStatus, "active", true) == 0) ? true : false;
+
+            return _userService.GetUsers(isActive).ToList();
         }
     }
 }
