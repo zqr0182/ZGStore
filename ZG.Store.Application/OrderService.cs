@@ -8,6 +8,7 @@ using ZG.Common.Abstract;
 using ZG.Common.Concrete;
 using ZG.Common.DTO;
 using ZG.Domain.Concrete;
+using ZG.Domain.DTO;
 using ZG.Domain.Models;
 using ZG.Repository;
 using ZG.Repository.Criterias;
@@ -93,6 +94,26 @@ namespace ZG.Application
         {
             var status = new ShippingProviderByActive(isActive);
             return UnitOfWork.ShippingProviders.Matches(status).ToList();
+        }
+
+        public OrderListViewModel GetOrders(bool active, int page, int pageSize)
+        {
+            var ordersByActive = new OrderByActive(active);
+            IQueryable<Order> orders = UnitOfWork.Orders.Matches(ordersByActive);
+
+            int totalOrders = orders.Count();
+
+            orders = UnitOfWork.Orders.Matches(new OrdersByPage(page, pageSize, ordersByActive));
+
+            return new OrderListViewModel
+            {
+                Orders = orders.Include("OrderStatu").Include("ShippingProvider").Include("ShippingCountry")
+                .Select(o => new OrderBriefInfo 
+                { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatus = o.OrderStatu.OrderStatusName, 
+                  ShippingProvider = o.ShippingProvider.Name, ShippingCountry = o.ShippingCountry.Name, Comments = o.Comments, DatePlaced = o.DatePlaced,
+                  DateShipped = o.DateShipped, Total = o.Total, Shipping = o.Shipping, Tax = o.Tax, Active = o.Active }).ToList(),
+                TotalOrders = totalOrders
+            };
         }
 
         private int GetShippingProviderId(ShippingProviderEnum provider)
