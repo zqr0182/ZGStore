@@ -1,0 +1,60 @@
+﻿
+
+<h2>Order List</h2>
+
+Filter by:
+<select ng-model="filterByStatus" ng-change="getOrders()">
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+</select>
+
+<table>
+    <tr>
+        <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+        <td><a href="" ng-click="predicate='UserId';reverse=!reverse">User Id</a></td>
+        <td><a href="" ng-click="predicate='FullName';reverse=!reverse">Name</a></td>
+        <td>Order Number</td>
+        <td><a href="" ng-click="predicate='OrderStatus';reverse=!reverse">Order Status</a></td>
+        <td><a href="" ng-click="predicate='ShippingProvider';reverse=!reverse">Shipping Provider</a></td>
+        <td><a href="" ng-click="predicate='ShippingCountry';reverse=!reverse">Shipping Country</a></td>
+        <td><a href="" ng-click="predicate='DatePlacedString';reverse=!reverse">Date Placed</a></td>
+        <td><a href="" ng-click="predicate='DateShippedString';reverse=!reverse">Date Shipped</a></td>
+        <td><a href="" ng-click="predicate='Tax';reverse=!reverse">Tax</a></td>
+        <td><a href="" ng-click="predicate='Shipping';reverse=!reverse">Shipping</a></td>
+        <td><a href="" ng-click="predicate='Total';reverse=!reverse">Total</a></td>
+        <td>Comments</td>
+        <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="order in orders.Orders | orderBy:predicate:reverse">
+        <td>{{order.Id}}</td>
+        <td>{{order.UserId}}</td>
+        <td>{{order.FullName}}</td>
+        <td>{{order.OrderNumber}}</td>
+        <td>{{order.OrderStatus}}</td>
+        <td>{{order.ShippingProvider}}</td>
+        <td>{{order.ShippingCountry}}</td>
+        <td>{{order.DatePlacedString}}</td>
+        <td>{{order.DateShippedString}}</td>
+        <td>{{order.Tax}}</td>
+        <td>{{order.Shipping}}</td>
+        <td>{{order.Total}}</td>
+        <td>{{order.Comments}}</td>
+        <td>{{order.Active}}</td>
+        <td>
+            <div ng-show="order.Active">
+                <input type="button" ng-click="go('/order/edit/' + order.Id)" value="Edit" />
+                <input type="button" ng-click="deactivateOrder(order)" value="Deactivate" />
+            </div>
+            <div ng-show="!order.Active">
+                <input type="button" ng-click="activateOrder(order)" value="Activate" />
+            </div>
+            <div ng-show="isDeactivationFailed(order.Id)">
+                Unable to deactivate order. We are fixing it.
+            </div>
+            <div ng-show="isActivationFailed(order.Id)">
+                Unable to activate order. We are fixing it.
+            </div>
+        </td>
+    </tr>
+</table>

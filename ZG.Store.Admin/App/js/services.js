@@ -83,6 +83,15 @@ adminServices.factory('UserService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('OrderService', ['$resource', function ($resource) {
+    return {
+        orders: $resource('order/list/:filterByStatus', {}, {}),
+        //product: $resource('product/edit/:id', {}, {}),
+        deactivateOrder: $resource('order/deactivate/:id', {}, {}),
+        activateOrder: $resource('order/activate', {}, {})
+    };
+}]);
+
 adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
     return {
         keys: [],

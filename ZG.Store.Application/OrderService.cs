@@ -20,6 +20,10 @@ namespace ZG.Application
         void ProcessOrder(Cart cart, CheckoutDetails checkoutDetails);
         IEnumerable<OrderStatus> GetOrderStatuses(bool isActive);
         IEnumerable<ShippingProvider> GetShippingProviders(bool isActive);
+        OrderListViewModel GetOrders(bool active, int page, int pageSize);
+        void Activate(int id);
+        void Deactivate(int id);
+        Order GetOrderById(int id);
     }
 
     public class OrderService : BaseService, IOrderService
@@ -39,6 +43,67 @@ namespace ZG.Application
             //TODO: payment processing
 
             _emailService.ProcessEmail(EmailType.NewOrderNotificationToAdmin, null, "Your Order", "Message Body", true, null);
+        }
+
+        public IEnumerable<OrderStatus> GetOrderStatuses(bool isActive)
+        {
+            var status = new OrderStatusByActive(isActive);
+            return UnitOfWork.OrderStatuses.Matches(status).ToList();
+        }
+
+        public IEnumerable<ShippingProvider> GetShippingProviders(bool isActive)
+        {
+            var status = new ShippingProviderByActive(isActive);
+            return UnitOfWork.ShippingProviders.Matches(status).ToList();
+        }
+
+        public OrderListViewModel GetOrders(bool active, int page, int pageSize)
+        {
+            var ordersByActive = new OrderByActive(active);
+            IQueryable<Order> orders = UnitOfWork.Orders.Matches(ordersByActive);
+
+            int totalOrders = orders.Count();
+
+            orders = UnitOfWork.Orders.Matches(new OrdersByPage(page, pageSize, ordersByActive));
+
+            return new OrderListViewModel
+            {
+                Orders = orders.Include("OrderStatu").Include("ShippingProvider").Include("ShippingCountry")
+                .Select(o => new OrderBriefInfo 
+                { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatus = o.OrderStatu.OrderStatusName, 
+                  ShippingProvider = o.ShippingProvider.Name, ShippingCountry = o.ShippingCountry.Name, Comments = o.Comments, DatePlaced = o.DatePlaced,
+                  DateShipped = o.DateShipped, Total = o.Total, Shipping = o.Shipping, Tax = o.Tax, Active = o.Active }).ToList(),
+                TotalOrders = totalOrders
+            };
+        }
+
+        public void Activate(int id)
+        {
+            ToggleActive(id, true);
+        }
+
+        public void Deactivate(int id)
+        {
+            ToggleActive(id, false);
+        }
+
+        public Order GetOrderById(int id)
+        {
+            return UnitOfWork.Orders.MatcheById(id);
+        }
+
+        private int GetShippingProviderId(ShippingProviderEnum provider)
+        {
+            var shippingProviders = ZGCache.Cache("ShippingProviders", () => { return GetShippingProviders(true); }, TimeSpan.FromMinutes(60));
+            return shippingProviders.Where(s => s.Name == Util.ReplaceUnderscoreWithSpace(provider)).Select(s => s.Id).FirstOrDefault();
+        }
+
+        private void ToggleActive(int id, bool active)
+        {
+            var order = GetOrderById(id);
+            order.Active = active;
+
+            UnitOfWork.Commit();
         }
 
         private void AddOrder(Cart cart, CheckoutDetails checkoutDetails)
@@ -82,44 +147,6 @@ namespace ZG.Application
         {
             var orderStatuses = ZGCache.Cache("OrderStatuses", () => { return GetOrderStatuses(true); }, TimeSpan.FromMinutes(60));
             return orderStatuses.Where(s => s.OrderStatusName == status.ToString()).Select(s => s.Id).FirstOrDefault();
-        }
-
-        public IEnumerable<OrderStatus> GetOrderStatuses(bool isActive)
-        {
-            var status = new OrderStatusByActive(isActive);
-            return UnitOfWork.OrderStatuses.Matches(status).ToList();
-        }
-
-        public IEnumerable<ShippingProvider> GetShippingProviders(bool isActive)
-        {
-            var status = new ShippingProviderByActive(isActive);
-            return UnitOfWork.ShippingProviders.Matches(status).ToList();
-        }
-
-        public OrderListViewModel GetOrders(bool active, int page, int pageSize)
-        {
-            var ordersByActive = new OrderByActive(active);
-            IQueryable<Order> orders = UnitOfWork.Orders.Matches(ordersByActive);
-
-            int totalOrders = orders.Count();
-
-            orders = UnitOfWork.Orders.Matches(new OrdersByPage(page, pageSize, ordersByActive));
-
-            return new OrderListViewModel
-            {
-                Orders = orders.Include("OrderStatu").Include("ShippingProvider").Include("ShippingCountry")
-                .Select(o => new OrderBriefInfo 
-                { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatus = o.OrderStatu.OrderStatusName, 
-                  ShippingProvider = o.ShippingProvider.Name, ShippingCountry = o.ShippingCountry.Name, Comments = o.Comments, DatePlaced = o.DatePlaced,
-                  DateShipped = o.DateShipped, Total = o.Total, Shipping = o.Shipping, Tax = o.Tax, Active = o.Active }).ToList(),
-                TotalOrders = totalOrders
-            };
-        }
-
-        private int GetShippingProviderId(ShippingProviderEnum provider)
-        {
-            var shippingProviders = ZGCache.Cache("ShippingProviders", () => { return GetShippingProviders(true); }, TimeSpan.FromMinutes(60));
-            return shippingProviders.Where(s => s.Name == Util.ReplaceUnderscoreWithSpace(provider)).Select(s => s.Id).FirstOrDefault();
         }
 
     }

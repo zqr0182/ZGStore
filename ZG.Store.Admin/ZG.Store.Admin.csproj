@@ -222,6 +222,7 @@
     <Content Include="App\js\editProductCategoryController.js" />
     <Content Include="App\js\editProductController.js" />
     <Content Include="App\js\productCategoryListController.js" />
+    <Content Include="App\js\orderListController.js" />
     <Content Include="App\js\userListController.js" />
     <Content Include="App\js\taxListController.js" />
     <Content Include="App\js\shippingListController.js" />
@@ -237,6 +238,7 @@
     <Content Include="App\lib\angular\angular-file-upload.min.js" />
     <Content Include="App\lib\angular\FileAPI.min.js" />
     <Content Include="App\Partials\Home.html" />
+    <Content Include="App\Partials\OrderList.html" />
     <Content Include="App\Partials\UserList.html" />
     <Content Include="App\Partials\TaxList.html" />
     <Content Include="App\Partials\ShippingList.html" />
