@@ -63,6 +63,7 @@
     <Compile Include="DTO\InventoryViewModel.cs" />
     <Compile Include="DTO\IdName.cs" />
     <Compile Include="DTO\OrderBriefInfo.cs" />
+    <Compile Include="DTO\OrderEditViewModel.cs" />
     <Compile Include="DTO\ProductCategoryEditViewModel.cs" />
     <Compile Include="DTO\ProductCategoryBriefInfo.cs" />
     <Compile Include="DTO\ProductBriefInfo.cs" />
