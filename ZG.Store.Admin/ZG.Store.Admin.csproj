@@ -278,6 +278,8 @@
     <Content Include="App\js\controllers.js" />
     <Content Include="App\js\services.js" />
     <Content Include="App\js\storeAdminApp.js" />
+    <Content Include="App\lib\angular\angular-kendo.js" />
+    <Content Include="App\lib\angular\angular-kendo.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App\lib\angular\errors.json" />
