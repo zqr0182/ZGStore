@@ -1,5 +1,76 @@
 ﻿var adminServices = angular.module('adminServices', ['ngResource']);
 
+adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
+    return {
+        keys: [],
+        cache: $cacheFactory('storeAdminCache'),
+        put: function (key, value) {
+            this.cache.put(key, value);
+            this.keys.push(key);
+        }
+    };
+}]);
+
+adminServices.factory('CommonFunctions', [function () {
+    return {
+        getArrayById: function (array1, array2) {
+            var result = [];
+
+            array1.forEach(function (item1) {
+                array2.forEach(function (item2) {
+                    if (item1.Id == item2.Id) {
+                        result.push(item2);
+                    }
+                });
+            });
+
+            return result;
+        },
+        getItemById: function (id, array) {
+            if (array) {
+                var results = array.filter(function (item) {
+                    return item.Id == id;
+                });
+
+                if (results != null) {
+                    return results[0];
+                }
+            }
+
+            return null;
+        },
+        changeStatusHelper: function (isActivation, model, arrayOfId, serverResult) {
+            if (serverResult.Success) {
+                model.Active = isActivation ? true : false;
+                var index = arrayOfId.indexOf(model.Id);
+                if (index > -1) {
+                    arrayOfId.splice(index, 1);
+                }
+            }
+            else {
+                arrayOfId.push(model.Id);
+            }
+        },
+        isItemFound: function (array, item) {
+            return array.indexOf(item) > -1;
+        },
+        regExpPattern: function () {
+            return {
+                email: /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
+                phone: /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/,
+                zip: /\d{5}(-\d{4})?/,
+                decimal: /^\d+(\.\d{1,2})?$/,
+                fourDigit: /^\d{1,4}$/,
+                tenDigit: /^\d{1,10}$/
+            };
+        },
+        removeFromArray: function (array, item) {
+            var index = array.indexOf(item);
+            array.splice(index, 1);
+        }
+    };
+}]);
+
 adminServices.factory('ProdService', ['$resource', function ($resource) {
     return {
         products: $resource('product/list/:filterByStatus', {}, {}),
@@ -86,81 +157,15 @@ adminServices.factory('UserService', ['$resource', function ($resource) {
 adminServices.factory('OrderService', ['$resource', function ($resource) {
     return {
         orders: $resource('order/list/:filterByStatus', {}, {}),
-        //product: $resource('product/edit/:id', {}, {}),
+        order: $resource('order/edit/:id', {}, {}),
         deactivateOrder: $resource('order/deactivate/:id', {}, {}),
         activateOrder: $resource('order/activate', {}, {})
     };
 }]);
 
-adminServices.factory('CacheService', ['$cacheFactory', function ($cacheFactory) {
+adminServices.factory('OrderStatusService', ['$resource', function ($resource) {
     return {
-        keys: [],
-        cache: $cacheFactory('storeAdminCache'),
-        put: function (key, value) {
-            this.cache.put(key, value);
-            this.keys.push(key);
-        }
+        statusIdNames: $resource('orderStatus/Index', {}, {})
     };
 }]);
 
-adminServices.factory('CommonFunctions', [function () {
-    return {
-        getArrayById: function (array1, array2) {
-            var result = [];
-
-            array1.forEach(function (item1) {
-                array2.forEach(function (item2) {
-                    if (item1.Id == item2.Id) {
-                        result.push(item2);
-                    }
-                });
-            });
-
-            return result;
-        },
-        getItemById: function (id, array) {
-            if (array) {
-                var results = array.filter(function (item) {
-                    return item.Id == id;
-                });
-
-                if (results != null) {
-                    return results[0];
-                }
-            }
-
-            return null;
-        },
-        changeStatusHelper: function (isActivation, model, arrayOfId, serverResult)
-        {
-            if (serverResult.Success) {
-                model.Active = isActivation ? true : false;
-                var index = arrayOfId.indexOf(model.Id);
-                if (index > -1) {
-                    arrayOfId.splice(index, 1);
-                }
-            }
-            else {
-                arrayOfId.push(model.Id);
-            }
-        },
-        isItemFound: function (array, item) {
-            return array.indexOf(item) > -1;
-        },
-        regExpPattern: function(){
-            return {
-                email: /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
-                phone: /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/,
-                zip: /\d{5}(-\d{4})?/,
-                decimal: /^\d+(\.\d{1,2})?$/,
-                fourDigit: /^\d{1,4}$/,
-                tenDigit: /^\d{1,10}$/
-            };
-        },
-        removeFromArray: function(array, item)
-        {
-            var index = array.indexOf(item);
-            array.splice(index, 1);
-        }
-    };
-}]);

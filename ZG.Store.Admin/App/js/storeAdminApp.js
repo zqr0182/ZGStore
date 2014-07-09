@@ -19,6 +19,7 @@ adminApp.config(['$routeProvider', function ($routeProvider) {
     .when('/tax', { templateUrl: 'app/partials/TaxList.html', controller: 'TaxListCtrl' })
     .when('/user', { templateUrl: 'app/partials/UserList.html', controller: 'UserListCtrl' })
     .when('/order', { templateUrl: 'app/partials/orderlist.html', controller: 'OrderListCtrl' })
+    .when('/order/edit/:id', { templateUrl: 'app/partials/orderEdit.html', controller: 'EditOrderCtrl' })
     .when('/home', { templateUrl: 'app/partials/home.html', controller: '' })
     .otherwise({ redirectTo: '/home' });
 }]);

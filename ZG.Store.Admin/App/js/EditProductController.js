@@ -1,5 +1,5 @@
-﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$http', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload',
-  function ($scope, $http, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
+﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload',
+  function ($scope, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
       $scope.showDeleteImageSuccessfulMsg = false;
       $scope.showDeleteImageFailureMsg = false;
       $scope.deleteImageFailureMsg = '';    

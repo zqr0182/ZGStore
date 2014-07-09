@@ -37,22 +37,23 @@ namespace ZG.Store.Admin.Controllers
         //    return UpsertProduct(prod);   
         //}
 
-        //public JsonResult Edit(int id)
-        //{
-        //    try
-        //    {
-        //        var prod = _prodService.GetProductById(id, new string[] { "ProductCategories.Category", "Inventories.Supplier" });
-        //        string dirPath = PathUtil.GetProductImageDirectory(id);
-        //        var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
-                
-        //        return Json(viewModel, JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
-        //        return Json(new { Success = false, Errors = new []{"Error occured, unable to get product. We are fixing it." }}, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+        public JsonResult Edit(int id)
+        {
+            return Json(new Order(), JsonRequestBehavior.AllowGet);
+            //try
+            //{
+            //    var prod = _orderService.GetOrderById(id, new string[] { "ProductCategories.Category", "Inventories.Supplier" });
+            //    string dirPath = PathUtil.GetProductImageDirectory(id);
+            //    var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
+
+            //    return Json(viewModel, JsonRequestBehavior.AllowGet);
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
+            //    return Json(new { Success = false, Errors = new[] { "Error occured, unable to get product. We are fixing it." } }, JsonRequestBehavior.AllowGet);
+            //}
+        }
 
         //[HttpPost]
         //public JsonResult Edit(string prod)

@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\OrderStatusController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\TaxController.cs" />
     <Compile Include="Controllers\StateController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\js\editOrderController.js" />
     <Content Include="App\js\editSupplierController.js" />
     <Content Include="App\js\editProductCategoryController.js" />
     <Content Include="App\js\editProductController.js" />
@@ -238,6 +240,7 @@
     <Content Include="App\lib\angular\angular-file-upload.min.js" />
     <Content Include="App\lib\angular\FileAPI.min.js" />
     <Content Include="App\Partials\Home.html" />
+    <Content Include="App\Partials\OrderEdit.html" />
     <Content Include="App\Partials\OrderList.html" />
     <Content Include="App\Partials\UserList.html" />
     <Content Include="App\Partials\TaxList.html" />
@@ -593,6 +596,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\OrderStatus\" />
     <Folder Include="Views\ProductCategory\" />
     <Folder Include="Views\Supplier\" />
   </ItemGroup>

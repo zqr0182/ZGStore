@@ -70,7 +70,7 @@ namespace ZG.Application
             {
                 Orders = orders.Include("OrderStatu").Include("ShippingProvider").Include("ShippingCountry")
                 .Select(o => new OrderBriefInfo 
-                { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatus = o.OrderStatu.OrderStatusName, 
+                { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatus = o.OrderStatu.Name, 
                   ShippingProvider = o.ShippingProvider.Name, ShippingCountry = o.ShippingCountry.Name, Comments = o.Comments, DatePlaced = o.DatePlaced,
                   DateShipped = o.DateShipped, Total = o.Total, Shipping = o.Shipping, Tax = o.Tax, Active = o.Active }).ToList(),
                 TotalOrders = totalOrders
@@ -146,7 +146,7 @@ namespace ZG.Application
         private int GetOrderStatusId(OrderStatusEnum status)
         {
             var orderStatuses = ZGCache.Cache("OrderStatuses", () => { return GetOrderStatuses(true); }, TimeSpan.FromMinutes(60));
-            return orderStatuses.Where(s => s.OrderStatusName == status.ToString()).Select(s => s.Id).FirstOrDefault();
+            return orderStatuses.Where(s => s.Name == status.ToString()).Select(s => s.Id).FirstOrDefault();
         }
 
     }

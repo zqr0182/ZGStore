@@ -49,6 +49,7 @@ namespace ZG.Store.Admin
                 , "~/App/js/taxListController.js"
                 , "~/App/js/userListController.js"
                 , "~/App/js/orderListController.js"
+                , "~/App/js/editOrderController.js"
                 , "~/App/js/services.js"
                 ));
 

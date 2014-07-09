@@ -12,7 +12,7 @@ namespace ZG.Domain.Models
         [Key]
         public int Id { get; set; }
         [MaxLength(50)]
-        public string OrderStatusName { get; set; }
+        public string Name { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
