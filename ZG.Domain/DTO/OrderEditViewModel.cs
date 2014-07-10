@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZG.Common;
 
 namespace ZG.Domain.DTO
 {
@@ -26,25 +27,27 @@ namespace ZG.Domain.DTO
         public string BillingAddress2 { get; set; }
         [Required]
         public string BillingCity { get; set; }
-        public int? BillingStateId { get; set; }
-        public int? BillingProvinceId { get; set; }
+        public string BillingState { get; set; }
+        public string BillingProvince { get; set; }
         [Required]
-        public int BillingCountryId { get; set; }
+        public string BillingCountry { get; set; }
         [Required]
         public string ShippingAddress1 { get; set; }
         public string ShippingAddress2 { get; set; }
         [Required]
         public string ShippingCity { get; set; }
-        public int? ShippingStateId { get; set; }
-        public int? ShippingProvinceId { get; set; }
+        public string ShippingState { get; set; }
+        public string ShippingProvince { get; set; }
         [Required]
-        public int ShippingCountryId { get; set; }
+        public string ShippingCountry { get; set; }
         [Required]
         public string ShippingZipcode { get; set; }
         public string Comments { get; set; }
         [Required]
         public DateTime DatePlaced { get; set; }
+        public String DatePlacedString { get { return DatePlaced.ToString(Constants.MMMMddyyyyhhmmtt); } }
         public DateTime? DateShipped { get; set; }
+        public String DateShippedString { get { return DateShipped.HasValue ? DateShipped.Value.ToString(Constants.MMMMddyyyyhhmmtt) : ""; } }
         [Required]
         public decimal Total { get; set; }
         [Required]

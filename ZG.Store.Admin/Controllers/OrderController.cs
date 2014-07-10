@@ -39,20 +39,16 @@ namespace ZG.Store.Admin.Controllers
 
         public JsonResult Edit(int id)
         {
-            return Json(new Order(), JsonRequestBehavior.AllowGet);
-            //try
-            //{
-            //    var prod = _orderService.GetOrderById(id, new string[] { "ProductCategories.Category", "Inventories.Supplier" });
-            //    string dirPath = PathUtil.GetProductImageDirectory(id);
-            //    var viewModel = _prodService.GetProductEditViewModel(prod, dirPath);
-
-            //    return Json(viewModel, JsonRequestBehavior.AllowGet);
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
-            //    return Json(new { Success = false, Errors = new[] { "Error occured, unable to get product. We are fixing it." } }, JsonRequestBehavior.AllowGet);
-            //}
+            try
+            {
+                var order = _orderService.GetOrderEditViewModel(id);
+                return Json(order, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to get order: {0}", id);
+                return Json(new { Success = false, Errors = new[] { "Error occured, unable to get order. We are fixing it." } }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         //[HttpPost]

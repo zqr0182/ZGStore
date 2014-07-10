@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZG.Common;
 
 namespace ZG.Domain.DTO
 {
@@ -17,7 +18,7 @@ namespace ZG.Domain.DTO
         public string ShippingCountry { get; set; }
         public string Comments { get; set; }
         public DateTime DatePlaced { get; set; }
-        public string DatePlacedString { get { return DatePlaced.ToString("MMMM dd, yyyy hh:mm tt"); } }
+        public string DatePlacedString { get { return DatePlaced.ToString(Constants.MMMMddyyyyhhmmtt); } }
         public DateTime? DateShipped { get; set; }
         public string DateShippedString 
         {
@@ -25,7 +26,7 @@ namespace ZG.Domain.DTO
             {
                 if (DateShipped.HasValue)
                 {
-                    return DateShipped.Value.ToString("MMMM dd, yyyy hh:mm tt");
+                    return DateShipped.Value.ToString(Constants.MMMMddyyyyhhmmtt);
                 }
 
                 return "";

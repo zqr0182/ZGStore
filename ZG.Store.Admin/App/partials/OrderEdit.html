@@ -1,4 +1,43 @@
 ﻿
-<select ng-model="order.Id" ng-options="s.Id as s.Name for s in allOrderStatus">
-    <option value="">-- Choose Status --</option>
-</select>
+<h2>Edit Order</h2>
+<form name="orderForm" class="css-form" novalidate> 
+
+    <div>Order Id: {{order.Id}}</div>
+    <div>
+        Is Active: Yes <input type="radio" ng-model="order.Active" ng-value="true" name="IsActive" required>
+        No <input type="radio" ng-model="order.Active" ng-value="false" name="IsActive" required>
+        <div ng-show="orderForm.IsActive.$dirty && orderForm.IsActive.$invalid">Is Active is Required</div>
+    </div>
+    <div>User Id: {{order.UserId}}</div>
+    <div>Full Name: {{order.FullName}}</div>
+    <div>Order Number: {{order.OrderNumber}}</div>
+    <div>Order Status: <select ng-model="order.OrderStatusId" ng-options="s.Id as s.Name for s in allOrderStatus">
+                            <option value="">-- Choose Status --</option>
+                        </select>
+    </div>
+    <div>Shipping Provider: <select ng-model="order.ShippingProviderId" ng-options="p.Id as p.Name for p in allShippingProviders">
+                                <option value="">-- Choose Shipping Provider --</option>
+                            </select>
+    
+    </div>
+    <div>Shipping Number: {{order.ShippingNumber}}</div>
+    <div>Billing Address 1: {{order.BillingAddress1}}</div>
+    <div>Billing Address 2: {{order.BillingAddress2}}</div>
+    <div>Billing City: {{order.BillingCity}}</div>
+    <div>Billing State: {{order.BillingState}}</div>
+    <div>Billing Province: {{order.BillingProvince}}</div>
+    <div>Billing Country: {{order.BillingCountry}}</div>
+    <div>Shipping Address 1: {{order.ShippingAddress1}}</div>
+    <div>Shipping Address 2: {{order.ShippingAddress2}}</div>
+    <div>Shipping City: {{order.ShippingCity}}</div>
+    <div>Shipping State: {{order.ShippingState}}</div>
+    <div>Shipping Province: {{order.ShippingProvince}}</div>
+    <div>Shipping Country: {{order.ShippingCountry}}</div>
+    <div>Shipping Zipcode: {{order.ShippingZipcode}}</div>
+    <div>Comments: {{order.Comments}}</div>
+    <div>Date Placed: {{order.DatePlacedString}}</div>
+    <div>Date Shipped: {{order.DateShippedString}}</div>
+    <div>Total: {{order.Total | currency}}</div>
+    <div>Shipping: {{order.Shipping | currency}}</div>
+    <div>Tax: {{order.Tax | currency}}</div>
+</form>

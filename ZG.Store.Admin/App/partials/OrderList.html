@@ -36,9 +36,9 @@ Filter by:
         <td>{{order.ShippingCountry}}</td>
         <td>{{order.DatePlacedString}}</td>
         <td>{{order.DateShippedString}}</td>
-        <td>{{order.Tax}}</td>
-        <td>{{order.Shipping}}</td>
-        <td>{{order.Total}}</td>
+        <td>{{order.Tax | currency}}</td>
+        <td>{{order.Shipping | currency}}</td>
+        <td>{{order.Total | currency}}</td>
         <td>{{order.Comments}}</td>
         <td>{{order.Active}}</td>
         <td>

@@ -16,6 +16,7 @@ namespace ZG.Common
         public const string PageNumberQueryStringParam = "p";
 
         public const string ProductImageDirectory = "ProdImages";
+        public const string MMMMddyyyyhhmmtt = "MMMM dd, yyyy hh:mm tt";
     }
 
     public static class ImageFileNamePatterns

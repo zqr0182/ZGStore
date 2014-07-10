@@ -24,6 +24,7 @@ namespace ZG.Application
         void Activate(int id);
         void Deactivate(int id);
         Order GetOrderById(int id);
+        OrderEditViewModel GetOrderEditViewModel(int id);
     }
 
     public class OrderService : BaseService, IOrderService
@@ -89,7 +90,18 @@ namespace ZG.Application
 
         public Order GetOrderById(int id)
         {
-            return UnitOfWork.Orders.MatcheById(id);
+            return UnitOfWork.Orders.MatcheById(id);           
+        }
+
+        public OrderEditViewModel GetOrderEditViewModel(int id)
+        {
+            //, new string[] { "BillingState", "BillingProvince", "BillingCountry", "ShippingState", "ShippingProvince", "ShippingCountry" }
+            var order = UnitOfWork.Orders.MatcheById(id);
+            var orderById = new OrderById(id);
+            return UnitOfWork.Orders
+                .Matches(orderById)
+                .Select(o => new OrderEditViewModel { Id = o.Id, UserId = o.UserId, FullName = o.FullName, OrderNumber = o.OrderNumber, OrderStatusId = o.OrderStatusID, ShippingProviderId = o.ShippingProviderID, ShippingNumber = o.ShippingNumber, BillingAddress1 = o.BillingAddress1, BillingAddress2 = o.BillingAddress2, BillingCity = o.BillingCity, BillingState = o.BillingState.Name, BillingProvince = o.BillingProvince.Name, BillingCountry = o.BillingCountry.Name, ShippingAddress1 = o.ShippingAddress1, ShippingAddress2 = o.ShippingAddress2, ShippingCity = o.ShippingCity, ShippingState = o.ShippingState.Name, ShippingProvince = o.ShippingProvince.Name, ShippingCountry = o.ShippingCountry.Name, ShippingZipcode = o.ShippingZipcode, Comments = o.Comments, DatePlaced = o.DatePlaced, DateShipped = o.DateShipped, Total = o.Total, Shipping = o.Shipping, Tax = o.Tax, Active = o.Active })
+                .FirstOrDefault();
         }
 
         private int GetShippingProviderId(ShippingProviderEnum provider)
