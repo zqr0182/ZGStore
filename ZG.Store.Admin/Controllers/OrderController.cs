@@ -11,6 +11,7 @@ using ZG.Common;
 using ZG.Store.Admin.App_Code;
 using ZG.Domain.DTO;
 using Castle.Core.Logging;
+using ZG.Store.Admin.App_Code;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -31,12 +32,6 @@ namespace ZG.Store.Admin.Controllers
             return Json(orders, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        //public ActionResult Create(string order)
-        //{
-        //    return UpsertProduct(prod);   
-        //}
-
         public JsonResult Edit(int id)
         {
             try
@@ -51,11 +46,26 @@ namespace ZG.Store.Admin.Controllers
             }
         }
 
-        //[HttpPost]
-        //public JsonResult Edit(string prod)
-        //{
-        //    return UpsertProduct(prod);            
-        //}
+        [HttpPost]
+        public JsonResult Edit(OrderSaveModel order)
+        {
+            try
+            {
+                if(!ModelState.IsValid)
+                {
+                    return this.JsonErrorResult();
+                }
+
+                _orderService.Update(order);
+
+                return this.JsonSuccessResult();
+            }
+            catch(Exception ex)
+            {
+                _logger.ErrorFormat(ex, "Failed to update order: {0}, {1}", order.Id);
+                return Json(new { Success = false, Errors = new[] { "Error occured, unable to update order. We are fixing it." } }, JsonRequestBehavior.DenyGet);
+            }                
+        }
 
         [HttpDelete]
         public JsonResult Deactivate(int id)
@@ -88,51 +98,5 @@ namespace ZG.Store.Admin.Controllers
                 return Json(new { Success = false, Error = new[] { "Error occured, unable to activate order. We are fixing it." } }, JsonRequestBehavior.DenyGet);
             }
         } 
-
-        //private JsonResult UpsertProduct(string prod)
-        //{
-        //    try
-        //    {
-        //        var productEditViewModel = JsonConvert.DeserializeObject<ProductEditViewModel>(prod);
-               
-        //        if (!TryUpdateModel(productEditViewModel))
-        //        {
-        //            var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-        //            return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
-        //        } 
-                
-        //        var isUpdate = productEditViewModel.Id > 0 ? true : false;
-
-        //        Product product = null;
-        //        if (isUpdate)
-        //        {
-        //            product = _prodService.Update(productEditViewModel);
-        //        }
-        //        else
-        //        {
-        //            product = _prodService.Create(productEditViewModel);
-        //        }
-
-        //        string dirPath = PathUtil.GetProductImageDirectory(product.Id);
-        //        _fileService.CreateDirectory(dirPath);
-
-        //        foreach (string fileName in Request.Files)
-        //        {
-        //            var postedFile = Request.Files[fileName];
-        //            if (postedFile.ContentLength > 0)
-        //            {
-        //                string path = dirPath + "\\" + postedFile.FileName;
-        //                postedFile.SaveAs(path);
-        //            }
-        //        }
-
-        //        return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.ErrorFormat(ex, "Failed to upsert product: {0}", prod);
-        //        return Json(new { Success = false, Errors = new []{"Error occured. Unable to upsert product. We are fixing it."} }, JsonRequestBehavior.DenyGet);
-        //    }
-        //}
     }
 }

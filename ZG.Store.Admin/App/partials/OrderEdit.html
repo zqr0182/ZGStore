@@ -1,6 +1,6 @@
 ﻿
 <h2>Edit Order</h2>
-<form name="orderForm" class="css-form" novalidate> 
+<form name="orderForm" class="css-form" novalidate>
 
     <div>Order Id: {{order.Id}}</div>
     <div>
@@ -11,15 +11,18 @@
     <div>User Id: {{order.UserId}}</div>
     <div>Full Name: {{order.FullName}}</div>
     <div>Order Number: {{order.OrderNumber}}</div>
-    <div>Order Status: <select ng-model="order.OrderStatusId" ng-options="s.Id as s.Name for s in allOrderStatus">
-                            <option value="">-- Choose Status --</option>
-                        </select>
+    <div>Order Status:
+        <select name="orderStatus" ng-model="order.OrderStatusId" ng-options="s.Id as s.Name for s in allOrderStatus">
+            <option value="">-- Choose Status --</option>
+        </select>
+        <div ng-show="orderForm.orderStatus.$error.required">Order Status is required</div>
     </div>
-    <div>Shipping Provider: 
-    <select ng-model="order.ShippingProviderId" ng-options="p.Id as p.Name for p in allShippingProviders" required>
-        <option value="">-- Choose Shipping Provider --</option>
-    </select>
-    
+    <div>
+        Shipping Provider:
+        <select name="shippingProvider" ng-model="order.ShippingProviderId" ng-options="p.Id as p.Name for p in allShippingProviders" required>
+            <option value="">-- Choose Shipping Provider --</option>
+        </select>
+        <div ng-show="orderForm.shippingProvider.$error.required">Shipping Provider is required</div>
     </div>
     <div>Shipping Number: {{order.ShippingNumber}}</div>
     <div>Billing Address 1: {{order.BillingAddress1}}</div>
@@ -41,4 +44,15 @@
     <div>Total: {{order.Total | currency}}</div>
     <div>Shipping: {{order.Shipping | currency}}</div>
     <div>Tax: {{order.Tax | currency}}</div>
+    <div>
+        <button ng-click="saveOrder()" ng-disabled="orderForm.$invalid">Save</button>
+    </div>
 </form>
+
+<div ng-show="isSaveSuccessful">Order saved successfully.</div>
+<div ng-show="errors">
+    <div>Errors:</div>
+    <ul ng-repeat="error in errors">
+        <li>{{error}}</li>
+    </ul>
+</div>

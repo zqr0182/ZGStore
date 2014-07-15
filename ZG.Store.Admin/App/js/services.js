@@ -158,6 +158,7 @@ adminServices.factory('OrderService', ['$resource', function ($resource) {
     return {
         orders: $resource('order/list/:filterByStatus', {}, {}),
         order: $resource('order/edit/:id', {}, {}),
+        save: $resource('order/edit', {}, {}),
         deactivateOrder: $resource('order/deactivate/:id', {}, {}),
         activateOrder: $resource('order/activate', {}, {})
     };
