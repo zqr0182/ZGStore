@@ -103,28 +103,29 @@
                     <td></td>
                 </tr>
                 <tr ng-repeat="inventory in prod.Inventories | orderBy:predicate:reverse">
-                    <td>
+                    <td ng-form="amtOrderedFm">
                         <div>
-                            <input type="text" ng-model="inventory.ProductAmountOrdered" name="productAmountOrdered{{$index}}" required ng-pattern="pattern.fourDigit">
+                            <input type="text" ng-model="inventory.ProductAmountOrdered" name="prodAmtOrdered" required ng-pattern="pattern.fourDigit">
                         </div>
-                        <div ng-show="prodForm.productAmountOrdered{{$index}}.$error.required">ProductAmountOrdered is Required</div>
-                        <div ng-show="prodForm.productAmountOrdered{{$index}}.$error.pattern">Invalid Amount</div>
+                        <div ng-show="amtOrderedFm.prodAmtOrdered.$error.required">ProductAmountOrdered is Required</div>
+                        <div ng-show="amtOrderedFm.prodAmtOrdered.$error.pattern">Invalid Amount</div>
                     </td>
-                    <td>
-                        <div><input type="text" ng-model="inventory.ProductAmountInStock" name="productAmountInStock{{$index}}" required ng-pattern="pattern.fourDigit"></div>
-                        <div ng-show="prodForm.productAmountInStock{{$index}}.$error.required">ProductAmountInStock is Required</div>
-                        <div ng-show="prodForm.productAmountInStock{{$index}}.$error.pattern">Invalid Amount</div>
+                    <td ng-form="amtInStockFm">
+                        <div><input type="text" ng-model="inventory.ProductAmountInStock" name="prodAmtInStock" required ng-pattern="pattern.fourDigit"></div>
+                        <div ng-show="amtInStockFm.prodAmtInStock.$error.required">ProductAmountInStock is Required</div>
+                        <div ng-show="amtInStockFm.prodAmtInStock.$error.pattern">Invalid Amount</div>
                     </td>
-                    <td>
-                        <div><input type="text" ng-model="inventory.Price" name="price{{$index}}" required ng-pattern="pattern.decimal"></div>
-                        <div ng-show="prodForm.price{{$index}}.$error.required">Price is Required</div>
-                        <div ng-show="prodForm.price{{$index}}.$error.pattern">Invalid Price</div>
+                    <td ng-form="priceFm">
+                        <div><input type="text" ng-model="inventory.Price" name="price" required ng-pattern="pattern.decimal"></div>
+                        <div ng-show="priceFm.price.$error.required">Price is Required</div>
+                        <div ng-show="pricem.price.$error.pattern">Invalid Price</div>
                     </td>
-                    <td>
+                    <td ng-form="supplierFm">
                         <div>
-                            <select ng-model="inventory.SupplierId" ng-options="s.Id as s.Name for s in allSuppliers">
+                            <select name="supplier" ng-model="inventory.SupplierId" ng-options="s.Id as s.Name for s in allSuppliers" required>
                                 <option value="">-- Choose Supplier --</option>
                             </select>
+                            <div ng-show="supplierFm.supplier.$error.required">Supplier is Required</div>
                         </div>
                     </td>
                     <td>
@@ -137,7 +138,7 @@
                         <button ng-click="deleteInventory(inventory)" ng-show="!inventory.Id">Delete</button>
                     </td>
                 </tr>
-            </table>       
+            </table>
         </tab>
     </tabset>
     <button ng-click="saveProd()" ng-disabled="prodForm.$invalid">Save</button>

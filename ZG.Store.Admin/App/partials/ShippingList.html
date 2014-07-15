@@ -52,7 +52,7 @@
             </td>
             <td>
                 <div>
-                    <select ng-model="s.ShippingProviderId" ng-options="s.Id as s.Name for s in allShippingProviders">
+                    <select ng-model="s.ShippingProviderId" ng-options="s.Id as s.Name for s in allShippingProviders" required>
                         <option value="">-- Choose Shipping Provider --</option>
                     </select>
                 </div>

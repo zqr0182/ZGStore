@@ -15,9 +15,10 @@
                             <option value="">-- Choose Status --</option>
                         </select>
     </div>
-    <div>Shipping Provider: <select ng-model="order.ShippingProviderId" ng-options="p.Id as p.Name for p in allShippingProviders">
-                                <option value="">-- Choose Shipping Provider --</option>
-                            </select>
+    <div>Shipping Provider: 
+    <select ng-model="order.ShippingProviderId" ng-options="p.Id as p.Name for p in allShippingProviders" required>
+        <option value="">-- Choose Shipping Provider --</option>
+    </select>
     
     </div>
     <div>Shipping Number: {{order.ShippingNumber}}</div>
