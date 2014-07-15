@@ -8,6 +8,7 @@ using ZG.Application;
 using ZG.Common;
 using ZG.Domain.DTO;
 using ZG.Domain.Models;
+using ZG.Store.Admin.App_Code;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -46,8 +47,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                    return this.JsonErrorResult();
                 }
 
                 _provinceService.Upsert(provinces);
@@ -57,7 +57,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert provinces.");
-                return Json(new { Success = false, Errors = new []{"Error occured. Unable to upsert provinces. We are fixing it." }}, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured. Unable to upsert provinces. We are fixing it.");
             }
         }
     }

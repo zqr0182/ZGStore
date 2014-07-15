@@ -11,7 +11,6 @@ using ZG.Common;
 using ZG.Store.Admin.App_Code;
 using ZG.Domain.DTO;
 using Castle.Core.Logging;
-using ZG.Store.Admin.App_Code;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -42,7 +41,7 @@ namespace ZG.Store.Admin.Controllers
             catch(Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get order: {0}", id);
-                return Json(new { Success = false, Errors = new[] { "Error occured, unable to get order. We are fixing it." } }, JsonRequestBehavior.AllowGet);
+                return this.JsonErrorResult("Error occured, unable to get order. We are fixing it.");
             }
         }
 
@@ -63,7 +62,7 @@ namespace ZG.Store.Admin.Controllers
             catch(Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to update order: {0}, {1}", order.Id);
-                return Json(new { Success = false, Errors = new[] { "Error occured, unable to update order. We are fixing it." } }, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured, unable to update order. We are fixing it.");
             }                
         }
 
@@ -79,7 +78,7 @@ namespace ZG.Store.Admin.Controllers
             catch(Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to deactivate order {0}", id);
-                return Json(new { Success = false, Error = new[] { "Error occured, unable to deactivate order. We are fixing it." } }, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured, unable to deactivate order. We are fixing it.");
             }
         }
 
@@ -95,7 +94,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to activate order {0}", id);
-                return Json(new { Success = false, Error = new[] { "Error occured, unable to activate order. We are fixing it." } }, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured, unable to activate order. We are fixing it.");
             }
         } 
     }

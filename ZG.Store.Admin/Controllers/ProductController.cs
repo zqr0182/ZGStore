@@ -136,8 +136,7 @@ namespace ZG.Store.Admin.Controllers
                
                 if (!TryUpdateModel(productEditViewModel))
                 {
-                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                    return this.JsonErrorResult();
                 } 
                 
                 var isUpdate = productEditViewModel.Id > 0 ? true : false;
@@ -170,7 +169,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert product: {0}", prod);
-                return Json(new { Success = false, Errors = new []{"Error occured. Unable to upsert product. We are fixing it."} }, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured. Unable to upsert product. We are fixing it.");
             }
         }
     }

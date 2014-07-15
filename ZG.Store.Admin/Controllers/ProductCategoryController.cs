@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZG.Application;
 using ZG.Domain.DTO;
+using ZG.Store.Admin.App_Code;
 
 namespace ZG.Store.Admin.Controllers
 {
@@ -62,7 +63,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _prodCatService.Deactivate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
@@ -99,8 +100,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Json(new { Success = false, Errors = errors }, JsonRequestBehavior.DenyGet);
+                    return this.JsonErrorResult();
                 }
 
                 if (cat.Id > 0)

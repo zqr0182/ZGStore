@@ -22,6 +22,11 @@ namespace ZG.Store.Admin.App_Code
             }
         }
 
+        public static JsonResult JsonErrorResult(this Controller controller, string errorMsg)
+        {
+            return new JsonResult() { Data = new { Success = false, Errors = new[] { errorMsg } }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+        }
+
         public static JsonResult JsonSuccessResult(this Controller controller)
         {
             return new JsonResult() { Data = new { Success = true}, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
