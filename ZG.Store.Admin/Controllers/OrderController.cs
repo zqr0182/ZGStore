@@ -89,7 +89,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _orderService.Activate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {

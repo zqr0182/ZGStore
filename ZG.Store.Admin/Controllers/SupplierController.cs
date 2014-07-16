@@ -69,7 +69,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _supplierService.Deactivate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _supplierService.Activate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace ZG.Store.Admin.Controllers
                     _supplierService.Create(sup);
                 }
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {

@@ -52,7 +52,7 @@ namespace ZG.Store.Admin.Controllers
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to get product: {0}", id);
-                return Json(new { Success = false, Errors = new []{"Error occured, unable to get product. We are fixing it." }}, JsonRequestBehavior.AllowGet);
+                return this.JsonErrorResult("Error occured, unable to get product. We are fixing it."); 
             }
         }
 
@@ -85,7 +85,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _prodService.Activate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
@@ -164,7 +164,7 @@ namespace ZG.Store.Admin.Controllers
                     }
                 }
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {

@@ -79,7 +79,7 @@ namespace ZG.Store.Admin.Controllers
             {
                 _prodCatService.Activate(id);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
@@ -112,12 +112,12 @@ namespace ZG.Store.Admin.Controllers
                     _prodCatService.Create(cat);
                 }
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
                 _logger.ErrorFormat(ex, "Failed to upsert product category: {0}, {1}", cat.Id, cat.Name);
-                return Json(new { Success = false, Errors = new []{"Error occured, unable to upsert category. We are fixing it." }}, JsonRequestBehavior.DenyGet);
+                return this.JsonErrorResult("Error occured, unable to upsert category. We are fixing it."); 
             }
         }
 	}

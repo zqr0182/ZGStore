@@ -52,7 +52,7 @@ namespace ZG.Store.Admin.Controllers
 
                 _provinceService.Upsert(provinces);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {

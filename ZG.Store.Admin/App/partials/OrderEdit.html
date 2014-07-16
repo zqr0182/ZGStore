@@ -1,7 +1,6 @@
 ﻿
 <h2>Edit Order</h2>
 <form name="orderForm" class="css-form" novalidate>
-
     <div>Order Id: {{order.Id}}</div>
     <div>
         Is Active: Yes <input type="radio" ng-model="order.Active" ng-value="true" name="IsActive" required>
@@ -49,10 +48,4 @@
     </div>
 </form>
 
-<div ng-show="isSaveSuccessful">Order saved successfully.</div>
-<div ng-show="errors">
-    <div>Errors:</div>
-    <ul ng-repeat="error in errors">
-        <li>{{error}}</li>
-    </ul>
-</div>
+<alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>

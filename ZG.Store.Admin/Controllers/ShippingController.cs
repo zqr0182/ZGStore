@@ -46,7 +46,7 @@ namespace ZG.Store.Admin.Controllers
 
                 _shippingService.Upsert(shippings);
 
-                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+                return this.JsonSuccessResult();
             }
             catch (Exception ex)
             {
