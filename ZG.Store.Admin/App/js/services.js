@@ -61,7 +61,8 @@ adminServices.factory('CommonFunctions', [function () {
                 zip: /\d{5}(-\d{4})?/,
                 decimal: /^\d+(\.\d{1,2})?$/,
                 fourDigit: /^\d{1,4}$/,
-                tenDigit: /^\d{1,10}$/
+                tenDigit: /^\d{1,10}$/,
+                twoUpperCaseLetter: /^[A-Z]{2}$/
             };
         },
         removeFromArray: function (array, item) {

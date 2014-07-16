@@ -28,7 +28,7 @@
             </td>
             <td>
                 <div>
-                    <input type="text" ng-model="p.Code" name="code{{$index}}" required ng-maxlength="2" ng-minlength="2">
+                    <input type="text" ng-model="p.Code" name="code{{$index}}" required ng-pattern="pattern.twoUpperCaseLetter">
                     <div ng-show="pForm.code{{$index}}.$error.required">Code is required</div>
                     <div ng-show="pForm.code{{$index}}.$error.maxlength || pForm.code{{$index}}.$error.minlength">Length of Code must be 2</div>
                 </div>

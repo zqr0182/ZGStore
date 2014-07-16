@@ -4,6 +4,7 @@
       $scope.alerts = [];
       $scope.selectedCountry;
       $scope.allCountries = CountryService.countryIdNamesOfCanadaChina.query();
+      $scope.pattern = CommonFunctions.regExpPattern();
 
       var deregisterWatch;
       $scope.getProvinces = function () {

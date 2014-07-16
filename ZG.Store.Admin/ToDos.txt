@@ -15,13 +15,13 @@
 --Error handling and redirecting to Error.cshtml
 --Taxes page
 --Users list and details page
-Order list/details page
+--Order list/details page
 StoreConfigurations list/create/edit page
 
 Province code validation not working on province list page
 Use of cache
 --Test error callback on ShippingProvider and Province controller js
-Validation error message not showing for elements in repeated table rows.
+(Solved)Validation error message not showing for elements in repeated table rows.
 
 
 
