@@ -70,3 +70,16 @@ margin: 3px;
   border: 1px solid #DDD;
   border-top: none;
 }
+
+a {
+  cursor: pointer;
+}
+
+#gallery li {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  width: 150px;
+  list-style-type: none;
+  text-align: center;
+}
+

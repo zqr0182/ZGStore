@@ -33,6 +33,10 @@ namespace ZG.Store.Admin
                 , "~/App/lib/angular/angular-route.js"
                 , "~/App/lib/angular/angular-resource.js"
                 , "~/App/lib/angular/angular-file-upload.js"
+                , "~/App/lib/angular/angular-touch.js"
+                , "~/App/lib/angular-ui/ui-bootstrap-tpls.js"
+                , "~/App/lib/angular-loading-bar/loading-bar.js"
+                , "~/App/lib/angular-bootstrap-lightbox/angular-bootstrap-lightbox.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/storeAdminApp").Include(
                 "~/App/js/storeAdminApp.js"
@@ -55,6 +59,8 @@ namespace ZG.Store.Admin
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/App/lib/angular-loading-bar/loading-bar.css",
+                      "~/App/lib/angular-bootstrap-lightbox/angular-bootstrap-lightbox.css",
                       "~/Content/site.css"));
         }
     }

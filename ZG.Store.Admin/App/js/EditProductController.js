@@ -1,5 +1,5 @@
-﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload',
-  function ($scope, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload) {
+﻿angular.module('storeAdminControllers').controller('EditProductCtrl', ['$scope', '$routeParams', 'ProdService', 'ProdCategoryService', 'SupplierService', 'CommonFunctions', '$timeout', '$upload', 'Lightbox',
+  function ($scope, $routeParams, ProdService, ProdCategoryService, SupplierService, CommonFunctions, $timeout, $upload, Lightbox) {
       $scope.showDeleteImageSuccessfulMsg = false;
       $scope.showDeleteImageFailureMsg = false;
       $scope.deleteImageFailureMsg = '';    
@@ -12,12 +12,11 @@
       if ($routeParams.id > 0) {
           $scope.prod = ProdService.product.get({ id: $routeParams.id }, function (data) {
               var currentProdCats = CommonFunctions.getArrayById($scope.prod.ProductCategories, $scope.allProdCategories);
-              if (currentProdCats.length > 0)
-              {
+              if (currentProdCats.length > 0) {
                   $scope.prod.ProductCategories = currentProdCats;
               }
           });
-      }
+      };
 
       $scope.deleteProductImage = function (imageName) {
           if (window.confirm('Are you sure you want to delete this image?')) {
@@ -25,7 +24,7 @@
               ProdService.productImage.remove({ id: $scope.prod.Id, imageName: imageName }, {}, function (value, responseHeaders) {
                   if (value.Success) {
                       $scope.showDeleteImageSuccessfulMsg = true;
-                      $scope.prod.ProductImageNames = value.Images;
+                      $scope.prod.ProductImages = value.Images;
                   }
                   else {
                       $scope.showDeleteImageFailureMsg = true;
@@ -33,7 +32,7 @@
                   }
               });
           }
-      }
+      };
 
       $scope.onFileSelect = function ($files) {
           $scope.progress = '';
@@ -54,16 +53,15 @@
                   }(fileReader, i);
               }
           }
-      }
+      };
 
       $scope.addInventory = function () {
-          $scope.prod.Inventories.push({Active: true});
-      }
+          $scope.prod.Inventories.push({ Active: true });
+      };
 
-      $scope.deleteInventory = function(inventory)
-      {
+      $scope.deleteInventory = function (inventory) {
           CommonFunctions.removeFromArray($scope.prod.Inventories, inventory);
-      }
+      };
 
       $scope.saveProd = function () {
           var url = ($routeParams.id > 0) ? "/product/edit" : "/product/create";
@@ -82,7 +80,7 @@
                   $scope.alerts.push({ type: 'success', msg: 'Product saved successfully.' });
 
                   for (var i = 0; i < $scope.selectedFiles.length; i++) {
-                      $scope.prod.ProductImageNames.push($scope.selectedFiles[i].name);
+                      $scope.prod.ProductImages.push($scope.selectedFiles[i].name);
                   }
               }
               else {
@@ -92,5 +90,9 @@
                   });
               }
           }, null);
-      }
+      };
+
+      $scope.openLightboxModal = function (index) {
+          Lightbox.openModal($scope.prod.ProductImages, index);
+      };
   }]);

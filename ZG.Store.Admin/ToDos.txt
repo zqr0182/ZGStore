@@ -18,10 +18,11 @@
 --Order list/details page
 StoreConfigurations list/create/edit page
 
-Province code validation not working on province list page
+--Province code validation not working on province list page
 Use of cache
 --Test error callback on ShippingProvider and Province controller js
-(Solved)Validation error message not showing for elements in repeated table rows.
+--Validation error message not showing for elements in repeated table rows.
+Fix CamelCasePropertyNamesContractResolver issue.
 
 
 

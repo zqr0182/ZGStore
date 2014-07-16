@@ -37,7 +37,7 @@ namespace ZG.Domain.DTO
         [Required(ErrorMessage = "Active is a required field")]
         public bool Active { get; set; }
 
-        public List<string> ProductImageNames { get; set; }
+        public List<ImageInfo> ProductImages { get; set; }
         public List<IdName> ProductCategories { get; set; }
         public List<InventoryViewModel> Inventories { get; set; }
     }

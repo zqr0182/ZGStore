@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Threading;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -12,10 +9,8 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using WebMatrix.WebData;
-using ZG.Common.DTO;
 using ZG.Common.Installers;
 using ZG.Domain.Concrete;
-using ZG.Domain.DTO;
 using ZG.Repository.Installers;
 using ZG.Application.Installers;
 using ZG.Store.Presentation.Binders;
@@ -39,8 +34,8 @@ namespace ZG.Store.Presentation
         {
             AreaRegistration.RegisterAllAreas();
 
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

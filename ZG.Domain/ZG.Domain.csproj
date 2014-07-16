@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\CheckoutDetails.cs" />
+    <Compile Include="DTO\ImageInfo.cs" />
     <Compile Include="DTO\InventoryViewModel.cs" />
     <Compile Include="DTO\IdName.cs" />
     <Compile Include="DTO\OrderBriefInfo.cs" />

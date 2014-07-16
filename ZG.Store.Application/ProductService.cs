@@ -89,7 +89,7 @@ namespace ZG.Application
                 TotalReviewCount = prod.TotalReviewCount,
                 RatingScore = prod.RatingScore,
                 Active = prod.Active,
-                ProductImageNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns),
+                ProductImages = GetProductImages(prodImageDirectory, prod.Id),
                 Inventories = prod.Inventories.Select(i => new InventoryViewModel { Id = i.Id, ProductID = i.ProductID, ProductAmountOrdered = i.ProductAmountOrdered, ProductAmountInStock = i.ProductAmountInStock, Price = i.Price, SupplierId =i.SupplierId, Active = i.Active }).ToList(),
                 ProductCategories = prod.ProductCategories.Select(c => new IdName { Id = c.Category.Id, Name = c.Category.CategoryName }).ToList()
             };
@@ -172,6 +172,26 @@ namespace ZG.Application
             var productByActive = new ProductByActive(active);
             return UnitOfWork.Products.Matches(productByActive)
                                        .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
+        }
+
+        private List<ImageInfo> GetProductImages(string prodImageDirectory, int prodId)
+        {
+            var imgNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns);
+
+            var images = new List<ImageInfo>();
+            
+            foreach(var imgName in imgNames)
+            {
+                images.Add(new ImageInfo 
+                { 
+                    Name = imgName,
+                    url = string.Format("/ProdImages/{0}/{1}", prodId, imgName),
+                    width = 600,
+                    height = 500
+                });
+            }
+
+            return images;
         }
 
         private void UpdateProductInventories(InventoryViewModel inventory, Product prod)

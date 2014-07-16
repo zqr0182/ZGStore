@@ -68,9 +68,11 @@
             <div>
                 Rating Score: {{prod.RatingScore}}
             </div>
-            <div class="imgbox" ng-repeat="imageName in prod.ProductImageNames">
-            <img class="thumbnail" ng-src="{{'/ProdImages/' + prod.Id + '/' + imageName}}" />
-            <input type="button" ng-click="deleteProductImage(imageName)" value="Delete">
+            <div class="imgbox" ng-repeat="image in prod.ProductImages">
+                <a ng-click="openLightboxModal($index)">
+                    <img class="thumbnail" ng-src="{{image.url}}" />
+                </a>
+                <input type="button" ng-click="deleteProductImage(image.Name)" value="Delete">
             </div>
             <p ng-show="showDeleteImageSuccessfulMsg">Product image is deleted successfully.</p>
             <p ng-show="showDeleteImageFailureMsg">{{deleteImageFailureMsg}}</p>
