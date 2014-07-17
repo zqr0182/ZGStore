@@ -79,9 +79,14 @@
                   $scope.alerts = [];
                   $scope.alerts.push({ type: 'success', msg: 'Product saved successfully.' });
 
-                  for (var i = 0; i < $scope.selectedFiles.length; i++) {
-                      $scope.prod.ProductImages.push($scope.selectedFiles[i].name);
+                  if($scope.selectedFiles.length > 0)
+                  {
+                      response.data.Images.forEach(function (img) {
+                              $scope.prod.ProductImages.push(img);
+                      });
                   }
+                  $scope.showDeleteImageSuccessfulMsg = false;
+                  $scope.showDeleteImageFailureMsg = false;
               }
               else {
                   $scope.alerts = [];

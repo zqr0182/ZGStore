@@ -103,9 +103,10 @@ namespace ZG.Store.Admin.Controllers
                 string path = dirPath + "\\" + imageName;
 
                 _fileService.DeleteFile(path);
-                var fileNames = _fileService.GetFileNames(dirPath, ImageFileNamePatterns.Patterns);
 
-                return Json(new { Success = true, Images = fileNames }, JsonRequestBehavior.DenyGet); 
+                var imgs = _prodService.GetProductImages(dirPath, id);
+
+                return Json(new { Success = true, Images = imgs }, JsonRequestBehavior.DenyGet); 
             }
             catch(Exception ex)
             {
@@ -151,17 +152,26 @@ namespace ZG.Store.Admin.Controllers
                     product = _prodService.Create(productEditViewModel);
                 }
 
-                string dirPath = PathUtil.GetProductImageDirectory(product.Id);
-                _fileService.CreateDirectory(dirPath);
-
-                foreach (string fileName in Request.Files)
+                if (Request.Files.Count > 0)
                 {
-                    var postedFile = Request.Files[fileName];
-                    if (postedFile.ContentLength > 0)
+                    var imgNames = new List<string>();
+                    string dirPath = PathUtil.GetProductImageDirectory(product.Id);
+                    _fileService.CreateDirectory(dirPath);
+
+                    foreach (string fileName in Request.Files)
                     {
-                        string path = dirPath + "\\" + postedFile.FileName;
-                        postedFile.SaveAs(path);
+                        var postedFile = Request.Files[fileName];
+                        if (postedFile.ContentLength > 0)
+                        {
+                            string path = dirPath + "\\" + postedFile.FileName;
+                            postedFile.SaveAs(path);
+                        }
+
+                        imgNames.Add(postedFile.FileName);
                     }
+
+                    var imgs = _prodService.GetProductImages(imgNames, product.Id);
+                    return Json(new { Success = true, Images = imgs }, JsonRequestBehavior.DenyGet);
                 }
 
                 return this.JsonSuccessResult();

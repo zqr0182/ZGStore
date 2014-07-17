@@ -23,6 +23,8 @@ namespace ZG.Application
         void Activate(int id);
         void Deactivate(int id);
         List<IdName> GetProductIdNames(bool active);
+        List<ImageInfo> GetProductImages(string prodImageDirectory, int prodId);
+        List<ImageInfo> GetProductImages(List<string> imgNames, int prodId);
     }
 
     public class ProductService : BaseService, IProductService
@@ -174,16 +176,21 @@ namespace ZG.Application
                                        .Select(p => new IdName { Id = p.Id, Name = p.Name }).ToList();
         }
 
-        private List<ImageInfo> GetProductImages(string prodImageDirectory, int prodId)
+        public List<ImageInfo> GetProductImages(string prodImageDirectory, int prodId)
         {
             var imgNames = _fileService.GetFileNames(prodImageDirectory, ImageFileNamePatterns.Patterns);
 
+            return GetProductImages(imgNames, prodId);
+        }
+
+        public List<ImageInfo> GetProductImages(List<string> imgNames, int prodId)
+        {
             var images = new List<ImageInfo>();
-            
-            foreach(var imgName in imgNames)
+
+            foreach (var imgName in imgNames)
             {
-                images.Add(new ImageInfo 
-                { 
+                images.Add(new ImageInfo
+                {
                     Name = imgName,
                     url = string.Format("/ProdImages/{0}/{1}", prodId, imgName),
                     width = 600,

@@ -73,5 +73,5 @@
     </table>
 
     <button ng-click="save()" ng-disabled="uForm.$invalid">Save</button>
-    <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
 </form>
