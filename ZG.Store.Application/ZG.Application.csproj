@@ -65,6 +65,7 @@
     <Compile Include="ProvinceService.cs" />
     <Compile Include="ShippingProviderService.cs" />
     <Compile Include="SupplierService.cs" />
+    <Compile Include="StoreConfigurationsService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Installers\ServicesInstaller.cs" />
     <Compile Include="ProductService.cs" />

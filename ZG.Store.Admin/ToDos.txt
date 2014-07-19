@@ -23,7 +23,7 @@ Use of cache
 --Test error callback on ShippingProvider and Province controller js
 --Validation error message not showing for elements in repeated table rows.
 Fix json format to camal case issue.
-Fix delete prod image issue.
+--Fix delete prod image issue.
 
 
 

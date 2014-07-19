@@ -61,6 +61,7 @@
     <Compile Include="Criterias\InventoryByProductId.cs" />
     <Compile Include="Criterias\CategoryByPage.cs" />
     <Compile Include="Criterias\CategoryByActive.cs" />
+    <Compile Include="Criterias\StoreConfigurationByActive.cs" />
     <Compile Include="Criterias\OrderById.cs" />
     <Compile Include="Criterias\OrderByActive.cs" />
     <Compile Include="Criterias\ProductByActive.cs" />

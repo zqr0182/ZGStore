@@ -26,6 +26,7 @@ namespace ZG.Repository
         IRepository<Supplier> Suppliers { get; }
         IRepository<Inventory> Inventories { get; }
         IRepository<Tax> Taxes { get; }
+        IRepository<StoreConfiguration> StoreConfigurations { get; }
 
         void Commit();
     }
@@ -49,11 +50,12 @@ namespace ZG.Repository
         public IRepository<Supplier> Suppliers { get; private set; }
         public IRepository<Inventory> Inventories { get; private set; }
         public IRepository<Tax> Taxes { get; private set; }
+        public IRepository<StoreConfiguration> StoreConfigurations { get; private set; }
 
         public ZGStoreUnitOfWork(ZGStoreContext context, IRepository<Product> productRepo, IRepository<ProductCategory> productCategoriesRepo, IRepository<User> userRepo, IRepository<Category> categoryRepo, IRepository<Email> emailRepo,
                                  IRepository<Order> OrderRepo, IRepository<OrderStatus> orderStatusRepo, IRepository<ShippingProvider> shippingProvidersRepo, IRepository<Shipping> shippingsRepo, 
                                  IRepository<State> stateRepo, IRepository<Province> provinceRepo, IRepository<Country> countryRepo, IRepository<Supplier> supplierRepo, IRepository<Inventory> inventoryRepo,
-                                 IRepository<Tax> taxRepo)
+                                 IRepository<Tax> taxRepo, IRepository<StoreConfiguration> configRepo)
         {
             _context = context;
 
@@ -72,6 +74,7 @@ namespace ZG.Repository
             Suppliers = supplierRepo;
             Inventories = inventoryRepo;
             Taxes = taxRepo;
+            StoreConfigurations = configRepo;
         }
 
         public void Commit()
