@@ -1,0 +1,52 @@
+﻿<h2>User List</h2>
+
+<button ng-click="add()">New</button>
+
+<form name="cForm" class="css-form" novalidate>
+    <div ng-show="isFormDirty">The form has unsaved changes</div>
+    <div>
+        Filter by:
+        <select ng-model="filterByStatus" ng-change="getStoreConfigs()">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <td><a href="" ng-click="predicate='Id';reverse=!reverse">Id</a></td>
+            <td><a href="" ng-click="predicate='ConfigKey';reverse=!reverse">Config Key</a></td>
+            <td><a href="" ng-click="predicate='ConfigValue';reverse=!reverse">Config Value</a></td>
+            <td><a href="" ng-click="predicate='Active';reverse=!reverse">Active</a></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="c in storeConfigs | orderBy:predicate:reverse">
+            <td>{{c.Id}}</td>
+            <td ng-form="configKeyFm">
+                <div>
+                    <input type="text" ng-model="c.ConfigKey" name="configKey" required ng-maxlength="50">
+                    <div ng-show="configKeyFm.configKey.$error.required">Config Key is required</div>
+                    <div ng-show="configKeyFm.configKey.$error.maxlength">Max length exceeded</div>
+                </div>
+            </td>
+            <td ng-form="configValueFm">
+                <div>
+                    <input type="text" ng-model="c.ConfigValue" name="configValue" required ng-maxlength="50">
+                    <div ng-show="configValueFm.configValue.$error.required">Config Value is required</div>
+                </div>
+            </td>
+            <td>
+                <div>
+                    Yes <input type="radio" ng-model="c.Active" ng-value="true" required>
+                    No <input type="radio" ng-model="c.Active" ng-value="false" required>
+                </div>
+            </td>
+            <td>
+                <button ng-click="delete(c)" ng-show="!c.Id">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <button ng-click="save()" ng-disabled="cForm.$invalid">Save</button>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
+</form>

@@ -171,3 +171,10 @@ adminServices.factory('OrderStatusService', ['$resource', function ($resource) {
     };
 }]);
 
+adminServices.factory('StoreConfigurationService', ['$resource', function ($resource) {
+    return {
+        get: $resource('storeConfigurations/list/:filterByStatus', {}, {}),
+        save: $resource('storeConfigurations/save/:filterByStatus', {}, {})
+    };
+}]);
+

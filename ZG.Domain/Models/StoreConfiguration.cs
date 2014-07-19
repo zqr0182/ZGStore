@@ -3,10 +3,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ZG.Domain.Abstract;
 
 namespace ZG.Domain.Models
 {
-    public partial class StoreConfiguration 
+    public partial class StoreConfiguration : IEntity  
     {
         [Key]
         public int Id { get; set; }

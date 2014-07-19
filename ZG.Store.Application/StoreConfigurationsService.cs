@@ -27,14 +27,7 @@ namespace ZG.Application
         public List<StoreConfiguration> GetStoreConfigurations(bool? active)
         {
             var configsByActive = new StoreConfigurationByActive(active);
-            return UnitOfWork.StoreConfigurations.Matches(configsByActive)
-                                        .Select(c => new StoreConfiguration
-                                        {
-                                            Id = c.Id,
-                                            ConfigKey = c.ConfigKey,
-                                            ConfigValue = c.ConfigValue,
-                                            Active = c.Active
-                                        }).ToList();
+            return UnitOfWork.StoreConfigurations.Matches(configsByActive).ToList();
         }
 
         public StoreConfiguration GetStoreConfigurationById(int id)
@@ -53,40 +46,29 @@ namespace ZG.Application
         {
             if (config.Id > 0)
             {
-                Update(user);
+                Update(config);
             }
             else
             {
-                Create(user);
+                Create(config);
             }
         }
 
         private void Update(StoreConfiguration config)
         {
-            var c = GetStoreConfigurationById(config.Id);
+            var configInDb = GetStoreConfigurationById(config.Id);
 
-            if (c != null)
+            if (configInDb != null)
             {
-                UpdateConfig(u, user);
+                configInDb.ConfigKey = config.ConfigKey;
+                configInDb.ConfigValue = config.ConfigValue;
+                configInDb.Active = config.Active;
             }
         }
 
         private void Create(StoreConfiguration config)
         {
-            var u = new User() { DateCreated = DateTime.Now};
-            UpdateUser(u, user);
-
-            UnitOfWork.Users.Add(u);
-        }
-
-        private void UpdateConfig(User userInDb, UserViewModel user)
-        {
-            userInDb.UserName = user.UserName;
-            userInDb.FirstName = user.FirstName;
-            userInDb.LastName = user.LastName;
-            userInDb.Phone = user.Phone;
-            userInDb.DateUpdated = DateTime.Now;
-            userInDb.Active = user.Active;
+            UnitOfWork.StoreConfigurations.Add(config);
         }
     }
 }

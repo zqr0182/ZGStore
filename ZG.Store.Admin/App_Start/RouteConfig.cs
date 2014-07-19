@@ -64,7 +64,7 @@ namespace ZG.Store.Admin
               defaults: new { controller = "Country", filterByStatus = UrlParameter.Optional }
           );
 
-           routes.MapRoute(
+          routes.MapRoute(
                name: "UserList",
                url: "user/list/{filterByStatus}",
                defaults: new { controller = "User", action = "List" }
@@ -74,6 +74,18 @@ namespace ZG.Store.Admin
               name: "UserSave",
               url: "user/save/{filterByStatus}",
               defaults: new { controller = "User", action = "Save" }
+          );
+
+          routes.MapRoute(
+             name: "StoreConfigList",
+             url: "storeConfigurations/list/{filterByStatus}",
+             defaults: new { controller = "StoreConfigurations", action = "List" }
+         );
+
+           routes.MapRoute(
+              name: "StoreConfigSave",
+              url: "storeConfigurations/save/{filterByStatus}",
+              defaults: new { controller = "StoreConfigurations", action = "Save" }
           );
 
            routes.MapRoute(
